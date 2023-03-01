@@ -5,13 +5,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import fr.inria.astor.core.validation.results.TestCasesProgramValidationResult;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -631,7 +628,15 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 	public VariantValidationResult validateInstance(ProgramVariant variant) {
 
-		VariantValidationResult validationResult = programValidator.validate(variant, projectFacade);
+		VariantValidationResult validationResult = null;
+		if (ConfigurationProperties.hasProperty("skipvalidation")) {
+			boolean skipvalidation = ConfigurationProperties.getPropertyBool("skipvalidation");
+			if (skipvalidation) {
+				validationResult = new TestCasesProgramValidationResult(null, true, false);
+			}
+		}else{
+			validationResult = programValidator.validate(variant, projectFacade);
+		}
 		if (validationResult != null) {
 			variant.setIsSolution(validationResult.isSuccessful());
 			variant.setValidationResult(validationResult);
