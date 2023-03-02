@@ -214,7 +214,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 			out.produceOutput(patchInfo, this.currentStat.getGeneralStats(), output);
 			if (ConfigurationProperties.getPropertyBool("removeworkingfolder")) {
 				File fout = new File(output);
-
 				try {
 					FileUtils.deleteDirectory(fout);
 				} catch (IOException e) {
@@ -627,15 +626,15 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	}
 
 	public VariantValidationResult validateInstance(ProgramVariant variant) {
-
 		VariantValidationResult validationResult = null;
-		if (ConfigurationProperties.hasProperty("skipvalidation")) {
-			boolean skipvalidation = ConfigurationProperties.getPropertyBool("skipvalidation");
-			if (skipvalidation) {
-				validationResult = new TestCasesProgramValidationResult(null, true, false);
-			}
+		if (ConfigurationProperties.getPropertyBool("skipvalidation")) {
+
+			validationResult = new TestCasesProgramValidationResult(null, true, false);
+
 		}else{
+
 			validationResult = programValidator.validate(variant, projectFacade);
+
 		}
 		if (validationResult != null) {
 			variant.setIsSolution(validationResult.isSuccessful());
@@ -1008,7 +1007,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		if (regressionTC != null && !regressionTC.trim().isEmpty()) {
 			regressionTestForFaultLocalization = Arrays.asList(regressionTC.split(File.pathSeparator));
 		} else {
-
 			regressionTestForFaultLocalization = this.getFaultLocalization().findTestCasesToExecute(projectFacade);
 			projectFacade.getProperties().setRegressionCases(regressionTestForFaultLocalization);
 
@@ -1445,6 +1443,10 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		this.loadSolutionPrioritization();
 		this.loadOutputResults();
 
+	}
+
+	public List<ProgramVariant> get_solutions(){
+		return this.solutions;
 	}
 
 }

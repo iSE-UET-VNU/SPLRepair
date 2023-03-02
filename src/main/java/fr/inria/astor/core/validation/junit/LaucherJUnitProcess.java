@@ -43,6 +43,7 @@ public class LaucherJUnitProcess {
 	}
 
 	public TestResult execute(String jvmPath, URL[] classpath, List<String> classesToExecute, int waitTime) {
+
 		return execute(jvmPath, urlArrayToString(classpath), classesToExecute, waitTime);
 	}
 
@@ -51,7 +52,7 @@ public class LaucherJUnitProcess {
 	public TestResult execute(String jvmPath, String classpath, List<String> classesToExecute, int waitTime) {
 		Process p = null;
 		jvmPath += File.separator + "java";
-
+		System.out.println("Trang:Classestoexecutesize::" + classesToExecute.size());
 		List<String> cls = new ArrayList<>(new HashSet(classesToExecute));
 
 		String newClasspath = classpath;

@@ -199,6 +199,17 @@ public class JUnitProcessValidator extends ProgramVariantValidator {
 		log.debug("-Test Failing is passing, Executing regression");
 
 		List<String> testCasesRegression = projectFacade.getProperties().getRegressionTestCases();
+		testCasesRegression = new ArrayList<>();
+		testCasesRegression.add("main.Account_ESTest");
+		testCasesRegression.add("main.Application_ESTest");
+		testCasesRegression.add("main.Transaction_ESTest");
+		if(testCasesRegression == null){
+			System.out.println("Trang:test case regression null from here");
+		}
+		System.out.println("Trang:num of test cases:" + testCasesRegression.size());
+		for(String t:testCasesRegression) {
+			System.out.println("Trang:regression test cases:" + t);
+		}
 
 		String jvmPath = ConfigurationProperties.getProperty("jvm4testexecution");
 

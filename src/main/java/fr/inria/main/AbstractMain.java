@@ -307,6 +307,7 @@ public abstract class AbstractMain {
 	public abstract ExecutionResult run(String location, String projectName, String dependencies,
 			String packageToInstrument, double thfl, String failing) throws Exception;
 
+
 	// CLG notes that this slightly modifies the semantics of example execution,
 	// such that it now will execute examples for non-GenProg tools as well.
 	// This may not be desired, but it was easier to implement this way, for
@@ -929,7 +930,7 @@ public abstract class AbstractMain {
 		String projectUnderRepairKeyFolder = File.separator + method + "-" + projectIdentifier + File.separator;
 		String workingdir = ConfigurationProperties.getProperty("workingDirectory");
 		String workingDirForSource = workingdir + projectUnderRepairKeyFolder + "/src/";
-		String workingDirForBytecode = workingdir + projectUnderRepairKeyFolder + "/bin/";
+		String workingDirForBytecode = workingdir + projectUnderRepairKeyFolder + "/build/";
 		String originalProjectRoot = location + File.separator;
 		ProjectConfiguration properties = new ProjectConfiguration();
 		properties.setWorkingDirRoot(workingdir + projectUnderRepairKeyFolder);
@@ -1031,7 +1032,7 @@ public abstract class AbstractMain {
 			// Adding src test folders by guessing potential folders
 			String[] possibleTestSrcFolders = new String[] { (originalProjectRoot + File.separator + "src/test/java"),
 					(originalProjectRoot + File.separator + "src/test"),
-					(originalProjectRoot + File.separator + "test"), };
+					(originalProjectRoot + File.separator + "test/main"), };
 
 			addToFolder(sourceTestFolders, possibleTestSrcFolders, originalProjectRoot, onlyOneFolder);
 		}

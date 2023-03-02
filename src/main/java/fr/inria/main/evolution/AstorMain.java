@@ -2,7 +2,9 @@ package fr.inria.main.evolution;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.apache.commons.cli.ParseException;
 import org.apache.log4j.ConsoleAppender;
@@ -31,7 +33,7 @@ import fr.inria.main.ExecutionResult;
 
 /**
  * Astor main
- * 
+ *
  * @author Matias Martinez, matias.martinez@inria.fr
  *
  */
@@ -43,9 +45,9 @@ public class AstorMain extends AbstractMain {
 
 	/**
 	 * It creates a repair engine according to an execution mode.
-	 * 
-	 * 
-	 * @param mode
+	 *
+	 *
+	 * @param removeMode
 	 * @return
 	 * @throws Exception
 	 */
@@ -96,40 +98,9 @@ public class AstorMain extends AbstractMain {
 		if (ConfigurationProperties.getPropertyBool("skipfaultlocalization")) {
 			// We dont use FL, so at this point the do not have suspicious
 			core.initPopulation(new ArrayList<SuspiciousCode>());
-		} else if (ConfigurationProperties.getPropertyBool("readfaultlocalizationresultsfromfile")) {
-			//We used FL results stored in file
-			File FL_file = new File("/Users/thu-trangnguyen/Documents/Projects/SPLRepair/examples/SPL/_MultipleBugs_.NOB_1.ID_4/variants/model_m_ca4_0002/varcop_fl_results.txt");
-			Scanner sc = new Scanner(FL_file);
-			List<SuspiciousCode> suspicious = new ArrayList<>();
-			while (sc.hasNext()){
-				String tmp = sc.nextLine();
-				if(("\""+tmp.replace("\n", "")+"\"").equals(ConfigurationProperties.getProperty("defaultSBFLmetrics"))){
-					while(sc.hasNext()){
-						tmp = sc.nextLine();
-						if(tmp.equals("---------")) break;
-
-						String classname = tmp.split(" ")[0];
-						int line_number = Integer.valueOf(tmp.split(" ")[1]);
-						float susp_score = Float.valueOf(tmp.split(" ")[2]);
-
-						SuspiciousCode e = new SuspiciousCode (classname, null, line_number, susp_score, null);
-						suspicious.add(e);
-
-					}
-					break;
-				}
-			}
-			// If the FL result is empty, we do not use FL
-			if (suspicious == null || suspicious.isEmpty()) {
-				suspicious = new ArrayList<SuspiciousCode>();
-			}
-			for(int i = 0; i < suspicious.size(); i++){
-				System.out.println("Trang: " + suspicious.get(i));
-			}
-			core.initPopulation(suspicious);
-
 		} else {
 			List<SuspiciousCode> suspicious = core.calculateSuspicious();
+
 			if (suspicious == null || suspicious.isEmpty()) {
 				throw new IllegalStateException("No suspicious line detected by the fault localization");
 			}
@@ -143,7 +114,7 @@ public class AstorMain extends AbstractMain {
 
 	/**
 	 * We create an instance of the Engine which name is passed as argument.
-	 * 
+	 *
 	 * @param customEngineValue
 	 * @param mutSupporter
 	 * @param projectFacade
@@ -152,7 +123,7 @@ public class AstorMain extends AbstractMain {
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected AstorCoreEngine createEngineFromArgument(String customEngineValue, MutationSupporter mutSupporter,
-			ProjectRepairFacade projectFacade) throws Exception {
+													   ProjectRepairFacade projectFacade) throws Exception {
 		Object object = null;
 		try {
 			Class classDefinition = Class.forName(customEngineValue);
@@ -172,7 +143,7 @@ public class AstorMain extends AbstractMain {
 
 	@Override
 	public ExecutionResult run(String location, String projectName, String dependencies, String packageToInstrument,
-			double thfl, String failing) throws Exception {
+							   double thfl, String failing) throws Exception {
 
 		long startT = System.currentTimeMillis();
 		initProject(location, projectName, dependencies, packageToInstrument, thfl, failing);
