@@ -37,7 +37,7 @@ public class PatchJSONStandarOutput implements ReportResults {
 	@SuppressWarnings("unchecked")
 	public Object produceOutput(List<PatchStat> statsForPatches, Map<GeneralStatEnum, Object> generalStats,
 			String output) {
-
+		System.out.println("Trang::output is being printed from here");
 		JSONObject statsjsonRoot = new JSONObject();
 		JSONArray patchlistJson = new JSONArray();
 		statsjsonRoot.put("patches", patchlistJson);

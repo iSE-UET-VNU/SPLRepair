@@ -20,7 +20,7 @@ public class ProjectRepairFacade {
 	Logger logger = Logger.getLogger(Thread.currentThread().getName());
 
 	protected ProjectConfiguration setUpProperties = new ProjectConfiguration();
-
+	public ProjectRepairFacade(){}
 	public ProjectRepairFacade(ProjectConfiguration properties) throws Exception {
 
 		setProperties(properties);

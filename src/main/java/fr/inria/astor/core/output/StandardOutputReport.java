@@ -19,6 +19,7 @@ public class StandardOutputReport implements ReportResults {
 	@Override
 	public Object produceOutput(List<PatchStat> statsForPatches, Map<GeneralStatEnum, Object> generalStats,
 			String output) {
+		System.out.println("Trang:printing from standard outout");
 
 		StringBuffer buff = new StringBuffer();
 		buff.append(System.getProperty("line.separator"));
@@ -60,7 +61,6 @@ public class StandardOutputReport implements ReportResults {
 							buff.append(System.getProperty("line.separator"));
 						}
 					}
-
 					buff.append(System.getProperty("line.separator"));
 				} else {
 					buff.append(statKey.name());
@@ -68,9 +68,7 @@ public class StandardOutputReport implements ReportResults {
 					buff.append(stats.get(statKey));
 					buff.append(System.getProperty("line.separator"));
 				}
-
 			}
-
 		}
 		String outString = buff.toString();
 		System.out.println("Astor Output:\n" + outString);

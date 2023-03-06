@@ -4,8 +4,8 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.List;
 
-import fr.inria.astor.core.entities.ProgramVariant;
 import fr.inria.main.spl.SPLProduct;
 import fr.inria.main.spl.SPLSystem;
 import org.apache.commons.cli.ParseException;
@@ -43,7 +43,8 @@ public class SPLRepairMain extends AbstractMain {
     SPLSystem buggy_spl_system = null;
     protected Logger log = Logger.getLogger(SPLRepairMain.class.getName());
 
-    protected AstorCoreEngine core = null;
+//    protected AstorCoreEngine core = null;
+
 
     /**
      * It creates a repair engine according to an execution mode.
@@ -54,8 +55,9 @@ public class SPLRepairMain extends AbstractMain {
      * @throws Exception
      */
 
-    public AstorCoreEngine createEngine(ExecutionMode mode) throws Exception {
-        core = null;
+    public void createEngine(SPLProduct product, ExecutionMode mode) throws Exception {
+        AstorCoreEngine core = null;
+
         MutationSupporter mutSupporter = new MutationSupporter();
 
         if (ExecutionMode.DeepRepair.equals(mode)) {
@@ -101,14 +103,17 @@ public class SPLRepairMain extends AbstractMain {
             core.initPopulation(new ArrayList<SuspiciousCode>());
         } else if (ConfigurationProperties.getPropertyBool("readfaultlocalizationresultsfromfile")) {
             //We used FL results stored in file
-            File FL_file = new File("/Users/thu-trangnguyen/Documents/Projects/SPLRepair/examples/SPL/_MultipleBugs_.NOB_1.ID_4/variants/model_m_ca4_0002/varcop_fl_results.txt");
+            String loc = product.getProduct_dir();
+            String fl_result_file = Paths.get(loc, ConfigurationProperties.getProperty("faultLocalizationResultFileName")).toString();
+            File FL_file = new File(fl_result_file);
             Scanner sc = new Scanner(FL_file);
             List<SuspiciousCode> suspicious = new ArrayList<>();
             while (sc.hasNext()){
                 String tmp = sc.nextLine();
-                if(("\""+tmp.replace("\n", "")+"\"").equals(ConfigurationProperties.getProperty("defaultSBFLmetrics"))){
+                if((tmp.replace("\n", "")).equals(ConfigurationProperties.getProperty("defaultSBFLmetrics"))){
                     while(sc.hasNext()){
                         tmp = sc.nextLine();
+                        System.out.println("Trang::Fault localization results:" + tmp);
                         if(tmp.equals("---------")) break;
 
                         String classname = tmp.split(" ")[0];
@@ -136,10 +141,11 @@ public class SPLRepairMain extends AbstractMain {
 
             core.initPopulation(suspicious);
         }
-
-        return core;
+        product.setCoreEngine(core);
 
     }
+
+
 
     /**
      * We create an instance of the Engine which name is passed as argument.
@@ -176,16 +182,21 @@ public class SPLRepairMain extends AbstractMain {
     public ExecutionResult run(String location, String projectName, String dependencies, String packageToInstrument,
                                double thfl, String failing) throws Exception {
         buggy_spl_system = new SPLSystem(location);
-        List<String> failing_products = buggy_spl_system.getFailing_products();
+        List<String> failing_products = buggy_spl_system.getFailing_product_locations();
         ExecutionResult result = null;
         if(failing_products == null || failing_products.isEmpty()){
             log.error("SPLRepair::There is no failing products in this SPL system");
             return result;
         }
 
+        String mode = ConfigurationProperties.getProperty("mode").toLowerCase();
+        String customEngine = ConfigurationProperties.getProperty(ExtensionPoints.NAVIGATION_ENGINE.identifier);
+
+
         for(String fv_dir:failing_products) {
             ConfigurationProperties.setProperty("workingDirectory", "./output_astor/" + projectName);
-            SPLProduct fp = new SPLProduct(fv_dir);
+            SPLProduct fp = buggy_spl_system.getAProduct(fv_dir);
+            projectFacade = new ProjectRepairFacade();
             long startT = System.currentTimeMillis();
             List<String> failing_test_classes = fp.getFailing_test_classes();
             if (failing_test_classes == null || failing_test_classes.isEmpty()){
@@ -196,28 +207,26 @@ public class SPLRepairMain extends AbstractMain {
                 failing = "";
             }
             for(int i = 0; i < failing_test_classes.size(); i++){
-                if(failing == "" && i == 0) failing = failing_test_classes.get(i);
+                if(failing.equals("") && i == 0) failing = failing_test_classes.get(i);
                 else if(!failing.equals("")) failing += ":" + failing_test_classes.get(i);
+                System.out.println("Trang::failing test cases:" + failing_test_classes.get(i));
             }
 
             initProject(fv_dir, projectName, dependencies, packageToInstrument, thfl, failing);
 
-            String mode = ConfigurationProperties.getProperty("mode").toLowerCase();
-            String customEngine = ConfigurationProperties.getProperty(ExtensionPoints.NAVIGATION_ENGINE.identifier);
-
             if (customEngine != null && !customEngine.isEmpty())
-                core = createEngine(ExecutionMode.custom);
+                createEngine(fp, ExecutionMode.custom);
             else {
                 for (ExecutionMode executionMode : ExecutionMode.values()) {
                     for (String acceptedName : executionMode.getAcceptedNames()) {
                         if (acceptedName.equals(mode)) {
-                            core = createEngine(executionMode);
+                            createEngine(fp, executionMode);
                             break;
                         }
                     }
                 }
 
-                if (core == null) {
+                if (fp.getCoreEngine() == null) {
                     System.err.println("Unknown mode of execution: '" + mode + "',  modes are: "
                             + Arrays.toString(ExecutionMode.values()));
                     return null;
@@ -226,13 +235,14 @@ public class SPLRepairMain extends AbstractMain {
             }
 
             ConfigurationProperties.print();
+            fp.getCoreEngine().startSearch();
 
-            core.startSearch();
+            result = fp.getCoreEngine().atEnd();
 
-            result = core.atEnd();
-            List<ProgramVariant> solutions = core.get_solutions();
-            fp.setSolutions(solutions);
-            buggy_spl_system.addSolutions(solutions);
+            fp.setSuccessed_operators(fp.getCoreEngine().getSuccessed_operators());
+            fp.setRejected_operators(fp.getCoreEngine().getRejected_operators());
+            fp.setProjectRepairFacade(fp.getCoreEngine().getProjectFacade());
+
 
             long endT = System.currentTimeMillis();
             log.info("Time Total(s): " + (endT - startT) / 1000d);
@@ -255,17 +265,9 @@ public class SPLRepairMain extends AbstractMain {
         SPLRepairMain m = new SPLRepairMain();
         m.execute(args);
         SPLSystem S = m.getSystem();
-        S.remove_duplicated_solutions();
-        System.out.println("Trang:all solutions:" + S.getNum_of_solutions());
-        m.validate_each_solution();
-    }
-    public void validate_each_solution(){
-        System.out.println("Trang::used for validation");
-//        for(int i = 0; i < all_solutions.size(); i++){
-//
-//        }
-    }
+        S.validate_solutions();
 
+    }
 
 
 
@@ -300,9 +302,6 @@ public class SPLRepairMain extends AbstractMain {
         return result;
     }
 
-    public AstorCoreEngine getEngine() {
-        return core;
-    }
 
     public void setupLogging() throws IOException {
 

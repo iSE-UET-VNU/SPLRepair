@@ -43,7 +43,6 @@ public class LaucherJUnitProcess {
 	}
 
 	public TestResult execute(String jvmPath, URL[] classpath, List<String> classesToExecute, int waitTime) {
-
 		return execute(jvmPath, urlArrayToString(classpath), classesToExecute, waitTime);
 	}
 
@@ -52,7 +51,7 @@ public class LaucherJUnitProcess {
 	public TestResult execute(String jvmPath, String classpath, List<String> classesToExecute, int waitTime) {
 		Process p = null;
 		jvmPath += File.separator + "java";
-		System.out.println("Trang:Classestoexecutesize::" + classesToExecute.size());
+
 		List<String> cls = new ArrayList<>(new HashSet(classesToExecute));
 
 		String newClasspath = classpath;
@@ -144,8 +143,10 @@ public class LaucherJUnitProcess {
 				output = new BufferedReader(new FileReader(ftemp.getAbsolutePath()));
 			else
 				output = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
 			TestResult tr = getTestResult(output);
 			p.destroyForcibly();
+
 			return tr;
 		} catch (IOException | InterruptedException | IllegalThreadStateException ex) {
 			log.info("The Process that runs JUnit test cases had problems: " + ex.getMessage());
@@ -259,6 +260,7 @@ public class LaucherJUnitProcess {
 		try {
 			String line;
 			while ((line = in.readLine()) != null) {
+				System.out.println("Trang::getTestResult:" + line);
 				processOut += line + "\n";
 				if (line.startsWith(JUnitExternalExecutor.OUTSEP)) {
 					String[] resultPrinted = line.split(JUnitExternalExecutor.OUTSEP);

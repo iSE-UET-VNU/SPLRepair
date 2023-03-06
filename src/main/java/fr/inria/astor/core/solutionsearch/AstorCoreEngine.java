@@ -141,6 +141,10 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	protected List<ProgramVariant> variants = new ArrayList<ProgramVariant>();
 
 	protected List<ProgramVariant> solutions = new ArrayList<ProgramVariant>();
+	protected List<ProgramVariant> rejected_patches = new ArrayList<ProgramVariant>();
+
+	protected List<OperatorInstance> successed_operators = new ArrayList<OperatorInstance>();
+	protected List<OperatorInstance> rejected_operators = new ArrayList<OperatorInstance>();
 
 	protected ProgramVariant originalVariant = null;
 
@@ -189,6 +193,16 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 		this.printFinalStatus();
 
+		if(this.rejected_patches.size() > 0){
+			try {
+				this.computePatchDiff(this.rejected_patches);
+				System.out.println("compute patch diff finished");
+			} catch (Exception e) {
+				log.error("Problem at computing diff" + e);
+			}
+
+		}
+
 		if (this.solutions.size() > 0) {
 
 			this.sortPatches();
@@ -199,6 +213,7 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 			} catch (Exception e) {
 				log.error("Problem at computing diff" + e);
 			}
+			System.out.println("Trang::generationsExecuted: " + this.generationsExecuted);
 			log.info(this.getSolutionData(this.solutions, this.generationsExecuted) + "\n");
 
 			patchInfo = createStatsForPatches(solutions, generationsExecuted, dateInitEvolution);
@@ -768,6 +783,9 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	public List<ProgramVariant> getSolutions() {
 		return solutions;
 	}
+	public List<ProgramVariant> getRejected_patches() {
+		return rejected_patches;
+	}
 
 	public FaultLocalizationStrategy getFaultLocalization() {
 		return faultLocalization;
@@ -1328,7 +1346,7 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 		PatchStat patch_i = new PatchStat();
 		solutionVariant.setPatchInfo(patch_i);
-
+		System.out.println("Trang::dateInitEvolution:" +  dateInitEvolution);
 		patch_i.addStat(PatchStatEnum.TIME,
 				TimeUtil.getDateDiff(dateInitEvolution, solutionVariant.getBornDate(), TimeUnit.SECONDS));
 		patch_i.addStat(PatchStatEnum.VARIANT_ID, solutionVariant.getId());
@@ -1447,6 +1465,16 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 	public List<ProgramVariant> get_solutions(){
 		return this.solutions;
+	}
+	public List<OperatorInstance> getSuccessed_operators(){
+		return this.successed_operators;
+	}
+	public List<OperatorInstance> getRejected_operators(){
+		return this.rejected_operators;
+	}
+
+	public Date get_dateInitEvolution(){
+		return dateInitEvolution;
 	}
 
 }

@@ -1,6 +1,8 @@
 package fr.inria.main.spl;
 
+import fr.inria.astor.core.entities.OperatorInstance;
 import fr.inria.astor.core.entities.ProgramVariant;
+import fr.inria.astor.core.stats.PatchStat;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
@@ -10,19 +12,26 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class SPLSystem {
     private String location = "";
     private List<String> features = new ArrayList<>();
-    private List<String> failing_products = new ArrayList<>();
-    private List<String> passing_products = new ArrayList<>();
+    private List<String> failing_product_locations = new ArrayList<>();
+    private List<String> passing_product_locations = new ArrayList<>();
+    private HashMap<String, SPLProduct> products = new HashMap<>();
+
 
     private int num_of_features = 0;
     private int num_of_failing_products = 0;
     private int num_of_passing_products = 0;
 
-    private List<ProgramVariant> solutions = new ArrayList<>();
+
+    //private HashMap<String, List<ProgramVariant>> solutions = new HashMap<String, List<ProgramVariant>>();
+
+    //this field is used to store the rejected patches of each variants
+    //private HashMap<String, List<ProgramVariant>> rejected_patches = new HashMap<String, List<ProgramVariant>>();
 
     protected org.apache.log4j.Logger log = Logger.getLogger(SPLSystem.class.getName());
     public SPLSystem(){
@@ -30,46 +39,45 @@ public class SPLSystem {
     }
     public SPLSystem(String _location) throws FileNotFoundException {
         this.location = _location;
-        intialize();
+        initialize();
     }
     public void setLocation(String _location){
         this.location = _location;
 
+    }
+    public void addProducts(String location, SPLProduct product){
+        products.put(location, product);
     }
 
     public String getLocation() {
         return location;
     }
 
-    public void setFailing_products(List<String> failing_products) {
-        this.failing_products = failing_products;
+    public void setFailing_product_locations(List<String> failing_product_locations) {
+        this.failing_product_locations = failing_product_locations;
     }
 
-    public List<String> getFailing_products() {
-        return failing_products;
+    public List<String> getFailing_product_locations() {
+        return failing_product_locations;
     }
 
-    public void setPassing_products(List<String> passing_products) {
-        this.passing_products = passing_products;
+    public void setPassing_product_locations(List<String> passing_product_locations) {
+        this.passing_product_locations = passing_product_locations;
     }
 
-    public List<String> getPassing_products() {
-        return passing_products;
+    public List<String> getPassing_product_locations() {
+        return passing_product_locations;
     }
+//
+//    public void setSolutions(String product, List<ProgramVariant> psolutions) {
+//        this.solutions.put(product, psolutions);
+//    }
 
-    public void setSolutions(List<ProgramVariant> solutions) {
-        this.solutions = solutions;
-    }
 
-    public void addSolutions(List<ProgramVariant> _solutions){
-        for(ProgramVariant v:_solutions){
-            this.solutions.add(v);
-        }
-    }
 
-    public List<ProgramVariant> getSolutions() {
-        return solutions;
-    }
+//    public HashMap<String, List<ProgramVariant>> getSolutions() {
+//        return solutions;
+//    }
 
     public int getNum_of_failing_products() {
         return num_of_failing_products;
@@ -101,7 +109,14 @@ public class SPLSystem {
         return num_of_features;
     }
 
-    public void intialize() throws FileNotFoundException {
+    public SPLProduct getAProduct(String product_location){
+        return products.get(product_location);
+    }
+    public HashMap<String, SPLProduct> getAllProducts(){
+        return products;
+    }
+
+    public void initialize() throws FileNotFoundException {
         Path variant_dir = Paths.get(location, "variants");
 
         try {
@@ -119,10 +134,17 @@ public class SPLSystem {
             }
             while ((line = br.readLine()) != null){
                 String[] items = line.split(split_by);
+                String loc = Paths.get(variant_dir.toString(), items[0]).toString();
+                SPLProduct p = new SPLProduct(loc);
+
                 if(items[items.length-1].equals("__FAILED__")) {
-                    failing_products.add(Paths.get(variant_dir.toString(), items[0]).toString());
+                    failing_product_locations.add(loc);
+                    p.setTestingStatus(false);
+                    products.put(loc, p);
                 }else{
-                    passing_products.add(Paths.get(variant_dir.toString(), items[0]).toString());
+                    passing_product_locations.add(loc);
+                    p.setTestingStatus(true);
+                    products.put(loc, p);
                 }
             }
 
@@ -135,27 +157,41 @@ public class SPLSystem {
 
     }
 
-    public int getNum_of_solutions(){
-        return solutions.size();
-    }
 
-    public void remove_duplicated_solutions(){
-        List<ProgramVariant> removed_variants = new ArrayList<>();
-        for(int i = 0; i < this.solutions.size()- 1; i++){
-            ProgramVariant v1 = this.solutions.get(i);
-            String patchdiff_v1 = v1.getPatchDiff().getFormattedDiff();
-            String patch_items_v1[] = patchdiff_v1.split("@\n");
-            for(int j = i + 1; j < this.solutions.size(); j += 1){
-                ProgramVariant v2 = this.solutions.get(j);
-                String patchdiff_v2 = v2.getPatchDiff().getFormattedDiff();
-                String patch_items_v2[] = patchdiff_v2.split("@\n");
-                if(patch_items_v2[patch_items_v2.length - 1].equals(patch_items_v1[patch_items_v1.length - 1])){
-                    removed_variants.add(v2);
-                    break;
+    public void validate_solutions(){
+        //Todo:
+        //For each solution, check it each product
+        //If the repaired statement is not included in the product --> do not need to re-test
+        //otherwise
+        //For failing product, if the solution is already check -> do not need to check again
+        //For passing product and the failing product in which the solution hasn't been check --> apply and retest
+        for(String ploc1:products.keySet()){
+            System.out.println("Trang:: product 1:" + ploc1);
+            List<OperatorInstance> p1_successed_operators = products.get(ploc1).getSuccessed_operators();
+            if(p1_successed_operators.isEmpty()) continue;
+            for (String ploc2: products.keySet()){
+                if(!ploc1.equals(ploc2)){
+                    System.out.println("Trang:: product 2:" + ploc2);
+                    SPLProduct product2 = products.get(ploc2);
+                    List<OperatorInstance> p2_successed_operators = product2.getSuccessed_operators();
+                    List<OperatorInstance> p2_rejected_operators = product2.getRejected_operators();
+                    for(OperatorInstance pv:p1_successed_operators){
+                         //If the operation instance has been checked by this product,
+                        //we don't need to check it again
+//                        if(product2.is_successed_operation_instance(pv)){
+//                            System.out.println("Trang:: This operation has been tested and successed");
+//                        }else if(product2.is_rejected_operation_instance(pv)){
+//                            System.out.println("Trang:: This operation has been tested and rejected");
+//                        }
+                        System.out.println("Trang::operation:" + pv);
+                    }
+
                 }
             }
+
         }
-        if(removed_variants.size() > 0)
-            this.solutions.removeAll(removed_variants);
     }
+
+
+
 }
