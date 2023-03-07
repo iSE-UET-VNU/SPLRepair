@@ -113,7 +113,6 @@ public class SPLRepairMain extends AbstractMain {
                 if((tmp.replace("\n", "")).equals(ConfigurationProperties.getProperty("defaultSBFLmetrics"))){
                     while(sc.hasNext()){
                         tmp = sc.nextLine();
-                        System.out.println("Trang::Fault localization results:" + tmp);
                         if(tmp.equals("---------")) break;
 
                         String classname = tmp.split(" ")[0];
@@ -196,7 +195,7 @@ public class SPLRepairMain extends AbstractMain {
         for(String fv_dir:failing_products) {
             ConfigurationProperties.setProperty("workingDirectory", "./output_astor/" + projectName);
             SPLProduct fp = buggy_spl_system.getAProduct(fv_dir);
-            projectFacade = new ProjectRepairFacade();
+            //projectFacade = fp.getProjectRepairFacade();
             long startT = System.currentTimeMillis();
             List<String> failing_test_classes = fp.getFailing_test_classes();
             if (failing_test_classes == null || failing_test_classes.isEmpty()){
@@ -241,7 +240,7 @@ public class SPLRepairMain extends AbstractMain {
 
             fp.setSuccessed_operators(fp.getCoreEngine().getSuccessed_operators());
             fp.setRejected_operators(fp.getCoreEngine().getRejected_operators());
-            fp.setProjectRepairFacade(fp.getCoreEngine().getProjectFacade());
+            fp.setProjectRepairFacade(projectFacade);
 
 
             long endT = System.currentTimeMillis();

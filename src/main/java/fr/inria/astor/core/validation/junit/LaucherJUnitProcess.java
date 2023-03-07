@@ -53,12 +53,18 @@ public class LaucherJUnitProcess {
 		jvmPath += File.separator + "java";
 
 		List<String> cls = new ArrayList<>(new HashSet(classesToExecute));
+		//newClasspath += new File(ConfigurationProperties.getProperty("evosuitejar")).getAbsolutePath() + File.pathSeparator;
+		if(ConfigurationProperties.getPropertyBool("executeEvosuiteGeneratedTestCases")) {
+			classpath +=  "\"" + (new File(ConfigurationProperties.getProperty("evosuitestandaloneruntimejar")).getAbsolutePath()) +"\""+ File.pathSeparator;
+		}
 
 		String newClasspath = classpath;
 		if (ConfigurationProperties.getPropertyBool("runjava7code") || ProjectConfiguration.isJDKLowerThan8()) {
 			newClasspath = (new File(ConfigurationProperties.getProperty("executorjar")).getAbsolutePath())
-					+ File.pathSeparator + classpath;
+					+ File.pathSeparator +
+					classpath;
 		}
+
 
 		try {
 			File ftemp = null;
@@ -80,6 +86,7 @@ public class LaucherJUnitProcess {
 			command.add(newClasspath);
 			command.add(laucherClassName().getCanonicalName());
 			command.addAll(cls);
+			System.out.println("Trang::classpath::" + newClasspath);
 
 			printCommandToExecute(command, waitTime);
 

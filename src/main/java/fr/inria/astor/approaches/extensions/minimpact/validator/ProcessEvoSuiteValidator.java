@@ -54,7 +54,7 @@ public class ProcessEvoSuiteValidator extends JUnitProcessValidator {
 	 */
 	@Override
 	public TestCaseVariantValidationResult validate(ProgramVariant currentVariant, ProjectRepairFacade projectFacade) {
-
+		System.out.println("Trang::validating from Evo suite");
 		try {
 			boolean executeAlloriginalValidation = false;
 			TestCaseVariantValidationResult resultOriginal = super.validate(currentVariant, projectFacade,
