@@ -2,16 +2,23 @@ package fr.inria.main.spl;
 
 import fr.inria.astor.core.entities.OperatorInstance;
 import fr.inria.astor.core.entities.ProgramVariant;
+import fr.inria.astor.core.entities.SuspiciousModificationPoint;
+import fr.inria.astor.core.entities.validation.VariantValidationResult;
+import fr.inria.astor.core.faultlocalization.entity.SuspiciousCode;
+import fr.inria.astor.core.setup.ConfigurationProperties;
+import fr.inria.astor.core.solutionsearch.AstorCoreEngine;
 import fr.inria.astor.core.stats.PatchStat;
+import fr.inria.main.AstorOutputStatus;
+import fr.inria.main.ExecutionMode;
 import org.apache.log4j.Logger;
+import spoon.reflect.cu.SourcePosition;
+import spoon.reflect.declaration.CtElement;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,14 +27,14 @@ public class SPLSystem {
     private List<String> features = new ArrayList<>();
     private List<String> failing_product_locations = new ArrayList<>();
     private List<String> passing_product_locations = new ArrayList<>();
-    private HashMap<String, SPLProduct> products = new HashMap<>();
+    public HashMap<String, SPLProduct> products = new HashMap<>();
 
 
     private int num_of_features = 0;
     private int num_of_failing_products = 0;
     private int num_of_passing_products = 0;
 
-
+    public List<OperatorInstance> successed_operators = new ArrayList<>();
     //private HashMap<String, List<ProgramVariant>> solutions = new HashMap<String, List<ProgramVariant>>();
 
     //this field is used to store the rejected patches of each variants
@@ -139,11 +146,11 @@ public class SPLSystem {
 
                 if(items[items.length-1].equals("__FAILED__")) {
                     failing_product_locations.add(loc);
-                    p.setTestingStatus(false);
+                    p.setTestingStatus(true);
                     products.put(loc, p);
                 }else{
                     passing_product_locations.add(loc);
-                    p.setTestingStatus(true);
+                    p.setTestingStatus(false);
                     products.put(loc, p);
                 }
             }
@@ -158,40 +165,93 @@ public class SPLSystem {
     }
 
 
-    public void validate_solutions(){
-        //Todo:
-        //For each solution, check it each product
-        //If the repaired statement is not included in the product --> do not need to re-test
-        //otherwise
-        //For failing product, if the solution is already check -> do not need to check again
-        //For passing product and the failing product in which the solution hasn't been check --> apply and retest
+    public void validate_solutions() throws IllegalAccessException {
+
         for(String ploc1:products.keySet()){
-            System.out.println("Trang:: product 1:" + ploc1);
-            List<OperatorInstance> p1_successed_operators = products.get(ploc1).getSuccessed_operators();
+            SPLProduct product1 = products.get(ploc1);
+            List<OperatorInstance> p1_successed_operators = product1.getSuccessed_operators();
             if(p1_successed_operators.isEmpty()) continue;
-            for (String ploc2: products.keySet()){
-                if(!ploc1.equals(ploc2)){
-                    System.out.println("Trang:: product 2:" + ploc2);
-                    SPLProduct product2 = products.get(ploc2);
-                    List<OperatorInstance> p2_successed_operators = product2.getSuccessed_operators();
-                    List<OperatorInstance> p2_rejected_operators = product2.getRejected_operators();
-                    for(OperatorInstance pv:p1_successed_operators){
-                         //If the operation instance has been checked by this product,
-                        //we don't need to check it again
-//                        if(product2.is_successed_operation_instance(pv)){
-//                            System.out.println("Trang:: This operation has been tested and successed");
-//                        }else if(product2.is_rejected_operation_instance(pv)){
-//                            System.out.println("Trang:: This operation has been tested and rejected");
-//                        }
-                        System.out.println("Trang::operation:" + pv);
-                    }
+            for(OperatorInstance pv:p1_successed_operators){
+                boolean flag = true;
+                for (String ploc2: products.keySet()){
+                    if(!ploc1.equals(ploc2)){
+                        SPLProduct product2 = products.get(ploc2);
 
+                             //If the operation instance has been checked by this product,
+                            //we don't need to check it again
+                            if(product2.is_successed_operation_instance(pv)){
+                                break;
+                            }else if(product2.is_rejected_operation_instance(pv)){
+                                flag = false;
+                                break;
+                            }
+                            //If the operation instance has not been checked,
+                            // we apply it to the source of the product
+                            //and retest
+                            SourcePosition original_element = pv.getOriginal().getPosition();
+                            String[] tmp = original_element.getFile().getName().split(File.separator);
+                            String product1_stmt = tmp[tmp.length-1].replace(".java", "") + "." + original_element.getLine();
+                            String feature_stmt = product1.get_feature_stmt("main." + product1_stmt);
+                            String product2_stmt = product2.get_product_stmt(feature_stmt);
+                            if(product2_stmt != null){
+                                SuspiciousModificationPoint susp_point = (SuspiciousModificationPoint) pv.getModificationPoint();
+
+                                String tmp_stmt2[] = product2_stmt.split("\\.");
+
+                                SuspiciousCode e = new SuspiciousCode (susp_point.getSuspicious().getClassName(),
+                                        null,Integer.parseInt(tmp_stmt2[tmp_stmt2.length-1]),
+                                        susp_point.getSuspicious().getSuspiciousValue(), null);
+                                SuspiciousModificationPoint susp_point_in_product2 = new SuspiciousModificationPoint(e, susp_point.getCodeElement(),
+                                        susp_point.getCtClass(), susp_point.getContextOfModificationPoint());
+                                OperatorInstance op_in_product2 = new OperatorInstance(susp_point_in_product2, pv.getOperationApplied(),
+                                        pv.getOriginal(), pv.getModified());
+                                flag = validate_operation_instance(product2, op_in_product2);
+
+                            }
+                        }
+                    if(flag == false) break;
                 }
-            }
+                if(flag == true) if(!isexisted_successed_operator(pv)) successed_operators.add(pv);
 
+            }
         }
     }
 
+    private boolean isexisted_successed_operator(OperatorInstance op){
+        for(OperatorInstance o: successed_operators){
+            if(o.toString().equals(op.toString())){
+                return true;
+            }
+        }
+        return false;
+    }
 
+    private boolean validate_operation_instance(SPLProduct product, OperatorInstance op) throws IllegalAccessException {
+        boolean flag = true;
+        AstorCoreEngine product_core = null;
+        if(product.isIsfailingproduct()){
+
+            product_core = product.getCoreEngine();
+        }else {
+            product.createEngine();
+            product_core = product.getCoreEngine();
+        }
+        if(product_core != null){
+            // We validate the variant after applying the operator
+            product_core.applyNewMutationOperationToSpoonElement(op);
+            ProgramVariant product2_variant = new ProgramVariant();
+            product2_variant.putModificationInstance(1, op);
+            VariantValidationResult result = product_core.getProgramValidator().validate(product2_variant, product.getProjectRepairFacade());
+            if(result != null && result.isSuccessful()){
+                product.addSuccessed_operators(op);
+            }else{
+                product.addRejected_operators(op);
+                flag = false;
+            }
+            // We undo the operator (for try the next one)
+            product_core.undoOperationToSpoonElement(op);
+        }
+        return flag;
+    }
 
 }

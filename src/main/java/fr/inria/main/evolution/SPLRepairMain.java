@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
 
+import fr.inria.astor.core.entities.OperatorInstance;
 import fr.inria.main.spl.SPLProduct;
 import fr.inria.main.spl.SPLSystem;
 import org.apache.commons.cli.ParseException;
@@ -110,14 +111,19 @@ public class SPLRepairMain extends AbstractMain {
             List<SuspiciousCode> suspicious = new ArrayList<>();
             while (sc.hasNext()){
                 String tmp = sc.nextLine();
+
                 if((tmp.replace("\n", "")).equals(ConfigurationProperties.getProperty("defaultSBFLmetrics"))){
                     while(sc.hasNext()){
                         tmp = sc.nextLine();
                         if(tmp.equals("---------")) break;
-
-                        String classname = tmp.split(" ")[0];
-                        int line_number = Integer.valueOf(tmp.split(" ")[1]);
-                        float susp_score = Float.valueOf(tmp.split(" ")[2]);
+                        String[] aboutline = tmp.split(" ")[0].split("\\.");
+                        String[] temp_class_name = new String[aboutline.length-1];
+                        for(int i = 0; i < temp_class_name.length; i++){
+                            temp_class_name[i] = aboutline[i];
+                        }
+                        String classname = String.join(".", temp_class_name);
+                        int line_number = Integer.valueOf(aboutline[aboutline.length-1]);
+                        float susp_score = Float.valueOf(tmp.split(" ")[1]);
 
                         SuspiciousCode e = new SuspiciousCode (classname, null, line_number, susp_score, null);
                         suspicious.add(e);
@@ -208,7 +214,6 @@ public class SPLRepairMain extends AbstractMain {
             for(int i = 0; i < failing_test_classes.size(); i++){
                 if(failing.equals("") && i == 0) failing = failing_test_classes.get(i);
                 else if(!failing.equals("")) failing += ":" + failing_test_classes.get(i);
-                System.out.println("Trang::failing test cases:" + failing_test_classes.get(i));
             }
 
             initProject(fv_dir, projectName, dependencies, packageToInstrument, thfl, failing);
@@ -265,7 +270,10 @@ public class SPLRepairMain extends AbstractMain {
         m.execute(args);
         SPLSystem S = m.getSystem();
         S.validate_solutions();
-
+        System.out.println("Number of successed operator::" + S.successed_operators.size());
+        for(OperatorInstance o: S.successed_operators){
+            System.out.println(o);
+        }
     }
 
 
@@ -342,7 +350,6 @@ public class SPLRepairMain extends AbstractMain {
                 fa.activateOptions();
                 Logger.getRootLogger().addAppender(fa);
                 this.log.info("Log file at: " + filePath);
-
             }
         }
     }

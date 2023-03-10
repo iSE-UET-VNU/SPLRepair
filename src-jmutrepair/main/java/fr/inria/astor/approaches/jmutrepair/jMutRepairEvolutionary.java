@@ -213,7 +213,7 @@ public class jMutRepairEvolutionary extends JGenProg {
 	 * @throws IllegalAccessException
 	 */
 	@Override
-	protected void applyNewMutationOperationToSpoonElement(OperatorInstance operation) throws IllegalAccessException {
+	public void applyNewMutationOperationToSpoonElement(OperatorInstance operation) throws IllegalAccessException {
 
 		boolean successful = false;
 		CtExpression ctst = (CtExpression) operation.getOriginal();

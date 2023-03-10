@@ -959,7 +959,7 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		operation.getOperationApplied().updateProgramVariant(operation, variant);
 	}
 
-	protected void undoOperationToSpoonElement(OperatorInstance operation) {
+	public void undoOperationToSpoonElement(OperatorInstance operation) {
 		operation.undoModification();
 
 	}
@@ -976,7 +976,7 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	 * @param operationInstance
 	 * @throws IllegalAccessException
 	 */
-	protected void applyNewMutationOperationToSpoonElement(OperatorInstance operationInstance)
+	public void applyNewMutationOperationToSpoonElement(OperatorInstance operationInstance)
 			throws IllegalAccessException {
 
 		operationInstance.applyModification();

@@ -183,23 +183,17 @@ public class SPLProduct {
         return false;
     }
 
-    //Todo: recheck this function
-    public boolean are_identical_patches(ProgramVariant p1, ProgramVariant p2){
-        System.out.println("Variant 1:" + p1);
-        System.out.println("Variant 2:" + p2);
-        System.out.println("Variant 1 patches: " + p1.getPatchDiff());
-        System.out.println("Variant 1 formated patches: " + p1.getPatchDiff().getFormattedDiff());
-        String patchdiff_v1 = p1.getPatchDiff().getFormattedDiff();
-        String patch_items_v1[] = patchdiff_v1.split("@\n");
-        System.out.println(patchdiff_v1);
-        System.out.println("*********************");
-        String patchdiff_v2 = p2.getPatchDiff().getFormattedDiff();
-        String patch_items_v2[] = patchdiff_v2.split("@\n");
-        System.out.println(patchdiff_v2);
-        if(patch_items_v2[patch_items_v2.length - 1].equals(patch_items_v1[patch_items_v1.length - 1])){
-            return true;
-        }
-
-        return false;
+    public String get_product_stmt(String feature_stmt){
+        return source_feature_to_product.get(feature_stmt);
     }
+
+    public String get_feature_stmt(String product_stmt){
+        return source_product_to_feature.get(product_stmt);
+    }
+
+    public void createEngine(){
+        coreEngine = null;
+    }
+
+
 }

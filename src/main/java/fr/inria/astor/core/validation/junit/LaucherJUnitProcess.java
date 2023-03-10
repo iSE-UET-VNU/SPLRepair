@@ -53,9 +53,9 @@ public class LaucherJUnitProcess {
 		jvmPath += File.separator + "java";
 
 		List<String> cls = new ArrayList<>(new HashSet(classesToExecute));
-		//newClasspath += new File(ConfigurationProperties.getProperty("evosuitejar")).getAbsolutePath() + File.pathSeparator;
+		
 		if(ConfigurationProperties.getPropertyBool("executeEvosuiteGeneratedTestCases")) {
-			classpath +=  "\"" + (new File(ConfigurationProperties.getProperty("evosuitestandaloneruntimejar")).getAbsolutePath()) +"\""+ File.pathSeparator;
+			classpath +=  "\"" +(new File(ConfigurationProperties.getProperty("evosuitestandaloneruntimejar")).getAbsolutePath()) + "\"" + File.pathSeparator;
 		}
 
 		String newClasspath = classpath;
