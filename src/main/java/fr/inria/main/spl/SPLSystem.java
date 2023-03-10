@@ -5,20 +5,14 @@ import fr.inria.astor.core.entities.ProgramVariant;
 import fr.inria.astor.core.entities.SuspiciousModificationPoint;
 import fr.inria.astor.core.entities.validation.VariantValidationResult;
 import fr.inria.astor.core.faultlocalization.entity.SuspiciousCode;
-import fr.inria.astor.core.setup.ConfigurationProperties;
 import fr.inria.astor.core.solutionsearch.AstorCoreEngine;
-import fr.inria.astor.core.stats.PatchStat;
-import fr.inria.main.AstorOutputStatus;
-import fr.inria.main.ExecutionMode;
 import org.apache.log4j.Logger;
 import spoon.reflect.cu.SourcePosition;
-import spoon.reflect.declaration.CtElement;
 
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -34,7 +28,7 @@ public class SPLSystem {
     private int num_of_failing_products = 0;
     private int num_of_passing_products = 0;
 
-    public List<OperatorInstance> successed_operators = new ArrayList<>();
+    private List<OperatorInstance> succeed_operators = new ArrayList<>();
     //private HashMap<String, List<ProgramVariant>> solutions = new HashMap<String, List<ProgramVariant>>();
 
     //this field is used to store the rejected patches of each variants
@@ -51,6 +45,12 @@ public class SPLSystem {
     public void setLocation(String _location){
         this.location = _location;
 
+    }
+    public void add_successed_operators(OperatorInstance op){
+        succeed_operators.add(op);
+    }
+    public List<OperatorInstance> getSucceed_operators(){
+        return succeed_operators;
     }
     public void addProducts(String location, SPLProduct product){
         products.put(location, product);
@@ -169,14 +169,13 @@ public class SPLSystem {
 
         for(String ploc1:products.keySet()){
             SPLProduct product1 = products.get(ploc1);
-            List<OperatorInstance> p1_successed_operators = product1.getSuccessed_operators();
+            List<OperatorInstance> p1_successed_operators = product1.getSucceed_operators();
             if(p1_successed_operators.isEmpty()) continue;
             for(OperatorInstance pv:p1_successed_operators){
                 boolean flag = true;
                 for (String ploc2: products.keySet()){
                     if(!ploc1.equals(ploc2)){
                         SPLProduct product2 = products.get(ploc2);
-
                              //If the operation instance has been checked by this product,
                             //we don't need to check it again
                             if(product2.is_successed_operation_instance(pv)){
@@ -211,14 +210,14 @@ public class SPLSystem {
                         }
                     if(flag == false) break;
                 }
-                if(flag == true) if(!isexisted_successed_operator(pv)) successed_operators.add(pv);
+                if(flag == true) if(!isexisted_successed_operator(pv)) succeed_operators.add(pv);
 
             }
         }
     }
 
     private boolean isexisted_successed_operator(OperatorInstance op){
-        for(OperatorInstance o: successed_operators){
+        for(OperatorInstance o: succeed_operators){
             if(o.toString().equals(op.toString())){
                 return true;
             }

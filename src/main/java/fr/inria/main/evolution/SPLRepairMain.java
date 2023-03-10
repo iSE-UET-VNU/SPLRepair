@@ -1,7 +1,6 @@
 package fr.inria.main.evolution;
 
 import java.io.*;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
@@ -33,6 +32,7 @@ import fr.inria.astor.core.solutionsearch.AstorCoreEngine;
 import fr.inria.main.AbstractMain;
 import fr.inria.main.ExecutionMode;
 import fr.inria.main.ExecutionResult;
+import spoon.reflect.cu.SourcePosition;
 
 /**
  * Astor main
@@ -243,7 +243,7 @@ public class SPLRepairMain extends AbstractMain {
 
             result = fp.getCoreEngine().atEnd();
 
-            fp.setSuccessed_operators(fp.getCoreEngine().getSuccessed_operators());
+            fp.setSucceed_operators(fp.getCoreEngine().getSuccessed_operators());
             fp.setRejected_operators(fp.getCoreEngine().getRejected_operators());
             fp.setProjectRepairFacade(projectFacade);
 
@@ -266,14 +266,35 @@ public class SPLRepairMain extends AbstractMain {
      * @throws ParseException
      */
     public static void main(String[] args) throws Exception {
+        long startT = System.currentTimeMillis();
+        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), "results.txt").toString();
+        BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
         SPLRepairMain m = new SPLRepairMain();
         m.execute(args);
         SPLSystem S = m.getSystem();
         S.validate_solutions();
-        System.out.println("Number of successed operator::" + S.successed_operators.size());
-        for(OperatorInstance o: S.successed_operators){
-            System.out.println(o);
+        System.out.println();
+
+        long endT = System.currentTimeMillis();
+        writer.write(S.getLocation() + "\n");
+        writer.write("Number of successed operator::" + S.getSucceed_operators().size() + "\n");
+        for(OperatorInstance o: S.getSucceed_operators()){
+            SourcePosition original_element = o.getOriginal().getPosition();
+            String[] tmp = original_element.getFile().getName().split(File.separator);
+            String[] loc_tmp = original_element.toString().split(File.separator);
+            String product_loc = "";
+            for(String t: loc_tmp){
+                if( t.contains("model_m_")){
+                    product_loc = Paths.get(Paths.get(S.getLocation() , "variants").toString(), t).toString();
+                }
+            }
+            String product_stmt = tmp[tmp.length-1].replace(".java", "") + "." + original_element.getLine();
+            String feature_stmt = S.getAProduct(product_loc).get_feature_stmt("main." + product_stmt);
+            writer.write("Reparing location: " + feature_stmt + "\n");
+            writer.write(o + "\n");
         }
+        writer.write("Total reparing time (s): " + (endT - startT) / 1000d + "\n");
+        writer.close();
     }
 
 

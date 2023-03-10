@@ -25,7 +25,7 @@ public class SPLProduct {
     private List<ProgramVariant> solutions = new ArrayList<>();
     private List<ProgramVariant> rejected_patches = new ArrayList<>();
 
-    private List<OperatorInstance> successed_operators = new ArrayList<>();
+    private List<OperatorInstance> succeed_operators = new ArrayList<>();
     private List<OperatorInstance> rejected_operators = new ArrayList<>();
 
 
@@ -123,14 +123,14 @@ public class SPLProduct {
         }
     }
 
-    public void setSuccessed_operators(List<OperatorInstance> _op){
-        successed_operators = _op;
+    public void setSucceed_operators(List<OperatorInstance> _op){
+        succeed_operators = _op;
     }
-    public List<OperatorInstance> getSuccessed_operators(){
-        return successed_operators;
+    public List<OperatorInstance> getSucceed_operators(){
+        return succeed_operators;
     }
     public void addSuccessed_operators(OperatorInstance _op){
-        successed_operators.add(_op);
+        succeed_operators.add(_op);
     }
     public void setRejected_operators(List<OperatorInstance> _op){
         rejected_operators = _op;
@@ -170,7 +170,7 @@ public class SPLProduct {
     }
 
     public boolean  is_successed_operation_instance(OperatorInstance _op){
-        for(OperatorInstance successed_op:successed_operators){
+        for(OperatorInstance successed_op: succeed_operators){
             if(are_identical_operator_instance(successed_op, _op)){
                 return true;
             }
