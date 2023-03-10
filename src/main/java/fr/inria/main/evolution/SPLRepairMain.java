@@ -1,6 +1,7 @@
 package fr.inria.main.evolution;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
@@ -8,7 +9,10 @@ import java.util.List;
 import fr.inria.astor.core.entities.OperatorInstance;
 import fr.inria.main.spl.SPLProduct;
 import fr.inria.main.spl.SPLSystem;
+import org.apache.commons.cli.BasicParser;
+import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.UnrecognizedOptionException;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Level;
@@ -41,7 +45,6 @@ import spoon.reflect.cu.SourcePosition;
  *
  */
 public class SPLRepairMain extends AbstractMain {
-    SPLSystem buggy_spl_system = null;
     protected Logger log = Logger.getLogger(SPLRepairMain.class.getName());
 
 //    protected AstorCoreEngine core = null;
@@ -183,15 +186,15 @@ public class SPLRepairMain extends AbstractMain {
 
 
 
-    @Override
-    public ExecutionResult run(String location, String projectName, String dependencies, String packageToInstrument,
+
+    public SPLSystem run_splrepair(String location, String projectName, String dependencies, String packageToInstrument,
                                double thfl, String failing) throws Exception {
-        buggy_spl_system = new SPLSystem(location);
+        SPLSystem buggy_spl_system = new SPLSystem(location);
         List<String> failing_products = buggy_spl_system.getFailing_product_locations();
         ExecutionResult result = null;
         if(failing_products == null || failing_products.isEmpty()){
             log.error("SPLRepair::There is no failing products in this SPL system");
-            return result;
+            return buggy_spl_system;
         }
 
         String mode = ConfigurationProperties.getProperty("mode").toLowerCase();
@@ -206,7 +209,7 @@ public class SPLRepairMain extends AbstractMain {
             List<String> failing_test_classes = fp.getFailing_test_classes();
             if (failing_test_classes == null || failing_test_classes.isEmpty()){
                 log.error("There is no failing test cases");
-                return null;
+                return buggy_spl_system;
             }
             if(failing == null){
                 failing = "";
@@ -233,7 +236,7 @@ public class SPLRepairMain extends AbstractMain {
                 if (fp.getCoreEngine() == null) {
                     System.err.println("Unknown mode of execution: '" + mode + "',  modes are: "
                             + Arrays.toString(ExecutionMode.values()));
-                    return null;
+                    return buggy_spl_system;
                 }
 
             }
@@ -253,12 +256,12 @@ public class SPLRepairMain extends AbstractMain {
 
             //return result;
         }
-        return result;
-    }
-
-    public SPLSystem getSystem(){
         return buggy_spl_system;
     }
+
+    //public SPLSystem getSystem(){
+//        return buggy_spl_system;
+//    }
 
     /**
      * @param args
@@ -266,40 +269,61 @@ public class SPLRepairMain extends AbstractMain {
      * @throws ParseException
      */
     public static void main(String[] args) throws Exception {
-        long startT = System.currentTimeMillis();
+        CommandLine cmd = null;
+        try {
+            cmd =  new BasicParser().parse(options, args);
+        } catch (UnrecognizedOptionException e) {
+              throw e;
+        }
+        int num_of_system = 0;
+        double total_time = 0d;
+        String location = cmd.getOptionValue("location");
+
+        ConfigurationProperties.properties.setProperty("location", location);
         String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), "results.txt").toString();
         BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
-        SPLRepairMain m = new SPLRepairMain();
-        m.execute(args);
-        SPLSystem S = m.getSystem();
-        S.validate_solutions();
-        System.out.println();
+        String[] system_locations = new File(location).list();
 
-        long endT = System.currentTimeMillis();
-        writer.write(S.getLocation() + "\n");
-        writer.write("Number of successed operator::" + S.getSucceed_operators().size() + "\n");
-        for(OperatorInstance o: S.getSucceed_operators()){
-            SourcePosition original_element = o.getOriginal().getPosition();
-            String[] tmp = original_element.getFile().getName().split(File.separator);
-            String[] loc_tmp = original_element.toString().split(File.separator);
-            String product_loc = "";
-            for(String t: loc_tmp){
-                if( t.contains("model_m_")){
-                    product_loc = Paths.get(Paths.get(S.getLocation() , "variants").toString(), t).toString();
+        for (String sloc: system_locations) {
+            if(sloc.startsWith(".")) continue;
+
+            long startT = System.currentTimeMillis();
+            num_of_system += 1;
+            SPLRepairMain m = new SPLRepairMain();
+            SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
+            S.validate_solutions();
+            System.out.println();
+
+            long endT = System.currentTimeMillis();
+            writer.write(S.getLocation() + "\n");
+            writer.write("Number of successed operator::" + S.getSucceed_operators().size() + "\n");
+            for (OperatorInstance o : S.getSucceed_operators()) {
+                SourcePosition original_element = o.getOriginal().getPosition();
+                String[] tmp = original_element.getFile().getName().split(File.separator);
+                String[] loc_tmp = original_element.toString().split(File.separator);
+                String product_loc = "";
+                for (String t : loc_tmp) {
+                    if (t.contains("model_m_")) {
+                        product_loc = Paths.get(Paths.get(S.getLocation(), "variants").toString(), t).toString();
+                    }
                 }
+                String product_stmt = tmp[tmp.length - 1].replace(".java", "") + "." + original_element.getLine();
+                String feature_stmt = S.getAProduct(product_loc).get_feature_stmt("main." + product_stmt);
+                writer.write("Reparing location: " + feature_stmt + "\n");
+                writer.write(o + "\n");
             }
-            String product_stmt = tmp[tmp.length-1].replace(".java", "") + "." + original_element.getLine();
-            String feature_stmt = S.getAProduct(product_loc).get_feature_stmt("main." + product_stmt);
-            writer.write("Reparing location: " + feature_stmt + "\n");
-            writer.write(o + "\n");
+            writer.write("Reparing time (s): " + (endT - startT) / 1000d + "\n");
+            total_time += (endT - startT) / 1000d;
         }
-        writer.write("Total reparing time (s): " + (endT - startT) / 1000d + "\n");
+        writer.write("------------------------summary-------------------\n");
+        writer.write("Total number of systems:" + num_of_system + "\n");
+        writer.write("Total reparing time:" + total_time);
         writer.close();
     }
 
 
 
-    public ExecutionResult execute(String[] args) throws Exception {
+    public SPLSystem execute_spl_repair(String[] args, String location) throws Exception {
         boolean correct = processArguments(args);
 
         log.info("Running Astor on a JDK at " + System.getProperty("java.home"));
@@ -318,18 +342,23 @@ public class SPLRepairMain extends AbstractMain {
                 ? (File.pathSeparator + ConfigurationProperties.hasProperty("extendeddependencies"))
                 : "";
         String failing = ConfigurationProperties.getProperty("failing");
-        String location = ConfigurationProperties.getProperty("location");
+
         String packageToInstrument = ConfigurationProperties.getProperty("packageToInstrument");
         double thfl = ConfigurationProperties.getPropertyDouble("flthreshold");
         String projectName = ConfigurationProperties.getProperty("projectIdentifier");
 
         setupLogging();
 
-        ExecutionResult result = run(location, projectName, dependencies, packageToInstrument, thfl, failing);
+        SPLSystem buggy_system = run_splrepair(location, projectName, dependencies, packageToInstrument, thfl, failing);
 
-        return result;
+        return buggy_system;
     }
 
+
+    @Override
+    public ExecutionResult run(String location, String projectName, String dependencies, String packageToInstrument, double thfl, String failing) throws Exception {
+        return null;
+    }
 
     public void setupLogging() throws IOException {
 
