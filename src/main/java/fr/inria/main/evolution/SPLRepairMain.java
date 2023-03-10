@@ -3,10 +3,12 @@ package fr.inria.main.evolution;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.PublicKey;
 import java.util.*;
 import java.util.List;
 
 import fr.inria.astor.core.entities.OperatorInstance;
+import fr.inria.main.spl.Patch;
 import fr.inria.main.spl.SPLProduct;
 import fr.inria.main.spl.SPLSystem;
 import org.apache.commons.cli.BasicParser;
@@ -277,6 +279,7 @@ public class SPLRepairMain extends AbstractMain {
         }
         int num_of_system = 0;
         double total_time = 0d;
+        int num_correctly_patch = 0;
         String location = cmd.getOptionValue("location");
 
         ConfigurationProperties.properties.setProperty("location", location);
@@ -285,11 +288,13 @@ public class SPLRepairMain extends AbstractMain {
         String[] system_locations = new File(location).list();
 
         for (String sloc: system_locations) {
+            String system_name = sloc;
             if(sloc.startsWith(".")) continue;
 
             long startT = System.currentTimeMillis();
             num_of_system += 1;
             SPLRepairMain m = new SPLRepairMain();
+
             SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
             S.validate_solutions();
             System.out.println();
@@ -312,12 +317,18 @@ public class SPLRepairMain extends AbstractMain {
                 writer.write("Reparing location: " + feature_stmt + "\n");
                 writer.write(o + "\n");
             }
+            if(S.correctly_patch()){
+                writer.write("This system is correctly repaired");
+                num_correctly_patch += 1;
+            }
             writer.write("Reparing time (s): " + (endT - startT) / 1000d + "\n");
             total_time += (endT - startT) / 1000d;
+
         }
         writer.write("------------------------summary-------------------\n");
         writer.write("Total number of systems:" + num_of_system + "\n");
-        writer.write("Total reparing time:" + total_time);
+        writer.write("Total number of correctly repaired systems:" + num_correctly_patch + "\n");
+        writer.write("Total reparing time:" + total_time + "\n");
         writer.close();
     }
 
