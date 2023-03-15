@@ -50,7 +50,7 @@ public class LaucherJUnitProcess {
 
 	public TestResult execute(String jvmPath, String classpath, List<String> classesToExecute, int waitTime) {
 		Process p = null;
-		jvmPath += File.separator + "java";
+		jvmPath += File.separator + "java" + " -Djava.awt.headless=true";
 
 		List<String> cls = new ArrayList<>(new HashSet(classesToExecute));
 		

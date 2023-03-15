@@ -127,8 +127,8 @@ public class SPLRepairMain extends AbstractMain {
                             temp_class_name[i] = aboutline[i];
                         }
                         String classname = String.join(".", temp_class_name);
-                        int line_number = Integer.valueOf(aboutline[aboutline.length-1]);
-                        float susp_score = Float.valueOf(tmp.split(" ")[1]);
+                        int line_number = Integer.parseInt(aboutline[aboutline.length-1]);
+                        float susp_score = Float.parseFloat(tmp.split(" ")[1]);
 
                         SuspiciousCode e = new SuspiciousCode (classname, null, line_number, susp_score, null);
                         suspicious.add(e);
@@ -137,7 +137,7 @@ public class SPLRepairMain extends AbstractMain {
                 }
             }
             // If the FL result is empty, we do not use FL
-            if (suspicious == null || suspicious.isEmpty()) {
+            if (suspicious.isEmpty()) {
                 suspicious = new ArrayList<SuspiciousCode>();
             }
 
@@ -283,7 +283,7 @@ public class SPLRepairMain extends AbstractMain {
         String location = cmd.getOptionValue("location");
 
         ConfigurationProperties.properties.setProperty("location", location);
-        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), "results.txt").toString();
+        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), "results-FL.txt").toString();
         BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
         String[] system_locations = new File(location).list();
 
@@ -314,14 +314,14 @@ public class SPLRepairMain extends AbstractMain {
                 }
                 String product_stmt = tmp[tmp.length - 1].replace(".java", "") + "." + original_element.getLine();
                 String feature_stmt = S.getAProduct(product_loc).get_feature_stmt("main." + product_stmt);
-                writer.write("Reparing location: " + feature_stmt + "\n");
+                writer.write("Repairing location: " + feature_stmt + "\n");
                 writer.write(o + "\n");
             }
             if(S.correctly_patch()){
-                writer.write("This system is correctly repaired");
+                writer.write("This system is correctly repaired\n");
                 num_correctly_patch += 1;
             }
-            writer.write("Reparing time (s): " + (endT - startT) / 1000d + "\n");
+            writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
             total_time += (endT - startT) / 1000d;
 
         }
