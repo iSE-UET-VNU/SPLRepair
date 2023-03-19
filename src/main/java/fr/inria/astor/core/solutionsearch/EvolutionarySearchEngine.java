@@ -111,7 +111,7 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 		}
 
 		List<OperatorInstance> operatorInstances = operatorSelected.createOperatorInstances(modificationPoint);
-
+		System.out.println("Trang::operation instance size:" + operatorInstances.size());
 		return selectRandomly(operatorInstances);
 	}
 

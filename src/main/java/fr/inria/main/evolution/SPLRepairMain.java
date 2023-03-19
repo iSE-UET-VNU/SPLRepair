@@ -8,6 +8,7 @@ import java.util.*;
 import java.util.List;
 
 import fr.inria.astor.core.entities.OperatorInstance;
+import fr.inria.astor.core.setup.FinderTestCases;
 import fr.inria.main.spl.Patch;
 import fr.inria.main.spl.SPLProduct;
 import fr.inria.main.spl.SPLSystem;
@@ -140,6 +141,9 @@ public class SPLRepairMain extends AbstractMain {
             if (suspicious.isEmpty()) {
                 suspicious = new ArrayList<SuspiciousCode>();
             }
+            List<String> regressionTestForFaultLocalization = null;
+            regressionTestForFaultLocalization = FinderTestCases.findJUnit4XTestCasesForRegression(projectFacade);
+            projectFacade.getProperties().setRegressionCases(regressionTestForFaultLocalization);
 
             core.initPopulation(suspicious);
 
@@ -247,7 +251,7 @@ public class SPLRepairMain extends AbstractMain {
             fp.getCoreEngine().startSearch();
 
             result = fp.getCoreEngine().atEnd();
-
+            System.out.println("Trang::SPL system succeed operators::" + fp.getCoreEngine().getSuccessed_operators().size());
             fp.setSucceed_operators(fp.getCoreEngine().getSuccessed_operators());
             fp.setRejected_operators(fp.getCoreEngine().getRejected_operators());
             fp.setProjectRepairFacade(projectFacade);
@@ -301,7 +305,7 @@ public class SPLRepairMain extends AbstractMain {
 
             long endT = System.currentTimeMillis();
             writer.write(S.getLocation() + "\n");
-            writer.write("Number of successed operator::" + S.getSucceed_operators().size() + "\n");
+            writer.write("Number of succeed operator::" + S.getSucceed_operators().size() + "\n");
             for (OperatorInstance o : S.getSucceed_operators()) {
                 SourcePosition original_element = o.getOriginal().getPosition();
                 String[] tmp = original_element.getFile().getName().split(File.separator);
@@ -328,7 +332,7 @@ public class SPLRepairMain extends AbstractMain {
         writer.write("------------------------summary-------------------\n");
         writer.write("Total number of systems:" + num_of_system + "\n");
         writer.write("Total number of correctly repaired systems:" + num_correctly_patch + "\n");
-        writer.write("Total reparing time:" + total_time + "\n");
+        writer.write("Total repairing time:" + total_time + "\n");
         writer.close();
     }
 

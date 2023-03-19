@@ -647,7 +647,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 			validationResult = new TestCasesProgramValidationResult(null, true, false);
 
 		}else{
-
 			validationResult = programValidator.validate(variant, projectFacade);
 
 		}

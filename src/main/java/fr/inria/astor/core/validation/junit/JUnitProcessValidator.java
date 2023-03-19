@@ -87,7 +87,6 @@ public class JUnitProcessValidator extends ProgramVariantValidator {
 				r = runRegression(mutatedVariant, projectFacade, bc);
 			} else {
 				r = new TestCasesProgramValidationResult(trfailing, trfailing.wasSuccessful(), false);
-
 			}
 
 			removeOfCompiledCode(mutatedVariant, projectFacade);
@@ -199,10 +198,10 @@ public class JUnitProcessValidator extends ProgramVariantValidator {
 		log.debug("-Test Failing is passing, Executing regression");
 
 		List<String> testCasesRegression = projectFacade.getProperties().getRegressionTestCases();
-		testCasesRegression = new ArrayList<>();
-		testCasesRegression.add("main.Account_ESTest");
-		testCasesRegression.add("main.Application_ESTest");
-		testCasesRegression.add("main.Transaction_ESTest");
+//		testCasesRegression = new ArrayList<>();
+//		testCasesRegression.add("main.Account_ESTest");
+//		testCasesRegression.add("main.Application_ESTest");
+//		testCasesRegression.add("main.Transaction_ESTest");
 		if(testCasesRegression == null){
 			System.out.println("Trang:test case regression null from here");
 		}
