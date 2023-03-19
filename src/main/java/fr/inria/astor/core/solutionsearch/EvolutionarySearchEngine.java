@@ -175,7 +175,10 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 
 			if (solution) {
 				this.savePatch(newVariant);
+				this.successed_operators.add( newVariant.getOperations().get(generation).get(0));
 
+			}else{
+				this.rejected_operators.add(newVariant.getOperations().get(generation).get(0));
 			}
 
 			if (foundSolution && ConfigurationProperties.getPropertyBool("stopfirst")) {
