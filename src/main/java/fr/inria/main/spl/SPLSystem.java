@@ -164,7 +164,6 @@ public class SPLSystem {
             e.printStackTrace();
         }
         set_corrected_patches();
-
     }
 
 
@@ -240,18 +239,25 @@ public class SPLSystem {
         }
         if(product_core != null){
             // We validate the variant after applying the operator
-            product_core.applyNewMutationOperationToSpoonElement(op);
-            ProgramVariant product2_variant = new ProgramVariant();
-            product2_variant.putModificationInstance(1, op);
-            VariantValidationResult result = product_core.getProgramValidator().validate(product2_variant, product.getProjectRepairFacade());
-            if(result != null && result.isSuccessful()){
-                product.addSuccessed_operators(op);
-            }else{
-                product.addRejected_operators(op);
+            try {
+
+
+                product_core.applyNewMutationOperationToSpoonElement(op);
+                ProgramVariant product2_variant = new ProgramVariant();
+                product2_variant.putModificationInstance(1, op);
+                VariantValidationResult result = product_core.getProgramValidator().validate(product2_variant, product.getProjectRepairFacade());
+                if (result != null && result.isSuccessful()) {
+                    product.addSuccessed_operators(op);
+                } else {
+                    product.addRejected_operators(op);
+                    flag = false;
+                }
+                // We undo the operator (for try the next one)
+                product_core.undoOperationToSpoonElement(op);
+            }catch (Exception e){
+                log.error("SPLSystem: validate opperation instance exception");
                 flag = false;
             }
-            // We undo the operator (for try the next one)
-            product_core.undoOperationToSpoonElement(op);
         }
         return flag;
     }
