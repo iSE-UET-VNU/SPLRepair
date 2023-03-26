@@ -60,7 +60,7 @@ public class SimpleRandomSelectionIngredientStrategy extends IngredientSearchStr
 		}
 
 		int elementsFromFixSpace = baseElements.size();
-		log.debug("Templates availables" + elementsFromFixSpace);
+		log.debug("Templates available: " + elementsFromFixSpace);
 
 		Stats.currentStat.getIngredientsStats().addSize(Stats.currentStat.getIngredientsStats().ingredientSpaceSize,
 				baseElements.size());
@@ -81,6 +81,7 @@ public class SimpleRandomSelectionIngredientStrategy extends IngredientSearchStr
 				// check if the element was already used
 				if (DESACTIVATE_CACHE || !this.cache.containsKey(newingredientkey)
 						|| !this.cache.get(newingredientkey).contains(baseIngredient.getChacheCodeString())) {
+					System.out.println("Trang:: inside if statement");
 					this.cache.add(newingredientkey, baseIngredient.getChacheCodeString());
 
 					return baseIngredient;

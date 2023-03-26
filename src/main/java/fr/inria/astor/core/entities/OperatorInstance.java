@@ -7,6 +7,8 @@ import fr.inria.astor.core.solutionsearch.spaces.operators.AstorOperator;
 import fr.inria.astor.util.StringUtil;
 import spoon.reflect.declaration.CtElement;
 
+import java.util.Optional;
+
 /**
  * Operation applied to a particular modification point
  * 
@@ -149,24 +151,24 @@ public class OperatorInstance {
 		if (modificationPoint == null) {
 			if (other.modificationPoint != null)
 				return false;
-		} else if (!modificationPoint.equals(other.modificationPoint))
+		} else if (!modificationPoint.equals(other.modificationPoint)) {
 			return false;
+		}
 		if (modified == null) {
 			if (other.modified != null)
 				return false;
-		} else if (!modified.equals(other.modified))
+		} else if (!modified.equals(other.modified)) {
 			return false;
+		}
 		if (operator == null) {
 			if (other.operator != null)
 				return false;
-		} else if (!operator.equals(other.operator))
+		} else if (!operator.equals(other.operator)) {
 			return false;
+		}
 		if (original == null) {
-			if (other.original != null)
-				return false;
-		} else if (!original.equals(other.original))
-			return false;
-		return true;
+			return other.original == null;
+		} else return original.equals(other.original);
 	}
 
 	public IngredientPoolScope getIngredientScope() {

@@ -1,15 +1,12 @@
 package fr.inria.main.evolution;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.security.PublicKey;
 import java.util.*;
 import java.util.List;
 
 import fr.inria.astor.core.entities.OperatorInstance;
 import fr.inria.astor.core.setup.FinderTestCases;
-import fr.inria.main.spl.Patch;
 import fr.inria.main.spl.SPLProduct;
 import fr.inria.main.spl.SPLSystem;
 import org.apache.commons.cli.BasicParser;
@@ -111,6 +108,8 @@ public class SPLRepairMain extends AbstractMain {
         } else if (ConfigurationProperties.getPropertyBool("readfaultlocalizationresultsfromfile")) {
             //We used FL results stored in file
             String loc = product.getProduct_dir();
+            System.out.println("Trang product: " + loc);
+
             String fl_result_file = Paths.get(loc, ConfigurationProperties.getProperty("faultLocalizationResultFileName")).toString();
             File FL_file = new File(fl_result_file);
             Scanner sc = new Scanner(FL_file);
@@ -130,8 +129,9 @@ public class SPLRepairMain extends AbstractMain {
                         String classname = String.join(".", temp_class_name);
                         int line_number = Integer.parseInt(aboutline[aboutline.length-1]);
                         float susp_score = Float.parseFloat(tmp.split(" ")[1]);
-
-                        SuspiciousCode e = new SuspiciousCode (classname, null, line_number, susp_score, null);
+                        String product_stmt = tmp.split(" ")[0];
+                        String feature_stmt_info = product.get_feature_stmt(product_stmt);
+                        SuspiciousCode e = new SuspiciousCode (classname, null, line_number,  feature_stmt_info, susp_score, null);
                         suspicious.add(e);
                     }
                     break;
@@ -189,7 +189,6 @@ public class SPLRepairMain extends AbstractMain {
                     "The strategy " + customEngineValue + " does not extend from " + AstorCoreEngine.class.getName());
 
     }
-
 
 
 
@@ -251,8 +250,8 @@ public class SPLRepairMain extends AbstractMain {
             fp.getCoreEngine().startSearch();
 
             result = fp.getCoreEngine().atEnd();
-            System.out.println("Trang::SPL system succeed operators::" + fp.getCoreEngine().getSuccessed_operators().size());
-            fp.setSucceed_operators(fp.getCoreEngine().getSuccessed_operators());
+            System.out.println("Trang::SPL system succeed operators::" + fp.getCoreEngine().getSucceed_operators().size());
+            fp.setSucceed_operators(fp.getCoreEngine().getSucceed_operators());
             fp.setRejected_operators(fp.getCoreEngine().getRejected_operators());
             fp.setProjectRepairFacade(projectFacade);
 
@@ -364,9 +363,7 @@ public class SPLRepairMain extends AbstractMain {
 
         setupLogging();
 
-        SPLSystem buggy_system = run_splrepair(location, projectName, dependencies, packageToInstrument, thfl, failing);
-
-        return buggy_system;
+        return run_splrepair(location, projectName, dependencies, packageToInstrument, thfl, failing);
     }
 
 

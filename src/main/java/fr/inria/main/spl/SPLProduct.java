@@ -97,11 +97,13 @@ public class SPLProduct {
         String failed_test_dir = Paths.get(coverage_dir, "failed").toString();
         File failed_test_folder = new File(failed_test_dir);
         File[] list_of_failed_test_files = failed_test_folder.listFiles();
-        for(int i = 0; i < list_of_failed_test_files.length; i++){
-            if(list_of_failed_test_files[i].isFile()){
-                String file_name = list_of_failed_test_files[i].getName();
-                String test_class_name = file_name.split("ESTest")[0] + "ESTest";
-                failing_test_classes.add(test_class_name);
+        if( list_of_failed_test_files != null) {
+            for (File list_of_failed_test_file : list_of_failed_test_files) {
+                if (list_of_failed_test_file.isFile()) {
+                    String file_name = list_of_failed_test_file.getName();
+                    String test_class_name = file_name.split("ESTest")[0] + "ESTest";
+                    failing_test_classes.add(test_class_name);
+                }
             }
         }
         return failing_test_classes;
@@ -129,7 +131,7 @@ public class SPLProduct {
     public List<OperatorInstance> getSucceed_operators(){
         return succeed_operators;
     }
-    public void addSuccessed_operators(OperatorInstance _op){
+    public void addSucceed_operators(OperatorInstance _op){
         succeed_operators.add(_op);
     }
     public void setRejected_operators(List<OperatorInstance> _op){
@@ -162,26 +164,23 @@ public class SPLProduct {
 
     public boolean  is_rejected_operation_instance(OperatorInstance _op){
         for(OperatorInstance ref_op:rejected_operators){
-            if(are_identical_operator_instance(ref_op, _op)){
+            if(ref_op.equals(_op)){
                 return true;
             }
         }
         return false;
     }
 
-    public boolean  is_successed_operation_instance(OperatorInstance _op){
-        for(OperatorInstance successed_op: succeed_operators){
-            if(are_identical_operator_instance(successed_op, _op)){
+    public boolean is_succeed_operation_instance(OperatorInstance _op){
+        for(OperatorInstance succeed_op: succeed_operators){
+            if(succeed_op.equals(_op)){
                 return true;
             }
         }
         return false;
     }
 
-    public boolean are_identical_operator_instance(OperatorInstance op1, OperatorInstance op2){
-        if(op1.toString().equals(op2.toString())) return true;
-        return false;
-    }
+
 
     public String get_product_stmt(String feature_stmt){
         return source_feature_to_product.get(feature_stmt);

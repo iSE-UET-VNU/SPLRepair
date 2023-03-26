@@ -1465,7 +1465,7 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	public List<ProgramVariant> get_solutions(){
 		return this.solutions;
 	}
-	public List<OperatorInstance> getSuccessed_operators(){
+	public List<OperatorInstance> getSucceed_operators(){
 		return this.successed_operators;
 	}
 	public List<OperatorInstance> getRejected_operators(){

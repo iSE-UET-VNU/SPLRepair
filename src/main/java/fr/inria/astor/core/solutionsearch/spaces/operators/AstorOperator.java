@@ -137,4 +137,11 @@ public abstract class AstorOperator implements AstorExtensionPoint {
 	}
 
 	public abstract List<OperatorInstance> createOperatorInstances(ModificationPoint modificationPoint);
+
+	@Override
+	public boolean equals(Object obj){
+		if(obj == null) return false;
+		AstorOperator other = (AstorOperator) obj;
+		return this.name().equals(other.name());
+	}
 }

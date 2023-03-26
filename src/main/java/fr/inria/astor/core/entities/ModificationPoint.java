@@ -90,8 +90,8 @@ public class ModificationPoint implements Comparable {
 		}
 
 		return 0;
-
 	}
+
 
 	public ModificationPoint clone() {
 		return new ModificationPoint(identified, codeElement, ctClass, contextOfModificationPoint, this.generation);

@@ -13,10 +13,7 @@ import spoon.reflect.cu.SourcePosition;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class SPLSystem {
     private String location = "";
@@ -31,6 +28,7 @@ public class SPLSystem {
     private int num_of_passing_products = 0;
 
     private List<OperatorInstance> succeed_operators = new ArrayList<>();
+    private Map<OperatorInstance, Integer> rejected_operators = new HashMap();
     //private HashMap<String, List<ProgramVariant>> solutions = new HashMap<String, List<ProgramVariant>>();
 
     //this field is used to store the rejected patches of each variants
@@ -168,59 +166,62 @@ public class SPLSystem {
 
 
     public void validate_solutions() throws IllegalAccessException {
-
         for(String ploc1:products.keySet()){
             SPLProduct product1 = products.get(ploc1);
-            List<OperatorInstance> p1_successed_operators = product1.getSucceed_operators();
-            if(p1_successed_operators.isEmpty()) continue;
-            for(OperatorInstance pv:p1_successed_operators){
+            List<OperatorInstance> p1_succeed_operators = product1.getSucceed_operators();
+            if(p1_succeed_operators.isEmpty()){
+                continue;
+            }
+
+            for(OperatorInstance pv:p1_succeed_operators){
                 boolean flag = true;
                 for (String ploc2: products.keySet()){
                     if(!ploc1.equals(ploc2)){
                         SPLProduct product2 = products.get(ploc2);
-                             //If the operation instance has been checked by this product,
-                            //we don't need to check it again
-                            if(product2.is_successed_operation_instance(pv)){
-                                break;
-                            }else if(product2.is_rejected_operation_instance(pv)){
-                                flag = false;
-                                break;
-                            }
-                            //If the operation instance has not been checked,
-                            // we apply it to the source of the product
-                            //and retest
-                            SourcePosition original_element = pv.getOriginal().getPosition();
-                            String[] tmp = original_element.getFile().getName().split(File.separator);
-                            String product1_stmt = tmp[tmp.length-1].replace(".java", "") + "." + original_element.getLine();
-                            String feature_stmt = product1.get_feature_stmt("main." + product1_stmt);
-                            String product2_stmt = product2.get_product_stmt(feature_stmt);
-                            if(product2_stmt != null){
-                                SuspiciousModificationPoint susp_point = (SuspiciousModificationPoint) pv.getModificationPoint();
 
-                                String tmp_stmt2[] = product2_stmt.split("\\.");
-
-                                SuspiciousCode e = new SuspiciousCode (susp_point.getSuspicious().getClassName(),
-                                        null,Integer.parseInt(tmp_stmt2[tmp_stmt2.length-1]),
-                                        susp_point.getSuspicious().getSuspiciousValue(), null);
-                                SuspiciousModificationPoint susp_point_in_product2 = new SuspiciousModificationPoint(e, susp_point.getCodeElement(),
-                                        susp_point.getCtClass(), susp_point.getContextOfModificationPoint());
-                                OperatorInstance op_in_product2 = new OperatorInstance(susp_point_in_product2, pv.getOperationApplied(),
-                                        pv.getOriginal(), pv.getModified());
-                                flag = validate_operation_instance(product2, op_in_product2);
-
-                            }
+                         //If the operation instance has been checked by this product,
+                        //we don't need to check it again
+                        if(product2.is_succeed_operation_instance(pv)){
+                            break;
+                        }else if(product2.is_rejected_operation_instance(pv)){
+                            flag = false;
+                            break;
                         }
-                    if(flag == false) break;
+                        //If the operation instance has not been checked,
+                        // we apply it to the source of the product
+                        //and retest
+                        SourcePosition original_element = pv.getOriginal().getPosition();
+                        String[] tmp = original_element.getFile().getName().split(File.separator);
+                        String product1_stmt = tmp[tmp.length-1].replace(".java", "") + "." + original_element.getLine();
+                        String feature_stmt = product1.get_feature_stmt("main." + product1_stmt);
+                        String product2_stmt = product2.get_product_stmt(feature_stmt);
+                        if(product2_stmt != null){
+                            SuspiciousModificationPoint susp_point = (SuspiciousModificationPoint) pv.getModificationPoint();
+
+                            String[] tmp_stmt2 = product2_stmt.split("\\.");
+
+                            SuspiciousCode e = new SuspiciousCode (susp_point.getSuspicious().getClassName(),
+                                    null,Integer.parseInt(tmp_stmt2[tmp_stmt2.length-1]),
+                                    susp_point.getSuspicious().getSuspiciousValue(), null);
+                            SuspiciousModificationPoint susp_point_in_product2 = new SuspiciousModificationPoint(e, susp_point.getCodeElement(),
+                                    susp_point.getCtClass(), susp_point.getContextOfModificationPoint());
+                            OperatorInstance op_in_product2 = new OperatorInstance(susp_point_in_product2, pv.getOperationApplied(),
+                                    pv.getOriginal(), pv.getModified());
+                            flag = validate_operation_instance(product2, op_in_product2);
+                        }
+                    }
+                    if(!flag) break;
                 }
-                if(flag == true) if(!isexisted_successed_operator(pv)) succeed_operators.add(pv);
+                if(flag) if(!isexisted_succeed_operator(pv)) succeed_operators.add(pv);
 
             }
         }
     }
 
-    private boolean isexisted_successed_operator(OperatorInstance op){
+
+    private boolean isexisted_succeed_operator(OperatorInstance op){
         for(OperatorInstance o: succeed_operators){
-            if(o.toString().equals(op.toString())){
+            if(o.equals(op)){
                 return true;
             }
         }
@@ -240,14 +241,12 @@ public class SPLSystem {
         if(product_core != null){
             // We validate the variant after applying the operator
             try {
-
-
                 product_core.applyNewMutationOperationToSpoonElement(op);
                 ProgramVariant product2_variant = new ProgramVariant();
                 product2_variant.putModificationInstance(1, op);
                 VariantValidationResult result = product_core.getProgramValidator().validate(product2_variant, product.getProjectRepairFacade());
                 if (result != null && result.isSuccessful()) {
-                    product.addSuccessed_operators(op);
+                    product.addSucceed_operators(op);
                 } else {
                     product.addRejected_operators(op);
                     flag = false;
@@ -255,9 +254,9 @@ public class SPLSystem {
                 // We undo the operator (for try the next one)
                 product_core.undoOperationToSpoonElement(op);
             }catch (Exception e){
-                log.error("SPLSystem: validate opperation instance exception");
+                log.error("SPLSystem: validate operation instance exception");
                 flag = false;
-            }
+           }
         }
         return flag;
     }
@@ -269,14 +268,14 @@ public class SPLSystem {
         Scanner reader = new Scanner(mutation_log_file);
         while (reader.hasNext()){
             String data = reader.nextLine();
-            String tmp[] = data.split(":");
-            String stmt_tmp[] = tmp[0].split("\\.");
-            String stmt = "";
+            String[] tmp = data.split(":");
+            String[] stmt_tmp = tmp[0].split("\\.");
+            StringBuilder stmt = new StringBuilder();
             for(int i = 0; i < stmt_tmp.length - 2; i++){
-                stmt += stmt_tmp[i] + ".";
+                stmt.append(stmt_tmp[i]).append(".");
             }
-            stmt += stmt_tmp[stmt_tmp.length - 2];
-            Patch p = new Patch(stmt, Integer.valueOf(tmp[1]), tmp[tmp.length - 1].split("=>")[0].trim());
+            stmt.append(stmt_tmp[stmt_tmp.length - 2]);
+            Patch p = new Patch(stmt.toString(), Integer.parseInt(tmp[1]), tmp[tmp.length - 1].split("=>")[0].trim());
             correct_paches.add(p);
         }
     }

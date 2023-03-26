@@ -4,7 +4,9 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
+import fr.inria.astor.core.entities.SuspiciousModificationPoint;
 import fr.inria.astor.core.faultlocalization.gzoltar.TestCaseResult;
+import org.apache.maven.surefire.shared.lang3.ObjectUtils;
 
 /**
  * This entity represents a suspicious lines inside a class.
@@ -23,6 +25,7 @@ public class SuspiciousCode {
 	 * Suspicious line number
 	 */
 	int lineNumber;
+	String featureInfo = null;
 	/**
 	 * Suspicious value of the line
 	 */
@@ -46,6 +49,17 @@ public class SuspiciousCode {
 		this.className = className;
 		this.methodName = methodName;
 		this.lineNumber = lineNumber;
+		this.suspiciousValue = susp;
+		this.coverage = frequency;
+	}
+
+	public SuspiciousCode(String className, String methodName, int lineNumber, String featureInfo, double susp,
+						  Map<Integer, Integer> frequency) {
+		super();
+		this.className = className;
+		this.methodName = methodName;
+		this.lineNumber = lineNumber;
+		this.featureInfo = featureInfo;
 		this.suspiciousValue = susp;
 		this.coverage = frequency;
 	}
@@ -128,6 +142,34 @@ public class SuspiciousCode {
 
 	public void setCoveredByTests(List<TestCaseResult> coveredByTests) {
 		this.coveredByTests = coveredByTests;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SuspiciousCode other = (SuspiciousCode) obj;
+		if(featureInfo != null){
+			if(other.featureInfo == null){
+				return false;
+			}else if(other.featureInfo.equals(featureInfo)){
+				return true;
+			}
+		}else{
+			if(className != null){
+				if(other.className == null) return false;
+				else if(other.className.equals(className)){
+					return lineNumber == other.lineNumber;
+				}
+			}else {
+				return other.className == null;
+			}
+		}
+		return true;
 	}
 
 }

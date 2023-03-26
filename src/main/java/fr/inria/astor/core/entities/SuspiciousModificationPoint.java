@@ -38,7 +38,7 @@ public class SuspiciousModificationPoint extends ModificationPoint {
 
 	public String toString() {
 		return "MP=" + ctClass.getQualifiedName() + " line: " + suspicious.getLineNumber() + ", pointed element: "
-				+ codeElement.getClass().getSimpleName() + "";
+				+ codeElement.getClass().getSimpleName() + "" + ", code element:" +  codeElement;
 	}
 
 	@Override
@@ -50,6 +50,24 @@ public class SuspiciousModificationPoint extends ModificationPoint {
 		sp.generation = this.generation;
 		sp.programVariant = this.programVariant;
 		return sp;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SuspiciousModificationPoint other = (SuspiciousModificationPoint) obj;
+		if (suspicious == null) {
+			if (other.suspicious != null)
+				return false;
+		} else if (!suspicious.equals(other.suspicious))
+			return false;
+
+		return true;
 	}
 
 }

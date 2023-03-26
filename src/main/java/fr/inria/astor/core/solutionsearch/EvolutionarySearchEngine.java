@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.commons.collections.map.HashedMap;
 
 import com.martiansoftware.jsap.JSAPException;
@@ -38,7 +39,7 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 
 	public void startSearch() throws Exception {
 
-		log.info("----Starting Solution Search");
+		log.info("----Starting Solution Evolutionary Search");
 
 		generationsExecuted = 0;
 		nrGenerationWithoutModificatedVariant = 0;
@@ -67,7 +68,7 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 			log.warn("----------Running generation: " + generationsExecuted + ", population size: "
 					+ this.variants.size());
 			try {
-				boolean solutionFound = processGenerations(generationsExecuted);
+				boolean solutionFound =   processGenerations(generationsExecuted);
 
 				if (solutionFound) {
 					stopSearch =
@@ -134,6 +135,7 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 	private boolean processGenerations(int generation) throws Exception {
 
 		log.debug("\n***** Generation " + generation + " : " + this.nrGenerationWithoutModificatedVariant);
+
 		boolean foundSolution = false, foundOneVariant = false;
 
 		List<ProgramVariant> temporalInstances = new ArrayList<ProgramVariant>();
@@ -144,8 +146,10 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 
 			log.debug("**Parent Variant: " + parentVariant);
 
+
 			this.saveOriginalVariant(parentVariant);
 			ProgramVariant newVariant = createNewProgramVariant(parentVariant, generation);
+			System.out.println("Trang:: new variant" + newVariant);
 			this.saveModifVariant(parentVariant);
 
 			if (newVariant == null) {
@@ -348,6 +352,7 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 	}
 
 	public void prepareNextGeneration(List<ProgramVariant> temporalInstances, int generation) {
+
 		// After analyze all variant
 		// New population creation:
 		// show all and search solutions:
@@ -361,7 +366,7 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 			}
 		}
 		log.debug("End analysis generation - Solutions found:" + "--> (" + solutionId + ")");
-
+		System.out.println("Trang::prepare next generation::" + populationControler.getClass());
 		variants = populationControler.selectProgramVariantsForNextGeneration(variants, temporalInstances,
 				ConfigurationProperties.getPropertyInt("population"), variantFactory, originalVariant, generation);
 
