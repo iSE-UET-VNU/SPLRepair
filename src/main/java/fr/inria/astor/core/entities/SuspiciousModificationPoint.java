@@ -62,12 +62,10 @@ public class SuspiciousModificationPoint extends ModificationPoint {
 			return false;
 		SuspiciousModificationPoint other = (SuspiciousModificationPoint) obj;
 		if (suspicious == null) {
-			if (other.suspicious != null)
-				return false;
-		} else if (!suspicious.equals(other.suspicious))
-			return false;
-
-		return true;
+			return other.suspicious == null;
+		} else{
+			return suspicious.equals(other.suspicious);
+		}
 	}
 
 }

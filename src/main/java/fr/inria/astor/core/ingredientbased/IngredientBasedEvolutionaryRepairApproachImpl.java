@@ -81,7 +81,6 @@ public abstract class IngredientBasedEvolutionaryRepairApproachImpl extends Evol
 		SuspiciousModificationPoint suspModificationPoint = (SuspiciousModificationPoint) modificationPoint;
 
 		AstorOperator operatorSelected = operatorSelectionStrategy.getNextOperator(suspModificationPoint);
-		System.out.println("Trang::operatorSelected:" + operatorSelectionStrategy.getClass());
 		if (operatorSelected == null) {
 			log.debug("Operation Null");
 			return null;
@@ -98,7 +97,6 @@ public abstract class IngredientBasedEvolutionaryRepairApproachImpl extends Evol
 				if (ingredient == null) {
 					return null;
 				}
-				System.out.println("Trang::ingbasedapproach:" + ingbasedapproach.getClass() );
 				operatorInstances = ingbasedapproach.createOperatorInstances(modificationPoint, ingredient,
 						this.ingredientTransformationStrategy);
 

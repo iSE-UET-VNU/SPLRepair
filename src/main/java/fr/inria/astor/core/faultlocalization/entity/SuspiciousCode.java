@@ -159,7 +159,8 @@ public class SuspiciousCode {
 			}else if(other.featureInfo.equals(featureInfo)){
 				return true;
 			}
-		}else{
+		}
+		else{
 			if(className != null){
 				if(other.className == null) return false;
 				else if(other.className.equals(className)){
@@ -169,7 +170,7 @@ public class SuspiciousCode {
 				return other.className == null;
 			}
 		}
-		return true;
+		return false;
 	}
 
 }

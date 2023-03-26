@@ -114,10 +114,6 @@ public class FlacocoFaultLocalization implements FaultLocalizationStrategy {
 	public List<String> findTestCasesToExecute(ProjectRepairFacade projectFacade) {
 		FlacocoConfig config = setupFlacocoConfig(projectFacade);
 		this.testContexts = new TestDetector(config).getTests();
-		System.out.println("Trang: test context size::" + testContexts.size());
-		for(TestContext t:testContexts){
-			System.out.println("Trang::" + t);
-		}
 		return this.testContexts.stream().flatMap(x -> x.getTestMethods().stream())
 				.map(TestMethod::getFullyQualifiedClassName).distinct().collect(Collectors.toList());
 	}

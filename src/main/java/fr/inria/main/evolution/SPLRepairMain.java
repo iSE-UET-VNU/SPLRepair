@@ -7,6 +7,7 @@ import java.util.List;
 
 import fr.inria.astor.core.entities.OperatorInstance;
 import fr.inria.astor.core.setup.FinderTestCases;
+import fr.inria.main.spl.Patch;
 import fr.inria.main.spl.SPLProduct;
 import fr.inria.main.spl.SPLSystem;
 import org.apache.commons.cli.BasicParser;
@@ -46,8 +47,6 @@ import spoon.reflect.cu.SourcePosition;
  */
 public class SPLRepairMain extends AbstractMain {
     protected Logger log = Logger.getLogger(SPLRepairMain.class.getName());
-
-//    protected AstorCoreEngine core = null;
 
 
     /**
@@ -102,13 +101,15 @@ public class SPLRepairMain extends AbstractMain {
 
         core.initModel();
 
-        if (ConfigurationProperties.getPropertyBool("skipfaultlocalization")) {
+        if (!product.isIsfailingproduct() || ConfigurationProperties.getPropertyBool("skipfaultlocalization")) {
             // We dont use FL, so at this point the do not have suspicious
+            List<String> regressionTestForFaultLocalization = null;
+            regressionTestForFaultLocalization = FinderTestCases.findJUnit4XTestCasesForRegression(projectFacade);
+            projectFacade.getProperties().setRegressionCases(regressionTestForFaultLocalization);
             core.initPopulation(new ArrayList<SuspiciousCode>());
         } else if (ConfigurationProperties.getPropertyBool("readfaultlocalizationresultsfromfile")) {
             //We used FL results stored in file
             String loc = product.getProduct_dir();
-            System.out.println("Trang product: " + loc);
 
             String fl_result_file = Paths.get(loc, ConfigurationProperties.getProperty("faultLocalizationResultFileName")).toString();
             File FL_file = new File(fl_result_file);
@@ -152,7 +153,6 @@ public class SPLRepairMain extends AbstractMain {
             if (suspicious == null || suspicious.isEmpty()) {
                 throw new IllegalStateException("No suspicious line detected by the fault localization");
             }
-
             core.initPopulation(suspicious);
         }
         product.setCoreEngine(core);
@@ -207,66 +207,63 @@ public class SPLRepairMain extends AbstractMain {
 
 
         for(String fv_dir:failing_products) {
-            ConfigurationProperties.setProperty("workingDirectory", "./output_astor/" + projectName);
-            SPLProduct fp = buggy_spl_system.getAProduct(fv_dir);
-            //projectFacade = fp.getProjectRepairFacade();
-            long startT = System.currentTimeMillis();
-            List<String> failing_test_classes = fp.getFailing_test_classes();
-            if (failing_test_classes == null || failing_test_classes.isEmpty()){
-                log.error("There is no failing test cases");
-                return buggy_spl_system;
-            }
-            if(failing == null){
-                failing = "";
-            }
-            for(int i = 0; i < failing_test_classes.size(); i++){
-                if(failing.equals("") && i == 0) failing = failing_test_classes.get(i);
-                else if(!failing.equals("")) failing += ":" + failing_test_classes.get(i);
-            }
-
-            initProject(fv_dir, projectName, dependencies, packageToInstrument, thfl, failing);
-
-            if (customEngine != null && !customEngine.isEmpty())
-                createEngine(fp, ExecutionMode.custom);
-            else {
-                for (ExecutionMode executionMode : ExecutionMode.values()) {
-                    for (String acceptedName : executionMode.getAcceptedNames()) {
-                        if (acceptedName.equals(mode)) {
-                            createEngine(fp, executionMode);
-                            break;
-                        }
-                    }
-                }
-
-                if (fp.getCoreEngine() == null) {
-                    System.err.println("Unknown mode of execution: '" + mode + "',  modes are: "
-                            + Arrays.toString(ExecutionMode.values()));
-                    return buggy_spl_system;
-                }
-
-            }
-
-            ConfigurationProperties.print();
+            SPLProduct fp = prepare_engine(buggy_spl_system, projectName, fv_dir, dependencies, packageToInstrument, thfl,
+                    failing, customEngine, mode);
             fp.getCoreEngine().startSearch();
 
             result = fp.getCoreEngine().atEnd();
             System.out.println("Trang::SPL system succeed operators::" + fp.getCoreEngine().getSucceed_operators().size());
             fp.setSucceed_operators(fp.getCoreEngine().getSucceed_operators());
             fp.setRejected_operators(fp.getCoreEngine().getRejected_operators());
-            fp.setProjectRepairFacade(projectFacade);
+        }
 
-
-            long endT = System.currentTimeMillis();
-            log.info("Time Total(s): " + (endT - startT) / 1000d);
-
-            //return result;
+        List<String> passing_products = buggy_spl_system.getPassing_product_locations();
+        for(String pv_dir:passing_products) {
+            prepare_engine(buggy_spl_system, projectName, pv_dir, dependencies, packageToInstrument, thfl,
+                     failing, customEngine, mode);
         }
         return buggy_spl_system;
     }
 
-    //public SPLSystem getSystem(){
-//        return buggy_spl_system;
-//    }
+    private SPLProduct prepare_engine(SPLSystem buggy_spl_system, String projectName, String product_dir,  String dependencies, String packageToInstrument,
+                                double thfl,  String failing, String customEngine, String mode) throws Exception {
+        ConfigurationProperties.setProperty("workingDirectory", "./output_astor/" + projectName);
+        SPLProduct product = buggy_spl_system.getAProduct(product_dir);
+
+        List<String> failing_test_classes = product.getFailing_test_classes();
+
+        if(failing == null){
+            failing = "";
+        }
+        for(int i = 0; i < failing_test_classes.size(); i++){
+            if(failing.equals("") && i == 0) failing = failing_test_classes.get(i);
+            else if(!failing.equals("")) failing += ":" + failing_test_classes.get(i);
+        }
+        initProject(product_dir, projectName, dependencies, packageToInstrument, thfl, failing);
+        if (customEngine != null && !customEngine.isEmpty())
+            createEngine(product, ExecutionMode.custom);
+        else {
+            for (ExecutionMode executionMode : ExecutionMode.values()) {
+                for (String acceptedName : executionMode.getAcceptedNames()) {
+                    if (acceptedName.equals(mode)) {
+                        createEngine(product, executionMode);
+                        break;
+                    }
+                }
+            }
+
+            if (product.getCoreEngine() == null) {
+                System.err.println("Unknown mode of execution: '" + mode + "',  modes are: "
+                        + Arrays.toString(ExecutionMode.values()));
+                return product;
+            }
+
+        }
+        ConfigurationProperties.print();
+        product.setProjectRepairFacade(projectFacade);
+        return product;
+    }
+
 
     /**
      * @param args
@@ -298,34 +295,40 @@ public class SPLRepairMain extends AbstractMain {
             SPLRepairMain m = new SPLRepairMain();
 
             SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
-            S.validate_solutions();
+            S.check_patches_on_all_products();
             System.out.println();
 
             long endT = System.currentTimeMillis();
             writer.write(S.getLocation() + "\n");
-            writer.write("Number of succeed operator::" + S.getSucceed_operators().size() + "\n");
+            writer.write("Number of test adequate patches::" + S.getSucceed_operators().size() + "\n");
             if(S.getSucceed_operators().size() > 0){
                 num_systems_containing_test_adequate_patch += 1;
             }
-            for (OperatorInstance o : S.getSucceed_operators()) {
-                SourcePosition original_element = o.getOriginal().getPosition();
-                String[] tmp = original_element.getFile().getName().split(File.separator);
-                String[] loc_tmp = original_element.toString().split(File.separator);
-                String product_loc = "";
-                for (String t : loc_tmp) {
-                    if (t.contains("model_m_")) {
-                        product_loc = Paths.get(Paths.get(S.getLocation(), "variants").toString(), t).toString();
+
+            List<Patch> solutions = S.getSolutions();
+            for(Patch p:solutions){
+                OperatorInstance o = p.getOp();
+                if(p.getNum_of_product_successful_fix() > 0){
+                    writer.write(p.toString());
+                    SourcePosition original_element = o.getOriginal().getPosition();
+                    String[] tmp = original_element.getFile().getName().split(File.separator);
+                    String[] loc_tmp = original_element.toString().split(File.separator);
+                    String product_loc = "";
+                    for (String t : loc_tmp) {
+                        if (t.contains("model_m_")) {
+                            product_loc = Paths.get(Paths.get(S.getLocation(), "variants").toString(), t).toString();
+                        }
                     }
+                    String product_stmt = tmp[tmp.length - 1].replace(".java", "") + "." + original_element.getLine();
+                    String feature_stmt = S.getAProduct(product_loc).get_feature_stmt("main." + product_stmt);
+                    writer.write("Repairing location: " + feature_stmt + "\n");
+                    writer.write("--------\n");
                 }
-                String product_stmt = tmp[tmp.length - 1].replace(".java", "") + "." + original_element.getLine();
-                String feature_stmt = S.getAProduct(product_loc).get_feature_stmt("main." + product_stmt);
-                writer.write("Repairing location: " + feature_stmt + "\n");
-                writer.write(o + "\n");
             }
 
             writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
             total_time += (endT - startT) / 1000d;
-
+            writer.write("*******************************************\n");
         }
         writer.write("------------------------summary-------------------\n");
         writer.write("Total number of systems:" + num_of_system + "\n");

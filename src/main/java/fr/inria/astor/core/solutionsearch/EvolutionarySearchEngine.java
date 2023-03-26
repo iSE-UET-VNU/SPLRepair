@@ -112,7 +112,6 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 		}
 
 		List<OperatorInstance> operatorInstances = operatorSelected.createOperatorInstances(modificationPoint);
-		System.out.println("Trang::operation instance size:" + operatorInstances.size());
 		return selectRandomly(operatorInstances);
 	}
 
@@ -149,7 +148,6 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 
 			this.saveOriginalVariant(parentVariant);
 			ProgramVariant newVariant = createNewProgramVariant(parentVariant, generation);
-			System.out.println("Trang:: new variant" + newVariant);
 			this.saveModifVariant(parentVariant);
 
 			if (newVariant == null) {
@@ -366,7 +364,6 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 			}
 		}
 		log.debug("End analysis generation - Solutions found:" + "--> (" + solutionId + ")");
-		System.out.println("Trang::prepare next generation::" + populationControler.getClass());
 		variants = populationControler.selectProgramVariantsForNextGeneration(variants, temporalInstances,
 				ConfigurationProperties.getPropertyInt("population"), variantFactory, originalVariant, generation);
 

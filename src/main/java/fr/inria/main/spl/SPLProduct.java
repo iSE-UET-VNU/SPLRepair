@@ -1,20 +1,29 @@
 package fr.inria.main.spl;
 
+import fr.inria.astor.approaches.cardumen.CardumenApproach;
+import fr.inria.astor.approaches.deeprepair.DeepRepairEngine;
+import fr.inria.astor.approaches.jgenprog.JGenProg;
+import fr.inria.astor.approaches.jgenprog.extension.TibraApproach;
+import fr.inria.astor.approaches.jkali.JKaliEngine;
+import fr.inria.astor.approaches.jmutrepair.jMutRepairExhaustive;
+import fr.inria.astor.approaches.scaffold.ScaffoldRepairEngine;
 import fr.inria.astor.core.entities.OperatorInstance;
 import fr.inria.astor.core.entities.ProgramVariant;
+import fr.inria.astor.core.faultlocalization.entity.SuspiciousCode;
+import fr.inria.astor.core.ingredientbased.ExhaustiveIngredientBasedEngine;
+import fr.inria.astor.core.manipulation.MutationSupporter;
 import fr.inria.astor.core.setup.ConfigurationProperties;
 import fr.inria.astor.core.setup.ProjectRepairFacade;
 import fr.inria.astor.core.solutionsearch.AstorCoreEngine;
+import fr.inria.main.ExecutionMode;
+import fr.inria.main.evolution.ExtensionPoints;
 import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class SPLProduct {
     protected static Logger log = Logger.getLogger(SPLProduct.class.getSimpleName());
@@ -146,6 +155,7 @@ public class SPLProduct {
         rejected_operators.add(_op);
     }
 
+
     public List<ProgramVariant> getRejected_patches(){
         return rejected_patches;
     }
@@ -163,24 +173,18 @@ public class SPLProduct {
     }
 
     public boolean  is_rejected_operation_instance(OperatorInstance _op){
-        for(OperatorInstance ref_op:rejected_operators){
-            if(ref_op.equals(_op)){
-                return true;
-            }
+        if(rejected_operators.size() > 0 && rejected_operators.contains(_op)){
+            return true;
         }
         return false;
     }
 
     public boolean is_succeed_operation_instance(OperatorInstance _op){
-        for(OperatorInstance succeed_op: succeed_operators){
-            if(succeed_op.equals(_op)){
-                return true;
-            }
+        if(succeed_operators.size() > 0 && succeed_operators.contains(_op)){
+            return true;
         }
         return false;
     }
-
-
 
     public String get_product_stmt(String feature_stmt){
         return source_feature_to_product.get(feature_stmt);
@@ -189,10 +193,5 @@ public class SPLProduct {
     public String get_feature_stmt(String product_stmt){
         return source_product_to_feature.get(product_stmt);
     }
-
-    public void createEngine(){
-        coreEngine = null;
-    }
-
 
 }

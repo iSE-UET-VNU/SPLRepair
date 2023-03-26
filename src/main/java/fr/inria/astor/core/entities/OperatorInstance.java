@@ -145,8 +145,9 @@ public class OperatorInstance {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		OperatorInstance other = (OperatorInstance) obj;
 		if (modificationPoint == null) {
 			if (other.modificationPoint != null)

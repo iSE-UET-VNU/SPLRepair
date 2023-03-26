@@ -213,7 +213,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 			} catch (Exception e) {
 				log.error("Problem at computing diff" + e);
 			}
-			System.out.println("Trang::generationsExecuted: " + this.generationsExecuted);
 			log.info(this.getSolutionData(this.solutions, this.generationsExecuted) + "\n");
 
 			patchInfo = createStatsForPatches(solutions, generationsExecuted, dateInitEvolution);
@@ -853,8 +852,10 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		}
 
 		if (!ConfigurationProperties.getPropertyBool("skipfitnessinitialpopulation")) {
-			log.debug("Calculating fitness");
-			setFitnessOfPopulation();
+			if (suspicious.size() != 0){
+				log.debug("Calculating fitness");
+				setFitnessOfPopulation();
+			}
 		} else {
 			log.debug("Fitness for initial population is disable");
 		}
@@ -1345,7 +1346,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 		PatchStat patch_i = new PatchStat();
 		solutionVariant.setPatchInfo(patch_i);
-		System.out.println("Trang::dateInitEvolution:" +  dateInitEvolution);
 		patch_i.addStat(PatchStatEnum.TIME,
 				TimeUtil.getDateDiff(dateInitEvolution, solutionVariant.getBornDate(), TimeUnit.SECONDS));
 		patch_i.addStat(PatchStatEnum.VARIANT_ID, solutionVariant.getId());

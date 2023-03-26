@@ -49,7 +49,6 @@ public class SimpleRandomSelectionIngredientStrategy extends IngredientSearchStr
 	 */
 	@Override
 	public Ingredient getFixIngredient(ModificationPoint modificationPoint, AstorOperator operationType) {
-		System.out.println("Trang:: get fix ingredient");
 		int attemptsBaseIngredients = 0;
 
 		List<Ingredient> baseElements = geIngredientsFromSpace(modificationPoint, operationType);
@@ -72,16 +71,13 @@ public class SimpleRandomSelectionIngredientStrategy extends IngredientSearchStr
 					elementsFromFixSpace));
 
 			Ingredient baseIngredient = getRandomStatementFromSpace(baseElements);
-			System.out.println("Trang::attemp base ingredient::" + baseIngredient);
 			String newingredientkey = getKey(modificationPoint, operationType);
 
 			if (baseIngredient != null && baseIngredient.getCode() != null) {
-				System.out.println("Trang:: ingredient not null");
-				System.out.println("Trang::DESACTIVATE_CACHE::" + DESACTIVATE_CACHE);
+
 				// check if the element was already used
 				if (DESACTIVATE_CACHE || !this.cache.containsKey(newingredientkey)
 						|| !this.cache.get(newingredientkey).contains(baseIngredient.getChacheCodeString())) {
-					System.out.println("Trang:: inside if statement");
 					this.cache.add(newingredientkey, baseIngredient.getChacheCodeString());
 
 					return baseIngredient;
@@ -124,7 +120,6 @@ public class SimpleRandomSelectionIngredientStrategy extends IngredientSearchStr
 		if (operationType instanceof ReplaceOp) {
 			type = modificationPoint.getCodeElement().getClass().getSimpleName();
 		}
-		System.out.println("Trang: ingredient space::"+ this.ingredientSpace.getClass());
 		List<Ingredient> elements = null;
 		if (type == null) {
 			elements = this.ingredientSpace.getIngredients(modificationPoint.getCodeElement());
@@ -132,13 +127,6 @@ public class SimpleRandomSelectionIngredientStrategy extends IngredientSearchStr
 		} else {
 			elements = this.ingredientSpace.getIngredients(modificationPoint.getCodeElement(), type);
 		}
-
-		System.out.println("Trang::print ingredient:");
-		for(Ingredient in:elements){
-			System.out.println("Trang::ingredient:" + in);
-		}
-
-
 		return elements;
 	}
 }

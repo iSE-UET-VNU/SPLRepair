@@ -86,7 +86,6 @@ public class LaucherJUnitProcess {
 			command.add(newClasspath);
 			command.add(laucherClassName().getCanonicalName());
 			command.addAll(cls);
-			System.out.println("Trang::classpath::" + newClasspath);
 
 			printCommandToExecute(command, waitTime);
 
@@ -267,7 +266,6 @@ public class LaucherJUnitProcess {
 		try {
 			String line;
 			while ((line = in.readLine()) != null) {
-				System.out.println("Trang::getTestResult:" + line);
 				processOut += line + "\n";
 				if (line.startsWith(JUnitExternalExecutor.OUTSEP)) {
 					String[] resultPrinted = line.split(JUnitExternalExecutor.OUTSEP);
