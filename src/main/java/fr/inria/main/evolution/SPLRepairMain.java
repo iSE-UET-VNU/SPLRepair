@@ -282,7 +282,7 @@ public class SPLRepairMain extends AbstractMain {
         }
         int num_of_system = 0;
         double total_time = 0d;
-        int num_correctly_patch = 0;
+        int num_systems_containing_test_adequate_patch = 0;
         String location = cmd.getOptionValue("location");
 
         ConfigurationProperties.properties.setProperty("location", location);
@@ -291,7 +291,6 @@ public class SPLRepairMain extends AbstractMain {
         String[] system_locations = new File(location).list();
 
         for (String sloc: system_locations) {
-            String system_name = sloc;
             if(sloc.startsWith(".")) continue;
 
             long startT = System.currentTimeMillis();
@@ -305,6 +304,9 @@ public class SPLRepairMain extends AbstractMain {
             long endT = System.currentTimeMillis();
             writer.write(S.getLocation() + "\n");
             writer.write("Number of succeed operator::" + S.getSucceed_operators().size() + "\n");
+            if(S.getSucceed_operators().size() > 0){
+                num_systems_containing_test_adequate_patch += 1;
+            }
             for (OperatorInstance o : S.getSucceed_operators()) {
                 SourcePosition original_element = o.getOriginal().getPosition();
                 String[] tmp = original_element.getFile().getName().split(File.separator);
@@ -320,17 +322,14 @@ public class SPLRepairMain extends AbstractMain {
                 writer.write("Repairing location: " + feature_stmt + "\n");
                 writer.write(o + "\n");
             }
-            if(S.correctly_patch()){
-                writer.write("This system is correctly repaired\n");
-                num_correctly_patch += 1;
-            }
+
             writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
             total_time += (endT - startT) / 1000d;
 
         }
         writer.write("------------------------summary-------------------\n");
         writer.write("Total number of systems:" + num_of_system + "\n");
-        writer.write("Total number of correctly repaired systems:" + num_correctly_patch + "\n");
+        writer.write("Total number of systems containing test adequate patches:" + num_systems_containing_test_adequate_patch + "\n");
         writer.write("Total repairing time:" + total_time + "\n");
         writer.close();
     }

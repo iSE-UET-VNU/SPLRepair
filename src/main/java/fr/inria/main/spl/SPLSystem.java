@@ -21,7 +21,7 @@ public class SPLSystem {
     private List<String> failing_product_locations = new ArrayList<>();
     private List<String> passing_product_locations = new ArrayList<>();
     public HashMap<String, SPLProduct> products = new HashMap<>();
-    private List<Patch> correct_paches = new ArrayList<>();
+
 
     private int num_of_features = 0;
     private int num_of_failing_products = 0;
@@ -75,16 +75,7 @@ public class SPLSystem {
     public List<String> getPassing_product_locations() {
         return passing_product_locations;
     }
-//
-//    public void setSolutions(String product, List<ProgramVariant> psolutions) {
-//        this.solutions.put(product, psolutions);
-//    }
 
-
-
-//    public HashMap<String, List<ProgramVariant>> getSolutions() {
-//        return solutions;
-//    }
 
     public int getNum_of_failing_products() {
         return num_of_failing_products;
@@ -161,7 +152,6 @@ public class SPLSystem {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        set_corrected_patches();
     }
 
 
@@ -254,59 +244,11 @@ public class SPLSystem {
                 // We undo the operator (for try the next one)
                 product_core.undoOperationToSpoonElement(op);
             }catch (Exception e){
-                log.error("SPLSystem: validate operation instance exception");
+                log.error("SPLSystem: validate operation instance exception in system " + product.getProduct_dir());
                 flag = false;
            }
         }
         return flag;
     }
-
-    public void set_corrected_patches() throws FileNotFoundException {
-        String[] loc_tmp = location.split(File.separator);
-        String system_name = loc_tmp[loc_tmp.length - 1];
-        File mutation_log_file = new File(Paths.get(location, system_name + ".mutant.log").toString());
-        Scanner reader = new Scanner(mutation_log_file);
-        while (reader.hasNext()){
-            String data = reader.nextLine();
-            String[] tmp = data.split(":");
-            String[] stmt_tmp = tmp[0].split("\\.");
-            StringBuilder stmt = new StringBuilder();
-            for(int i = 0; i < stmt_tmp.length - 2; i++){
-                stmt.append(stmt_tmp[i]).append(".");
-            }
-            stmt.append(stmt_tmp[stmt_tmp.length - 2]);
-            Patch p = new Patch(stmt.toString(), Integer.parseInt(tmp[1]), tmp[tmp.length - 1].split("=>")[0].trim());
-            correct_paches.add(p);
-        }
-    }
-
-    public List<Patch> getCorrect_paches(){
-        return correct_paches;
-    }
-
-    public boolean correctly_patch(){
-        for(OperatorInstance op: succeed_operators){
-            String modified_code = StringUtil.trunc(op.getModified()).trim();
-            SourcePosition original_element = op.getOriginal().getPosition();
-            String[] tmp = original_element.getFile().getName().split(File.separator);
-            String[] loc_tmp = original_element.toString().split(File.separator);
-            String product_loc = "";
-            for (String t : loc_tmp) {
-                if (t.contains("model_m_")) {
-                    product_loc = Paths.get(Paths.get(location, "variants").toString(), t).toString();
-                }
-            }
-            String product_stmt = tmp[tmp.length - 1].replace(".java", "") + "." + original_element.getLine();
-            String feature_stmt = products.get(product_loc).get_feature_stmt("main." + product_stmt);
-            for(Patch p:correct_paches){
-                if( feature_stmt.equals(p.getLocation() + "." + p.getLineNumber())
-                        && p.getCorrect_code().equals(modified_code))
-                    return  true;
-            }
-
-        }
-        return false;
-    }
-
 
 }
