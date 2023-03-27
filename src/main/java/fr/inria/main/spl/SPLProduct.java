@@ -141,7 +141,8 @@ public class SPLProduct {
         return succeed_operators;
     }
     public void addSucceed_operators(OperatorInstance _op){
-        succeed_operators.add(_op);
+        if(!succeed_operators.contains(_op))
+            succeed_operators.add(_op);
     }
     public void setRejected_operators(List<OperatorInstance> _op){
         rejected_operators = _op;
@@ -152,7 +153,8 @@ public class SPLProduct {
     }
 
     public void addRejected_operators(OperatorInstance _op){
-        rejected_operators.add(_op);
+        if(!rejected_operators.contains(_op))
+            rejected_operators.add(_op);
     }
 
 

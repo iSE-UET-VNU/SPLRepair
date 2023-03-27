@@ -212,7 +212,6 @@ public class SPLRepairMain extends AbstractMain {
             fp.getCoreEngine().startSearch();
 
             result = fp.getCoreEngine().atEnd();
-            System.out.println("Trang::SPL system succeed operators::" + fp.getCoreEngine().getSucceed_operators().size());
             fp.setSucceed_operators(fp.getCoreEngine().getSucceed_operators());
             fp.setRejected_operators(fp.getCoreEngine().getRejected_operators());
         }
@@ -304,7 +303,6 @@ public class SPLRepairMain extends AbstractMain {
             if(S.getSucceed_operators().size() > 0){
                 num_systems_containing_test_adequate_patch += 1;
             }
-
             List<Patch> solutions = S.getSolutions();
             for(Patch p:solutions){
                 OperatorInstance o = p.getOp();

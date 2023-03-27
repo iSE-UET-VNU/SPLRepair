@@ -83,7 +83,8 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 
 					if (solution) {
 						this.solutions.add(solutionVariant);
-						this.successed_operators.add(pointOperation);
+						if(!this.successed_operators.contains(pointOperation))
+							this.successed_operators.add(pointOperation);
 
 						this.savePatch(solutionVariant);
 
@@ -92,7 +93,8 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 							return;
 						}
 					}else{
-						this.rejected_operators.add(pointOperation);
+						if(!this.rejected_operators.contains(pointOperation))
+							this.rejected_operators.add(pointOperation);
 
 					}
 

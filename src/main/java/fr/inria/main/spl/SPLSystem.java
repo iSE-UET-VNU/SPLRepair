@@ -158,7 +158,6 @@ public class SPLSystem {
             if(!product1.isIsfailingproduct()) continue;
             if(!p1_succeed_operators.isEmpty()){
                 for(OperatorInstance pv:p1_succeed_operators){
-                    System.out.println(pv);
                     boolean flag = true;
                     for (String ploc2: products.keySet()){
                         if(!ploc1.equals(ploc2)){
@@ -202,8 +201,6 @@ public class SPLSystem {
                                 validation_result = validate_operation_instance(product2, op_in_product2);
 
                                 if(!validation_result){
-                                    System.out.println("Trang xinh: product 2:" + ploc2 +"\n is failed by the operation:" );
-                                    System.out.println(op_in_product2);
                                     flag = false;
                                 }
 
@@ -226,6 +223,8 @@ public class SPLSystem {
     * */
     private void evaluate_patches(){
         for(String ploc1:products.keySet()) {
+            System.out.println("---------------");
+            System.out.println(ploc1);
             SPLProduct product1 = products.get(ploc1);
             List<OperatorInstance> p1_succeed_operators = product1.getSucceed_operators();
             if (!p1_succeed_operators.isEmpty()) {
@@ -281,7 +280,7 @@ public class SPLSystem {
         AstorCoreEngine product_core = product.getCoreEngine();
         if(product_core != null){
             // We validate the variant after applying the operator
-//            try {
+            try {
                 product_core.applyNewMutationOperationToSpoonElement(op);
                 ProgramVariant product2_variant = new ProgramVariant();
                 product2_variant.putModificationInstance(1, op);
@@ -294,10 +293,10 @@ public class SPLSystem {
                 }
                 // We undo the operator (for try the next one)
                 product_core.undoOperationToSpoonElement(op);
-//            }catch (Exception e){
-//                log.error("SPLSystem: validate operation instance exception in system " + product.getProduct_dir());
-//                flag = false;
-//           }
+            }catch (Exception e){
+                log.error("SPLSystem: validate operation instance exception in system " + product.getProduct_dir());
+                flag = false;
+           }
         }
         return flag;
     }
