@@ -299,14 +299,18 @@ public class SPLRepairMain extends AbstractMain {
 
             long endT = System.currentTimeMillis();
             writer.write(S.getLocation() + "\n");
-            writer.write("Number of test adequate patches::" + S.getSucceed_operators().size() + "\n");
+            writer.write("Number of test adequate patches:: " + S.getSucceed_operators().size() + "\n");
             if(S.getSucceed_operators().size() > 0){
                 num_systems_containing_test_adequate_patch += 1;
             }
+
             List<Patch> solutions = S.getSolutions();
+            writer.write("Number of generated patches:: " + solutions.size() + "\n");
+            int patches_with_one_or_more_product_fixed = 0;
             for(Patch p:solutions){
                 OperatorInstance o = p.getOp();
                 if(p.getNum_of_product_successful_fix() > 0){
+                    patches_with_one_or_more_product_fixed += 1;
                     writer.write(p.toString());
                     SourcePosition original_element = o.getOriginal().getPosition();
                     String[] tmp = original_element.getFile().getName().split(File.separator);
@@ -323,6 +327,7 @@ public class SPLRepairMain extends AbstractMain {
                     writer.write("--------\n");
                 }
             }
+            writer.write("Number of patches being able to fix at least one product:: " + patches_with_one_or_more_product_fixed + "\n");
 
             writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
             total_time += (endT - startT) / 1000d;

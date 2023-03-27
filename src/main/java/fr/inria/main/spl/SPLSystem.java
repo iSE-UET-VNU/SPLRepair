@@ -223,8 +223,6 @@ public class SPLSystem {
     * */
     private void evaluate_patches(){
         for(String ploc1:products.keySet()) {
-            System.out.println("---------------");
-            System.out.println(ploc1);
             SPLProduct product1 = products.get(ploc1);
             List<OperatorInstance> p1_succeed_operators = product1.getSucceed_operators();
             if (!p1_succeed_operators.isEmpty()) {
