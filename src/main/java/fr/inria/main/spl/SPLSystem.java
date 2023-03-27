@@ -2,6 +2,7 @@ package fr.inria.main.spl;
 
 import fr.inria.astor.core.entities.OperatorInstance;
 import fr.inria.astor.core.entities.ProgramVariant;
+import fr.inria.astor.core.entities.StatementOperatorInstance;
 import fr.inria.astor.core.entities.SuspiciousModificationPoint;
 import fr.inria.astor.core.entities.validation.VariantValidationResult;
 import fr.inria.astor.core.faultlocalization.entity.SuspiciousCode;
@@ -189,14 +190,23 @@ public class SPLSystem {
                                         susp_point.getSuspicious().getSuspiciousValue(), null);
                                 SuspiciousModificationPoint susp_point_in_product2 = new SuspiciousModificationPoint(e, susp_point.getCodeElement(),
                                         susp_point.getCtClass(), susp_point.getContextOfModificationPoint());
-                                OperatorInstance op_in_product2 = new OperatorInstance(susp_point_in_product2, pv.getOperationApplied(),
+                                OperatorInstance op_in_product2 = null;
+                                if(pv.getClass().toString().contains("StatementOperatorInstance")){
+                                    op_in_product2 = new StatementOperatorInstance(susp_point_in_product2, pv.getOperationApplied(),
                                         pv.getOriginal(), pv.getModified());
+                                }else{
+                                    op_in_product2 = new OperatorInstance(susp_point_in_product2, pv.getOperationApplied(),
+                                            pv.getOriginal(), pv.getModified());
+                                }
 
                                 validation_result = validate_operation_instance(product2, op_in_product2);
 
                                 if(!validation_result){
+                                    System.out.println("Trang xinh: product 2:" + ploc2 +"\n is failed by the operation:" );
+                                    System.out.println(op_in_product2);
                                     flag = false;
                                 }
+
                             }
                         }
                     }
@@ -271,7 +281,7 @@ public class SPLSystem {
         AstorCoreEngine product_core = product.getCoreEngine();
         if(product_core != null){
             // We validate the variant after applying the operator
-            try {
+//            try {
                 product_core.applyNewMutationOperationToSpoonElement(op);
                 ProgramVariant product2_variant = new ProgramVariant();
                 product2_variant.putModificationInstance(1, op);
@@ -284,10 +294,10 @@ public class SPLSystem {
                 }
                 // We undo the operator (for try the next one)
                 product_core.undoOperationToSpoonElement(op);
-            }catch (Exception e){
-                log.error("SPLSystem: validate operation instance exception in system " + product.getProduct_dir());
-                flag = false;
-           }
+//            }catch (Exception e){
+//                log.error("SPLSystem: validate operation instance exception in system " + product.getProduct_dir());
+//                flag = false;
+//           }
         }
         return flag;
     }
