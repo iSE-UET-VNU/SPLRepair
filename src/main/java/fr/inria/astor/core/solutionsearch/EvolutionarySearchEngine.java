@@ -102,6 +102,7 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 
 	public OperatorInstance createOperatorInstanceForPoint(ModificationPoint modificationPoint)
 			throws IllegalAccessException {
+
 		SuspiciousModificationPoint suspModificationPoint = (SuspiciousModificationPoint) modificationPoint;
 
 		AstorOperator operatorSelected = operatorSelectionStrategy.getNextOperator(suspModificationPoint);
@@ -274,10 +275,12 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 		// sorted a criterion
 		List<ModificationPoint> modificationPointsToProcess = this.suspiciousNavigationStrategy
 				.getSortedModificationPointsList(variant.getModificationPoints());
-
+		System.out.println("Trang::this.suspiciousNavigationStrategy::" + this.suspiciousNavigationStrategy.getClass());
+		System.out.println("Trang::modificationPointsToProcess::" + modificationPointsToProcess.size());
 		for (ModificationPoint modificationPoint : modificationPointsToProcess) {
 
 			log.debug("---analyzing modificationPoint position: " + modificationPoint.identified);
+			System.out.println("Trang::" + modificationPoint);
 
 			// A point can be modified several time in the evolution
 			boolean multiPointMutation = ConfigurationProperties.getPropertyBool("multipointmodification");

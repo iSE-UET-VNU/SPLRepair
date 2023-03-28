@@ -13,6 +13,7 @@ public enum ExecutionMode {
 	DeepRepair(Collections.singletonList("deeprepair")),
 	CARDUMEN(Collections.singletonList("cardumen")),
 	jGenProg(Collections.singletonList("jgenprog")),
+	SPLGenProg(Collections.singletonList("splgenprog")),
 	jKali(Collections.singletonList("jkali")),
 	MutRepair(Arrays.asList("mutation","jmutrepair", "mutrepair")),
 	EXASTOR(Arrays.asList("exhaustive", "exastor")),

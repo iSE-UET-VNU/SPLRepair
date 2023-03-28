@@ -95,7 +95,6 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 					}else{
 						if(!this.rejected_operators.contains(pointOperation))
 							this.rejected_operators.add(pointOperation);
-
 					}
 
 					if (!belowMaxTime(dateInitEvolution, maxMinutes)) {

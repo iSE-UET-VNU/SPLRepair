@@ -66,7 +66,6 @@ public abstract class IngredientBasedEvolutionaryRepairApproachImpl extends Evol
 	 * @throws Exception
 	 */
 	public void initPopulation(List<SuspiciousCode> suspicious) throws Exception {
-
 		super.initPopulation(suspicious);
 
 		if (this.ingredientSearchStrategy != null) {
@@ -85,18 +84,20 @@ public abstract class IngredientBasedEvolutionaryRepairApproachImpl extends Evol
 			log.debug("Operation Null");
 			return null;
 		}
-
+		System.out.println("TRang::operatorSelectionStrategy::" + operatorSelectionStrategy);
+		System.out.println("Trang::" + operatorSelected);
 		List<OperatorInstance> operatorInstances = null;
 		if (operatorSelected.canBeAppliedToPoint(modificationPoint)) {
 			if (operatorSelected.needIngredient()) {
 				IngredientBasedOperator ingbasedapproach = (IngredientBasedOperator) operatorSelected;
-
+				System.out.println("Trang::this.ingredientSearchStrategy::" + this.ingredientSearchStrategy.getClass());
 				Ingredient ingredient = this.ingredientSearchStrategy.getFixIngredient(modificationPoint,
 						operatorSelected);
 
 				if (ingredient == null) {
 					return null;
 				}
+				System.out.println("Trang::ingbasedapproach" + ingbasedapproach.getClass());
 				operatorInstances = ingbasedapproach.createOperatorInstances(modificationPoint, ingredient,
 						this.ingredientTransformationStrategy);
 

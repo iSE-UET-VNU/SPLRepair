@@ -223,6 +223,9 @@ public class SPLSystem {
     * */
     private void evaluate_patches(){
         for(String ploc1:products.keySet()) {
+            System.out.println("-----------");
+            System.out.println("Trang oi lai co bug ne:");
+            System.out.println(ploc1);
             SPLProduct product1 = products.get(ploc1);
             List<OperatorInstance> p1_succeed_operators = product1.getSucceed_operators();
             if (!p1_succeed_operators.isEmpty()) {
@@ -234,6 +237,7 @@ public class SPLSystem {
             List<OperatorInstance> p1_rejected_operators = product1.getRejected_operators();
             if(!p1_rejected_operators.isEmpty()){
                 for(OperatorInstance pv:p1_rejected_operators) {
+                    System.out.println(pv);
                     Patch patch = new Patch(pv);
                     a_rejected_patch(patch);
                 }

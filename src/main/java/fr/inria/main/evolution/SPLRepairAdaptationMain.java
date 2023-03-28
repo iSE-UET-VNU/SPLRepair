@@ -45,8 +45,8 @@ import spoon.reflect.cu.SourcePosition;
  * @author Trang Nguyen, trang.nguyen@vnu.edu.vn
  *
  */
-public class SPLRepairMain extends AbstractMain {
-    protected Logger log = Logger.getLogger(SPLRepairMain.class.getName());
+public class SPLRepairAdaptationMain extends AbstractMain {
+    protected Logger log = Logger.getLogger(SPLRepairAdaptationMain.class.getName());
 
 
     /**
@@ -74,7 +74,6 @@ public class SPLRepairMain extends AbstractMain {
 
         } else if (ExecutionMode.jGenProg.equals(mode)) {
             core = new JGenProg(mutSupporter, projectFacade);
-
         } else if (ExecutionMode.MutRepair.equals(mode)) {
             core = new jMutRepairExhaustive(mutSupporter, projectFacade);
 
@@ -291,7 +290,7 @@ public class SPLRepairMain extends AbstractMain {
 
             long startT = System.currentTimeMillis();
             num_of_system += 1;
-            SPLRepairMain m = new SPLRepairMain();
+            SPLRepairAdaptationMain m = new SPLRepairAdaptationMain();
 
             SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
             S.check_patches_on_all_products();
