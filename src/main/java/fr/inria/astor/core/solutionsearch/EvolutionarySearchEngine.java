@@ -262,7 +262,7 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 	 * @return
 	 * @throws Exception
 	 */
-	private boolean modifyProgramVariant(ProgramVariant variant, int generation) throws Exception {
+	protected boolean modifyProgramVariant(ProgramVariant variant, int generation) throws Exception {
 
 		log.debug("--Creating new operations for variant " + variant);
 		boolean oneOperationCreated = false;
@@ -275,12 +275,9 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 		// sorted a criterion
 		List<ModificationPoint> modificationPointsToProcess = this.suspiciousNavigationStrategy
 				.getSortedModificationPointsList(variant.getModificationPoints());
-		System.out.println("Trang::this.suspiciousNavigationStrategy::" + this.suspiciousNavigationStrategy.getClass());
-		System.out.println("Trang::modificationPointsToProcess::" + modificationPointsToProcess.size());
 		for (ModificationPoint modificationPoint : modificationPointsToProcess) {
 
 			log.debug("---analyzing modificationPoint position: " + modificationPoint.identified);
-			System.out.println("Trang::" + modificationPoint);
 
 			// A point can be modified several time in the evolution
 			boolean multiPointMutation = ConfigurationProperties.getPropertyBool("multipointmodification");

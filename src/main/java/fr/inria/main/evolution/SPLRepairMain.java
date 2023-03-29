@@ -212,13 +212,8 @@ public class SPLRepairMain extends AbstractMain {
 
 
         for(String fv_dir:failing_products) {
-            SPLProduct fp = prepare_engine(buggy_spl_system, projectName, fv_dir, dependencies, packageToInstrument, thfl,
+             prepare_engine(buggy_spl_system, projectName, fv_dir, dependencies, packageToInstrument, thfl,
                     failing, customEngine, mode);
-//            fp.getCoreEngine().startSearch();
-//
-//            result = fp.getCoreEngine().atEnd();
-//            fp.setSucceed_operators(fp.getCoreEngine().getSucceed_operators());
-//            fp.setRejected_operators(fp.getCoreEngine().getRejected_operators());
         }
 
         List<String> passing_products = buggy_spl_system.getPassing_product_locations();
@@ -240,13 +235,15 @@ public class SPLRepairMain extends AbstractMain {
             List<SPLProduct> sorted_failing_products = failing_product_navigator.getSortedModificationPointsList(buggy_spl_system.get_failing_products());
             SPLProduct failing_product = sorted_failing_products.get(0);
             log.info("--- Try to generate patch for the product: " + failing_product.getProduct_dir());
-            List<ProgramVariant> generated_variants = failing_product.getCoreEngine().start_search_spl(generation);
-            for(ProgramVariant pv:generated_variants){
-                OperatorInstance op = pv.getOperations().get(generation).get(0);
+            List<OperatorInstance> generated_operators = failing_product.getCoreEngine().start_search_spl(generation);
+            for(OperatorInstance op:generated_operators){
+                System.out.println("Trang:operators:" + op);
                 if(failing_product.getSucceed_operators().contains(op)
                         || failing_product.getRejected_operators().contains(op))
                     continue;
                 double fitness = buggy_spl_system.calculate_fitness_for_a_patch(op, failing_product);
+                System.out.println("Trang oi dung buon nua:" + fitness);
+
             }
             generation += 1;
         }

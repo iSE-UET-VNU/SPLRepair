@@ -66,20 +66,26 @@ public class StatementOperatorInstance extends OperatorInstance {
 	}
 
 	public boolean defineParentInformation(ModificationPoint genSusp) {
+		System.out.println("Trang::defineParentInformation");
 		CtElement targetStmt = genSusp.getCodeElement();
 		CtElement cparent = targetStmt.getParent();
+		System.out.println("Trang::targetStmt:: " + targetStmt);
+		System.out.println("Trang::cparent:: " + cparent);
 		if ((cparent != null && (cparent instanceof CtBlock))) {
 			CtBlock parentBlock = (CtBlock) cparent;
 			int location = locationInParent(parentBlock, targetStmt);
+			System.out.println("Trang::location in parent:" + location);
 			if (location >= 0) {
 				this.setParentBlock(parentBlock);
 				this.setLocationInParent(location);
+				System.out.println("Trang::set parent information successfull");
 				return true;
 			}
 
 		} else {
 			log.error("Parent null or it is not a block");
 		}
+		System.out.println("Trang::set parent information failed");
 		return false;
 	}
 

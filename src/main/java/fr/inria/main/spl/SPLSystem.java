@@ -166,53 +166,51 @@ public class SPLSystem {
     }
 
     public double calculate_fitness_for_a_patch(OperatorInstance op, SPLProduct originalProduct) throws Exception {
+        System.out.println("Trang::Calculate fitness for a patch::" + op);
         SourcePosition original_element = op.getOriginal().getPosition();
         String[] tmp = original_element.getFile().getName().split(File.separator);
         String original_stmt = tmp[tmp.length-1].replace(".java", "") + "." + original_element.getLine();
         String feature_stmt = originalProduct.get_feature_stmt("main." + original_stmt);
+        double fitness = 0;
         for(String ploc:products.keySet()) {
             boolean result = false;
-            if(ploc.equals(originalProduct.getProduct_dir())) {
-                result = validate_operation_instance(originalProduct, op);
-                if(result){
-                    originalProduct.addSucceed_operators(op);
+
+            SPLProduct other_product = products.get(ploc);
+            String other_product_stmt = other_product.get_product_stmt(feature_stmt);
+            if(other_product_stmt != null){
+                SuspiciousModificationPoint susp_point = (SuspiciousModificationPoint) op.getModificationPoint();
+
+                String[] tmp_stmt2 = other_product_stmt.split("\\.");
+
+                SuspiciousCode e = new SuspiciousCode (susp_point.getSuspicious().getClassName(),
+                        null,Integer.parseInt(tmp_stmt2[tmp_stmt2.length-1]), feature_stmt,
+                        susp_point.getSuspicious().getSuspiciousValue(), null);
+                SuspiciousModificationPoint susp_point_in_product2 = new SuspiciousModificationPoint(e, susp_point.getCodeElement(),
+                        susp_point.getCtClass(), susp_point.getContextOfModificationPoint());
+                OperatorInstance op_in_other_product = null;
+                if(op.getClass().toString().contains("StatementOperatorInstance")){
+                    op_in_other_product = new StatementOperatorInstance(susp_point_in_product2, op.getOperationApplied(),
+                            op.getOriginal(), op.getModified());
                 }else{
-                    originalProduct.addRejected_operators(op);
+                    op_in_other_product = new OperatorInstance(susp_point_in_product2, op.getOperationApplied(),
+                            op.getOriginal(), op.getModified());
                 }
-            }else{
-                SPLProduct other_product = products.get(ploc);
-                String other_product_stmt = other_product.get_product_stmt(feature_stmt);
-                if(other_product_stmt != null){
-                    SuspiciousModificationPoint susp_point = (SuspiciousModificationPoint) op.getModificationPoint();
 
-                    String[] tmp_stmt2 = other_product_stmt.split("\\.");
+                result = validate_operation_instance(other_product, op_in_other_product);
 
-                    SuspiciousCode e = new SuspiciousCode (susp_point.getSuspicious().getClassName(),
-                            null,Integer.parseInt(tmp_stmt2[tmp_stmt2.length-1]), feature_stmt,
-                            susp_point.getSuspicious().getSuspiciousValue(), null);
-                    SuspiciousModificationPoint susp_point_in_product2 = new SuspiciousModificationPoint(e, susp_point.getCodeElement(),
-                            susp_point.getCtClass(), susp_point.getContextOfModificationPoint());
-                    OperatorInstance op_in_other_product = null;
-                    if(op.getClass().toString().contains("StatementOperatorInstance")){
-                        op_in_other_product = new StatementOperatorInstance(susp_point_in_product2, op.getOperationApplied(),
-                                op.getOriginal(), op.getModified());
-                    }else{
-                        op_in_other_product = new OperatorInstance(susp_point_in_product2, op.getOperationApplied(),
-                                op.getOriginal(), op.getModified());
-                    }
-
-                    result = validate_operation_instance(other_product, op_in_other_product);
-
-                    if(result){
-                        other_product.addSucceed_operators(op);
-                    }else{
-                        other_product.addRejected_operators(op);
-                    }
+                if(result){
+                    other_product.addSucceed_operators(op);
+                    fitness += 1;
+                    System.out.println("Trang::" + ploc + "is passed");
+                }else{
+                    other_product.addRejected_operators(op);
+                    System.out.println("Trang::" + ploc + "is failed");
                 }
             }
+
         }
 
-        return 0;
+        return fitness;
     }
 
     public void check_patches_on_all_products() throws Exception {
