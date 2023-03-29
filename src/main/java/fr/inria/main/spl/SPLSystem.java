@@ -86,6 +86,21 @@ public class SPLSystem {
     public void setNum_of_passing_products(int x){
         this.num_of_passing_products = x;
     }
+    public List<SPLProduct> get_failing_products(){
+        List<SPLProduct> failing_products = new ArrayList<>();
+        for(String dir:failing_product_locations){
+            failing_products.add(products.get(dir));
+        }
+        return failing_products;
+    }
+
+    public List<SPLProduct> get_passing_products(){
+        List<SPLProduct> passing_products = new ArrayList<>();
+        for(String dir:passing_product_locations){
+            passing_products.add(products.get(dir));
+        }
+        return passing_products;
+    }
 
     public void setFeatures(ArrayList<String> features){
         this.features = features;
@@ -150,6 +165,55 @@ public class SPLSystem {
         }
     }
 
+    public double calculate_fitness_for_a_patch(OperatorInstance op, SPLProduct originalProduct) throws Exception {
+        SourcePosition original_element = op.getOriginal().getPosition();
+        String[] tmp = original_element.getFile().getName().split(File.separator);
+        String original_stmt = tmp[tmp.length-1].replace(".java", "") + "." + original_element.getLine();
+        String feature_stmt = originalProduct.get_feature_stmt("main." + original_stmt);
+        for(String ploc:products.keySet()) {
+            boolean result = false;
+            if(ploc.equals(originalProduct.getProduct_dir())) {
+                result = validate_operation_instance(originalProduct, op);
+                if(result){
+                    originalProduct.addSucceed_operators(op);
+                }else{
+                    originalProduct.addRejected_operators(op);
+                }
+            }else{
+                SPLProduct other_product = products.get(ploc);
+                String other_product_stmt = other_product.get_product_stmt(feature_stmt);
+                if(other_product_stmt != null){
+                    SuspiciousModificationPoint susp_point = (SuspiciousModificationPoint) op.getModificationPoint();
+
+                    String[] tmp_stmt2 = other_product_stmt.split("\\.");
+
+                    SuspiciousCode e = new SuspiciousCode (susp_point.getSuspicious().getClassName(),
+                            null,Integer.parseInt(tmp_stmt2[tmp_stmt2.length-1]), feature_stmt,
+                            susp_point.getSuspicious().getSuspiciousValue(), null);
+                    SuspiciousModificationPoint susp_point_in_product2 = new SuspiciousModificationPoint(e, susp_point.getCodeElement(),
+                            susp_point.getCtClass(), susp_point.getContextOfModificationPoint());
+                    OperatorInstance op_in_other_product = null;
+                    if(op.getClass().toString().contains("StatementOperatorInstance")){
+                        op_in_other_product = new StatementOperatorInstance(susp_point_in_product2, op.getOperationApplied(),
+                                op.getOriginal(), op.getModified());
+                    }else{
+                        op_in_other_product = new OperatorInstance(susp_point_in_product2, op.getOperationApplied(),
+                                op.getOriginal(), op.getModified());
+                    }
+
+                    result = validate_operation_instance(other_product, op_in_other_product);
+
+                    if(result){
+                        other_product.addSucceed_operators(op);
+                    }else{
+                        other_product.addRejected_operators(op);
+                    }
+                }
+            }
+        }
+
+        return 0;
+    }
 
     public void check_patches_on_all_products() throws Exception {
         for(String ploc1:products.keySet()){
@@ -221,11 +285,8 @@ public class SPLSystem {
     /*
     * Check how many products that a patch succeed and rejected
     * */
-    private void evaluate_patches(){
+    public void evaluate_patches(){
         for(String ploc1:products.keySet()) {
-            System.out.println("-----------");
-            System.out.println("Trang oi lai co bug ne:");
-            System.out.println(ploc1);
             SPLProduct product1 = products.get(ploc1);
             List<OperatorInstance> p1_succeed_operators = product1.getSucceed_operators();
             if (!p1_succeed_operators.isEmpty()) {
@@ -237,7 +298,6 @@ public class SPLSystem {
             List<OperatorInstance> p1_rejected_operators = product1.getRejected_operators();
             if(!p1_rejected_operators.isEmpty()){
                 for(OperatorInstance pv:p1_rejected_operators) {
-                    System.out.println(pv);
                     Patch patch = new Patch(pv);
                     a_rejected_patch(patch);
                 }

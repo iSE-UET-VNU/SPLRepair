@@ -1476,4 +1476,8 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		return dateInitEvolution;
 	}
 
+	public List<ProgramVariant> start_search_spl(int generation) throws Exception{
+		log.info("This method is specialized for repairing spl system");
+		return null;
+	}
 }
