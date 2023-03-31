@@ -261,7 +261,7 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 	 * @return
 	 * @throws Exception
 	 */
-	private boolean modifyProgramVariant(ProgramVariant variant, int generation) throws Exception {
+	protected boolean modifyProgramVariant(ProgramVariant variant, int generation) throws Exception {
 
 		log.debug("--Creating new operations for variant " + variant);
 		boolean oneOperationCreated = false;

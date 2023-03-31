@@ -15,6 +15,8 @@ import spoon.reflect.code.CtStatement;
 public class ReplaceOp extends StatatementIngredientOperator implements StatementLevelOperator {
 
 	public boolean applyChangesInModel(OperatorInstance operation, ProgramVariant p) {
+		System.out.println("Trang:: apply changes in models:" + operation);
+		System.out.println("Trang:: apply changes in models:" + operation.getClass());
 		StatementOperatorInstance stmtoperator = (StatementOperatorInstance) operation;
 		boolean successful = false;
 		CtStatement ctst = (CtStatement) operation.getOriginal();
