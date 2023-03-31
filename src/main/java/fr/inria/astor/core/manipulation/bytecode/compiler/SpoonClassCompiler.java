@@ -52,7 +52,6 @@ public class SpoonClassCompiler implements VariantCompiler {
 	@Override
 	public CompilationResult compile(ProgramVariant instance, URL[] cp) {
 		List<CtType<?>> ctClasses = instance.getClassesAffectedByOperators();
-
 		if (ctClasses == null || ctClasses.isEmpty()) {
 			// In case we dont have affected by operations, we take all.
 			ctClasses = instance.getAllClasses();

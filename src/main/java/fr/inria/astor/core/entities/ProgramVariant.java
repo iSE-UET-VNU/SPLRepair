@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import fr.inria.astor.core.entities.validation.VariantValidationResult;
 import fr.inria.astor.core.manipulation.bytecode.entities.CompilationResult;
 import fr.inria.astor.core.setup.ConfigurationProperties;
@@ -120,6 +121,9 @@ public class ProgramVariant {
 	public void setModificationPoints(List<ModificationPoint> modificationPoints) {
 		this.modificationPoints = modificationPoints;
 	}
+	public void addModificationPoints(ModificationPoint mp) {
+		this.modificationPoints.add(mp);
+	}
 
 	public double getFitness() {
 		return fitness;
@@ -149,6 +153,15 @@ public class ProgramVariant {
 		}
 		modificationPoints.add(op);
 
+	}
+	public void createModificationIntanceForAPoint(int generation, OperatorInstance op){
+		if(operations.containsKey(generation)){
+			putModificationInstance(generation, op);
+		}else {
+			List<OperatorInstance> modipoints = new ArrayList<>();
+			modipoints.add(op);
+			operations.put(generation, modipoints);
+		}
 	}
 
 	public Map<Integer, List<OperatorInstance>> getOperations() {

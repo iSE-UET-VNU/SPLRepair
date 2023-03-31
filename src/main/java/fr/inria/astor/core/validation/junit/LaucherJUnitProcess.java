@@ -266,6 +266,7 @@ public class LaucherJUnitProcess {
 		try {
 			String line;
 			while ((line = in.readLine()) != null) {
+				System.out.println("Test output print line:" + line);
 				processOut += line + "\n";
 				if (line.startsWith(JUnitExternalExecutor.OUTSEP)) {
 					String[] resultPrinted = line.split(JUnitExternalExecutor.OUTSEP);

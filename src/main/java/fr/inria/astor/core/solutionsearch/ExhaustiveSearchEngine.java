@@ -83,8 +83,8 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 
 					if (solution) {
 						this.solutions.add(solutionVariant);
-						if(!this.successed_operators.contains(pointOperation))
-							this.successed_operators.add(pointOperation);
+						if(!this.succeed_operators.contains(pointOperation))
+							this.succeed_operators.add(pointOperation);
 
 						this.savePatch(solutionVariant);
 

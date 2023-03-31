@@ -233,7 +233,7 @@ public class ProgramVariantFactory {
 	 * @param progInstance
 	 * @return
 	 */
-	private List<SuspiciousModificationPoint> createModificationPoints(SuspiciousCode suspiciousCode,
+	public List<SuspiciousModificationPoint> createModificationPoints(SuspiciousCode suspiciousCode,
 			ProgramVariant progInstance) {
 
 		List<SuspiciousModificationPoint> suspiciousModificationPoints = new ArrayList<SuspiciousModificationPoint>();
@@ -463,4 +463,6 @@ public class ProgramVariantFactory {
 	public void setProcessors(List<TargetElementProcessor<?>> processors) {
 		this.processors = processors;
 	}
+
+
 }

@@ -1,16 +1,16 @@
 package fr.inria.main.spl;
 
-import fr.inria.astor.core.entities.OperatorInstance;
-import fr.inria.astor.core.entities.ProgramVariant;
-import fr.inria.astor.core.entities.StatementOperatorInstance;
-import fr.inria.astor.core.entities.SuspiciousModificationPoint;
+import fr.inria.astor.core.entities.*;
 import fr.inria.astor.core.entities.validation.VariantValidationResult;
 import fr.inria.astor.core.faultlocalization.entity.SuspiciousCode;
+import fr.inria.astor.core.manipulation.bytecode.entities.CompilationResult;
+import fr.inria.astor.core.setup.ConfigurationProperties;
 import fr.inria.astor.core.solutionsearch.AstorCoreEngine;
 import org.apache.log4j.Logger;
 import spoon.reflect.cu.SourcePosition;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -72,7 +72,13 @@ public class SPLSystem {
         return passing_product_locations;
     }
 
-
+    public List<SPLProduct> getFailing_products(){
+        List<SPLProduct> failing_products = new ArrayList<>();
+        for(String loc:failing_product_locations){
+            failing_products.add(products.get(loc));
+        }
+        return failing_products;
+    }
     public int getNum_of_failing_products() {
         return num_of_failing_products;
     }
@@ -198,7 +204,8 @@ public class SPLSystem {
                                             pv.getOriginal(), pv.getModified());
                                 }
 
-                                validation_result = validate_operation_instance(product2, op_in_product2);
+
+                                validation_result = validate_operation_instance_in_a_product(product2, op_in_product2, "");
 
                                 if(!validation_result){
                                     flag = false;
@@ -221,21 +228,23 @@ public class SPLSystem {
     /*
     * Check how many products that a patch succeed and rejected
     * */
-    private void evaluate_patches(){
+    public void evaluate_patches(){
+        System.out.println("Trang::Evaluate Patches");
         for(String ploc1:products.keySet()) {
-            System.out.println("-----------");
-            System.out.println("Trang oi lai co bug ne:");
-            System.out.println(ploc1);
+            System.out.println("Trang:product:" + ploc1);
             SPLProduct product1 = products.get(ploc1);
             List<OperatorInstance> p1_succeed_operators = product1.getSucceed_operators();
             if (!p1_succeed_operators.isEmpty()) {
+                System.out.println("Trang::succeed operators");
                 for (OperatorInstance pv : p1_succeed_operators) {
+                    System.out.println("Trang:" + pv);
                     Patch patch = new Patch(pv);
                     a_successful_patch(patch);
                 }
             }
             List<OperatorInstance> p1_rejected_operators = product1.getRejected_operators();
             if(!p1_rejected_operators.isEmpty()){
+                System.out.println("Trang::rejected operators");
                 for(OperatorInstance pv:p1_rejected_operators) {
                     System.out.println(pv);
                     Patch patch = new Patch(pv);
@@ -277,29 +286,81 @@ public class SPLSystem {
         return false;
     }
 
-    private boolean validate_operation_instance(SPLProduct product, OperatorInstance op) throws Exception {
-        boolean flag = true;
+    public boolean validate_operation_instance_in_the_whole_system(OperatorInstance op, String modification_point_feature_level) throws Exception {
+
+        for(String loc:products.keySet()) {
+            SPLProduct apro = products.get(loc);
+            boolean validation_result = validate_operation_instance_in_a_product(apro, op, modification_point_feature_level);
+            System.out.println("Validating in product: " + apro.getProduct_dir() + " is:: " + validation_result);
+        }
+        return true;
+    }
+
+    public boolean validate_operation_instance_in_a_product(SPLProduct product, OperatorInstance op, String modification_point_feature_level) throws Exception {
+        boolean flag = false;
         AstorCoreEngine product_core = product.getCoreEngine();
-        if(product_core != null){
-            // We validate the variant after applying the operator
-            try {
-                product_core.applyNewMutationOperationToSpoonElement(op);
-                ProgramVariant product2_variant = new ProgramVariant();
-                product2_variant.putModificationInstance(1, op);
+        URL[] originalURL = product_core.getProjectFacade().getClassPathURLforProgramVariant(ProgramVariant.DEFAULT_ORIGINAL_VARIANT);
+        SuspiciousModificationPoint susp_point = (SuspiciousModificationPoint) op.getModificationPoint();
+        String modification_point_product_level = product.get_product_stmt(modification_point_feature_level);
+        System.out.println("Trang:modification point: " + modification_point_product_level);
+        String[] tmp_stmt2 = modification_point_product_level.split("\\.");
+        SuspiciousCode suspiciousCode = new SuspiciousCode (susp_point.getSuspicious().getClassName(),
+                null,Integer.parseInt(tmp_stmt2[tmp_stmt2.length-1]), modification_point_feature_level,
+                susp_point.getSuspicious().getSuspiciousValue(), null);
+
+        // We validate the variant after applying the operator
+        try {
+            ProgramVariant product2_variant = product_core.getVariants().get(0);
+            List<ModificationPoint> product_modification_points = product2_variant.getModificationPoints();
+            SuspiciousModificationPoint sm_point = null;
+            for(ModificationPoint mp:product_modification_points){
+                if(((SuspiciousModificationPoint) mp).getSuspicious().equals(suspiciousCode)){
+                    sm_point = (SuspiciousModificationPoint) mp;
+                    break;
+                }
+            }
+            if(sm_point == null){
+                log.info("The modification point does not exist\n");
+                return true;
+            }
+            OperatorInstance op_in_product2 = null;
+            if(op.getClass().toString().contains("StatementOperatorInstance")){
+                op_in_product2 = new StatementOperatorInstance(sm_point, op.getOperationApplied(),
+                        sm_point.getCodeElement(), op.getModified());
+            }else{
+                op_in_product2 = new OperatorInstance(sm_point, op.getOperationApplied(),
+                        sm_point.getCodeElement(), op.getModified());
+            }
+            product2_variant.createModificationIntanceForAPoint(1, op_in_product2);
+            product_core.applyNewMutationOperationToSpoonElement(op_in_product2);
+
+            CompilationResult compilation = product_core.getCompiler().compile(product2_variant, originalURL);
+            boolean childCompiles = compilation.compiles();
+            product2_variant.setCompilation(compilation);
+
+            product_core.storeModifiedModel(product2_variant);
+            if (ConfigurationProperties.getPropertyBool("saveall")) {
+                product_core.saveVariant(product2_variant);
+            }
+            if (childCompiles) {
                 VariantValidationResult result = product_core.getProgramValidator().validate(product2_variant, product.getProjectRepairFacade());
                 if (result != null && result.isSuccessful()) {
-                    product.addSucceed_operators(op);
+                    product.addSucceed_operators(op_in_product2);
+                    flag = true;
                 } else {
-                    product.addRejected_operators(op);
-                    flag = false;
+                    product.addRejected_operators(op_in_product2);
                 }
-                // We undo the operator (for try the next one)
-                product_core.undoOperationToSpoonElement(op);
-            }catch (Exception e){
-                log.error("SPLSystem: validate operation instance exception in system " + product.getProduct_dir());
-                flag = false;
-           }
-        }
+            }else{
+                log.info("Cannot compile the op " + op_in_product2 + "in product: " + product.getProduct_dir());
+            }
+            // We undo the operator (for try the next one)
+            product_core.undoOperationToSpoonElement(op_in_product2);
+
+        }catch (Exception e){
+            log.error("SPLSystem: validate operation instance exception in system " + product.getProduct_dir());
+            e.printStackTrace();
+            flag = false;
+       }
         return flag;
     }
 

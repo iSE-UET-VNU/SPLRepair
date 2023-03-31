@@ -61,7 +61,7 @@ public abstract class AbstractMain {
 
 	protected static Logger log = Logger.getLogger(Thread.currentThread().getName());
 
-	public static ProjectRepairFacade projectFacade;
+	public static ProjectRepairFacade projectFacade = new ProjectRepairFacade();
 
 	protected static Options options = new Options();
 

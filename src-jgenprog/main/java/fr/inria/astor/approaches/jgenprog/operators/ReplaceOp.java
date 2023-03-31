@@ -19,9 +19,7 @@ public class ReplaceOp extends StatatementIngredientOperator implements Statemen
 		boolean successful = false;
 		CtStatement ctst = (CtStatement) operation.getOriginal();
 		CtStatement fix = (CtStatement) operation.getModified();
-
 		CtBlock parentBlock = stmtoperator.getParentBlock();
-
 		if (parentBlock != null) {
 
 			try {
@@ -37,6 +35,9 @@ public class ReplaceOp extends StatatementIngredientOperator implements Statemen
 		} else {
 			log.error("Operation not applied. Parent null ");
 		}
+		System.out.println("*******************");
+		System.out.println("Trang::" + operation);
+		System.out.println("Trang::operation successfull applied");
 		return successful;
 	}
 

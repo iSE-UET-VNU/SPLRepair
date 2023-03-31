@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.commons.collections.map.HashedMap;
 
 import com.martiansoftware.jsap.JSAPException;
@@ -178,8 +177,8 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 
 			if (solution) {
 				this.savePatch(newVariant);
-				if(!this.successed_operators.contains(newVariant.getOperations().get(generation).get(0)))
-					this.successed_operators.add( newVariant.getOperations().get(generation).get(0));
+				if(!this.succeed_operators.contains(newVariant.getOperations().get(generation).get(0)))
+					this.succeed_operators.add( newVariant.getOperations().get(generation).get(0));
 
 			}else{
 				if(!this.rejected_operators.contains(newVariant.getOperations().get(generation).get(0)))
@@ -275,12 +274,9 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 		// sorted a criterion
 		List<ModificationPoint> modificationPointsToProcess = this.suspiciousNavigationStrategy
 				.getSortedModificationPointsList(variant.getModificationPoints());
-		System.out.println("Trang::this.suspiciousNavigationStrategy::" + this.suspiciousNavigationStrategy.getClass());
-		System.out.println("Trang::modificationPointsToProcess::" + modificationPointsToProcess.size());
 		for (ModificationPoint modificationPoint : modificationPointsToProcess) {
 
 			log.debug("---analyzing modificationPoint position: " + modificationPoint.identified);
-			System.out.println("Trang::" + modificationPoint);
 
 			// A point can be modified several time in the evolution
 			boolean multiPointMutation = ConfigurationProperties.getPropertyBool("multipointmodification");
