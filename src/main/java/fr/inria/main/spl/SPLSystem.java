@@ -23,8 +23,9 @@ public class SPLSystem {
     private List<String> passing_product_locations = new ArrayList<>();
     public HashMap<String, SPLProduct> products = new HashMap<>();
     private SPLFitnessFunction fitnessFunction = null;
-    private PopulationController populationController = null;
+    private SPLPopulationController populationController = null;
     private double originalfitness = 0;
+    private double lastfitness = 0;
 
     private int num_of_features = 0;
     private int num_of_failing_products = 0;
@@ -174,6 +175,22 @@ public class SPLSystem {
     public double getOriginalFitness(){
         return originalfitness;
     }
+    public void setLastfitness(double v){
+        lastfitness = v;
+    }
+
+    public double getLastfitness() {
+        return lastfitness;
+    }
+
+    public void setApplied_operators(List<OperatorInstance> applied_operators) {
+        this.applied_operators = applied_operators;
+    }
+
+    public List<OperatorInstance> getApplied_operators() {
+        return applied_operators;
+    }
+
     public void check_patches_on_all_products() throws Exception {
         for(String ploc1:products.keySet()){
             SPLProduct product1 = products.get(ploc1);
@@ -308,11 +325,15 @@ public class SPLSystem {
         }
         double system_fitness_value = fitnessFunction.calculateFitnessValue(system_validation_results);
         if(system_fitness_value != fitnessFunction.getWorstMaxFitnessValue()){
-            System.out.println("Trang::fitness value:" + system_fitness_value);
-            System.out.println("Trang::add operator to applied list");
-            System.out.println(op);
-            applied_operators.add(op);
+            populationController.selectOperatorInstanceForNextGeneration(this, op, system_fitness_value);
         }
+        System.out.println("----------\n");
+        System.out.println("Trang::current operations");
+        for(OperatorInstance aop:applied_operators){
+            System.out.println(aop);
+        }
+        System.out.println("-----------\n");
+
         return true;
     }
 

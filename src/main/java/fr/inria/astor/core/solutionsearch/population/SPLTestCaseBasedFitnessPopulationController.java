@@ -4,6 +4,7 @@ import java.util.*;
 
 import fr.inria.astor.core.entities.ModificationPoint;
 import fr.inria.astor.core.entities.OperatorInstance;
+import fr.inria.main.spl.SPLSystem;
 import org.apache.log4j.Logger;
 
 import fr.inria.astor.core.entities.ProgramVariant;
@@ -15,7 +16,7 @@ import fr.inria.astor.core.setup.ConfigurationProperties;
  * @author Trang Nguyen
  *
  */
-public class SPLTestCaseBasedFitnessPopulationController implements PopulationController {
+public class SPLTestCaseBasedFitnessPopulationController extends SPLPopulationController {
 
     private Logger log = Logger.getLogger(Thread.currentThread().getName());
 
@@ -121,6 +122,19 @@ public class SPLTestCaseBasedFitnessPopulationController implements PopulationCo
             return Integer.compare(o1.getId(), o2.getId());
         }
 
+    }
+
+    public  void selectOperatorInstanceForNextGeneration(SPLSystem system, OperatorInstance newop, double newfitness){
+        if(newfitness < system.getLastfitness()) {
+            int maxinstance = ConfigurationProperties.getPropertyInt("SPLmaxinstance");
+            List<OperatorInstance> current_instances = system.getApplied_operators();
+            if (current_instances.size() < maxinstance) {
+                current_instances.add(newop);
+                system.setApplied_operators(current_instances);
+                system.setLastfitness(newfitness);
+            }
+
+        }
     }
 
 }

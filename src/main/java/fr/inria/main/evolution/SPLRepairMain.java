@@ -221,7 +221,9 @@ public class SPLRepairMain extends AbstractMain {
         }
         if(buggy_spl_system.getFitnessFunction() != null){
             SPLFitnessFunction fitnessFunction = (SPLFitnessFunction) buggy_spl_system.getFitnessFunction();
-            buggy_spl_system.setOriginalFitness(fitnessFunction.calculateFitnessValue(buggy_spl_system));
+            double originalfitness = fitnessFunction.calculateFitnessValue(buggy_spl_system);
+            buggy_spl_system.setOriginalFitness(originalfitness);
+            buggy_spl_system.setLastfitness(originalfitness);
         }
         int generation = 0;
         int maxgeneration = Integer.parseInt(ConfigurationProperties.getProperty("maxGenerationSPL"));
