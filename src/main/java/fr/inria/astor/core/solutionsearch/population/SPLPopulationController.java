@@ -6,5 +6,5 @@ import fr.inria.main.spl.SPLSystem;
 import java.util.List;
 
 public abstract class SPLPopulationController implements PopulationController {
-    public abstract  void selectOperatorInstanceForNextGeneration(SPLSystem system, OperatorInstance newop, double newfitness);
+    public abstract  boolean selectOperatorInstanceForNextGeneration(SPLSystem system, OperatorInstance newop, double newfitness);
 }

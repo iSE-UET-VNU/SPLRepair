@@ -34,6 +34,7 @@ public class SPLSystem {
     private List<OperatorInstance> succeed_operators = new ArrayList<>();
     private List<OperatorInstance> applied_operators = new ArrayList<>();
     private List<Patch> solutions = new ArrayList<>();
+    private Patch system_patch = new Patch();
 
     protected org.apache.log4j.Logger log = Logger.getLogger(SPLSystem.class.getName());
     public SPLSystem(){
@@ -263,23 +264,8 @@ public class SPLSystem {
     * Check how many products that a patch succeed and rejected
     * */
     public void evaluate_patches(){
-        for(String ploc1:products.keySet()) {
-            SPLProduct product1 = products.get(ploc1);
-            List<OperatorInstance> p1_succeed_operators = product1.getSucceed_operators();
-            if (!p1_succeed_operators.isEmpty()) {
-                for (OperatorInstance pv : p1_succeed_operators) {
-                    Patch patch = new Patch(pv);
-                    a_successful_patch(patch);
-                }
-            }
-            List<OperatorInstance> p1_rejected_operators = product1.getRejected_operators();
-            if(!p1_rejected_operators.isEmpty()){
-                for(OperatorInstance pv:p1_rejected_operators) {
-                    Patch patch = new Patch(pv);
-                    a_rejected_patch(patch);
-                }
-            }
-        }
+        Patch p = new Patch(applied_operators);
+        System.out.println(p);
     }
 
     private void a_successful_patch(Patch p){
@@ -316,23 +302,30 @@ public class SPLSystem {
 
     public boolean validate_operation_instance_in_the_whole_system(OperatorInstance op, String modification_point_feature_level) throws Exception {
         HashMap<String, VariantValidationResult> system_validation_results = new HashMap<>();
+        int numof_successed = 0;
+        int numof_rejected = 0;
         for(String loc:products.keySet()) {
             SPLProduct apro = products.get(loc);
             List<OperatorInstance> temp_applied = apro.apply_previous_operator_instances_to_product_variant(applied_operators);
             VariantValidationResult validation_result = apro.apply_operator_instance_to_product_variant(op);
             system_validation_results.put(loc, validation_result);
+            if(validation_result != null && validation_result.isSuccessful()){
+                numof_successed += 1;
+            }else {
+                numof_rejected += 1;
+            }
             apro.revert_applied_operators(temp_applied);
         }
         double system_fitness_value = fitnessFunction.calculateFitnessValue(system_validation_results);
         if(system_fitness_value != fitnessFunction.getWorstMaxFitnessValue()){
-            populationController.selectOperatorInstanceForNextGeneration(this, op, system_fitness_value);
+            boolean selected = populationController.selectOperatorInstanceForNextGeneration(this, op, system_fitness_value);
+            if(selected){
+                system_patch = new Patch(applied_operators);
+                system_patch.setNum_of_product_successful_fix(numof_successed);
+                system_patch.setNum_of_product_rejected_fix(numof_rejected);
+            }
         }
-        System.out.println("----------\n");
-        System.out.println("Trang::current operations");
-        for(OperatorInstance aop:applied_operators){
-            System.out.println(aop);
-        }
-        System.out.println("-----------\n");
+
 
         return true;
     }
@@ -341,4 +334,7 @@ public class SPLSystem {
         return solutions;
     }
 
+    public Patch getSystem_patch() {
+        return system_patch;
+    }
 }

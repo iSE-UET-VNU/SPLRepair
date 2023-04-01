@@ -231,13 +231,11 @@ public class SPLRepairMain extends AbstractMain {
         List<SPLProduct> failingProducts = buggy_spl_system.getFailing_products();
         while (generation < maxgeneration){
             SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
-            System.out.println("Trang::selected products:" + selected_failing_product.getProduct_dir());
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
             if(coreEngine instanceof SPLGenProg) {
                 OperatorInstance op = ((SPLGenProg) coreEngine).gen_an_operation_instance();
 
                 if(op != null){
-                    System.out.println("Trang::selected operator::" + op);
                     SourcePosition original_element = op.getOriginal().getPosition();
                     String[] tmp = original_element.getFile().getName().split(File.separator);
                     String product1_stmt = tmp[tmp.length-1].replace(".java", "") + "." + original_element.getLine();
@@ -247,7 +245,7 @@ public class SPLRepairMain extends AbstractMain {
             }
             generation += 1;
         }
-        buggy_spl_system.evaluate_patches();
+        //buggy_spl_system.evaluate_patches();
         return buggy_spl_system;
     }
 
@@ -323,41 +321,13 @@ public class SPLRepairMain extends AbstractMain {
             SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
             long endT = System.currentTimeMillis();
             writer.write(S.getLocation() + "\n");
-            if(S.getSucceed_operators().size() > 0){
+
+            Patch patch = S.getSystem_patch();
+            writer.write(patch.toString());
+            if(patch.getNum_of_product_successful_fix() > 0 && patch.getNum_of_product_rejected_fix() ==0){
+                writer.write("This is an adequate patch.\n");
                 num_systems_containing_test_adequate_patch += 1;
             }
-
-            List<Patch> solutions = S.getSolutions();
-            writer.write("Number of generated patches:: " + solutions.size() + "\n");
-            int patches_with_one_or_more_product_fixed = 0;
-            int test_adequte_patches = 0;
-            for(Patch p:solutions){
-                OperatorInstance o = p.getOp();
-                if(p.getNum_of_product_successful_fix() > 0){
-                    patches_with_one_or_more_product_fixed += 1;
-                    writer.write(p.toString());
-                    SourcePosition original_element = o.getOriginal().getPosition();
-                    String[] tmp = original_element.getFile().getName().split(File.separator);
-                    String[] loc_tmp = original_element.toString().split(File.separator);
-                    String product_loc = "";
-                    for (String t : loc_tmp) {
-                        if (t.contains("model_m_")) {
-                            product_loc = Paths.get(Paths.get(S.getLocation(), "variants").toString(), t).toString();
-                        }
-                    }
-                    String product_stmt = tmp[tmp.length - 1].replace(".java", "") + "." + original_element.getLine();
-                    String feature_stmt = S.getAProduct(product_loc).get_feature_stmt("main." + product_stmt);
-                    writer.write("Repairing location: " + feature_stmt + "\n");
-                    if(p.getNum_of_product_rejected_fix() == 0){
-                        writer.write("This is a test adequate patch\n");
-                        test_adequte_patches =+ 1;
-                    }
-                    writer.write("--------\n");
-
-                }
-            }
-            writer.write("Number of patches being able to fix at least one product:: " + patches_with_one_or_more_product_fixed + "\n");
-            writer.write("Number of test adequate patches:: " + test_adequte_patches + "\n");
             writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
             total_time += (endT - startT) / 1000d;
             writer.write("*******************************************\n");

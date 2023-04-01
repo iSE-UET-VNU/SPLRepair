@@ -202,7 +202,6 @@ public class SPLProduct {
             }
         }
         for(OperatorInstance op:applied_operators){
-            System.out.println("Trang::" + product_dir + " previously applied " + op);
             coreEngine.applyNewMutationOperationToSpoonElement(op);
         }
         return applied_operators;

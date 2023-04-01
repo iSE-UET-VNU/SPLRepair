@@ -306,26 +306,26 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             List<Patch> solutions = S.getSolutions();
             writer.write("Number of generated patches:: " + solutions.size() + "\n");
             int patches_with_one_or_more_product_fixed = 0;
-            for(Patch p:solutions){
-                OperatorInstance o = p.getOp();
-                if(p.getNum_of_product_successful_fix() > 0){
-                    patches_with_one_or_more_product_fixed += 1;
-                    writer.write(p.toString());
-                    SourcePosition original_element = o.getOriginal().getPosition();
-                    String[] tmp = original_element.getFile().getName().split(File.separator);
-                    String[] loc_tmp = original_element.toString().split(File.separator);
-                    String product_loc = "";
-                    for (String t : loc_tmp) {
-                        if (t.contains("model_m_")) {
-                            product_loc = Paths.get(Paths.get(S.getLocation(), "variants").toString(), t).toString();
-                        }
-                    }
-                    String product_stmt = tmp[tmp.length - 1].replace(".java", "") + "." + original_element.getLine();
-                    String feature_stmt = S.getAProduct(product_loc).get_feature_stmt("main." + product_stmt);
-                    writer.write("Repairing location: " + feature_stmt + "\n");
-                    writer.write("--------\n");
-                }
-            }
+//            for(Patch p:solutions){
+//                OperatorInstance o = p.getOperations();
+//                if(p.getNum_of_product_successful_fix() > 0){
+//                    patches_with_one_or_more_product_fixed += 1;
+//                    writer.write(p.toString());
+//                    SourcePosition original_element = o.getOriginal().getPosition();
+//                    String[] tmp = original_element.getFile().getName().split(File.separator);
+//                    String[] loc_tmp = original_element.toString().split(File.separator);
+//                    String product_loc = "";
+//                    for (String t : loc_tmp) {
+//                        if (t.contains("model_m_")) {
+//                            product_loc = Paths.get(Paths.get(S.getLocation(), "variants").toString(), t).toString();
+//                        }
+//                    }
+//                    String product_stmt = tmp[tmp.length - 1].replace(".java", "") + "." + original_element.getLine();
+//                    String feature_stmt = S.getAProduct(product_loc).get_feature_stmt("main." + product_stmt);
+//                    writer.write("Repairing location: " + feature_stmt + "\n");
+//                    writer.write("--------\n");
+//                }
+//            }
             writer.write("Number of patches being able to fix at least one product:: " + patches_with_one_or_more_product_fixed + "\n");
 
             writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");

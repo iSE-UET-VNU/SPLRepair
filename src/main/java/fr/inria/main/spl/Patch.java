@@ -2,23 +2,29 @@ package fr.inria.main.spl;
 
 import fr.inria.astor.core.entities.OperatorInstance;
 
+import java.util.List;
+
 public class Patch {
 
-    private OperatorInstance op;
+    private List<OperatorInstance> operations;
     private int num_of_product_successful_fix = 0;
     private int num_of_product_rejected_fix = 0;
 
 
-    public Patch(OperatorInstance _op){
-        op = _op;
+    public Patch(List<OperatorInstance> _op){
+        operations = _op;
     }
 
-    public void setOp(OperatorInstance op) {
-        this.op = op;
+    public Patch() {
+
     }
 
-    public OperatorInstance getOp() {
-        return op;
+    public void setOperations(List<OperatorInstance> operations) {
+        this.operations = operations;
+    }
+
+    public List<OperatorInstance> getOperations() {
+        return operations;
     }
 
     public int getNum_of_product_successful_fix() {
@@ -54,12 +60,17 @@ public class Patch {
         if(obj == null) return false;
         if(!this.getClass().equals(obj.getClass())) return false;
         Patch other = (Patch) obj;
-        return op.equals(other.getOp());
+        return operations.equals(other.getOperations());
     }
 
     @Override
     public String toString(){
-        return op.toString() + "\n" + "num_of_product_successful_fix: " + num_of_product_successful_fix + "\n" +
+        String str = "Num_of_operations=" + operations.size() + "\n [";
+        for(OperatorInstance op:operations){
+            str += op + ", ";
+        }
+        str += "]\n " + "num_of_product_successful_fix: " + num_of_product_successful_fix + "\n" +
                 "num_of_product_rejected_fix: " + num_of_product_rejected_fix + "\n";
+        return str;
     }
 }

@@ -124,7 +124,7 @@ public class SPLTestCaseBasedFitnessPopulationController extends SPLPopulationCo
 
     }
 
-    public  void selectOperatorInstanceForNextGeneration(SPLSystem system, OperatorInstance newop, double newfitness){
+    public  boolean selectOperatorInstanceForNextGeneration(SPLSystem system, OperatorInstance newop, double newfitness){
         if(newfitness < system.getLastfitness()) {
             int maxinstance = ConfigurationProperties.getPropertyInt("SPLmaxinstance");
             List<OperatorInstance> current_instances = system.getApplied_operators();
@@ -132,9 +132,12 @@ public class SPLTestCaseBasedFitnessPopulationController extends SPLPopulationCo
                 current_instances.add(newop);
                 system.setApplied_operators(current_instances);
                 system.setLastfitness(newfitness);
+
+                return true;
             }
 
         }
+        return false;
     }
 
 }
