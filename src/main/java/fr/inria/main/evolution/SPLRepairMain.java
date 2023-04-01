@@ -223,9 +223,7 @@ public class SPLRepairMain extends AbstractMain {
         FailingProductNavigation failingProductNavigation = new FailingProductNavigation();
         List<SPLProduct> failingProducts = buggy_spl_system.getFailing_products();
         while (generation < maxgeneration){
-            //SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
-            SPLProduct selected_failing_product = buggy_spl_system.getAProduct("/Users/thu-trangnguyen/Documents/Projects/SPLRepair/examples/SPL/_MultipleBugs_.NOB_1.ID_133/variants/model_m_ca4_0015");
-            System.out.println("Trang::selected product::" + selected_failing_product.getProduct_dir());
+            SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
             if(coreEngine instanceof SPLGenProg) {
                 OperatorInstance op = ((SPLGenProg) coreEngine).gen_an_operation_instance();
@@ -314,12 +312,8 @@ public class SPLRepairMain extends AbstractMain {
             SPLRepairMain m = new SPLRepairMain();
 
             SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
-//            S.check_patches_on_all_products();
-            System.out.println();
-
             long endT = System.currentTimeMillis();
             writer.write(S.getLocation() + "\n");
-            writer.write("Number of test adequate patches:: " + S.getSucceed_operators().size() + "\n");
             if(S.getSucceed_operators().size() > 0){
                 num_systems_containing_test_adequate_patch += 1;
             }
@@ -327,6 +321,7 @@ public class SPLRepairMain extends AbstractMain {
             List<Patch> solutions = S.getSolutions();
             writer.write("Number of generated patches:: " + solutions.size() + "\n");
             int patches_with_one_or_more_product_fixed = 0;
+            int test_adequte_patches = 0;
             for(Patch p:solutions){
                 OperatorInstance o = p.getOp();
                 if(p.getNum_of_product_successful_fix() > 0){
@@ -344,11 +339,16 @@ public class SPLRepairMain extends AbstractMain {
                     String product_stmt = tmp[tmp.length - 1].replace(".java", "") + "." + original_element.getLine();
                     String feature_stmt = S.getAProduct(product_loc).get_feature_stmt("main." + product_stmt);
                     writer.write("Repairing location: " + feature_stmt + "\n");
+                    if(p.getNum_of_product_rejected_fix() == 0){
+                        writer.write("This is a test adequate patch\n");
+                        test_adequte_patches =+ 1;
+                    }
                     writer.write("--------\n");
+
                 }
             }
             writer.write("Number of patches being able to fix at least one product:: " + patches_with_one_or_more_product_fixed + "\n");
-
+            writer.write("Number of test adequate patches:: " + test_adequte_patches + "\n");
             writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
             total_time += (endT - startT) / 1000d;
             writer.write("*******************************************\n");
