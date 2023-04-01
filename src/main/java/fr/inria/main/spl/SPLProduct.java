@@ -1,14 +1,19 @@
 package fr.inria.main.spl;
 
-import fr.inria.astor.core.entities.OperatorInstance;
-import fr.inria.astor.core.entities.ProgramVariant;
+import fr.inria.astor.core.entities.*;
+import fr.inria.astor.core.entities.validation.VariantValidationResult;
+import fr.inria.astor.core.faultlocalization.entity.SuspiciousCode;
+import fr.inria.astor.core.manipulation.bytecode.entities.CompilationResult;
 import fr.inria.astor.core.setup.ConfigurationProperties;
 import fr.inria.astor.core.setup.ProjectRepairFacade;
 import fr.inria.astor.core.solutionsearch.AstorCoreEngine;
+import fr.inria.astor.core.solutionsearch.spaces.operators.AstorOperator;
 import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -29,6 +34,7 @@ public class SPLProduct {
     private ProjectRepairFacade projectRepairFacade = new ProjectRepairFacade();
     private AstorCoreEngine coreEngine = null;
     private boolean isfailingproduct = true;
+    private int generation = 0;
 
 
     public SPLProduct(String _product_dir){
@@ -184,4 +190,103 @@ public class SPLProduct {
         return source_product_to_feature.get(product_stmt);
     }
 
+    public List<OperatorInstance> apply_previous_operator_instances_to_product_variant(List<OperatorInstance> operators) throws IllegalAccessException {
+        List<OperatorInstance> applied_operators = new ArrayList<>();
+        for(OperatorInstance op:operators) {
+            OperatorInstance op2 = create_operator_instance_for_product(op);
+            if(op2 != null){
+                applied_operators.add(op2);
+            }else {
+                log.info("Cannot applied these all operators");
+                return null;
+            }
+        }
+        for(OperatorInstance op:applied_operators){
+            System.out.println("Trang::" + product_dir + " previously applied " + op);
+            coreEngine.applyNewMutationOperationToSpoonElement(op);
+        }
+        return applied_operators;
+    }
+
+    public void revert_applied_operators(List<OperatorInstance> applied_operators) throws IllegalAccessException {
+        if(applied_operators != null && applied_operators.size() > 0) {
+            for (int i = applied_operators.size() - 1; i >= 0; i--) {
+                coreEngine.undoOperationToSpoonElement(applied_operators.get(i));
+            }
+        }
+    }
+    public OperatorInstance create_operator_instance_for_product(OperatorInstance op) throws IllegalAccessException {
+        ProgramVariant product_variant = coreEngine.getVariants().get(0);
+        List<ModificationPoint> product_modification_points = product_variant.getModificationPoints();
+
+        SuspiciousModificationPoint sm_point = null;
+        SuspiciousModificationPoint susp_point = (SuspiciousModificationPoint) op.getModificationPoint();
+        String modification_point_feature_level = susp_point.getSuspicious().getFeatureInfo();
+        String modification_point_product_level = get_product_stmt(modification_point_feature_level);
+        String[] tmp_stmt2 = modification_point_product_level.split("\\.");
+        SuspiciousCode suspiciousCode = new SuspiciousCode (susp_point.getSuspicious().getClassName(),
+                null,Integer.parseInt(tmp_stmt2[tmp_stmt2.length-1]), modification_point_feature_level,
+                susp_point.getSuspicious().getSuspiciousValue(), null);
+        for(ModificationPoint mp:product_modification_points){
+            if(((SuspiciousModificationPoint) mp).getSuspicious().equals(suspiciousCode)){
+                sm_point = (SuspiciousModificationPoint) mp;
+                break;
+            }
+        }
+        if(sm_point == null){
+            log.info("The modification point does not exist\n");
+            return null;
+        }
+        OperatorInstance op_in_product2 = null;
+        AstorOperator astorOperator = op.getOperationApplied();
+        if(!astorOperator.canBeAppliedToPoint(sm_point))
+            return null;
+        if(op.getClass().toString().contains("StatementOperatorInstance")){
+            op_in_product2 = new StatementOperatorInstance(sm_point, op.getOperationApplied(),
+                    sm_point.getCodeElement(), op.getModified());
+        }else{
+            op_in_product2 = new OperatorInstance(sm_point, op.getOperationApplied(),
+                    sm_point.getCodeElement(), op.getModified());
+        }
+
+        product_variant.createModificationIntanceForAPoint(generation, op_in_product2);
+        generation++;
+        return op_in_product2;
+    }
+    public VariantValidationResult apply_operator_instance_to_product_variant(OperatorInstance op) throws Exception {
+        VariantValidationResult result = null;
+        ProgramVariant product_variant = coreEngine.getVariants().get(0);
+        URL[] originalURL = coreEngine.getProjectFacade().getClassPathURLforProgramVariant(ProgramVariant.DEFAULT_ORIGINAL_VARIANT);
+        OperatorInstance op_in_product2 = create_operator_instance_for_product(op);
+        if(op_in_product2 == null) {
+            log.info("Operation in product " + product_dir + " is not created.");
+            return null;
+        }
+        boolean applied = coreEngine.applyNewMutationOperationToSpoonElement(op_in_product2);
+        if(applied) {
+            CompilationResult compilation = coreEngine.getCompiler().compile(product_variant, originalURL);
+            boolean childCompiles = compilation.compiles();
+            product_variant.setCompilation(compilation);
+
+            coreEngine.storeModifiedModel(product_variant);
+            if (ConfigurationProperties.getPropertyBool("saveall")) {
+                coreEngine.saveVariant(product_variant);
+            }
+            if (childCompiles) {
+                result = coreEngine.getProgramValidator().validate(product_variant, projectRepairFacade);
+
+
+                if (result != null && result.isSuccessful()) {
+                    addSucceed_operators(op_in_product2);
+                } else {
+                    addRejected_operators(op_in_product2);
+                }
+            } else {
+                log.info("Cannot compile the op " + op_in_product2 + "in product: " + product_dir);
+            }
+            // We undo the operator (for try the next one)
+            coreEngine.undoOperationToSpoonElement(op_in_product2);
+        }
+        return result;
+    }
 }

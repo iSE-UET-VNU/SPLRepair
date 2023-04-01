@@ -229,11 +229,13 @@ public class SPLRepairMain extends AbstractMain {
         List<SPLProduct> failingProducts = buggy_spl_system.getFailing_products();
         while (generation < maxgeneration){
             SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
+            System.out.println("Trang::selected products:" + selected_failing_product.getProduct_dir());
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
             if(coreEngine instanceof SPLGenProg) {
                 OperatorInstance op = ((SPLGenProg) coreEngine).gen_an_operation_instance();
 
                 if(op != null){
+                    System.out.println("Trang::selected operator::" + op);
                     SourcePosition original_element = op.getOriginal().getPosition();
                     String[] tmp = original_element.getFile().getName().split(File.separator);
                     String product1_stmt = tmp[tmp.length-1].replace(".java", "") + "." + original_element.getLine();

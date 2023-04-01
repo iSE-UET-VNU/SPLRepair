@@ -109,6 +109,9 @@ public class SuspiciousCode {
 	public String getMethodName() {
 		return methodName;
 	}
+	public String getFeatureInfo(){
+		return featureInfo;
+	}
 
 	public void setMethodName(String methodName) {
 		this.methodName = methodName;

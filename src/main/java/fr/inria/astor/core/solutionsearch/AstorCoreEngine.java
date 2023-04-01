@@ -976,10 +976,10 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	 * @param operationInstance
 	 * @throws IllegalAccessException
 	 */
-	public void applyNewMutationOperationToSpoonElement(OperatorInstance operationInstance)
+	public boolean applyNewMutationOperationToSpoonElement(OperatorInstance operationInstance)
 			throws IllegalAccessException {
 
-		operationInstance.applyModification();
+		return operationInstance.applyModification();
 
 	}
 
