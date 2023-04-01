@@ -117,7 +117,7 @@ public class SuspiciousCode {
 	@Override
 	public String toString() {
 		return "Candidate [className=" + className + ", methodName=" + methodName + ", lineNumber=" + lineNumber
-				+ ", susp=" + suspiciousValue + "]";
+				+ ", featureLevelInfo=" + featureInfo + ", susp=" + suspiciousValue + "]";
 	}
 
 	public Map<Integer, Integer> getCoverage() {

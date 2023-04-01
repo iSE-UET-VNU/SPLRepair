@@ -104,7 +104,7 @@ public class SPLRepairMain extends AbstractMain {
 
         core.initModel();
 
-        if (!product.isIsfailingproduct() || ConfigurationProperties.getPropertyBool("skipfaultlocalization")) {
+        if (ConfigurationProperties.getPropertyBool("skipfaultlocalization")) {
             // We dont use FL, so at this point the do not have suspicious
             List<String> regressionTestForFaultLocalization = null;
             regressionTestForFaultLocalization = FinderTestCases.findJUnit4XTestCasesForRegression(projectFacade);

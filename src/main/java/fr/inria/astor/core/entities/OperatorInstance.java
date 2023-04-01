@@ -141,6 +141,7 @@ public class OperatorInstance {
 
 	@Override
 	public boolean equals(Object obj) {
+
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -169,7 +170,12 @@ public class OperatorInstance {
 		}
 		if (original == null) {
 			return other.original == null;
-		} else return original.equals(other.original);
+		} else {
+			if(!original.equals(other.original)) {
+				return false;
+			}
+			return true;
+		}
 	}
 
 	public IngredientPoolScope getIngredientScope() {
