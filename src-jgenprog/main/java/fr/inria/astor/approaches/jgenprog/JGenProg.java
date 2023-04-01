@@ -51,7 +51,6 @@ public class JGenProg extends IngredientBasedEvolutionaryRepairApproachImpl {
 	}
 
 	private void applyCrossover(int generation) {
-		System.out.println("Trang:: apply cross over");
 		int numberVariants = this.variants.size();
 		if (numberVariants <= 1) {
 			log.debug("CO|Not Enough variants to apply Crossover");

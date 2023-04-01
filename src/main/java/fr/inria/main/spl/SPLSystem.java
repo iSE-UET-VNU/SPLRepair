@@ -6,6 +6,7 @@ import fr.inria.astor.core.faultlocalization.entity.SuspiciousCode;
 import fr.inria.astor.core.manipulation.bytecode.entities.CompilationResult;
 import fr.inria.astor.core.setup.ConfigurationProperties;
 import fr.inria.astor.core.solutionsearch.AstorCoreEngine;
+import fr.inria.astor.core.solutionsearch.population.*;
 import org.apache.log4j.Logger;
 import spoon.reflect.cu.SourcePosition;
 
@@ -21,7 +22,9 @@ public class SPLSystem {
     private List<String> failing_product_locations = new ArrayList<>();
     private List<String> passing_product_locations = new ArrayList<>();
     public HashMap<String, SPLProduct> products = new HashMap<>();
-
+    private SPLFitnessFunction fitnessFunction = null;
+    private PopulationController populationController = null;
+    private double originalfitness = 0;
 
     private int num_of_features = 0;
     private int num_of_failing_products = 0;
@@ -118,6 +121,10 @@ public class SPLSystem {
 
     public void initialize() throws FileNotFoundException {
         Path variant_dir = Paths.get(location, "variants");
+        if(ConfigurationProperties.getProperty("splfitnessfunction").contains("SPLTestCaseFitnessFunction"))
+            fitnessFunction = new SPLTestCaseFitnessFunction();
+        if(ConfigurationProperties.getProperty("splpopulationcontroller").contains("SPLTestCaseBasedFitnessPopulationController"))
+            populationController = new SPLTestCaseBasedFitnessPopulationController();
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(Paths.get(location, "config.report.csv").toString()));
@@ -157,6 +164,15 @@ public class SPLSystem {
     }
 
 
+    public FitnessFunction getFitnessFunction(){
+        return fitnessFunction;
+    }
+    public void setOriginalFitness(double v){
+        originalfitness = v;
+    }
+    public double getOriginalFitness(){
+        return originalfitness;
+    }
     public void check_patches_on_all_products() throws Exception {
         for(String ploc1:products.keySet()){
             SPLProduct product1 = products.get(ploc1);
@@ -205,7 +221,7 @@ public class SPLSystem {
                                 }
 
 
-                                validation_result = validate_operation_instance_in_a_product(product2, op_in_product2, "");
+                                //validation_result = validate_operation_instance_in_a_product(product2, op_in_product2, "");
 
                                 if(!validation_result){
                                     flag = false;
@@ -229,24 +245,18 @@ public class SPLSystem {
     * Check how many products that a patch succeed and rejected
     * */
     public void evaluate_patches(){
-        System.out.println("Trang::Evaluate Patches");
         for(String ploc1:products.keySet()) {
-            System.out.println("Trang:product:" + ploc1);
             SPLProduct product1 = products.get(ploc1);
             List<OperatorInstance> p1_succeed_operators = product1.getSucceed_operators();
             if (!p1_succeed_operators.isEmpty()) {
-                System.out.println("Trang::succeed operators");
                 for (OperatorInstance pv : p1_succeed_operators) {
-                    System.out.println("Trang:" + pv);
                     Patch patch = new Patch(pv);
                     a_successful_patch(patch);
                 }
             }
             List<OperatorInstance> p1_rejected_operators = product1.getRejected_operators();
             if(!p1_rejected_operators.isEmpty()){
-                System.out.println("Trang::rejected operators");
                 for(OperatorInstance pv:p1_rejected_operators) {
-                    System.out.println(pv);
                     Patch patch = new Patch(pv);
                     a_rejected_patch(patch);
                 }
@@ -287,22 +297,22 @@ public class SPLSystem {
     }
 
     public boolean validate_operation_instance_in_the_whole_system(OperatorInstance op, String modification_point_feature_level) throws Exception {
-
+        HashMap<String, VariantValidationResult> system_validation_results = new HashMap<>();
         for(String loc:products.keySet()) {
             SPLProduct apro = products.get(loc);
-            boolean validation_result = validate_operation_instance_in_a_product(apro, op, modification_point_feature_level);
-            System.out.println("Validating in product: " + apro.getProduct_dir() + " is:: " + validation_result);
+            VariantValidationResult validation_result = validate_operation_instance_in_a_product(apro, op, modification_point_feature_level);
+            system_validation_results.put(loc, validation_result);
         }
+        double system_fitness_value = fitnessFunction.calculateFitnessValue(system_validation_results);
         return true;
     }
 
-    public boolean validate_operation_instance_in_a_product(SPLProduct product, OperatorInstance op, String modification_point_feature_level) throws Exception {
-        boolean flag = false;
+    public VariantValidationResult validate_operation_instance_in_a_product(SPLProduct product, OperatorInstance op, String modification_point_feature_level) throws Exception {
+        VariantValidationResult result = null;
         AstorCoreEngine product_core = product.getCoreEngine();
         URL[] originalURL = product_core.getProjectFacade().getClassPathURLforProgramVariant(ProgramVariant.DEFAULT_ORIGINAL_VARIANT);
         SuspiciousModificationPoint susp_point = (SuspiciousModificationPoint) op.getModificationPoint();
         String modification_point_product_level = product.get_product_stmt(modification_point_feature_level);
-        System.out.println("Trang:modification point: " + modification_point_product_level);
         String[] tmp_stmt2 = modification_point_product_level.split("\\.");
         SuspiciousCode suspiciousCode = new SuspiciousCode (susp_point.getSuspicious().getClassName(),
                 null,Integer.parseInt(tmp_stmt2[tmp_stmt2.length-1]), modification_point_feature_level,
@@ -321,7 +331,7 @@ public class SPLSystem {
             }
             if(sm_point == null){
                 log.info("The modification point does not exist\n");
-                return true;
+                return null;
             }
             OperatorInstance op_in_product2 = null;
             if(op.getClass().toString().contains("StatementOperatorInstance")){
@@ -343,10 +353,11 @@ public class SPLSystem {
                 product_core.saveVariant(product2_variant);
             }
             if (childCompiles) {
-                VariantValidationResult result = product_core.getProgramValidator().validate(product2_variant, product.getProjectRepairFacade());
+                result = product_core.getProgramValidator().validate(product2_variant, product.getProjectRepairFacade());
+                System.out.println("Trang product::" + product.getProduct_dir());
+                double local_fitness_value = fitnessFunction.calculateFitnessValue(result);
                 if (result != null && result.isSuccessful()) {
                     product.addSucceed_operators(op_in_product2);
-                    flag = true;
                 } else {
                     product.addRejected_operators(op_in_product2);
                 }
@@ -359,9 +370,9 @@ public class SPLSystem {
         }catch (Exception e){
             log.error("SPLSystem: validate operation instance exception in system " + product.getProduct_dir());
             e.printStackTrace();
-            flag = false;
+            return null;
        }
-        return flag;
+        return result;
     }
 
     public List<Patch> getSolutions(){

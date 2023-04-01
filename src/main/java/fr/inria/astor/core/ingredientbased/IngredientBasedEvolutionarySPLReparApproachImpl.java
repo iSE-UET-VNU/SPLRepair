@@ -44,12 +44,8 @@ public class IngredientBasedEvolutionarySPLReparApproachImpl extends IngredientB
             //this.saveOriginalVariant(parentVariant);
             List<ModificationPoint> modificationPointsToProcess = this.suspiciousNavigationStrategy
                     .getSortedModificationPointsList(parentVariant.getModificationPoints());
-            System.out.println("Trang::this.suspiciousNavigationStrategy::" + this.suspiciousNavigationStrategy.getClass());
-            System.out.println("Trang::modificationPointsToProcess::" + modificationPointsToProcess.size());
             for (ModificationPoint modificationPoint : modificationPointsToProcess) {
                 log.debug("---analyzing modificationPoint position: " + modificationPoint.identified);
-                System.out.println("Trang::" + modificationPoint);
-
                 modificationPoint.setProgramVariant(parentVariant);
                 OperatorInstance modificationInstance = createOperatorInstanceForPoint(modificationPoint);
                 if (modificationInstance != null) {

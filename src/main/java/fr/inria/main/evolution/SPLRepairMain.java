@@ -9,6 +9,7 @@ import fr.inria.astor.approaches.jgenprog.SPLGenProg;
 import fr.inria.astor.core.entities.OperatorInstance;
 import fr.inria.astor.core.setup.FinderTestCases;
 import fr.inria.astor.core.solutionsearch.navigation.FailingProductNavigation;
+import fr.inria.astor.core.solutionsearch.population.SPLFitnessFunction;
 import fr.inria.main.spl.Patch;
 import fr.inria.main.spl.SPLProduct;
 import fr.inria.main.spl.SPLSystem;
@@ -217,6 +218,10 @@ public class SPLRepairMain extends AbstractMain {
         for(String pv_dir:passing_product_locations) {
             prepare_engine(buggy_spl_system, projectName, pv_dir, dependencies, packageToInstrument, thfl,
                     failing, customEngine, mode);
+        }
+        if(buggy_spl_system.getFitnessFunction() != null){
+            SPLFitnessFunction fitnessFunction = (SPLFitnessFunction) buggy_spl_system.getFitnessFunction();
+            buggy_spl_system.setOriginalFitness(fitnessFunction.calculateFitnessValue(buggy_spl_system));
         }
         int generation = 0;
         int maxgeneration = Integer.parseInt(ConfigurationProperties.getProperty("maxGenerationSPL"));
