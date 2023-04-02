@@ -197,8 +197,8 @@ public class SPLProduct {
             if(op2 != null){
                 applied_operators.add(op2);
             }else {
-                log.info("Cannot applied these all operators");
-                return null;
+                log.info("Cannot applied operator " + op);
+                //return null;
             }
         }
         for(OperatorInstance op:applied_operators){
@@ -222,6 +222,10 @@ public class SPLProduct {
         SuspiciousModificationPoint susp_point = (SuspiciousModificationPoint) op.getModificationPoint();
         String modification_point_feature_level = susp_point.getSuspicious().getFeatureInfo();
         String modification_point_product_level = get_product_stmt(modification_point_feature_level);
+        if(modification_point_product_level == null){
+            log.info("modification point does not exist in the product");
+            return null;
+        }
         String[] tmp_stmt2 = modification_point_product_level.split("\\.");
         SuspiciousCode suspiciousCode = new SuspiciousCode (susp_point.getSuspicious().getClassName(),
                 null,Integer.parseInt(tmp_stmt2[tmp_stmt2.length-1]), modification_point_feature_level,
@@ -254,37 +258,43 @@ public class SPLProduct {
     }
     public VariantValidationResult apply_operator_instance_to_product_variant(OperatorInstance op) throws Exception {
         VariantValidationResult result = null;
-        ProgramVariant product_variant = coreEngine.getVariants().get(0);
-        URL[] originalURL = coreEngine.getProjectFacade().getClassPathURLforProgramVariant(ProgramVariant.DEFAULT_ORIGINAL_VARIANT);
+        //ProgramVariant product_variant = coreEngine.getVariants().get(0);
         OperatorInstance op_in_product2 = create_operator_instance_for_product(op);
         if(op_in_product2 == null) {
             log.info("Operation in product " + product_dir + " is not created.");
-            return null;
+            result = validate_new_product();
+        }else {
+            boolean applied = coreEngine.applyNewMutationOperationToSpoonElement(op_in_product2);
+            if (applied) {
+                result = validate_new_product();
+                // We undo the operator (for try the next one)
+                coreEngine.undoOperationToSpoonElement(op_in_product2);
+            }
         }
-        boolean applied = coreEngine.applyNewMutationOperationToSpoonElement(op_in_product2);
-        if(applied) {
-            CompilationResult compilation = coreEngine.getCompiler().compile(product_variant, originalURL);
-            boolean childCompiles = compilation.compiles();
-            product_variant.setCompilation(compilation);
+//        if (result != null && result.isSuccessful()) {
+//            addSucceed_operators(op_in_product2);
+//        } else {
+//            addRejected_operators(op_in_product2);
+//        }
+        return result;
+    }
 
-            coreEngine.storeModifiedModel(product_variant);
-            if (ConfigurationProperties.getPropertyBool("saveall")) {
-                coreEngine.saveVariant(product_variant);
-            }
-            if (childCompiles) {
-                result = coreEngine.getProgramValidator().validate(product_variant, projectRepairFacade);
+    public VariantValidationResult validate_new_product() throws Exception {
+        URL[] originalURL = coreEngine.getProjectFacade().getClassPathURLforProgramVariant(ProgramVariant.DEFAULT_ORIGINAL_VARIANT);
+        VariantValidationResult result = null;
+        ProgramVariant product_variant = coreEngine.getVariants().get(0);
+        CompilationResult compilation = coreEngine.getCompiler().compile(product_variant, originalURL);
+        boolean childCompiles = compilation.compiles();
+        product_variant.setCompilation(compilation);
 
-
-                if (result != null && result.isSuccessful()) {
-                    addSucceed_operators(op_in_product2);
-                } else {
-                    addRejected_operators(op_in_product2);
-                }
-            } else {
-                log.info("Cannot compile the op " + op_in_product2 + "in product: " + product_dir);
-            }
-            // We undo the operator (for try the next one)
-            coreEngine.undoOperationToSpoonElement(op_in_product2);
+        coreEngine.storeModifiedModel(product_variant);
+        if (ConfigurationProperties.getPropertyBool("saveall")) {
+            coreEngine.saveVariant(product_variant);
+        }
+        if (childCompiles) {
+            result = coreEngine.getProgramValidator().validate(product_variant, projectRepairFacade);
+        } else {
+            log.info("Cannot compile the this product variant " + product_dir);
         }
         return result;
     }

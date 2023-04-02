@@ -2,11 +2,12 @@ package fr.inria.main.spl;
 
 import fr.inria.astor.core.entities.OperatorInstance;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Patch {
 
-    private List<OperatorInstance> operations;
+    private List<OperatorInstance> operations = new ArrayList<>();
     private int num_of_product_successful_fix = 0;
     private int num_of_product_rejected_fix = 0;
 

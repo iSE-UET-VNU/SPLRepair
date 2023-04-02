@@ -309,10 +309,12 @@ public class SPLSystem {
             List<OperatorInstance> temp_applied = apro.apply_previous_operator_instances_to_product_variant(applied_operators);
             VariantValidationResult validation_result = apro.apply_operator_instance_to_product_variant(op);
             system_validation_results.put(loc, validation_result);
-            if(validation_result != null && validation_result.isSuccessful()){
-                numof_successed += 1;
-            }else {
-                numof_rejected += 1;
+            if(validation_result != null) {
+                if (validation_result.isSuccessful()) {
+                    numof_successed += 1;
+                } else {
+                    numof_rejected += 1;
+                }
             }
             apro.revert_applied_operators(temp_applied);
         }
