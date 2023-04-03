@@ -126,8 +126,13 @@ public class SPLSystem {
         Path variant_dir = Paths.get(location, "variants");
         if(ConfigurationProperties.getProperty("splfitnessfunction").contains("SPLTestCaseFitnessFunction"))
             fitnessFunction = new SPLTestCaseFitnessFunction();
+        else if(ConfigurationProperties.getProperty("splfitnessfunction").contains("SPLWeightedProductFitnessFunction"))
+            fitnessFunction = new SPLWeightedProductFitnessFunction();
+
         if(ConfigurationProperties.getProperty("splpopulationcontroller").contains("SPLTestCaseBasedFitnessPopulationController"))
             populationController = new SPLTestCaseBasedFitnessPopulationController();
+        else if(ConfigurationProperties.getProperty("splpopulationcontroller").contains("SPLWeightedProductFitnessPopulationController"))
+            populationController = new SPLWeightedProductFitnessPopulationController();
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(Paths.get(location, "config.report.csv").toString()));
@@ -301,6 +306,7 @@ public class SPLSystem {
     }
 
     public boolean validate_operation_instance_in_the_whole_system(OperatorInstance op, String modification_point_feature_level) throws Exception {
+
         HashMap<String, VariantValidationResult> system_validation_results = new HashMap<>();
         int numof_successed = 0;
         int numof_rejected = 0;
