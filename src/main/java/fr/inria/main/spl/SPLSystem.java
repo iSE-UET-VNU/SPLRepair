@@ -128,6 +128,8 @@ public class SPLSystem {
             fitnessFunction = new SPLTestCaseFitnessFunction();
         else if(ConfigurationProperties.getProperty("splfitnessfunction").contains("SPLWeightedProductFitnessFunction"))
             fitnessFunction = new SPLWeightedProductFitnessFunction();
+        else if(ConfigurationProperties.getProperty("splfitnessfunction").contains("SPLStrictWeightedProductFitnessFunction"))
+            fitnessFunction = new SPLStrictWeightedProductFitnessFunction();
 
         if(ConfigurationProperties.getProperty("splpopulationcontroller").contains("SPLTestCaseBasedFitnessPopulationController"))
             populationController = new SPLTestCaseBasedFitnessPopulationController();
@@ -325,7 +327,8 @@ public class SPLSystem {
             apro.revert_applied_operators(temp_applied);
         }
         double system_fitness_value = fitnessFunction.calculateFitnessValue(system_validation_results);
-        if(system_fitness_value != fitnessFunction.getWorstMaxFitnessValue()){
+        if(system_fitness_value != (float) fitnessFunction.getWorstMaxFitnessValue()){
+            System.out.println("Trang::new fitness value:" + system_fitness_value);
             boolean selected = populationController.selectOperatorInstanceForNextGeneration(this, op, system_fitness_value);
             if(selected){
                 system_patch = new Patch(applied_operators);

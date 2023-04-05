@@ -202,6 +202,7 @@ public class SPLProduct {
             }
         }
         for(OperatorInstance op:applied_operators){
+            System.out.println("TRANG::APPLIED:" + op);
             coreEngine.applyNewMutationOperationToSpoonElement(op);
         }
         return applied_operators;
@@ -210,6 +211,7 @@ public class SPLProduct {
     public void revert_applied_operators(List<OperatorInstance> applied_operators) throws IllegalAccessException {
         if(applied_operators != null && applied_operators.size() > 0) {
             for (int i = applied_operators.size() - 1; i >= 0; i--) {
+                System.out.println("TRANG:REVERT:" + applied_operators.get(i) );
                 coreEngine.undoOperationToSpoonElement(applied_operators.get(i));
             }
         }

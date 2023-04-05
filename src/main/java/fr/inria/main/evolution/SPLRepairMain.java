@@ -240,7 +240,12 @@ public class SPLRepairMain extends AbstractMain {
                     String[] tmp = original_element.getFile().getName().split(File.separator);
                     String product1_stmt = tmp[tmp.length-1].replace(".java", "") + "." + original_element.getLine();
                     String feature_stmt = selected_failing_product.get_feature_stmt("main." + product1_stmt);
-                    buggy_spl_system.validate_operation_instance_in_the_whole_system(op, feature_stmt);
+//                    try{
+                        buggy_spl_system.validate_operation_instance_in_the_whole_system(op, feature_stmt);
+
+//                    }catch (Exception e){
+//                        throw e;
+//                    }
                 }
             }
             generation += 1;
@@ -317,20 +322,23 @@ public class SPLRepairMain extends AbstractMain {
             long startT = System.currentTimeMillis();
             num_of_system += 1;
             SPLRepairMain m = new SPLRepairMain();
+//            try {
+                SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
+                long endT = System.currentTimeMillis();
+                writer.write(S.getLocation() + "\n");
 
-            SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
-            long endT = System.currentTimeMillis();
-            writer.write(S.getLocation() + "\n");
-
-            Patch patch = S.getSystem_patch();
-            writer.write(patch.toString());
-            if(patch.getNum_of_product_successful_fix() > 0 && patch.getNum_of_product_rejected_fix() ==0){
-                writer.write("This is an adequate patch.\n");
-                num_systems_containing_test_adequate_patch += 1;
-            }
-            writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
-            total_time += (endT - startT) / 1000d;
-            writer.write("*******************************************\n");
+                Patch patch = S.getSystem_patch();
+                writer.write(patch.toString());
+                if (patch.getNum_of_product_successful_fix() > 0 && patch.getNum_of_product_rejected_fix() == 0) {
+                    writer.write("This is an adequate patch.\n");
+                    num_systems_containing_test_adequate_patch += 1;
+                }
+                writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
+                total_time += (endT - startT) / 1000d;
+                writer.write("*******************************************\n");
+//            }catch (Exception e){
+//                writer.write("Exception in the system:: " + sloc + "\n");
+//            }
         }
         writer.write("------------------------summary-------------------\n");
         writer.write("Total number of systems:" + num_of_system + "\n");

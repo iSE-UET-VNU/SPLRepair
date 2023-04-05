@@ -6,6 +6,6 @@ import fr.inria.main.spl.SPLSystem;
 import java.util.HashMap;
 
 public abstract class SPLFitnessFunction implements FitnessFunction{
-    public abstract double calculateFitnessValue(SPLSystem system);
-    public abstract double calculateFitnessValue(HashMap<String, VariantValidationResult> system_validation_results);
+    public abstract float calculateFitnessValue(SPLSystem system);
+    public abstract float calculateFitnessValue(HashMap<String, VariantValidationResult> system_validation_results);
 }

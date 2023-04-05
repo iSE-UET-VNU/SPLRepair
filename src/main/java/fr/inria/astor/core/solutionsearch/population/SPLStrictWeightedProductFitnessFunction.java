@@ -17,7 +17,7 @@ import java.util.HashMap;
  *
  *
  */
-public class SPLWeightedProductFitnessFunction extends SPLFitnessFunction {
+public class SPLStrictWeightedProductFitnessFunction extends SPLFitnessFunction {
 
     /**
      * In this case the fitness value is associate to the failures: LESS FITNESS
@@ -30,6 +30,15 @@ public class SPLWeightedProductFitnessFunction extends SPLFitnessFunction {
         TestCaseVariantValidationResult result = (TestCaseVariantValidationResult) validationResult;
         return result.getPassingTestCases();
     }
+    public float calculateFitnessValuewithPercentage(VariantValidationResult validationResult) {
+        if (validationResult == null)
+            return (float) this.getWorstMaxFitnessValue();
+
+        TestCaseVariantValidationResult result = (TestCaseVariantValidationResult) validationResult;
+        if(result.getCasesExecuted() == 0)
+            return 0;
+        return (float) result.getPassingTestCases()/result.getCasesExecuted();
+    }
     public boolean isCompletelyFixed(VariantValidationResult validationResult){
         if(validationResult != null && validationResult.isSuccessful()){
             return true;
@@ -39,7 +48,7 @@ public class SPLWeightedProductFitnessFunction extends SPLFitnessFunction {
     }
     public float calculateFitnessValue(SPLSystem system) {
         HashMap<String, SPLProduct> products = system.getAllProducts();
-        double total_passing_tests = 0;
+        float total_passing_tests = 0;
         int num_of_completely_fixed_product = 0;
         for(String loc:products.keySet()) {
             SPLProduct apro = products.get(loc);
@@ -48,20 +57,20 @@ public class SPLWeightedProductFitnessFunction extends SPLFitnessFunction {
             if(isCompletelyFixed(result)){
                 num_of_completely_fixed_product += 1;
             }
-            double localfitnessvalue = calculateFitnessValue(result);
+            float localfitnessvalue = calculateFitnessValuewithPercentage(result);
             total_passing_tests += localfitnessvalue;
         }
         int weight = ConfigurationProperties.getPropertyInt("WeightedCompletelyFixedProducts");
-        return (float) (weight*num_of_completely_fixed_product + total_passing_tests);
+        return (weight*num_of_completely_fixed_product + total_passing_tests);
     }
 
     public float calculateFitnessValue(HashMap<String, VariantValidationResult> system_validation_results) {
 
-        double total_passing_tests = 0;
+        float total_passing_tests = 0;
         int num_of_completely_fixed_product = 0;
         for(String loc:system_validation_results.keySet()) {
             VariantValidationResult result = system_validation_results.get(loc);
-            double localfitnessvalue = calculateFitnessValue(result);
+            float localfitnessvalue = calculateFitnessValuewithPercentage(result);
             if(isCompletelyFixed(result)){
                 num_of_completely_fixed_product += 1;
             }
@@ -69,7 +78,7 @@ public class SPLWeightedProductFitnessFunction extends SPLFitnessFunction {
 
         }
         int weight = ConfigurationProperties.getPropertyInt("WeightedCompletelyFixedProducts");
-        return (float) (weight*num_of_completely_fixed_product + total_passing_tests);
+        return (weight*num_of_completely_fixed_product + total_passing_tests);
     }
 
     public double getWorstMaxFitnessValue() {

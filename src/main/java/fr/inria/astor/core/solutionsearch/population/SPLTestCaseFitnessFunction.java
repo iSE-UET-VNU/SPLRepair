@@ -29,7 +29,7 @@ public class SPLTestCaseFitnessFunction extends SPLFitnessFunction {
         return result.getFailureCount();
     }
 
-    public double calculateFitnessValue(SPLSystem system) {
+    public float calculateFitnessValue(SPLSystem system) {
         HashMap<String, SPLProduct> products = system.getAllProducts();
         double system_fitness_value = 0;
         for(String loc:products.keySet()) {
@@ -39,10 +39,10 @@ public class SPLTestCaseFitnessFunction extends SPLFitnessFunction {
             double localfitnessvalue = calculateFitnessValue(result);
             system_fitness_value += localfitnessvalue;
         }
-        return system_fitness_value;
+        return (float) system_fitness_value;
     }
 
-    public double calculateFitnessValue(HashMap<String, VariantValidationResult> system_validation_results) {
+    public float calculateFitnessValue(HashMap<String, VariantValidationResult> system_validation_results) {
 
         double system_fitness_value = 0;
         for(String loc:system_validation_results.keySet()) {
@@ -55,7 +55,7 @@ public class SPLTestCaseFitnessFunction extends SPLFitnessFunction {
             }
         }
 
-        return system_fitness_value;
+        return (float) system_fitness_value;
     }
 
     public double getWorstMaxFitnessValue() {
