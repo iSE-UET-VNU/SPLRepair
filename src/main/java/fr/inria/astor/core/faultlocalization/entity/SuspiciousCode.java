@@ -98,8 +98,8 @@ public class SuspiciousCode {
 		if (i != -1) {
 			return className.substring(0, i);
 		}
-
-		return className;
+		String[] class_name_tmp = className.split("\\.");
+		return class_name_tmp[class_name_tmp.length -2] + "." + class_name_tmp[class_name_tmp.length -1];
 	}
 
 	public void setClassName(String className) {

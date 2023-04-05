@@ -200,7 +200,6 @@ public class SPLRepairMain extends AbstractMain {
                                    double thfl, String failing) throws Exception {
         SPLSystem buggy_spl_system = new SPLSystem(location);
         List<String> failing_product_locations = buggy_spl_system.getFailing_product_locations();
-        ExecutionResult result = null;
         if(failing_product_locations == null || failing_product_locations.isEmpty()){
             log.error("SPLRepair::There is no failing products in this SPL system");
             return buggy_spl_system;
@@ -222,6 +221,7 @@ public class SPLRepairMain extends AbstractMain {
         if(buggy_spl_system.getFitnessFunction() != null){
             SPLFitnessFunction fitnessFunction = (SPLFitnessFunction) buggy_spl_system.getFitnessFunction();
             double originalfitness = fitnessFunction.calculateFitnessValue(buggy_spl_system);
+            System.out.println("Trang::original fitness function::" + originalfitness);
             buggy_spl_system.setOriginalFitness(originalfitness);
             buggy_spl_system.setLastfitness(originalfitness);
         }
