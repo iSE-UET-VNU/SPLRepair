@@ -221,7 +221,6 @@ public class SPLRepairMain extends AbstractMain {
         if(buggy_spl_system.getFitnessFunction() != null){
             SPLFitnessFunction fitnessFunction = (SPLFitnessFunction) buggy_spl_system.getFitnessFunction();
             double originalfitness = fitnessFunction.calculateFitnessValue(buggy_spl_system);
-            System.out.println("Trang::original fitness function::" + originalfitness);
             buggy_spl_system.setOriginalFitness(originalfitness);
             buggy_spl_system.setLastfitness(originalfitness);
         }
@@ -240,12 +239,12 @@ public class SPLRepairMain extends AbstractMain {
                     String[] tmp = original_element.getFile().getName().split(File.separator);
                     String product1_stmt = tmp[tmp.length-1].replace(".java", "") + "." + original_element.getLine();
                     String feature_stmt = selected_failing_product.get_feature_stmt("main." + product1_stmt);
-//                    try{
+                    try{
                         buggy_spl_system.validate_operation_instance_in_the_whole_system(op, feature_stmt);
 
-//                    }catch (Exception e){
-//                        throw e;
-//                    }
+                    }catch (Exception e){
+                        throw e;
+                    }
                 }
             }
             generation += 1;
@@ -256,7 +255,7 @@ public class SPLRepairMain extends AbstractMain {
 
     private SPLProduct prepare_engine(SPLSystem buggy_spl_system, String projectName, String product_dir,  String dependencies, String packageToInstrument,
                                       double thfl,  String failing, String customEngine, String mode) throws Exception {
-        ConfigurationProperties.setProperty("workingDirectory", "./output_astor/" + projectName);
+
         SPLProduct product = buggy_spl_system.getAProduct(product_dir);
 
         List<String> failing_test_classes = product.getFailing_test_classes();
@@ -309,10 +308,18 @@ public class SPLRepairMain extends AbstractMain {
         int num_of_system = 0;
         double total_time = 0d;
         int num_systems_containing_test_adequate_patch = 0;
+        int num_systems_partially_fixed = 0;
+        int total_fixed_products = 0;
         String location = cmd.getOptionValue("location");
-
         ConfigurationProperties.properties.setProperty("location", location);
-        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), "results-FL.txt").toString();
+        String fitness_func = cmd.getOptionValue("splfitnessfunction");
+        ConfigurationProperties.properties.setProperty("splfitnessfunction", fitness_func);
+
+
+
+        String[] system_name_tmp = location.split(System.getProperty("file.separator"));
+        String system_name = system_name_tmp[system_name_tmp.length - 1];
+        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fitness_func + "_localization.txt").toString();
         BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
         String[] system_locations = new File(location).list();
 
@@ -322,13 +329,17 @@ public class SPLRepairMain extends AbstractMain {
             long startT = System.currentTimeMillis();
             num_of_system += 1;
             SPLRepairMain m = new SPLRepairMain();
-//            try {
+            try {
                 SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
                 long endT = System.currentTimeMillis();
                 writer.write(S.getLocation() + "\n");
 
                 Patch patch = S.getSystem_patch();
                 writer.write(patch.toString());
+                if(patch.getNum_of_product_successful_fix() > 0 && patch.getNum_of_product_rejected_fix() > 0){
+                    num_systems_partially_fixed += 1;
+                    total_fixed_products += patch.getNum_of_product_successful_fix();
+                }
                 if (patch.getNum_of_product_successful_fix() > 0 && patch.getNum_of_product_rejected_fix() == 0) {
                     writer.write("This is an adequate patch.\n");
                     num_systems_containing_test_adequate_patch += 1;
@@ -336,13 +347,16 @@ public class SPLRepairMain extends AbstractMain {
                 writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
                 total_time += (endT - startT) / 1000d;
                 writer.write("*******************************************\n");
-//            }catch (Exception e){
-//                writer.write("Exception in the system:: " + sloc + "\n");
-//            }
+            }catch (Exception e){
+                writer.write("Exception in the system:: " + sloc + "\n");
+            }
         }
         writer.write("------------------------summary-------------------\n");
         writer.write("Total number of systems:" + num_of_system + "\n");
         writer.write("Total number of systems containing test adequate patches:" + num_systems_containing_test_adequate_patch + "\n");
+        writer.write("Total number of systems partially fixed:" + num_systems_partially_fixed + "\n");
+        if(num_systems_partially_fixed != 0)
+            writer.write("On partially fixed systems, num of products are fixed:" + total_fixed_products/num_systems_partially_fixed + "\n");
         writer.write("Total repairing time:" + total_time + "\n");
         writer.close();
     }

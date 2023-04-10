@@ -132,7 +132,6 @@ public class SPLTestCaseBasedFitnessPopulationController extends SPLPopulationCo
                 current_instances.add(newop);
                 system.setApplied_operators(current_instances);
                 system.setLastfitness(newfitness);
-
                 return true;
             }
 

@@ -73,6 +73,7 @@ public abstract class AbstractMain {
 		options.addOption("autoconfigure", true,
 				" Auto-configure project. Must install https://github.com/tdurieux/project-info-maven-plugin");
 		options.addOption("location", true, "URL of the project to manipulate");
+		options.addOption("splfitnessfunction", true, "Fitness function for repairing SPL system");
 		options.addOption("dependencies", true,
 				"dependencies of the application, separated by char " + File.pathSeparator);
 		options.addOption("package", true, "package to instrument e.g. org.commons.math");
@@ -444,6 +445,9 @@ public abstract class AbstractMain {
 
 		if (cmd.hasOption("mode"))
 			ConfigurationProperties.properties.setProperty("mode", cmd.getOptionValue("mode"));
+
+		if (cmd.hasOption("splfitnessfunction"))
+			ConfigurationProperties.properties.setProperty("splfitnessfunction", cmd.getOptionValue("splfitnessfunction"));
 
 		String outputPath = "";
 		if (cmd.hasOption("out")) {

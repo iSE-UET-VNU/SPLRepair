@@ -124,17 +124,16 @@ public class SPLSystem {
 
     public void initialize() throws FileNotFoundException {
         Path variant_dir = Paths.get(location, "variants");
-        if(ConfigurationProperties.getProperty("splfitnessfunction").contains("SPLTestCaseFitnessFunction"))
+        if(ConfigurationProperties.getProperty("splfitnessfunction").equals("SPLTestCaseFitnessFunction")) {
             fitnessFunction = new SPLTestCaseFitnessFunction();
-        else if(ConfigurationProperties.getProperty("splfitnessfunction").contains("SPLWeightedProductFitnessFunction"))
-            fitnessFunction = new SPLWeightedProductFitnessFunction();
-        else if(ConfigurationProperties.getProperty("splfitnessfunction").contains("SPLStrictWeightedProductFitnessFunction"))
-            fitnessFunction = new SPLStrictWeightedProductFitnessFunction();
-
-        if(ConfigurationProperties.getProperty("splpopulationcontroller").contains("SPLTestCaseBasedFitnessPopulationController"))
             populationController = new SPLTestCaseBasedFitnessPopulationController();
-        else if(ConfigurationProperties.getProperty("splpopulationcontroller").contains("SPLWeightedProductFitnessPopulationController"))
+        }else if(ConfigurationProperties.getProperty("splfitnessfunction").equals("SPLWeightedProductFitnessFunction")) {
+            fitnessFunction = new SPLWeightedProductFitnessFunction();
             populationController = new SPLWeightedProductFitnessPopulationController();
+        }else if(ConfigurationProperties.getProperty("splfitnessfunction").equals("SPLStrictWeightedProductFitnessFunction")) {
+            fitnessFunction = new SPLStrictWeightedProductFitnessFunction();
+            populationController = new SPLWeightedProductFitnessPopulationController();
+        }
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(Paths.get(location, "config.report.csv").toString()));
@@ -328,7 +327,6 @@ public class SPLSystem {
         }
         double system_fitness_value = fitnessFunction.calculateFitnessValue(system_validation_results);
         if(system_fitness_value != (float) fitnessFunction.getWorstMaxFitnessValue()){
-            System.out.println("Trang::new fitness value:" + system_fitness_value);
             boolean selected = populationController.selectOperatorInstanceForNextGeneration(this, op, system_fitness_value);
             if(selected){
                 system_patch = new Patch(applied_operators);

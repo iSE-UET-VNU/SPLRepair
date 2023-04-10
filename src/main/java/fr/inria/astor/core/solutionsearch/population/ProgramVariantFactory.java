@@ -235,7 +235,6 @@ public class ProgramVariantFactory {
 	 */
 	public List<SuspiciousModificationPoint> createModificationPoints(SuspiciousCode suspiciousCode,
 			ProgramVariant progInstance) {
-		System.out.println("Trang:class name:" + suspiciousCode.getClassName());
 
 		List<SuspiciousModificationPoint> suspiciousModificationPoints = new ArrayList<SuspiciousModificationPoint>();
 
