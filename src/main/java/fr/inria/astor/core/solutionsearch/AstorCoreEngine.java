@@ -143,9 +143,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	protected List<ProgramVariant> solutions = new ArrayList<ProgramVariant>();
 	protected List<ProgramVariant> rejected_patches = new ArrayList<ProgramVariant>();
 
-	protected List<OperatorInstance> succeed_operators = new ArrayList<OperatorInstance>();
-	protected List<OperatorInstance> rejected_operators = new ArrayList<OperatorInstance>();
-
 	protected ProgramVariant originalVariant = null;
 
 	protected Date dateInitEvolution = new Date();
@@ -1465,12 +1462,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	public List<ProgramVariant> get_solutions(){
 		return this.solutions;
 	}
-	public List<OperatorInstance> getSucceed_operators(){
-		return this.succeed_operators;
-	}
-	public List<OperatorInstance> getRejected_operators(){
-		return this.rejected_operators;
-	}
 
 	public Date get_dateInitEvolution(){
 		return dateInitEvolution;
@@ -1479,5 +1470,15 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	public List<OperatorInstance> start_search_spl(int generation) throws Exception{
 		log.info("This method is specialized for repairing spl system");
 		return null;
+	}
+
+	public int getGenerationsExecuted() {
+		return generationsExecuted;
+	}
+	public void increase_generation_executed() {
+		generationsExecuted += 1;
+	}
+	public void setSolutions(List<ProgramVariant> _sol){
+		solutions = _sol;
 	}
 }

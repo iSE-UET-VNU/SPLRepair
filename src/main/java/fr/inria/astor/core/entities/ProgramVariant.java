@@ -345,4 +345,18 @@ public class ProgramVariant {
 	public void setPatchInfo(PatchStat patchInfo) {
 		this.patchInfo = patchInfo;
 	}
+	@Override
+	public boolean equals(Object obj){
+		if(obj == null) return false;
+		if(!(obj instanceof ProgramVariant)) return false;
+		ProgramVariant other = (ProgramVariant) obj;
+		if(this.operations == null || other.operations == null) return false;
+		if(this.operations.size() != other.operations.size()) return false;
+		List<OperatorInstance> this_alloperations = getAllOperations();
+		List<OperatorInstance> other_alloperations = other.getAllOperations();
+		for(int i = 0; i < this_alloperations.size(); i++){
+			if(!this_alloperations.get(i).equals(other_alloperations.get(i))) return false;
+		}
+		return true;
+	}
 }

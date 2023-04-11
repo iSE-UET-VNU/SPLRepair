@@ -5,8 +5,11 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
 
+import fr.inria.astor.approaches._3sfix._3sFix;
 import fr.inria.astor.core.entities.OperatorInstance;
+import fr.inria.astor.core.entities.ProgramVariant;
 import fr.inria.astor.core.setup.FinderTestCases;
+import fr.inria.astor.core.solutionsearch.navigation.FailingProductNavigation;
 import fr.inria.main.spl.Patch;
 import fr.inria.main.spl.SPLProduct;
 import fr.inria.main.spl.SPLSystem;
@@ -100,7 +103,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
 
         core.initModel();
 
-        if (!product.isIsfailingproduct() || ConfigurationProperties.getPropertyBool("skipfaultlocalization")) {
+        if (ConfigurationProperties.getPropertyBool("skipfaultlocalization")) {
             // We dont use FL, so at this point the do not have suspicious
             List<String> regressionTestForFaultLocalization = null;
             regressionTestForFaultLocalization = FinderTestCases.findJUnit4XTestCasesForRegression(projectFacade);
@@ -206,13 +209,8 @@ public class SPLRepairAdaptationMain extends AbstractMain {
 
 
         for(String fv_dir:failing_products) {
-            SPLProduct fp = prepare_engine(buggy_spl_system, projectName, fv_dir, dependencies, packageToInstrument, thfl,
+            prepare_engine(buggy_spl_system, projectName, fv_dir, dependencies, packageToInstrument, thfl,
                     failing, customEngine, mode);
-            fp.getCoreEngine().startSearch();
-
-            result = fp.getCoreEngine().atEnd();
-            fp.setSucceed_operators(fp.getCoreEngine().getSucceed_operators());
-            fp.setRejected_operators(fp.getCoreEngine().getRejected_operators());
         }
 
         List<String> passing_products = buggy_spl_system.getPassing_product_locations();
@@ -220,12 +218,28 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             prepare_engine(buggy_spl_system, projectName, pv_dir, dependencies, packageToInstrument, thfl,
                      failing, customEngine, mode);
         }
+        FailingProductNavigation failingProductNavigation = new FailingProductNavigation();
+        List<SPLProduct> failingProducts = buggy_spl_system.getFailing_products();
+
+        SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
+        AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
+        System.out.println("Trang::Selected products::" + selected_failing_product);
+        coreEngine.startSearch();
+        result = coreEngine.atEnd();
+        List<ProgramVariant> succeed_variants = coreEngine.getSolutions();
+        for(ProgramVariant v:succeed_variants){
+            System.out.println("Trang::"  + v);
+            Map<Integer, List<OperatorInstance>> op = v.getOperations();
+            for(Integer i: op.keySet()){
+                System.out.println(op.get(i));
+            }
+        }
+        buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
         return buggy_spl_system;
     }
 
     private SPLProduct prepare_engine(SPLSystem buggy_spl_system, String projectName, String product_dir,  String dependencies, String packageToInstrument,
                                 double thfl,  String failing, String customEngine, String mode) throws Exception {
-        ConfigurationProperties.setProperty("workingDirectory", "./output_astor/" + projectName);
         SPLProduct product = buggy_spl_system.getAProduct(product_dir);
 
         List<String> failing_test_classes = product.getFailing_test_classes();
@@ -278,12 +292,17 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         int num_of_system = 0;
         double total_time = 0d;
         int num_systems_containing_test_adequate_patch = 0;
+        int num_systems_partially_fixed = 0;
+        float total_percentage_fixed = 0.0f;
         String location = cmd.getOptionValue("location");
 
         ConfigurationProperties.properties.setProperty("location", location);
-        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), "results-FL.txt").toString();
+        String[] system_name_tmp = location.split(System.getProperty("file.separator"));
+        String system_name = system_name_tmp[system_name_tmp.length - 1];
+        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_adaptation.txt").toString();
         BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
         String[] system_locations = new File(location).list();
+
 
         for (String sloc: system_locations) {
             if(sloc.startsWith(".")) continue;
@@ -293,48 +312,53 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             SPLRepairAdaptationMain m = new SPLRepairAdaptationMain();
 
             SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
-            S.check_patches_on_all_products();
+            List<Patch> system_patches = S.getSystemSolution();
             System.out.println();
 
             long endT = System.currentTimeMillis();
             writer.write(S.getLocation() + "\n");
-            writer.write("Number of test adequate patches:: " + S.getSucceed_operators().size() + "\n");
-            if(S.getSucceed_operators().size() > 0){
-                num_systems_containing_test_adequate_patch += 1;
+            int partially_fix_patches = 0;
+            int adequate_patches = 0;
+            float percentage_fixed_products = 0.0f;
+            System.out.println("Trang:system contains num of products:" + S.getNum_of_products());
+            for(Patch p: system_patches){
+                if(p.getNum_of_product_successful_fix() > 0 && p.getNum_of_product_successful_fix() != S.getNum_of_products()){
+                    partially_fix_patches += 1;
+                    writer.write(p.toString());
+                    writer.write("\n---------\n");
+                    if(p.getNum_of_product_successful_fix()/S.getNum_of_products() > percentage_fixed_products){
+                        percentage_fixed_products = p.getNum_of_product_successful_fix()/S.getNum_of_products();
+                    }
+                }
+                if(p.getNum_of_product_successful_fix() == S.getNum_of_products()){
+                    adequate_patches += 1;
+                    writer.write(p.toString());
+                    writer.write("\n---------\n");
+                    percentage_fixed_products = 1.0f;
+                }
             }
 
-            List<Patch> solutions = S.getSolutions();
-            writer.write("Number of generated patches:: " + solutions.size() + "\n");
-            int patches_with_one_or_more_product_fixed = 0;
-//            for(Patch p:solutions){
-//                OperatorInstance o = p.getOperations();
-//                if(p.getNum_of_product_successful_fix() > 0){
-//                    patches_with_one_or_more_product_fixed += 1;
-//                    writer.write(p.toString());
-//                    SourcePosition original_element = o.getOriginal().getPosition();
-//                    String[] tmp = original_element.getFile().getName().split(File.separator);
-//                    String[] loc_tmp = original_element.toString().split(File.separator);
-//                    String product_loc = "";
-//                    for (String t : loc_tmp) {
-//                        if (t.contains("model_m_")) {
-//                            product_loc = Paths.get(Paths.get(S.getLocation(), "variants").toString(), t).toString();
-//                        }
-//                    }
-//                    String product_stmt = tmp[tmp.length - 1].replace(".java", "") + "." + original_element.getLine();
-//                    String feature_stmt = S.getAProduct(product_loc).get_feature_stmt("main." + product_stmt);
-//                    writer.write("Repairing location: " + feature_stmt + "\n");
-//                    writer.write("--------\n");
-//                }
-//            }
-            writer.write("Number of patches being able to fix at least one product:: " + patches_with_one_or_more_product_fixed + "\n");
+
+            writer.write("Number of test adequate patches:: " + adequate_patches + "\n");
+            writer.write("Number of patches partially fixed the product:: " + partially_fix_patches + "\n");
 
             writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
             total_time += (endT - startT) / 1000d;
             writer.write("*******************************************\n");
+            if(adequate_patches > 0){
+                num_systems_containing_test_adequate_patch += 1;
+            }
+            if(partially_fix_patches > 0){
+                num_systems_partially_fixed += 1;
+            }
+            total_percentage_fixed += percentage_fixed_products;
         }
         writer.write("------------------------summary-------------------\n");
         writer.write("Total number of systems:" + num_of_system + "\n");
         writer.write("Total number of systems containing test adequate patches:" + num_systems_containing_test_adequate_patch + "\n");
+        writer.write("Total number of systems partially fixed:" + num_systems_partially_fixed + "\n");
+        if(num_systems_partially_fixed + num_systems_containing_test_adequate_patch > 0)
+            writer.write("Percentage of fixed products:" + total_percentage_fixed/(num_systems_partially_fixed + num_systems_containing_test_adequate_patch) + "\n");
         writer.write("Total repairing time:" + total_time + "\n");
         writer.close();
     }

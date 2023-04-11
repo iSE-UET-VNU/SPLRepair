@@ -1,17 +1,9 @@
 package fr.inria.main.spl;
 
 import fr.inria.astor.core.entities.*;
-import fr.inria.astor.core.entities.validation.VariantValidationResult;
-import fr.inria.astor.core.faultlocalization.entity.SuspiciousCode;
-import fr.inria.astor.core.manipulation.bytecode.entities.CompilationResult;
-import fr.inria.astor.core.setup.ConfigurationProperties;
 import fr.inria.astor.core.solutionsearch.AstorCoreEngine;
-import fr.inria.astor.core.solutionsearch.population.*;
 import org.apache.log4j.Logger;
-import spoon.reflect.cu.SourcePosition;
-
 import java.io.*;
-import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -22,19 +14,11 @@ public class SPLSystem {
     private List<String> failing_product_locations = new ArrayList<>();
     private List<String> passing_product_locations = new ArrayList<>();
     public HashMap<String, SPLProduct> products = new HashMap<>();
-    private SPLFitnessFunction fitnessFunction = null;
-    private SPLPopulationController populationController = null;
-    private double originalfitness = 0;
-    private double lastfitness = 0;
 
     private int num_of_features = 0;
     private int num_of_failing_products = 0;
     private int num_of_passing_products = 0;
 
-    private List<OperatorInstance> succeed_operators = new ArrayList<>();
-    private List<OperatorInstance> applied_operators = new ArrayList<>();
-    private List<Patch> solutions = new ArrayList<>();
-    private Patch system_patch = new Patch();
 
     protected org.apache.log4j.Logger log = Logger.getLogger(SPLSystem.class.getName());
     public SPLSystem(){
@@ -48,12 +32,7 @@ public class SPLSystem {
         this.location = _location;
 
     }
-    public void add_successed_operators(OperatorInstance op){
-        succeed_operators.add(op);
-    }
-    public List<OperatorInstance> getSucceed_operators(){
-        return succeed_operators;
-    }
+
     public void addProducts(String location, SPLProduct product){
         products.put(location, product);
     }
@@ -126,20 +105,6 @@ public class SPLSystem {
 
     public void initialize() throws FileNotFoundException {
         Path variant_dir = Paths.get(location, "variants");
-        if(ConfigurationProperties.getProperty("splfitnessfunction").equals("SPLTestCaseFitnessFunction")) {
-            fitnessFunction = new SPLTestCaseFitnessFunction();
-            populationController = new SPLTestCaseBasedFitnessPopulationController();
-        }else if(ConfigurationProperties.getProperty("splfitnessfunction").equals("SPLWeightedProductFitnessFunction")) {
-            fitnessFunction = new SPLWeightedProductFitnessFunction();
-            populationController = new SPLWeightedProductFitnessPopulationController();
-        }else if(ConfigurationProperties.getProperty("splfitnessfunction").equals("SPLStrictWeightedProductFitnessFunction")) {
-            fitnessFunction = new SPLStrictWeightedProductFitnessFunction();
-            populationController = new SPLWeightedProductFitnessPopulationController();
-        } else if(ConfigurationProperties.getProperty("splfitnessfunction").equals("SPLProductAndTestCaseFitnessFunction")) {
-            fitnessFunction = new SPLProductAndTestCaseFitnessFunction();
-            populationController = new SPLWeightedProductFitnessPopulationController();
-        }
-
         try {
             BufferedReader br = new BufferedReader(new FileReader(Paths.get(location, "config.report.csv").toString()));
             String line = "";
@@ -162,10 +127,12 @@ public class SPLSystem {
                     failing_product_locations.add(loc);
                     p.setTestingStatus(true);
                     products.put(loc, p);
+                    num_of_failing_products += 1;
                 }else{
                     passing_product_locations.add(loc);
                     p.setTestingStatus(false);
                     products.put(loc, p);
+                    num_of_passing_products += 1;
                 }
             }
 
@@ -177,178 +144,90 @@ public class SPLSystem {
         }
     }
 
+    public boolean validate_in_the_whole_system(SPLProduct seeded_product) throws Exception {
+        System.out.println("Trang::seeded product is:" + seeded_product.getProduct_dir());
+        List<ProgramVariant> selected_solutions = seeded_product.getCoreEngine().getSolutions();
+        if(selected_solutions.isEmpty()) return false;
 
-    public FitnessFunction getFitnessFunction(){
-        return fitnessFunction;
-    }
-    public void setOriginalFitness(double v){
-        originalfitness = v;
-    }
-    public double getOriginalFitness(){
-        return originalfitness;
-    }
-    public void setLastfitness(double v){
-        lastfitness = v;
-    }
-
-    public double getLastfitness() {
-        return lastfitness;
-    }
-
-    public void setApplied_operators(List<OperatorInstance> applied_operators) {
-        this.applied_operators = applied_operators;
-    }
-
-    public List<OperatorInstance> getApplied_operators() {
-        return applied_operators;
-    }
-
-    public void check_patches_on_all_products() throws Exception {
-        for(String ploc1:products.keySet()){
-            SPLProduct product1 = products.get(ploc1);
-            List<OperatorInstance> p1_succeed_operators = product1.getSucceed_operators();
-            if(!product1.isIsfailingproduct()) continue;
-            if(!p1_succeed_operators.isEmpty()){
-                for(OperatorInstance pv:p1_succeed_operators){
-                    boolean flag = true;
-                    for (String ploc2: products.keySet()){
-                        if(!ploc1.equals(ploc2)){
-                            boolean validation_result = true;
-                            SPLProduct product2 = products.get(ploc2);
-                            //If the operation instance has been checked by this product,
-                            //we don't need to check it again
-                            if(product2.is_succeed_operation_instance(pv)){
-                                continue;
-                            }else if(product2.is_rejected_operation_instance(pv)){
-                                flag = false;
-                                continue;
-                            }
-                            //If the operation instance has not been checked,
-                            // we apply it to the source of the product
-                            //and retest
-                            SourcePosition original_element = pv.getOriginal().getPosition();
-                            String[] tmp = original_element.getFile().getName().split(File.separator);
-                            String product1_stmt = tmp[tmp.length-1].replace(".java", "") + "." + original_element.getLine();
-                            String feature_stmt = product1.get_feature_stmt("main." + product1_stmt);
-                            String product2_stmt = product2.get_product_stmt(feature_stmt);
-                            if(product2_stmt != null){
-                                SuspiciousModificationPoint susp_point = (SuspiciousModificationPoint) pv.getModificationPoint();
-
-                                String[] tmp_stmt2 = product2_stmt.split("\\.");
-
-                                SuspiciousCode e = new SuspiciousCode (susp_point.getSuspicious().getClassName(),
-                                        null,Integer.parseInt(tmp_stmt2[tmp_stmt2.length-1]), feature_stmt,
-                                        susp_point.getSuspicious().getSuspiciousValue(), null);
-                                SuspiciousModificationPoint susp_point_in_product2 = new SuspiciousModificationPoint(e, susp_point.getCodeElement(),
-                                        susp_point.getCtClass(), susp_point.getContextOfModificationPoint());
-                                OperatorInstance op_in_product2 = null;
-                                if(pv.getClass().toString().contains("StatementOperatorInstance")){
-                                    op_in_product2 = new StatementOperatorInstance(susp_point_in_product2, pv.getOperationApplied(),
-                                        pv.getOriginal(), pv.getModified());
-                                }else{
-                                    op_in_product2 = new OperatorInstance(susp_point_in_product2, pv.getOperationApplied(),
-                                            pv.getOriginal(), pv.getModified());
-                                }
-
-
-                                //validation_result = validate_operation_instance_in_a_product(product2, op_in_product2, "");
-
-                                if(!validation_result){
-                                    flag = false;
-                                }
-
-                            }
-                        }
-                    }
-                    //If the operation instance passed on all the applied products,
-                    //add it to the list of succeed operators of the system
-                    if(flag) {
-                        if (!isexisted_succeed_operator(pv)) succeed_operators.add(pv);
-                    }
-                }
+        for(String ploc:products.keySet()){
+            if(!ploc.equals(seeded_product.getProduct_dir())){
+                validate_a_product(getAProduct(ploc), selected_solutions);
             }
         }
-        evaluate_patches();
-    }
-
-    /*
-    * Check how many products that a patch succeed and rejected
-    * */
-    public void evaluate_patches(){
-        Patch p = new Patch(applied_operators);
-        System.out.println(p);
-    }
-
-    private void a_successful_patch(Patch p){
-        int idx = solutions.indexOf(p);
-        if(idx == -1){
-            p.increase_num_of_product_successful_fix();
-            solutions.add(p);
-        }else{
-            Patch tmp = solutions.get(idx);
-            tmp.increase_num_of_product_successful_fix();
-        }
-    }
-
-    private void a_rejected_patch(Patch p){
-        int idx = solutions.indexOf(p);
-        if(idx == -1){
-            p.increase_num_of_product_rejected_fix();
-            solutions.add(p);
-        }else{
-            Patch tmp = solutions.get(idx);
-            tmp.increase_num_of_product_rejected_fix();
-        }
-    }
-
-
-    private boolean isexisted_succeed_operator(OperatorInstance op){
-        for(OperatorInstance o: succeed_operators){
-            if(o.equals(op)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean validate_operation_instance_in_the_whole_system(OperatorInstance op, String modification_point_feature_level) throws Exception {
-
-        HashMap<String, VariantValidationResult> system_validation_results = new HashMap<>();
-        int numof_successed = 0;
-        int numof_rejected = 0;
-        for(String loc:products.keySet()) {
-            SPLProduct apro = products.get(loc);
-            List<OperatorInstance> temp_applied = apro.apply_previous_operator_instances_to_product_variant(applied_operators);
-            VariantValidationResult validation_result = apro.apply_operator_instance_to_product_variant(op);
-            system_validation_results.put(loc, validation_result);
-            if(validation_result != null) {
-                if (validation_result.isSuccessful()) {
-                    numof_successed += 1;
-                } else {
-                    numof_rejected += 1;
-                }
-            }
-            apro.revert_applied_operators(temp_applied);
-        }
-        double system_fitness_value = fitnessFunction.calculateFitnessValue(system_validation_results);
-        if(system_fitness_value != (float) fitnessFunction.getWorstMaxFitnessValue()){
-            boolean selected = populationController.selectOperatorInstanceForNextGeneration(this, op, system_fitness_value);
-            if(selected){
-                system_patch = new Patch(applied_operators);
-                system_patch.setNum_of_product_successful_fix(numof_successed);
-                system_patch.setNum_of_product_rejected_fix(numof_rejected);
-            }
-        }
-
-
         return true;
     }
 
-    public List<Patch> getSolutions(){
-        return solutions;
+    private boolean validate_a_product(SPLProduct product, List<ProgramVariant> variants) throws Exception {
+        AstorCoreEngine coreEngine = product.getCoreEngine();
+        List<ProgramVariant> product_solutions = coreEngine.get_solutions();
+        for(ProgramVariant v:variants){
+
+            int generation =  coreEngine.getGenerationsExecuted();
+            coreEngine.increase_generation_executed();
+            generation += 1;
+            ProgramVariant newVariant = coreEngine.getVariantFactory().createProgramVariantFromAnother(coreEngine.getVariants().get(0), generation);
+            coreEngine.increase_generation_executed();
+            Map<Integer, List<OperatorInstance>> op = v.getOperations();
+            for(Integer i:op.keySet()){
+                List<OperatorInstance> each_ops = op.get(i);
+                for(OperatorInstance nop:each_ops){
+                    OperatorInstance op2 = product.create_operator_instance_for_product(nop);
+                    if(op != null) {
+                        newVariant.createModificationIntanceForAPoint(generation, op2);
+                    }else {
+                        continue;
+                    }
+                }
+            }
+            if(product_solutions.contains(newVariant)) continue;
+            apply_variant(product, newVariant, generation);
+            boolean solution = coreEngine.processCreatedVariant(newVariant, generation);
+            if(solution){
+                product_solutions.add(newVariant);
+            }
+            revert_variant(product, newVariant, generation);
+        }
+        coreEngine.setSolutions(product_solutions);
+        return true;
     }
 
-    public Patch getSystem_patch() {
-        return system_patch;
+    private void apply_variant(SPLProduct product, ProgramVariant variant, int gen) throws IllegalAccessException {
+        AstorCoreEngine coreEngine = product.getCoreEngine();
+
+        List<OperatorInstance> operations = variant.getOperations(gen);
+        for(OperatorInstance op:operations){
+            coreEngine.applyNewMutationOperationToSpoonElement(op);
+        }
     }
+
+    private void revert_variant(SPLProduct product, ProgramVariant variant, int gen) throws IllegalAccessException {
+        AstorCoreEngine coreEngine = product.getCoreEngine();
+
+        List<OperatorInstance> operations = variant.getOperations(gen);
+        for(OperatorInstance op:operations){
+            coreEngine.undoOperationToSpoonElement(op);
+        }
+
+    }
+    public List<Patch> getSystemSolution(){
+        List<Patch> system_patches = new ArrayList<>();
+        for(String ploc:products.keySet()) {
+            List<ProgramVariant> variants = products.get(ploc).getCoreEngine().getSolutions();
+            for(ProgramVariant v:variants){
+                Patch p = new Patch(v.getAllOperations());
+                if(!system_patches.contains(p)) {
+                    p.increase_num_of_product_successful_fix();
+                    system_patches.add(p);
+                }else{
+                    int idx = system_patches.indexOf(p);
+                    Patch p2 = system_patches.get(idx);
+                    p2.increase_num_of_product_successful_fix();
+                }
+            }
+        }
+        return system_patches;
+    }
+
+
+
 }

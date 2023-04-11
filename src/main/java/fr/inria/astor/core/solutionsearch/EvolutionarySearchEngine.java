@@ -177,12 +177,6 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 
 			if (solution) {
 				this.savePatch(newVariant);
-				if(!this.succeed_operators.contains(newVariant.getOperations().get(generation).get(0)))
-					this.succeed_operators.add( newVariant.getOperations().get(generation).get(0));
-
-			}else{
-				if(!this.rejected_operators.contains(newVariant.getOperations().get(generation).get(0)))
-					this.rejected_operators.add(newVariant.getOperations().get(generation).get(0));
 			}
 
 			if (foundSolution && ConfigurationProperties.getPropertyBool("stopfirst")) {
@@ -360,8 +354,10 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 		String solutionId = "";
 		for (ProgramVariant programVariant : temporalInstances) {
 			if (programVariant.isSolution()) {
-				this.solutions.add(programVariant);
-				solutionId += programVariant.getId() + "(SOLUTION)(f=" + programVariant.getFitness() + ")" + ", ";
+				if (!this.solutions.contains(programVariant)) {
+					this.solutions.add(programVariant);
+					solutionId += programVariant.getId() + "(SOLUTION)(f=" + programVariant.getFitness() + ")" + ", ";
+				}
 			}
 		}
 		log.debug("End analysis generation - Solutions found:" + "--> (" + solutionId + ")");

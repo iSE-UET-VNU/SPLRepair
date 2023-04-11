@@ -24,11 +24,7 @@ public class SPLProduct {
     private HashMap<String, String> source_feature_to_product = new HashMap<>();
     private HashMap<String, String> source_product_to_feature = new HashMap<>();
     private String product_dir = "";
-    private List<ProgramVariant> solutions = new ArrayList<>();
-    private List<ProgramVariant> rejected_patches = new ArrayList<>();
 
-    private List<OperatorInstance> succeed_operators = new ArrayList<>();
-    private List<OperatorInstance> rejected_operators = new ArrayList<>();
 
 
     private ProjectRepairFacade projectRepairFacade = new ProjectRepairFacade();
@@ -112,49 +108,10 @@ public class SPLProduct {
         return failing_test_classes;
     }
 
-    public void setSolutions(List<ProgramVariant> _solutions){
-        for(ProgramVariant v:_solutions){
-            this.solutions.add(v);
-        }
-    }
-
-    public List<ProgramVariant> getSolutions(){
-        return this.solutions;
-    }
-
-    public void setRejected_patches(List<ProgramVariant> _rejected_patches){
-        for(ProgramVariant v:_rejected_patches){
-            this.rejected_patches.add(v);
-        }
-    }
-
-    public void setSucceed_operators(List<OperatorInstance> _op){
-        succeed_operators = _op;
-    }
-    public List<OperatorInstance> getSucceed_operators(){
-        return succeed_operators;
-    }
-    public void addSucceed_operators(OperatorInstance _op){
-        if(!succeed_operators.contains(_op))
-            succeed_operators.add(_op);
-    }
-    public void setRejected_operators(List<OperatorInstance> _op){
-        rejected_operators = _op;
-    }
-
-    public List<OperatorInstance> getRejected_operators(){
-        return rejected_operators;
-    }
-
-    public void addRejected_operators(OperatorInstance _op){
-        if(!rejected_operators.contains(_op))
-            rejected_operators.add(_op);
-    }
 
 
-    public List<ProgramVariant> getRejected_patches(){
-        return rejected_patches;
-    }
+
+
     public void setCoreEngine(AstorCoreEngine _core){
         coreEngine = _core;
     }
@@ -168,19 +125,6 @@ public class SPLProduct {
         return projectRepairFacade;
     }
 
-    public boolean  is_rejected_operation_instance(OperatorInstance _op){
-        if(rejected_operators.size() > 0 && rejected_operators.contains(_op)){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean is_succeed_operation_instance(OperatorInstance _op){
-        if(succeed_operators.size() > 0 && succeed_operators.contains(_op)){
-            return true;
-        }
-        return false;
-    }
 
     public String get_product_stmt(String feature_stmt){
         return source_feature_to_product.get(feature_stmt);
@@ -190,32 +134,9 @@ public class SPLProduct {
         return source_product_to_feature.get(product_stmt);
     }
 
-    public List<OperatorInstance> apply_previous_operator_instances_to_product_variant(List<OperatorInstance> operators) throws IllegalAccessException {
-        List<OperatorInstance> applied_operators = new ArrayList<>();
-        for(OperatorInstance op:operators) {
-            OperatorInstance op2 = create_operator_instance_for_product(op);
-            if(op2 != null){
-                applied_operators.add(op2);
-            }else {
-                log.info("Cannot applied operator " + op);
-                //return null;
-            }
-        }
-        for(OperatorInstance op:applied_operators){
-            System.out.println("TRANG::APPLIED:" + op);
-            coreEngine.applyNewMutationOperationToSpoonElement(op);
-        }
-        return applied_operators;
-    }
 
-    public void revert_applied_operators(List<OperatorInstance> applied_operators) throws IllegalAccessException {
-        if(applied_operators != null && applied_operators.size() > 0) {
-            for (int i = applied_operators.size() - 1; i >= 0; i--) {
-                System.out.println("TRANG:REVERT:" + applied_operators.get(i) );
-                coreEngine.undoOperationToSpoonElement(applied_operators.get(i));
-            }
-        }
-    }
+
+
     public OperatorInstance create_operator_instance_for_product(OperatorInstance op) throws IllegalAccessException {
         ProgramVariant product_variant = coreEngine.getVariants().get(0);
         List<ModificationPoint> product_modification_points = product_variant.getModificationPoints();
@@ -253,51 +174,14 @@ public class SPLProduct {
             op_in_product2 = new OperatorInstance(sm_point, op.getOperationApplied(),
                     sm_point.getCodeElement(), op.getModified());
         }
-
-        product_variant.createModificationIntanceForAPoint(generation, op_in_product2);
-        generation++;
         return op_in_product2;
     }
-    public VariantValidationResult apply_operator_instance_to_product_variant(OperatorInstance op) throws Exception {
-        VariantValidationResult result = null;
-        //ProgramVariant product_variant = coreEngine.getVariants().get(0);
-        OperatorInstance op_in_product2 = create_operator_instance_for_product(op);
-        if(op_in_product2 == null) {
-            log.info("Operation in product " + product_dir + " is not created.");
-            result = validate_new_product();
-        }else {
-            boolean applied = coreEngine.applyNewMutationOperationToSpoonElement(op_in_product2);
-            if (applied) {
-                result = validate_new_product();
-                // We undo the operator (for try the next one)
-                coreEngine.undoOperationToSpoonElement(op_in_product2);
-            }
-        }
-//        if (result != null && result.isSuccessful()) {
-//            addSucceed_operators(op_in_product2);
-//        } else {
-//            addRejected_operators(op_in_product2);
-//        }
-        return result;
-    }
 
-    public VariantValidationResult validate_new_product() throws Exception {
-        URL[] originalURL = coreEngine.getProjectFacade().getClassPathURLforProgramVariant(ProgramVariant.DEFAULT_ORIGINAL_VARIANT);
-        VariantValidationResult result = null;
-        ProgramVariant product_variant = coreEngine.getVariants().get(0);
-        CompilationResult compilation = coreEngine.getCompiler().compile(product_variant, originalURL);
-        boolean childCompiles = compilation.compiles();
-        product_variant.setCompilation(compilation);
-
-        coreEngine.storeModifiedModel(product_variant);
-        if (ConfigurationProperties.getPropertyBool("saveall")) {
-            coreEngine.saveVariant(product_variant);
-        }
-        if (childCompiles) {
-            result = coreEngine.getProgramValidator().validate(product_variant, projectRepairFacade);
-        } else {
-            log.info("Cannot compile the this product variant " + product_dir);
-        }
-        return result;
+    @Override
+    public String toString(){
+        if(isfailingproduct)
+            return product_dir + " is a failing product";
+        else
+            return product_dir + " is a passing product";
     }
 }
