@@ -220,21 +220,22 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         }
         FailingProductNavigation failingProductNavigation = new FailingProductNavigation();
         List<SPLProduct> failingProducts = buggy_spl_system.getFailing_products();
+        for(SPLProduct selected_failing_product:failingProducts) {
+            //SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
+            AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
+            System.out.println("Trang::Selected products::" + selected_failing_product);
+            coreEngine.startSearch();
+            result = coreEngine.atEnd();
+            List<ProgramVariant> succeed_variants = coreEngine.getSolutions();
+            for (ProgramVariant v : succeed_variants) {
 
-        SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
-        AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
-        System.out.println("Trang::Selected products::" + selected_failing_product);
-        coreEngine.startSearch();
-        result = coreEngine.atEnd();
-        List<ProgramVariant> succeed_variants = coreEngine.getSolutions();
-        for(ProgramVariant v:succeed_variants){
-            System.out.println("Trang::"  + v);
-            Map<Integer, List<OperatorInstance>> op = v.getOperations();
-            for(Integer i: op.keySet()){
-                System.out.println(op.get(i));
+                Map<Integer, List<OperatorInstance>> op = v.getOperations();
+                for (Integer i : op.keySet()) {
+                    System.out.println(op.get(i));
+                }
             }
+            buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
         }
-        buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
         return buggy_spl_system;
     }
 
@@ -320,7 +321,6 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             int partially_fix_patches = 0;
             int adequate_patches = 0;
             float percentage_fixed_products = 0.0f;
-            System.out.println("Trang:system contains num of products:" + S.getNum_of_products());
             for(Patch p: system_patches){
                 if(p.getNum_of_product_successful_fix() > 0 && p.getNum_of_product_successful_fix() != S.getNum_of_products()){
                     partially_fix_patches += 1;
