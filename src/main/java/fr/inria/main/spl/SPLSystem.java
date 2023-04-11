@@ -98,7 +98,9 @@ public class SPLSystem {
     public void setNum_of_passing_products(int x){
         this.num_of_passing_products = x;
     }
-
+    public int getNum_of_products(){
+        return num_of_failing_products + num_of_passing_products;
+    }
     public void setFeatures(ArrayList<String> features){
         this.features = features;
     }
@@ -132,6 +134,9 @@ public class SPLSystem {
             populationController = new SPLWeightedProductFitnessPopulationController();
         }else if(ConfigurationProperties.getProperty("splfitnessfunction").equals("SPLStrictWeightedProductFitnessFunction")) {
             fitnessFunction = new SPLStrictWeightedProductFitnessFunction();
+            populationController = new SPLWeightedProductFitnessPopulationController();
+        } else if(ConfigurationProperties.getProperty("splfitnessfunction").equals("SPLProductAndTestCaseFitnessFunction")) {
+            fitnessFunction = new SPLProductAndTestCaseFitnessFunction();
             populationController = new SPLWeightedProductFitnessPopulationController();
         }
 

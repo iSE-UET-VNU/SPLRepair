@@ -319,7 +319,7 @@ public class SPLRepairMain extends AbstractMain {
 
         String[] system_name_tmp = location.split(System.getProperty("file.separator"));
         String system_name = system_name_tmp[system_name_tmp.length - 1];
-        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fitness_func + "_localization.txt").toString();
+        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fitness_func + ".txt").toString();
         BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
         String[] system_locations = new File(location).list();
 
@@ -348,6 +348,7 @@ public class SPLRepairMain extends AbstractMain {
                 total_time += (endT - startT) / 1000d;
                 writer.write("*******************************************\n");
             }catch (Exception e){
+                e.printStackTrace();
                 writer.write("Exception in the system:: " + sloc + "\n");
             }
         }
