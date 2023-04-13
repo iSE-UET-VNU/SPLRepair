@@ -24,12 +24,13 @@ public class FailingProductNavigation {
         }
     }
 
+    //Start to fix from the simplest product to the most complex product
     public List<SPLProduct> sorted_failing_products_by_complexity(SPLSystem system){
         computeProductComplexity(system);
         List<SPLProduct> failing_products = system.getFailing_products();
         for(int i = 0; i < failing_products.size() - 1; i++){
             for(int j = i + 1; j < failing_products.size(); j++){
-                if(failing_products.get(i).getProduct_complexity() < failing_products.get(j).getProduct_complexity()){
+                if(failing_products.get(i).getProduct_complexity() > failing_products.get(j).getProduct_complexity()){
                     Collections.swap(failing_products, i, j);
                 }
             }

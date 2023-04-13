@@ -65,29 +65,29 @@ public class JUnitProcessValidator extends ProgramVariantValidator {
 
 			LaucherJUnitProcess testProcessRunner = new LaucherJUnitProcess();
 
-			log.debug("-Running first validation");
-
-			long t1 = System.currentTimeMillis();
+//			log.debug("-Running first validation");
+//
+//			long t1 = System.currentTimeMillis();
 			String jvmPath = ConfigurationProperties.getProperty("jvm4testexecution");
 
-			TestResult trfailing = testProcessRunner.execute(jvmPath, bc,
-					projectFacade.getProperties().getFailingTestCases(),
-					ConfigurationProperties.getPropertyInt("tmax1"));
-			long t2 = System.currentTimeMillis();
+//			TestResult trfailing = testProcessRunner.execute(jvmPath, bc,
+//					projectFacade.getProperties().getFailingTestCases(),
+//					ConfigurationProperties.getPropertyInt("tmax1"));
+//			long t2 = System.currentTimeMillis();
 
-			if (trfailing == null) {
-				log.debug("**The validation 1 have not finished well**");
-				return null;
-			}
+//			if (trfailing == null) {
+//				log.debug("**The validation 1 have not finished well**");
+//				return null;
+//			}
 
-			log.debug(trfailing);
+//			log.debug(trfailing);
 			TestCaseVariantValidationResult r = null;
 
-			if (trfailing.wasSuccessful() || forceExecuteRegression) {
+//			if (trfailing.wasSuccessful() || forceExecuteRegression) {
 				r = runRegression(mutatedVariant, projectFacade, bc);
-			} else {
-				r = new TestCasesProgramValidationResult(trfailing, trfailing.wasSuccessful(), false);
-			}
+//			} else {
+//				r = new TestCasesProgramValidationResult(trfailing, trfailing.wasSuccessful(), false);
+//			}
 
 			removeOfCompiledCode(mutatedVariant, projectFacade);
 			return r;

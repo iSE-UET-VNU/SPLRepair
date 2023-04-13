@@ -3,17 +3,15 @@ package fr.inria.main.spl;
 import fr.inria.astor.core.entities.*;
 import fr.inria.astor.core.entities.validation.VariantValidationResult;
 import fr.inria.astor.core.faultlocalization.entity.SuspiciousCode;
-import fr.inria.astor.core.manipulation.bytecode.entities.CompilationResult;
 import fr.inria.astor.core.setup.ConfigurationProperties;
 import fr.inria.astor.core.setup.ProjectRepairFacade;
 import fr.inria.astor.core.solutionsearch.AstorCoreEngine;
 import fr.inria.astor.core.solutionsearch.spaces.operators.AstorOperator;
+import fr.inria.astor.core.validation.results.TestCasesProgramValidationResult;
 import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -21,6 +19,8 @@ import java.util.*;
 public class SPLProduct {
     protected static Logger log = Logger.getLogger(SPLProduct.class.getSimpleName());
     private List<String> failing_test_classes = new ArrayList<>();
+    private Set<String> original_failing_test_cases = new HashSet<>();
+    private Set<String> original_passing_test_cases = new HashSet<>();
     //Store by stmt id in feature level
     private Set<String> failing_test_coverage = new HashSet<>();
     private HashMap<String, String> source_feature_to_product = new HashMap<>();
@@ -80,6 +80,9 @@ public class SPLProduct {
                 log.error("Mapping file not found" + e);
             }
         }
+
+        init_original_failing_tests();
+        init_original_passing_tests();
     }
 
     public Set<String> getFailing_test_coverage() {
@@ -136,6 +139,47 @@ public class SPLProduct {
     public void setProduct_complexity(float product_complexity) {
         this.product_complexity = product_complexity;
     }
+    public void init_original_failing_tests(){
+        String coverage_dir = getCoverage_dir();
+        String failed_test_dir = Paths.get(coverage_dir, "failed").toString();
+        File failed_test_folder = new File(failed_test_dir);
+        File[] list_of_failed_test_files = failed_test_folder.listFiles();
+        if( list_of_failed_test_files != null) {
+            for (File list_of_failed_test_file : list_of_failed_test_files) {
+                if (list_of_failed_test_file.isFile()) {
+                    String file_name = list_of_failed_test_file.getName();
+                    String test_id = file_name.split("\\.coverage")[0];
+                    if(!original_failing_test_cases.contains(test_id))
+                        original_failing_test_cases.add(test_id);
+                }
+            }
+        }
+    }
+
+    public void init_original_passing_tests(){
+        String coverage_dir = getCoverage_dir();
+        String failed_test_dir = Paths.get(coverage_dir, "passed").toString();
+        File failed_test_folder = new File(failed_test_dir);
+        File[] list_of_failed_test_files = failed_test_folder.listFiles();
+        if( list_of_failed_test_files != null) {
+            for (File list_of_failed_test_file : list_of_failed_test_files) {
+                if (list_of_failed_test_file.isFile()) {
+                    String file_name = list_of_failed_test_file.getName();
+                    String test_id = file_name.split("\\.coverage")[0];
+                    if(!original_passing_test_cases.contains(test_id))
+                        original_passing_test_cases.add(test_id);
+                }
+            }
+        }
+    }
+
+    public Set<String> getOriginal_failing_test_cases() {
+        return original_failing_test_cases;
+    }
+
+    public Set<String> getOriginal_passing_test_cases() {
+        return original_passing_test_cases;
+    }
 
     public List<String> getFailing_test_classes() {
         String coverage_dir = getCoverage_dir();
@@ -154,6 +198,7 @@ public class SPLProduct {
         }
         return failing_test_classes;
     }
+
 
     public int get_num_of_failing_tests(){
 
@@ -278,5 +323,46 @@ public class SPLProduct {
         intersection.retainAll(otherProduct.getFailing_test_coverage());
         float coverage_similarity = (float) intersection.size() / failing_test_coverage.size();
         return (product_similarity + coverage_similarity) / 2;
+    }
+
+    public float measure_fixing_score_for_modification_point(VariantValidationResult validationResult){
+        if(validationResult instanceof TestCasesProgramValidationResult) {
+
+            Set<String> new_failing_tests = ((TestCasesProgramValidationResult) validationResult).get_failing_tests();
+            System.out.println(original_failing_test_cases);
+            System.out.println(new_failing_tests);
+
+            float negatively_pass = 0.0f;
+            if(original_passing_test_cases.size() > 0){
+                System.out.println("Trang::num_of_negatively_impacted_passing_tests(new_failing_tests):" +  num_of_negatively_impacted_passing_tests(new_failing_tests));
+                negatively_pass = (float) num_of_negatively_impacted_passing_tests(new_failing_tests)/original_passing_test_cases.size();
+            }
+            float positive_fail = 0.0f;
+            if(original_failing_test_cases.size() > 0){
+                System.out.println("Trang::num_of_possitively_impacted_failing_tests(new_failing_tests):" + num_of_possitively_impacted_failing_tests(new_failing_tests));
+                positive_fail = (float) num_of_possitively_impacted_failing_tests(new_failing_tests)/original_failing_test_cases.size();
+            }
+            return positive_fail - negatively_pass;
+        }
+        return 0.0f;
+    }
+    private int num_of_negatively_impacted_passing_tests(Set<String> new_failing_tests){
+        int count = 0;
+        for(String s:new_failing_tests){
+            if(original_passing_test_cases.contains(s)){
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    private int num_of_possitively_impacted_failing_tests(Set<String> new_failing_tests){
+        int count = 0;
+        for(String s:original_failing_test_cases){
+            if(!new_failing_tests.contains(s)){
+                count += 1;
+            }
+        }
+        return count;
     }
 }

@@ -270,7 +270,7 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 				.getSortedModificationPointsList(variant.getModificationPoints());
 		for (ModificationPoint modificationPoint : modificationPointsToProcess) {
 
-			log.debug("---analyzing modificationPoint position: " + modificationPoint.identified);
+			log.debug("---analyzing modificationPoint position: " + modificationPoint);
 
 			// A point can be modified several time in the evolution
 			boolean multiPointMutation = ConfigurationProperties.getPropertyBool("multipointmodification");

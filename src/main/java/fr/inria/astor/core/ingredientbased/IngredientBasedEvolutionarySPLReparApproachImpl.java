@@ -45,7 +45,7 @@ public class IngredientBasedEvolutionarySPLReparApproachImpl extends IngredientB
             List<ModificationPoint> modificationPointsToProcess = this.suspiciousNavigationStrategy
                     .getSortedModificationPointsList(parentVariant.getModificationPoints());
             for (ModificationPoint modificationPoint : modificationPointsToProcess) {
-                log.debug("---analyzing modificationPoint position: " + modificationPoint.identified);
+                log.debug("---analyzing modificationPoint position: " + modificationPoint);
                 modificationPoint.setProgramVariant(parentVariant);
                 OperatorInstance modificationInstance = createOperatorInstanceForPoint(modificationPoint);
                 if (modificationInstance != null) {

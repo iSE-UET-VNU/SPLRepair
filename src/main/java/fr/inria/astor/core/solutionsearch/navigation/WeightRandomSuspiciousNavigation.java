@@ -13,7 +13,7 @@ import fr.inria.astor.core.entities.WeightElement;
  * @author Matias Martinez
  *
  */
-public class WeightRandomSuspiciousNavitation implements SuspiciousNavigationStrategy {
+public class WeightRandomSuspiciousNavigation implements SuspiciousNavigationStrategy {
 
 	@Override
 	public List<ModificationPoint> getSortedModificationPointsList(List<ModificationPoint> modificationPoints) {

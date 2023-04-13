@@ -2,6 +2,10 @@ package fr.inria.astor.core.validation.results;
 
 import fr.inria.astor.core.entities.validation.TestCaseVariantValidationResult;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * 
  * @author Matias Martinez
@@ -80,6 +84,19 @@ public class TestCasesProgramValidationResult  implements  TestCaseVariantValida
 			numberFailingTestCases = result.failures;
 			resultSucess = (result.casesExecuted == result.failures);
 		}
+	}
+
+	public Set<String> get_failing_tests(){
+		Set<String> failing_tests = new HashSet<>();
+		List<String> failures = testResult.getFailures();
+		for(String failed:failures){
+			String test_id = failed.split("\\(")[0];
+			String test_class = failed.split("\\(")[1].split("\\)")[0];
+			failing_tests.add(test_class + "." + test_id);
+
+		}
+
+		return failing_tests;
 	}
 
 	protected String printTestResult(TestResult result) {

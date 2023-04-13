@@ -1,7 +1,9 @@
 package fr.inria.astor.core.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import fr.inria.astor.core.solutionsearch.spaces.operators.AstorOperator;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtVariable;
@@ -27,6 +29,10 @@ public class ModificationPoint implements Comparable {
 
 	protected int generation = -1;
 
+	private float previous_product_fixing_score = 0.0f;
+
+	private List<AstorOperator> previous_tried_operators = new ArrayList<>();
+
 	public ModificationPoint() {
 	}
 
@@ -49,6 +55,14 @@ public class ModificationPoint implements Comparable {
 
 	public CtElement getCodeElement() {
 		return codeElement;
+	}
+
+	public void setPrevious_product_fixing_score(float previous_product_fixing_score) {
+		this.previous_product_fixing_score = previous_product_fixing_score;
+	}
+
+	public float getPrevious_product_fixing_score() {
+		return previous_product_fixing_score;
 	}
 
 	public void setCodeElement(CtElement rootElement) {

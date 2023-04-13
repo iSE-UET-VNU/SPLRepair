@@ -8,7 +8,11 @@ import java.text.ParseException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import fr.inria.astor.core.solutionsearch.navigation.*;
+import fr.inria.astor.core.solutionsearch.spaces.operators.*;
 import fr.inria.astor.core.validation.results.TestCasesProgramValidationResult;
+import fr.inria.main.spl.SPLProduct;
+import fr.inria.main.spl.SPLSystem;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -53,20 +57,9 @@ import fr.inria.astor.core.setup.ProjectRepairFacade;
 import fr.inria.astor.core.solutionsearch.extension.AstorExtensionPoint;
 import fr.inria.astor.core.solutionsearch.extension.SolutionVariantSortCriterion;
 import fr.inria.astor.core.solutionsearch.extension.VariantCompiler;
-import fr.inria.astor.core.solutionsearch.navigation.InOrderSuspiciousNavigation;
-import fr.inria.astor.core.solutionsearch.navigation.SequenceSuspiciousNavigationStrategy;
-import fr.inria.astor.core.solutionsearch.navigation.SuspiciousNavigationStrategy;
-import fr.inria.astor.core.solutionsearch.navigation.SuspiciousNavigationValues;
-import fr.inria.astor.core.solutionsearch.navigation.UniformRandomSuspiciousNavigation;
-import fr.inria.astor.core.solutionsearch.navigation.WeightRandomSuspiciousNavitation;
 import fr.inria.astor.core.solutionsearch.population.FitnessFunction;
 import fr.inria.astor.core.solutionsearch.population.PopulationController;
 import fr.inria.astor.core.solutionsearch.population.ProgramVariantFactory;
-import fr.inria.astor.core.solutionsearch.spaces.operators.AstorOperator;
-import fr.inria.astor.core.solutionsearch.spaces.operators.OperatorSelectionStrategy;
-import fr.inria.astor.core.solutionsearch.spaces.operators.OperatorSpace;
-import fr.inria.astor.core.solutionsearch.spaces.operators.UniformRandomRepairOperatorSpace;
-import fr.inria.astor.core.solutionsearch.spaces.operators.WeightedRandomOperatorSelection;
 import fr.inria.astor.core.stats.PatchHunkStats;
 import fr.inria.astor.core.stats.PatchStat;
 import fr.inria.astor.core.stats.PatchStat.HunkStatEnum;
@@ -155,6 +148,7 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	protected AstorOutputStatus outputStatus = null;
 
 	protected List<PatchStat> patchInfo = new ArrayList<>();
+	private SPLProduct product = null;
 
 	/**
 	 * 
@@ -167,6 +161,10 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 		this.currentStat = Stats.createStat();
 
+	}
+
+	public void setProduct(SPLProduct product) {
+		this.product = product;
 	}
 
 	public abstract void startSearch() throws Exception;
@@ -560,6 +558,7 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 			currentStat.increment(GeneralStatEnum.NR_RIGHT_COMPILATIONS);
 
 			VariantValidationResult validationResult = validateInstance(programVariant);
+			System.out.println("Trang:: validation results::" + validationResult.getClass());
 			double fitness = this.fitnessFunction.calculateFitnessValue(validationResult);
 			programVariant.setFitness(fitness);
 
@@ -649,6 +648,16 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		if (validationResult != null) {
 			variant.setIsSolution(validationResult.isSuccessful());
 			variant.setValidationResult(validationResult);
+			System.out.println("Trang::validation variants:" + variant);
+			List<OperatorInstance> applied_operations = variant.getAllOperations();
+			for(OperatorInstance op:applied_operations){
+				ModificationPoint mp = op.getModificationPoint();
+				float fixing_score = product.measure_fixing_score_for_modification_point(validationResult);
+				System.out.println("Trang:" + product.getProduct_dir());
+				System.out.println("Trang::modification point:" + mp);
+				System.out.println("Trang:: validate modification score::" + fixing_score);
+				mp.setPrevious_product_fixing_score(fixing_score);
+			}
 		}
 		return validationResult;
 	}
@@ -1114,17 +1123,22 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 				.toUpperCase();
 
 		SuspiciousNavigationStrategy suspiciousNavigationStrategy = null;
-		if (SuspiciousNavigationValues.INORDER.toString().equals(mode)) {
-			suspiciousNavigationStrategy = new InOrderSuspiciousNavigation();
-		} else if (SuspiciousNavigationValues.WEIGHT.toString().equals(mode))
-			suspiciousNavigationStrategy = new WeightRandomSuspiciousNavitation();
-		else if (SuspiciousNavigationValues.RANDOM.toString().equals(mode)) {
-			suspiciousNavigationStrategy = new UniformRandomSuspiciousNavigation();
-		} else if (SuspiciousNavigationValues.SEQUENCE.toString().equals(mode)) {
-			suspiciousNavigationStrategy = new SequenceSuspiciousNavigationStrategy();
-		} else {
-			suspiciousNavigationStrategy = (SuspiciousNavigationStrategy) PlugInLoader
-					.loadPlugin(ExtensionPoints.SUSPICIOUS_NAVIGATION);
+		String repairmode = ConfigurationProperties.getProperty("repairmode");
+		if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
+			suspiciousNavigationStrategy = new SPLWeightRandomSuspiciousNavigation();
+		}else {
+			if (SuspiciousNavigationValues.INORDER.toString().equals(mode)) {
+				suspiciousNavigationStrategy = new InOrderSuspiciousNavigation();
+			} else if (SuspiciousNavigationValues.WEIGHT.toString().equals(mode))
+				suspiciousNavigationStrategy = new WeightRandomSuspiciousNavigation();
+			else if (SuspiciousNavigationValues.RANDOM.toString().equals(mode)) {
+				suspiciousNavigationStrategy = new UniformRandomSuspiciousNavigation();
+			} else if (SuspiciousNavigationValues.SEQUENCE.toString().equals(mode)) {
+				suspiciousNavigationStrategy = new SequenceSuspiciousNavigationStrategy();
+			} else {
+				suspiciousNavigationStrategy = (SuspiciousNavigationStrategy) PlugInLoader
+						.loadPlugin(ExtensionPoints.SUSPICIOUS_NAVIGATION);
+			}
 		}
 		this.setSuspiciousNavigationStrategy(suspiciousNavigationStrategy);
 	}
@@ -1184,7 +1198,11 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	protected void loadOperatorSelectorStrategy() throws Exception {
 		String opStrategyClassName = ConfigurationProperties.properties
 				.getProperty(ExtensionPoints.OPERATOR_SELECTION_STRATEGY.identifier);
-		if (opStrategyClassName != null) {
+		String repairmode = ConfigurationProperties.getProperty("repairmode");
+		if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
+			this.setOperatorSelectionStrategy(new SPLRepairOperatorSpace(this.getOperatorSpace()));
+		}
+		else if (opStrategyClassName != null) {
 			if ("uniform-random".equals(opStrategyClassName)) {
 				this.setOperatorSelectionStrategy(new UniformRandomRepairOperatorSpace(this.getOperatorSpace()));
 			} else if ("weighted-random".equals(opStrategyClassName)) {
