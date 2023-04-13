@@ -297,6 +297,7 @@ public abstract class AbstractMain {
 		options.addOption("parameters", true, "Parameters, divided by " + File.pathSeparator);
 
 		options.addOption("autocompile", true, "wheteher auto compile");
+		options.addOption("flresult", true, "The file name of FL result");
 
 		options.addOption("runjava7code", false, "Validates on Java 7");
 
@@ -448,6 +449,9 @@ public abstract class AbstractMain {
 
 		if (cmd.hasOption("splfitnessfunction"))
 			ConfigurationProperties.properties.setProperty("splfitnessfunction", cmd.getOptionValue("splfitnessfunction"));
+
+		if (cmd.hasOption("flresult"))
+			ConfigurationProperties.properties.setProperty("faultLocalizationResultFileName", cmd.getOptionValue("flresult"));
 
 		String outputPath = "";
 		if (cmd.hasOption("out")) {

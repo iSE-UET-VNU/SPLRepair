@@ -10,6 +10,8 @@ public class Patch {
     private List<OperatorInstance> operations = new ArrayList<>();
     private int num_of_product_successful_fix = 0;
     private int num_of_product_rejected_fix = 0;
+    private List<String> succeed_products = new ArrayList<>();
+    private List<String> rejected_products = new ArrayList<>();
 
 
     public Patch(List<OperatorInstance> _op){
@@ -35,8 +37,11 @@ public class Patch {
     public void setNum_of_product_successful_fix(int num_of_product_successful_fix) {
         this.num_of_product_successful_fix = num_of_product_successful_fix;
     }
-    public void increase_num_of_product_successful_fix(){
-        num_of_product_successful_fix += 1;
+    public void increase_num_of_product_successful_fix(String ploc){
+        if(!succeed_products.contains(ploc)) {
+            num_of_product_successful_fix += 1;
+            succeed_products.add(ploc);
+        }
     }
     public void decrease_num_of_product_successful_fix(){
         num_of_product_successful_fix -= 1;
@@ -49,8 +54,11 @@ public class Patch {
     public void setNum_of_product_rejected_fix(int num_of_product_rejected_fix) {
         this.num_of_product_rejected_fix = num_of_product_rejected_fix;
     }
-    public void increase_num_of_product_rejected_fix(){
-        num_of_product_rejected_fix += 1;
+    public void increase_num_of_product_rejected_fix(String ploc){
+        if(!rejected_products.contains(ploc)) {
+            num_of_product_rejected_fix += 1;
+            rejected_products.add(ploc);
+        }
     }
     public void decrease_num_of_product_rejected_fix(){
         num_of_product_rejected_fix -= 1;

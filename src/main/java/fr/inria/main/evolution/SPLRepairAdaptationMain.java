@@ -223,18 +223,28 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         for(SPLProduct selected_failing_product:failingProducts) {
             //SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
-            System.out.println("Trang::Selected products::" + selected_failing_product);
+            System.out.println("Trang::selected product:" + selected_failing_product);
             coreEngine.startSearch();
             result = coreEngine.atEnd();
             List<ProgramVariant> succeed_variants = coreEngine.getSolutions();
+            System.out.println("Trang::succeed variants");
+            List<Patch> system_patches = buggy_spl_system.getSystem_patches();
             for (ProgramVariant v : succeed_variants) {
-
-                Map<Integer, List<OperatorInstance>> op = v.getOperations();
-                for (Integer i : op.keySet()) {
-                    System.out.println(op.get(i));
+                System.out.println("Trang:variant:"+ v);
+                Patch p = new Patch(v.getAllOperations());
+                if(!system_patches.contains(p)) {
+                    p.increase_num_of_product_successful_fix(selected_failing_product.getProduct_dir());
+                    system_patches.add(p);
+                }else{
+                    int idx = system_patches.indexOf(p);
+                    Patch p2 = system_patches.get(idx);
+                    p2.increase_num_of_product_successful_fix(selected_failing_product.getProduct_dir());
                 }
             }
-            buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
+            buggy_spl_system.setSystem_patches(system_patches);
+            boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
+            System.out.println("Trang::validate result:" + validate_result);
+            //break;
         }
         return buggy_spl_system;
     }
@@ -296,11 +306,13 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         int num_systems_partially_fixed = 0;
         float total_percentage_fixed = 0.0f;
         String location = cmd.getOptionValue("location");
-
         ConfigurationProperties.properties.setProperty("location", location);
+
+        String fl_result_file = cmd.getOptionValue("flresult");
+        ConfigurationProperties.properties.setProperty("faultLocalizationResultFileName", fl_result_file);
         String[] system_name_tmp = location.split(System.getProperty("file.separator"));
         String system_name = system_name_tmp[system_name_tmp.length - 1];
-        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_adaptation.txt").toString();
+        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file + "_adaptation.txt").toString();
         BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
         String[] system_locations = new File(location).list();
 
@@ -313,7 +325,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             SPLRepairAdaptationMain m = new SPLRepairAdaptationMain();
 
             SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
-            List<Patch> system_patches = S.getSystemSolution();
+            List<Patch> system_patches = S.getSystem_patches();
             System.out.println();
 
             long endT = System.currentTimeMillis();
@@ -326,8 +338,8 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                     partially_fix_patches += 1;
                     writer.write(p.toString());
                     writer.write("\n---------\n");
-                    if(p.getNum_of_product_successful_fix()/S.getNum_of_products() > percentage_fixed_products){
-                        percentage_fixed_products = p.getNum_of_product_successful_fix()/S.getNum_of_products();
+                    if((float) p.getNum_of_product_successful_fix()/S.getNum_of_products() > percentage_fixed_products){
+                        percentage_fixed_products = (float) p.getNum_of_product_successful_fix()/S.getNum_of_products();
                     }
                 }
                 if(p.getNum_of_product_successful_fix() == S.getNum_of_products()){

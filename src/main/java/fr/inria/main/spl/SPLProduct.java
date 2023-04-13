@@ -135,12 +135,9 @@ public class SPLProduct {
     }
 
 
-
-
-    public OperatorInstance create_operator_instance_for_product(OperatorInstance op) throws IllegalAccessException {
+    public SuspiciousModificationPoint search_for_modification_point(OperatorInstance op){
         ProgramVariant product_variant = coreEngine.getVariants().get(0);
         List<ModificationPoint> product_modification_points = product_variant.getModificationPoints();
-
         SuspiciousModificationPoint sm_point = null;
         SuspiciousModificationPoint susp_point = (SuspiciousModificationPoint) op.getModificationPoint();
         String modification_point_feature_level = susp_point.getSuspicious().getFeatureInfo();
@@ -159,6 +156,11 @@ public class SPLProduct {
                 break;
             }
         }
+        return sm_point;
+    }
+
+    public OperatorInstance create_operator_instance_for_product(OperatorInstance op, SuspiciousModificationPoint sm_point) throws IllegalAccessException {
+
         if(sm_point == null){
             log.info("The modification point does not exist\n");
             return null;

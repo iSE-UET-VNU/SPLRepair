@@ -18,6 +18,7 @@ public class SPLSystem {
     private int num_of_features = 0;
     private int num_of_failing_products = 0;
     private int num_of_passing_products = 0;
+    List<Patch> system_patches = new ArrayList<>();
 
 
     protected org.apache.log4j.Logger log = Logger.getLogger(SPLSystem.class.getName());
@@ -148,19 +149,28 @@ public class SPLSystem {
         System.out.println("Trang::seeded product is:" + seeded_product.getProduct_dir());
         List<ProgramVariant> selected_solutions = seeded_product.getCoreEngine().getSolutions();
         if(selected_solutions.isEmpty()) return false;
-
+        boolean result = true;
         for(String ploc:products.keySet()){
             if(!ploc.equals(seeded_product.getProduct_dir())){
-                validate_a_product(getAProduct(ploc), selected_solutions);
+                boolean product_result = validate_a_product(getAProduct(ploc), selected_solutions);
+                if(!product_result){
+                    System.out.println("Trang::Failing product::" + ploc);
+                    result = false;
+                }
             }
         }
-        return true;
+        return result;
     }
 
     private boolean validate_a_product(SPLProduct product, List<ProgramVariant> variants) throws Exception {
         AstorCoreEngine coreEngine = product.getCoreEngine();
         List<ProgramVariant> product_solutions = coreEngine.get_solutions();
+
+
         for(ProgramVariant v:variants){
+            Patch p = new Patch(v.getAllOperations());
+            int idx = system_patches.indexOf(p);
+            Patch p2 = system_patches.get(idx);
 
             int generation =  coreEngine.getGenerationsExecuted();
             coreEngine.increase_generation_executed();
@@ -168,26 +178,44 @@ public class SPLSystem {
             ProgramVariant newVariant = coreEngine.getVariantFactory().createProgramVariantFromAnother(coreEngine.getVariants().get(0), generation);
             coreEngine.increase_generation_executed();
             Map<Integer, List<OperatorInstance>> op = v.getOperations();
+            boolean flag = true;
             for(Integer i:op.keySet()){
                 List<OperatorInstance> each_ops = op.get(i);
+
                 for(OperatorInstance nop:each_ops){
-                    OperatorInstance op2 = product.create_operator_instance_for_product(nop);
-                    if(op != null) {
-                        newVariant.createModificationIntanceForAPoint(generation, op2);
+                    SuspiciousModificationPoint sm_point = product.search_for_modification_point(nop);
+                    if(sm_point == null){
+                        p2.increase_num_of_product_successful_fix(product.getProduct_dir());
+                        return true;
                     }else {
-                        continue;
+                        OperatorInstance op2 = product.create_operator_instance_for_product(nop, sm_point);
+                        if (op2 != null) {
+                            newVariant.createModificationIntanceForAPoint(generation, op2);
+                        } else {
+                            flag = false;
+                            break;
+                        }
                     }
                 }
+                if(!flag)
+                    break;
             }
-            if(product_solutions.contains(newVariant)) continue;
-            apply_variant(product, newVariant, generation);
-            boolean solution = coreEngine.processCreatedVariant(newVariant, generation);
-            if(solution){
-                product_solutions.add(newVariant);
+            if(flag) {
+                if (product_solutions.contains(newVariant)) continue;
+                apply_variant(product, newVariant, generation);
+                boolean solution = coreEngine.processCreatedVariant(newVariant, generation);
+                if (solution) {
+                    product_solutions.add(newVariant);
+                    p2.increase_num_of_product_successful_fix(product.getProduct_dir());
+                }else{
+                    p2.increase_num_of_product_rejected_fix(product.getProduct_dir());
+                }
+                revert_variant(product, newVariant, generation);
+                coreEngine.setSolutions(product_solutions);
+                //return solution;
             }
-            revert_variant(product, newVariant, generation);
         }
-        coreEngine.setSolutions(product_solutions);
+
         return true;
     }
 
@@ -196,7 +224,8 @@ public class SPLSystem {
 
         List<OperatorInstance> operations = variant.getOperations(gen);
         for(OperatorInstance op:operations){
-            coreEngine.applyNewMutationOperationToSpoonElement(op);
+            if(op != null)
+                coreEngine.applyNewMutationOperationToSpoonElement(op);
         }
     }
 
@@ -209,24 +238,32 @@ public class SPLSystem {
         }
 
     }
-    public List<Patch> getSystemSolution(){
-        List<Patch> system_patches = new ArrayList<>();
-        for(String ploc:products.keySet()) {
-            List<ProgramVariant> variants = products.get(ploc).getCoreEngine().getSolutions();
-            for(ProgramVariant v:variants){
-                Patch p = new Patch(v.getAllOperations());
-                if(!system_patches.contains(p)) {
-                    p.increase_num_of_product_successful_fix();
-                    system_patches.add(p);
-                }else{
-                    int idx = system_patches.indexOf(p);
-                    Patch p2 = system_patches.get(idx);
-                    p2.increase_num_of_product_successful_fix();
-                }
-            }
-        }
+
+    public void setSystem_patches(List<Patch> system_patches) {
+        this.system_patches = system_patches;
+    }
+
+    public List<Patch> getSystem_patches() {
         return system_patches;
     }
+    //    public List<Patch> getSystemSolution(){
+//        List<Patch> system_patches = new ArrayList<>();
+//        for(String ploc:products.keySet()) {
+//            List<ProgramVariant> variants = products.get(ploc).getCoreEngine().getSolutions();
+//            for(ProgramVariant v:variants){
+//                Patch p = new Patch(v.getAllOperations());
+//                if(!system_patches.contains(p)) {
+//                    p.increase_num_of_product_successful_fix();
+//                    system_patches.add(p);
+//                }else{
+//                    int idx = system_patches.indexOf(p);
+//                    Patch p2 = system_patches.get(idx);
+//                    p2.increase_num_of_product_successful_fix();
+//                }
+//            }
+//        }
+//        return system_patches;
+//    }
 
 
 
