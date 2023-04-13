@@ -14,6 +14,7 @@ public class SPLSystem {
     private List<String> failing_product_locations = new ArrayList<>();
     private List<String> passing_product_locations = new ArrayList<>();
     public HashMap<String, SPLProduct> products = new HashMap<>();
+    private List<String> system_stmts = new ArrayList<>();
 
     private int num_of_features = 0;
     private int num_of_failing_products = 0;
@@ -40,6 +41,14 @@ public class SPLSystem {
 
     public String getLocation() {
         return location;
+    }
+
+    public List<String> getSystem_stmts() {
+        return system_stmts;
+    }
+
+    public void setSystem_stmts(List<String> system_stmts) {
+        this.system_stmts = system_stmts;
     }
 
     public void setFailing_product_locations(List<String> failing_product_locations) {
@@ -122,7 +131,7 @@ public class SPLSystem {
             while ((line = br.readLine()) != null){
                 String[] items = line.split(split_by);
                 String loc = Paths.get(variant_dir.toString(), items[0]).toString();
-                SPLProduct p = new SPLProduct(loc);
+                SPLProduct p = new SPLProduct(loc, this);
 
                 if(items[items.length-1].equals("__FAILED__")) {
                     failing_product_locations.add(loc);
@@ -246,24 +255,7 @@ public class SPLSystem {
     public List<Patch> getSystem_patches() {
         return system_patches;
     }
-    //    public List<Patch> getSystemSolution(){
-//        List<Patch> system_patches = new ArrayList<>();
-//        for(String ploc:products.keySet()) {
-//            List<ProgramVariant> variants = products.get(ploc).getCoreEngine().getSolutions();
-//            for(ProgramVariant v:variants){
-//                Patch p = new Patch(v.getAllOperations());
-//                if(!system_patches.contains(p)) {
-//                    p.increase_num_of_product_successful_fix();
-//                    system_patches.add(p);
-//                }else{
-//                    int idx = system_patches.indexOf(p);
-//                    Patch p2 = system_patches.get(idx);
-//                    p2.increase_num_of_product_successful_fix();
-//                }
-//            }
-//        }
-//        return system_patches;
-//    }
+
 
 
 

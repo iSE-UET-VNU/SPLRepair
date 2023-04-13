@@ -21,25 +21,29 @@ import java.util.*;
 public class SPLProduct {
     protected static Logger log = Logger.getLogger(SPLProduct.class.getSimpleName());
     private List<String> failing_test_classes = new ArrayList<>();
+    //Store by stmt id in feature level
+    private Set<String> failing_test_coverage = new HashSet<>();
     private HashMap<String, String> source_feature_to_product = new HashMap<>();
     private HashMap<String, String> source_product_to_feature = new HashMap<>();
     private String product_dir = "";
-
-
+    private boolean searched_patches = false;
+    private float product_complexity = 0.0f;
 
     private ProjectRepairFacade projectRepairFacade = new ProjectRepairFacade();
     private AstorCoreEngine coreEngine = null;
     private boolean isfailingproduct = true;
-    private int generation = 0;
 
 
-    public SPLProduct(String _product_dir){
+
+    public SPLProduct(String _product_dir, SPLSystem system){
         this.product_dir = _product_dir;
-        init_source_code();
+        init_source_code(system);
     }
-    private void init_source_code(){
+
+    private void init_source_code(SPLSystem system){
 
         String mapping_file_dir= Paths.get(product_dir, ConfigurationProperties.getProperty("featureVariantMappingFile")).toString();
+        List<String> system_stmts = system.getSystem_stmts();
         if(!Files.exists(Paths.get(mapping_file_dir))) return;
         try {
             File mapping_file = new File(mapping_file_dir);
@@ -48,14 +52,40 @@ public class SPLProduct {
             while (sc.hasNext()){
                 String tmp = sc.nextLine();
                 String stmts[] = tmp.split(" ");
-                source_feature_to_product.put(stmts[0].split(":")[1], stmts[1].split(":")[1]);
-                source_product_to_feature.put(stmts[1].split(":")[1], stmts[0].split(":")[1]);
+                String feature_stmt = stmts[0].split(":")[1];
+                source_feature_to_product.put(feature_stmt, stmts[1].split(":")[1]);
+                source_product_to_feature.put(stmts[1].split(":")[1], feature_stmt);
+                if(!system_stmts.contains(feature_stmt)){
+                    system_stmts.add(feature_stmt);
+                }
             }
+            system.setSystem_stmts(system_stmts);
         }catch (FileNotFoundException e){
             log.error("Mapping file not found" + e);
         }
+        //init failing coverage
+        String coverage_dir = Paths.get(product_dir, "coverage").toString();
+        String failed_test_coverage_file_dir= Paths.get(coverage_dir, ConfigurationProperties.getProperty("failedTestCoverageFile")).toString();
 
+        if(Files.exists(Paths.get(failed_test_coverage_file_dir))) {
+            try {
+                File failed_coverage = new File(failed_test_coverage_file_dir);
+                Scanner sc = new Scanner(failed_coverage);
+
+                while (sc.hasNext()) {
+                    String tmp = sc.nextLine();
+                    failing_test_coverage.add(tmp);
+                }
+            } catch (FileNotFoundException e) {
+                log.error("Mapping file not found" + e);
+            }
+        }
     }
+
+    public Set<String> getFailing_test_coverage() {
+        return failing_test_coverage;
+    }
+
 
     public HashMap<String, String> getSource_feature_to_product() {
         return source_feature_to_product;
@@ -63,6 +93,14 @@ public class SPLProduct {
 
     public HashMap<String, String> getSource_product_to_feature() {
         return source_product_to_feature;
+    }
+
+    public void setSearched_patches(boolean searched_patches) {
+        this.searched_patches = searched_patches;
+    }
+
+    public boolean getSearched_patches(){
+        return searched_patches;
     }
 
     public void setProduct_dir(String _product_dir){
@@ -91,6 +129,14 @@ public class SPLProduct {
         return Paths.get(product_dir, "coverage").toString();
     }
 
+    public float getProduct_complexity() {
+        return product_complexity;
+    }
+
+    public void setProduct_complexity(float product_complexity) {
+        this.product_complexity = product_complexity;
+    }
+
     public List<String> getFailing_test_classes() {
         String coverage_dir = getCoverage_dir();
         String failed_test_dir = Paths.get(coverage_dir, "failed").toString();
@@ -101,11 +147,46 @@ public class SPLProduct {
                 if (list_of_failed_test_file.isFile()) {
                     String file_name = list_of_failed_test_file.getName();
                     String test_class_name = file_name.split("ESTest")[0] + "ESTest";
-                    failing_test_classes.add(test_class_name);
+                    if(!failing_test_classes.contains(test_class_name))
+                        failing_test_classes.add(test_class_name);
                 }
             }
         }
         return failing_test_classes;
+    }
+
+    public int get_num_of_failing_tests(){
+
+        int count = 0;
+        String coverage_dir = getCoverage_dir();
+        String failed_test_dir = Paths.get(coverage_dir, "failed").toString();
+        File failed_test_folder = new File(failed_test_dir);
+        File[] list_of_failed_test_files = failed_test_folder.listFiles();
+        if( list_of_failed_test_files != null) {
+            for (File list_of_failed_test_file : list_of_failed_test_files) {
+                if (list_of_failed_test_file.isFile()) {
+                    count += 1;
+                }
+            }
+        }
+        return count;
+    }
+
+    public int get_num_of_passing_tests(){
+
+        int count = 0;
+        String coverage_dir = getCoverage_dir();
+        String failed_test_dir = Paths.get(coverage_dir, "passed").toString();
+        File failed_test_folder = new File(failed_test_dir);
+        File[] list_of_failed_test_files = failed_test_folder.listFiles();
+        if( list_of_failed_test_files != null) {
+            for (File list_of_failed_test_file : list_of_failed_test_files) {
+                if (list_of_failed_test_file.isFile()) {
+                    count += 1;
+                }
+            }
+        }
+        return count;
     }
 
 
@@ -185,5 +266,17 @@ public class SPLProduct {
             return product_dir + " is a failing product";
         else
             return product_dir + " is a passing product";
+    }
+
+    public float calculate_similarity(SPLProduct otherProduct){
+        Set<String> this_product_stmts = source_feature_to_product.keySet();
+        Set<String> other_product_stmts = otherProduct.getSource_feature_to_product().keySet();
+        Set<String> intersection = new HashSet<>(this_product_stmts);
+        intersection.retainAll(other_product_stmts);
+        float product_similarity = (float) intersection.size() / this_product_stmts.size();
+        intersection = new HashSet<>(failing_test_coverage);
+        intersection.retainAll(otherProduct.getFailing_test_coverage());
+        float coverage_similarity = (float) intersection.size() / failing_test_coverage.size();
+        return (product_similarity + coverage_similarity) / 2;
     }
 }

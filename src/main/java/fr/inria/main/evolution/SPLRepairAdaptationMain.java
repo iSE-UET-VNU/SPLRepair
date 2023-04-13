@@ -5,8 +5,6 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
 
-import fr.inria.astor.approaches._3sfix._3sFix;
-import fr.inria.astor.core.entities.OperatorInstance;
 import fr.inria.astor.core.entities.ProgramVariant;
 import fr.inria.astor.core.setup.FinderTestCases;
 import fr.inria.astor.core.solutionsearch.navigation.FailingProductNavigation;
@@ -40,7 +38,6 @@ import fr.inria.astor.core.solutionsearch.AstorCoreEngine;
 import fr.inria.main.AbstractMain;
 import fr.inria.main.ExecutionMode;
 import fr.inria.main.ExecutionResult;
-import spoon.reflect.cu.SourcePosition;
 
 /**
  * Astor main
@@ -194,31 +191,11 @@ public class SPLRepairAdaptationMain extends AbstractMain {
 
 
 
-    public SPLSystem run_splrepair(String location, String projectName, String dependencies, String packageToInstrument,
-                               double thfl, String failing) throws Exception {
-        SPLSystem buggy_spl_system = new SPLSystem(location);
-        List<String> failing_products = buggy_spl_system.getFailing_product_locations();
+    public SPLSystem run_splrepair_baseline(String location, String projectName, String dependencies, String packageToInstrument,
+                                            double thfl, String failing) throws Exception {
+
         ExecutionResult result = null;
-        if(failing_products == null || failing_products.isEmpty()){
-            log.error("SPLRepair::There is no failing products in this SPL system");
-            return buggy_spl_system;
-        }
-
-        String mode = ConfigurationProperties.getProperty("mode").toLowerCase();
-        String customEngine = ConfigurationProperties.getProperty(ExtensionPoints.NAVIGATION_ENGINE.identifier);
-
-
-        for(String fv_dir:failing_products) {
-            prepare_engine(buggy_spl_system, projectName, fv_dir, dependencies, packageToInstrument, thfl,
-                    failing, customEngine, mode);
-        }
-
-        List<String> passing_products = buggy_spl_system.getPassing_product_locations();
-        for(String pv_dir:passing_products) {
-            prepare_engine(buggy_spl_system, projectName, pv_dir, dependencies, packageToInstrument, thfl,
-                     failing, customEngine, mode);
-        }
-        FailingProductNavigation failingProductNavigation = new FailingProductNavigation();
+        SPLSystem buggy_spl_system = prepare_engine_for_system(location, projectName, dependencies, packageToInstrument, thfl, failing);
         List<SPLProduct> failingProducts = buggy_spl_system.getFailing_products();
         for(SPLProduct selected_failing_product:failingProducts) {
             //SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
@@ -243,14 +220,73 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             }
             buggy_spl_system.setSystem_patches(system_patches);
             boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
-            System.out.println("Trang::validate result:" + validate_result);
-            //break;
+
+        }
+        return buggy_spl_system;
+    }
+    private SPLSystem prepare_engine_for_system(String location, String projectName, String dependencies, String packageToInstrument,
+                                                double thfl, String failing) throws Exception {
+        SPLSystem buggy_spl_system = new SPLSystem(location);
+        List<String> failing_products = buggy_spl_system.getFailing_product_locations();
+        if(failing_products == null || failing_products.isEmpty()){
+            log.error("SPLRepair::There is no failing products in this SPL system");
+            return buggy_spl_system;
+        }
+        String mode = ConfigurationProperties.getProperty("mode").toLowerCase();
+        String customEngine = ConfigurationProperties.getProperty(ExtensionPoints.NAVIGATION_ENGINE.identifier);
+        for(String fv_dir:failing_products) {
+            prepare_engine_for_each_product(buggy_spl_system, projectName, fv_dir, dependencies, packageToInstrument, thfl,
+                    failing, customEngine, mode);
+        }
+
+        List<String> passing_products = buggy_spl_system.getPassing_product_locations();
+        for(String pv_dir:passing_products) {
+            prepare_engine_for_each_product(buggy_spl_system, projectName, pv_dir, dependencies, packageToInstrument, thfl,
+                    failing, customEngine, mode);
         }
         return buggy_spl_system;
     }
 
-    private SPLProduct prepare_engine(SPLSystem buggy_spl_system, String projectName, String product_dir,  String dependencies, String packageToInstrument,
-                                double thfl,  String failing, String customEngine, String mode) throws Exception {
+    public SPLSystem run_splrepair_fivar(String location, String projectName, String dependencies, String packageToInstrument,
+                                            double thfl, String failing) throws Exception {
+        System.out.println("Trang:run_splrepair_fivar");
+        SPLSystem buggy_spl_system = prepare_engine_for_system(location, projectName, dependencies, packageToInstrument, thfl, failing);
+        ExecutionResult result = null;
+
+        FailingProductNavigation failingProductNavigation = new FailingProductNavigation();
+        List<SPLProduct> sorted_failingProducts =  failingProductNavigation.sorted_failing_products_by_complexity(buggy_spl_system);
+        for(SPLProduct selected_failing_product:sorted_failingProducts) {
+            if(selected_failing_product.getSearched_patches()) continue;
+            selected_failing_product.setSearched_patches(true);
+            AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
+            System.out.println("Trang::selected product:" + selected_failing_product);
+            coreEngine.startSearch();
+            result = coreEngine.atEnd();
+            List<ProgramVariant> succeed_variants = coreEngine.getSolutions();
+            System.out.println("Trang::succeed variants");
+            List<Patch> system_patches = buggy_spl_system.getSystem_patches();
+            for (ProgramVariant v : succeed_variants) {
+                System.out.println("Trang:variant:"+ v);
+                Patch p = new Patch(v.getAllOperations());
+                if(!system_patches.contains(p)) {
+                    p.increase_num_of_product_successful_fix(selected_failing_product.getProduct_dir());
+                    system_patches.add(p);
+                }else{
+                    int idx = system_patches.indexOf(p);
+                    Patch p2 = system_patches.get(idx);
+                    p2.increase_num_of_product_successful_fix(selected_failing_product.getProduct_dir());
+                }
+            }
+            buggy_spl_system.setSystem_patches(system_patches);
+            boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
+            selected_failing_product = failingProductNavigation.select_next_failing_product(selected_failing_product, sorted_failingProducts);
+            if(selected_failing_product == null)
+                break;
+        }
+        return buggy_spl_system;
+    }
+    private SPLProduct prepare_engine_for_each_product(SPLSystem buggy_spl_system, String projectName, String product_dir, String dependencies, String packageToInstrument,
+                                                       double thfl, String failing, String customEngine, String mode) throws Exception {
         SPLProduct product = buggy_spl_system.getAProduct(product_dir);
 
         List<String> failing_test_classes = product.getFailing_test_classes();
@@ -402,8 +438,11 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         String projectName = ConfigurationProperties.getProperty("projectIdentifier");
 
         setupLogging();
-
-        return run_splrepair(location, projectName, dependencies, packageToInstrument, thfl, failing);
+        String repairmode = ConfigurationProperties.getProperty("repairmode");
+        if(repairmode != null && repairmode.toLowerCase().equals("fivar"))
+            return run_splrepair_fivar(location, projectName, dependencies, packageToInstrument, thfl, failing);
+        else
+            return run_splrepair_baseline(location, projectName, dependencies, packageToInstrument, thfl, failing);
     }
 
 

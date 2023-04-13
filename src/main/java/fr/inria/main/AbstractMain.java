@@ -298,6 +298,7 @@ public abstract class AbstractMain {
 
 		options.addOption("autocompile", true, "wheteher auto compile");
 		options.addOption("flresult", true, "The file name of FL result");
+		options.addOption("repairmode", true, "Repairing mode (baseline adatation or FiVar)");
 
 		options.addOption("runjava7code", false, "Validates on Java 7");
 
@@ -446,6 +447,8 @@ public abstract class AbstractMain {
 
 		if (cmd.hasOption("mode"))
 			ConfigurationProperties.properties.setProperty("mode", cmd.getOptionValue("mode"));
+		if (cmd.hasOption("repairmode"))
+			ConfigurationProperties.properties.setProperty("repairmode", cmd.getOptionValue("repairmode"));
 
 		if (cmd.hasOption("splfitnessfunction"))
 			ConfigurationProperties.properties.setProperty("splfitnessfunction", cmd.getOptionValue("splfitnessfunction"));
