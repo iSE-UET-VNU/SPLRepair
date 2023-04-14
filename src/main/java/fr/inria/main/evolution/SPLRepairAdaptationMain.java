@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.List;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import fr.inria.astor.approaches.jmutrepair.jMutRepairEvolutionary;
 import fr.inria.astor.core.entities.ModificationPoint;
 import fr.inria.astor.core.entities.ProgramVariant;
 import fr.inria.astor.core.entities.SuspiciousModificationPoint;
@@ -79,6 +80,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             core = new JGenProg(mutSupporter, projectFacade);
         } else if (ExecutionMode.MutRepair.equals(mode)) {
             core = new jMutRepairExhaustive(mutSupporter, projectFacade);
+//            core = new jMutRepairEvolutionary(mutSupporter, projectFacade);
 
         } else if (ExecutionMode.EXASTOR.equals(mode)) {
             core = new ExhaustiveIngredientBasedEngine(mutSupporter, projectFacade);
@@ -212,10 +214,12 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             for (ProgramVariant v : succeed_variants) {
                 System.out.println("Trang:variant:"+ v);
                 Patch p = new Patch(v.getAllOperations());
+                System.out.println("Trang::obtained patches: " + p);
                 if(!system_patches.contains(p)) {
                     p.increase_num_of_product_successful_fix(selected_failing_product.getProduct_dir());
                     system_patches.add(p);
                 }else{
+                    System.out.println("Trang::this patches has existed");
                     int idx = system_patches.indexOf(p);
                     Patch p2 = system_patches.get(idx);
                     p2.increase_num_of_product_successful_fix(selected_failing_product.getProduct_dir());
@@ -223,6 +227,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             }
             buggy_spl_system.setSystem_patches(system_patches);
             boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
+
 
         }
         return buggy_spl_system;

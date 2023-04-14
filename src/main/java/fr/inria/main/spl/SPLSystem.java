@@ -163,7 +163,6 @@ public class SPLSystem {
             if(!ploc.equals(seeded_product.getProduct_dir())){
                 boolean product_result = validate_a_product(getAProduct(ploc), selected_solutions);
                 if(!product_result){
-                    System.out.println("Trang::Failing product::" + ploc);
                     result = false;
                 }
             }
@@ -177,7 +176,8 @@ public class SPLSystem {
 
 
         for(ProgramVariant v:variants){
-            Patch p = new Patch(v.getAllOperations());
+            List<OperatorInstance> alloperations = v.getAllOperations();
+            Patch p = new Patch(alloperations);
             int idx = system_patches.indexOf(p);
             Patch p2 = system_patches.get(idx);
 
@@ -186,42 +186,45 @@ public class SPLSystem {
             generation += 1;
             ProgramVariant newVariant = coreEngine.getVariantFactory().createProgramVariantFromAnother(coreEngine.getVariants().get(0), generation);
             coreEngine.increase_generation_executed();
-            Map<Integer, List<OperatorInstance>> op = v.getOperations();
-            boolean flag = true;
-            for(Integer i:op.keySet()){
-                List<OperatorInstance> each_ops = op.get(i);
 
-                for(OperatorInstance nop:each_ops){
-                    SuspiciousModificationPoint sm_point = product.search_for_modification_point(nop);
-                    if(sm_point == null){
-                        p2.increase_num_of_product_successful_fix(product.getProduct_dir());
-                        return true;
-                    }else {
-                        OperatorInstance op2 = product.create_operator_instance_for_product(nop, sm_point);
-                        if (op2 != null) {
-                            newVariant.createModificationIntanceForAPoint(generation, op2);
-                        } else {
-                            flag = false;
-                            break;
-                        }
+            int num_of_found_modification_point = 0;
+            boolean flag = true;
+            for(OperatorInstance op:alloperations){
+                SuspiciousModificationPoint sm_point = product.search_for_modification_point(op);
+                if(sm_point != null){
+                    //p2.increase_num_of_product_successful_fix(product.getProduct_dir());
+                    num_of_found_modification_point += 1;
+
+                    OperatorInstance op2 = product.create_operator_instance_for_product(op, sm_point);
+                    if (op2 != null) {
+                        newVariant.createModificationIntanceForAPoint(generation, op2);
+                    } else {
+                        flag = false;
+                        break;
                     }
                 }
-                if(!flag)
-                    break;
             }
-            if(flag) {
-                if (product_solutions.contains(newVariant)) continue;
-                apply_variant(product, newVariant, generation);
-                boolean solution = coreEngine.processCreatedVariant(newVariant, generation);
-                if (solution) {
-                    product_solutions.add(newVariant);
-                    p2.increase_num_of_product_successful_fix(product.getProduct_dir());
-                }else{
+            if(num_of_found_modification_point == 0){
+                p2.increase_num_of_product_successful_fix(product.getProduct_dir());
+            }else {
+
+                if (flag) {
+                    if (product_solutions.contains(newVariant)) continue;
+                    apply_variant(product, newVariant, generation);
+                    boolean solution = coreEngine.processCreatedVariant(newVariant, generation);
+                    if (solution) {
+                        product_solutions.add(newVariant);
+                        p2.increase_num_of_product_successful_fix(product.getProduct_dir());
+                    } else {
+
+                        p2.increase_num_of_product_rejected_fix(product.getProduct_dir());
+                    }
+                    revert_variant(product, newVariant, generation);
+                    coreEngine.setSolutions(product_solutions);
+                    //return solution;
+                } else {
                     p2.increase_num_of_product_rejected_fix(product.getProduct_dir());
                 }
-                revert_variant(product, newVariant, generation);
-                coreEngine.setSolutions(product_solutions);
-                //return solution;
             }
         }
 
@@ -229,6 +232,7 @@ public class SPLSystem {
     }
 
     private void apply_variant(SPLProduct product, ProgramVariant variant, int gen) throws IllegalAccessException {
+
         AstorCoreEngine coreEngine = product.getCoreEngine();
 
         List<OperatorInstance> operations = variant.getOperations(gen);

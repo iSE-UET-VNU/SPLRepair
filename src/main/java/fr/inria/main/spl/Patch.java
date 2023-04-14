@@ -74,12 +74,17 @@ public class Patch {
 
     @Override
     public String toString(){
-        String str = "Num_of_operations=" + operations.size() + "\n [";
+        StringBuilder str = new StringBuilder("Num_of_operations=" + operations.size() + "\n [");
         for(OperatorInstance op:operations){
-            str += op + ", ";
+            str.append(op).append(", ");
         }
-        str += "]\n " + "num_of_product_successful_fix: " + num_of_product_successful_fix + "\n" +
-                "num_of_product_rejected_fix: " + num_of_product_rejected_fix + "\n";
-        return str;
+        str.append("]\n " + "num_of_product_successful_fix: ").append(num_of_product_successful_fix).append("\n").append("num_of_product_rejected_fix: ").append(num_of_product_rejected_fix).append("\n");
+//        str.append("List of succeed products:\n");
+//        for(String s:succeed_products)
+//            str.append(s).append("\n");
+//        str.append("List of rejected products:\n");
+//        for(String s:rejected_products)
+//            str.append(s).append("\n");
+        return str.toString();
     }
 }
