@@ -90,9 +90,13 @@ public class TestCasesProgramValidationResult  implements  TestCaseVariantValida
 		Set<String> failing_tests = new HashSet<>();
 		List<String> failures = testResult.getFailures();
 		for(String failed:failures){
-			String test_id = failed.split("\\(")[0];
-			String test_class = failed.split("\\(")[1].split("\\)")[0];
-			failing_tests.add(test_class + "." + test_id);
+			try {
+				String test_id = failed.split("\\(")[0];
+				String test_class = failed.split("\\(")[1].split("\\)")[0];
+				failing_tests.add(test_class + "." + test_id);
+			}catch (Exception e){
+				System.out.println("Trang::exception in geting failed test name");
+			}
 
 		}
 

@@ -385,7 +385,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         ConfigurationProperties.properties.setProperty("faultLocalizationResultFileName", fl_result_file);
         String[] system_name_tmp = location.split(System.getProperty("file.separator"));
         String system_name = system_name_tmp[system_name_tmp.length - 1];
-        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file + "_adaptation.txt").toString();
+        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file + "_splrepair.txt").toString();
         BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
         String[] system_locations = new File(location).list();
 
