@@ -226,9 +226,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                 }
             }
             buggy_spl_system.setSystem_patches(system_patches);
-            boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
-
-
+            //boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
         }
         return buggy_spl_system;
     }
@@ -292,6 +290,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                 break;
             compute_initial_fixing_score_for_next_selected_product(selected_failing_product,  next_selected_failing_product);
             selected_failing_product = next_selected_failing_product;
+            break;
         }
         return buggy_spl_system;
     }

@@ -21,12 +21,11 @@ public class ExpressionReplaceOperator extends ReplaceOp {
 
 	@Override
 	public boolean applyChangesInModel(OperatorInstance opInstance, ProgramVariant p) {
-
 		CtExpression elementToModify = (CtExpression) opInstance.getOriginal();
 		CtExpression elementOriginalCloned = (CtExpression) MutationSupporter.clone(elementToModify);
 
 		CtElement elFixIngredient = opInstance.getModified();
-
+		elFixIngredient.setPositions(elementToModify.getPosition());
 		// we transform the Spoon model
 
 		try {
@@ -43,7 +42,6 @@ public class ExpressionReplaceOperator extends ReplaceOp {
 		// Finally, we update the modification point (i.e., Astor
 		// Representation)
 		opInstance.getModificationPoint().setCodeElement(elFixIngredient);
-
 		boolean change = !opInstance.getModificationPoint().getCodeElement().toString()
 				.equals(elementOriginalCloned.toString());
 

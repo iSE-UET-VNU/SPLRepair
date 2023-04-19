@@ -88,6 +88,7 @@ public abstract class IngredientBasedEvolutionaryRepairApproachImpl extends Evol
 		if (operatorSelected.canBeAppliedToPoint(modificationPoint)) {
 			if (operatorSelected.needIngredient()) {
 				IngredientBasedOperator ingbasedapproach = (IngredientBasedOperator) operatorSelected;
+				System.out.println("Trang::this.ingredientSearchStrategy:" + this.ingredientSearchStrategy.getClass());
 				Ingredient ingredient = this.ingredientSearchStrategy.getFixIngredient(modificationPoint,
 						operatorSelected);
 

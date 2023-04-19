@@ -60,6 +60,9 @@ public class SimpleRandomSelectionIngredientStrategy extends IngredientSearchStr
 
 		int elementsFromFixSpace = baseElements.size();
 		log.debug("Templates available: " + elementsFromFixSpace);
+		for(Ingredient in:baseElements) {
+			System.out.println("Trang:: ingredients:" +in);
+		}
 
 		Stats.currentStat.getIngredientsStats().addSize(Stats.currentStat.getIngredientsStats().ingredientSpaceSize,
 				baseElements.size());

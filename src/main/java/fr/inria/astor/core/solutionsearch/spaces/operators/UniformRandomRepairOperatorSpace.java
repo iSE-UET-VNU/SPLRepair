@@ -21,6 +21,7 @@ public class UniformRandomRepairOperatorSpace extends OperatorSelectionStrategy 
 	public AstorOperator getNextOperator() {
 		AstorOperator[] operators = getOperatorSpace().values();
 		return operators[RandomManager.nextInt(operators.length)];
+
 	}
 
 	/**
