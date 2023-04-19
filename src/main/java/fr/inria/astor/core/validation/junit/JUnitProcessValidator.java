@@ -89,7 +89,7 @@ public class JUnitProcessValidator extends ProgramVariantValidator {
 //				r = new TestCasesProgramValidationResult(trfailing, trfailing.wasSuccessful(), false);
 //			}
 
-			//removeOfCompiledCode(mutatedVariant, projectFacade);
+			removeOfCompiledCode(mutatedVariant, projectFacade);
 			return r;
 
 		} catch (MalformedURLException e) {
