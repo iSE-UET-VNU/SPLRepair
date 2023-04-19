@@ -1,5 +1,6 @@
 package fr.inria.main.spl;
 
+import fr.inria.astor.approaches.cardumen.ExpressionReplaceOperator;
 import fr.inria.astor.core.entities.*;
 import fr.inria.astor.core.entities.validation.VariantValidationResult;
 import fr.inria.astor.core.faultlocalization.entity.SuspiciousCode;
@@ -277,7 +278,7 @@ public class SPLProduct {
                 null,Integer.parseInt(tmp_stmt2[tmp_stmt2.length-1]), modification_point_feature_level,
                 susp_point.getSuspicious().getSuspiciousValue(), null);
         for(ModificationPoint mp:product_modification_points){
-            if(((SuspiciousModificationPoint) mp).getSuspicious().equals(suspiciousCode)){
+            if(((SuspiciousModificationPoint) mp).getSuspicious().equals(suspiciousCode) && mp.getCodeElement().equals(op.getModificationPoint().getCodeElement())){
                 sm_point = (SuspiciousModificationPoint) mp;
                 break;
             }
@@ -295,10 +296,11 @@ public class SPLProduct {
         AstorOperator astorOperator = op.getOperationApplied();
         if(!astorOperator.canBeAppliedToPoint(sm_point))
             return null;
-        if(op.getClass().toString().contains("StatementOperatorInstance")){
+        if(op instanceof StatementOperatorInstance){
             op_in_product2 = new StatementOperatorInstance(sm_point, op.getOperationApplied(),
                     sm_point.getCodeElement(), op.getModified());
-        }else{
+        }
+        else{
             op_in_product2 = new OperatorInstance(sm_point, op.getOperationApplied(),
                     sm_point.getCodeElement(), op.getModified());
         }

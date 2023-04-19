@@ -647,8 +647,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		if (validationResult != null) {
 			variant.setIsSolution(validationResult.isSuccessful());
 			variant.setValidationResult(validationResult);
-			System.out.println("Trang::validation variants:" + variant);
-			List<OperatorInstance> applied_operations = variant.getAllOperations();
 		}
 		return validationResult;
 	}
