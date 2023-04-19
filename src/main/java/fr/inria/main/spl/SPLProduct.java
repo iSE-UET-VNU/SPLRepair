@@ -325,44 +325,4 @@ public class SPLProduct {
         return (product_similarity + coverage_similarity) / 2;
     }
 
-    public float measure_fixing_score_for_modification_point(VariantValidationResult validationResult){
-        if(validationResult instanceof TestCasesProgramValidationResult) {
-
-            Set<String> new_failing_tests = ((TestCasesProgramValidationResult) validationResult).get_failing_tests();
-            System.out.println(original_failing_test_cases);
-            System.out.println(new_failing_tests);
-
-            float negatively_pass = 0.0f;
-            if(original_passing_test_cases.size() > 0){
-                System.out.println("Trang::num_of_negatively_impacted_passing_tests(new_failing_tests):" +  num_of_negatively_impacted_passing_tests(new_failing_tests));
-                negatively_pass = (float) num_of_negatively_impacted_passing_tests(new_failing_tests)/original_passing_test_cases.size();
-            }
-            float positive_fail = 0.0f;
-            if(original_failing_test_cases.size() > 0){
-                System.out.println("Trang::num_of_possitively_impacted_failing_tests(new_failing_tests):" + num_of_possitively_impacted_failing_tests(new_failing_tests));
-                positive_fail = (float) num_of_possitively_impacted_failing_tests(new_failing_tests)/original_failing_test_cases.size();
-            }
-            return positive_fail - negatively_pass;
-        }
-        return 0.0f;
-    }
-    private int num_of_negatively_impacted_passing_tests(Set<String> new_failing_tests){
-        int count = 0;
-        for(String s:new_failing_tests){
-            if(original_passing_test_cases.contains(s)){
-                count += 1;
-            }
-        }
-        return count;
-    }
-
-    private int num_of_possitively_impacted_failing_tests(Set<String> new_failing_tests){
-        int count = 0;
-        for(String s:original_failing_test_cases){
-            if(!new_failing_tests.contains(s)){
-                count += 1;
-            }
-        }
-        return count;
-    }
 }

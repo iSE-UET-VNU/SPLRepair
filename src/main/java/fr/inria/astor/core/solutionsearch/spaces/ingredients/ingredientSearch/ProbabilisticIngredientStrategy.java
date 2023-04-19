@@ -92,6 +92,10 @@ public class ProbabilisticIngredientStrategy extends RandomSelectionTransformedI
 
 	@Override
 	protected Ingredient getRandomStatementFromSpace(List<Ingredient> fixSpace) {
+		System.out.println("trang::fix space::" + fixSpace.size());
+		for(Ingredient in:fixSpace){
+			System.out.println("Trang::ingredient in fix space:" + in);
+		}
 
 		if (ConfigurationProperties.getPropertyBool("frequenttemplate"))
 
@@ -99,5 +103,4 @@ public class ProbabilisticIngredientStrategy extends RandomSelectionTransformedI
 		else
 			return super.getRandomStatementFromSpace(fixSpace);
 	}
-
 }

@@ -41,7 +41,6 @@ public class SuspiciousModificationPoint extends ModificationPoint {
 	public String toString() {
 		return "MP=" + ctClass.getQualifiedName() + " line: " + suspicious.getLineNumber() +
 				", featureInfo: " + suspicious.getFeatureInfo() +
-				", previous_product_fixing_score: " + getPrevious_product_fixing_score() +
 				", pointed element: " + codeElement.getClass().getSimpleName() + "" + ", code element:" +  codeElement;
 	}
 

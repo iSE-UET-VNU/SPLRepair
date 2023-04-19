@@ -649,14 +649,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 			variant.setValidationResult(validationResult);
 			System.out.println("Trang::validation variants:" + variant);
 			List<OperatorInstance> applied_operations = variant.getAllOperations();
-			for(OperatorInstance op:applied_operations){
-				ModificationPoint mp = op.getModificationPoint();
-				float fixing_score = product.measure_fixing_score_for_modification_point(validationResult);
-				System.out.println("Trang:" + product.getProduct_dir());
-				System.out.println("Trang::modification point:" + mp);
-				System.out.println("Trang:: validate modification score::" + fixing_score);
-				mp.setPrevious_product_fixing_score(fixing_score);
-			}
 		}
 		return validationResult;
 	}

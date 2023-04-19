@@ -19,6 +19,7 @@ public class ReplaceOp extends StatatementIngredientOperator implements Statemen
 		boolean successful = false;
 		CtStatement ctst = (CtStatement) operation.getOriginal();
 		CtStatement fix = (CtStatement) operation.getModified();
+		fix.setPositions(ctst.getPosition());
 		CtBlock parentBlock = stmtoperator.getParentBlock();
 		if (parentBlock != null) {
 

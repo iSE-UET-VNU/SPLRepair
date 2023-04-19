@@ -29,7 +29,6 @@ public class ModificationPoint implements Comparable {
 
 	protected int generation = -1;
 
-	private float previous_product_fixing_score = 0.0f;
 
 	private List<AstorOperator> previous_tried_operators = new ArrayList<>();
 
@@ -57,13 +56,6 @@ public class ModificationPoint implements Comparable {
 		return codeElement;
 	}
 
-	public void setPrevious_product_fixing_score(float previous_product_fixing_score) {
-		this.previous_product_fixing_score = previous_product_fixing_score;
-	}
-
-	public float getPrevious_product_fixing_score() {
-		return previous_product_fixing_score;
-	}
 
 	public void setCodeElement(CtElement rootElement) {
 		this.codeElement = rootElement;

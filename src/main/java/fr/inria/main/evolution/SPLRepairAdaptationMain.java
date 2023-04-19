@@ -288,37 +288,10 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             SPLProduct next_selected_failing_product = failingProductNavigation.select_next_failing_product(selected_failing_product, sorted_failingProducts);
             if(next_selected_failing_product == null)
                 break;
-            compute_initial_fixing_score_for_next_selected_product(selected_failing_product,  next_selected_failing_product);
             selected_failing_product = next_selected_failing_product;
             break;
         }
         return buggy_spl_system;
-    }
-    private void compute_initial_fixing_score_for_next_selected_product(SPLProduct currentProduct, SPLProduct nextProduct){
-        System.out.println("Trang::compute_initial_fixing_score_for_next_selected_product");
-        HashMap<String, Float> modificationPoints = new HashMap<>();
-        List<ProgramVariant> currentProduct_variant = currentProduct.getCoreEngine().getVariants();
-        for(ProgramVariant v:currentProduct_variant){
-            List<ModificationPoint> variant_mps = v.getModificationPoints();
-            for(ModificationPoint mp:variant_mps) {
-                String stmt = ((SuspiciousModificationPoint) mp).getSuspicious().getFeatureInfo();
-                if(!modificationPoints.containsKey(stmt) || mp.getPrevious_product_fixing_score() > modificationPoints.get(stmt)){
-                    modificationPoints.put(stmt, mp.getPrevious_product_fixing_score());
-                }
-            }
-        }
-
-        List<ProgramVariant> nextProduct_variant = nextProduct.getCoreEngine().getVariants();
-        for(ProgramVariant v:nextProduct_variant){
-            List<ModificationPoint> variant_mps = v.getModificationPoints();
-            for(ModificationPoint mp:variant_mps) {
-                String stmt = ((SuspiciousModificationPoint) mp).getSuspicious().getFeatureInfo();
-                if(modificationPoints.containsKey(stmt)){
-                    Float tmp = modificationPoints.get(stmt);
-                    mp.setPrevious_product_fixing_score(tmp);
-                }
-            }
-        }
     }
 
     private SPLProduct prepare_engine_for_each_product(SPLSystem buggy_spl_system, String projectName, String product_dir, String dependencies, String packageToInstrument,
