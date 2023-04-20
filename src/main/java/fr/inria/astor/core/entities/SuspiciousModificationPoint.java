@@ -20,6 +20,7 @@ public class SuspiciousModificationPoint extends ModificationPoint {
 
 	protected SuspiciousCode suspicious;
 
+
 	public SuspiciousModificationPoint() {
 		super();
 	}
@@ -34,6 +35,8 @@ public class SuspiciousModificationPoint extends ModificationPoint {
 		return suspicious;
 	}
 
+
+
 	public void setSuspicious(SuspiciousCode suspicious) {
 		this.suspicious = suspicious;
 	}
@@ -41,7 +44,9 @@ public class SuspiciousModificationPoint extends ModificationPoint {
 	public String toString() {
 		return "MP=" + ctClass.getQualifiedName() + " line: " + suspicious.getLineNumber() +
 				", featureInfo: " + suspicious.getFeatureInfo() +
-				", pointed element: " + codeElement.getClass().getSimpleName() + "" + ", code element:" +  codeElement;
+				", pointed element: " + codeElement.getClass().getSimpleName() + "" + ", code element:" +  codeElement +
+				", previous fixing score: " + getPrevious_fix_type();
+
 	}
 
 	@Override
@@ -67,8 +72,11 @@ public class SuspiciousModificationPoint extends ModificationPoint {
 		if (suspicious == null) {
 			return other.suspicious == null;
 		} else{
-			return suspicious.equals(other.suspicious);
+			if(suspicious.equals(other.suspicious) && codeElement.equals(other.codeElement)){
+				return true;
+			}
 		}
+		return false;
 	}
 
 }

@@ -209,17 +209,13 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             coreEngine.startSearch();
             result = coreEngine.atEnd();
             List<ProgramVariant> succeed_variants = coreEngine.getSolutions();
-            System.out.println("Trang::succeed variants");
             List<Patch> system_patches = buggy_spl_system.getSystem_patches();
             for (ProgramVariant v : succeed_variants) {
-                System.out.println("Trang:variant:"+ v);
                 Patch p = new Patch(v.getAllOperations());
-                System.out.println("Trang::obtained patches: " + p);
                 if(!system_patches.contains(p)) {
                     p.increase_num_of_product_successful_fix(selected_failing_product.getProduct_dir());
                     system_patches.add(p);
                 }else{
-                    System.out.println("Trang::this patches has existed");
                     int idx = system_patches.indexOf(p);
                     Patch p2 = system_patches.get(idx);
                     p2.increase_num_of_product_successful_fix(selected_failing_product.getProduct_dir());
@@ -227,7 +223,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             }
             buggy_spl_system.setSystem_patches(system_patches);
             boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
-            break;
+
         }
         return buggy_spl_system;
     }
@@ -262,18 +258,17 @@ public class SPLRepairAdaptationMain extends AbstractMain {
 
         FailingProductNavigation failingProductNavigation = new FailingProductNavigation();
         List<SPLProduct> sorted_failingProducts =  failingProductNavigation.sorted_failing_products_by_complexity(buggy_spl_system);
-        for(SPLProduct selected_failing_product:sorted_failingProducts) {
+        SPLProduct selected_failing_product = sorted_failingProducts.get(0);
+        while (selected_failing_product != null){
             if(selected_failing_product.getSearched_patches()) continue;
             selected_failing_product.setSearched_patches(true);
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
-            System.out.println("Trang::selected product:" + selected_failing_product);
+            System.out.println("Trang::selected product:" + selected_failing_product + "  product_complexity::" + selected_failing_product.getProduct_complexity());
             coreEngine.startSearch();
             result = coreEngine.atEnd();
             List<ProgramVariant> succeed_variants = coreEngine.getSolutions();
-            System.out.println("Trang::succeed variants");
             List<Patch> system_patches = buggy_spl_system.getSystem_patches();
             for (ProgramVariant v : succeed_variants) {
-                System.out.println("Trang:variant:"+ v);
                 Patch p = new Patch(v.getAllOperations());
                 if(!system_patches.contains(p)) {
                     p.increase_num_of_product_successful_fix(selected_failing_product.getProduct_dir());
@@ -289,10 +284,36 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             SPLProduct next_selected_failing_product = failingProductNavigation.select_next_failing_product(selected_failing_product, sorted_failingProducts);
             if(next_selected_failing_product == null)
                 break;
+            init_previous_fixing_score_for_modificationpoints(selected_failing_product, next_selected_failing_product);
             selected_failing_product = next_selected_failing_product;
-            break;
+            //break;
         }
         return buggy_spl_system;
+    }
+
+    public void init_previous_fixing_score_for_modificationpoints(SPLProduct seededProduct, SPLProduct nextProduct){
+        HashMap<String, Integer> modificationPoints = new HashMap<>();
+        List<ProgramVariant> currentProduct_variant = seededProduct.getCoreEngine().getVariants();
+        for(ProgramVariant v:currentProduct_variant){
+            List<ModificationPoint> variant_mps = v.getModificationPoints();
+            for(ModificationPoint mp:variant_mps) {
+                String stmt = ((SuspiciousModificationPoint) mp).getSuspicious().getFeatureInfo() + "_" + mp.getCodeElement();
+                if(!modificationPoints.containsKey(stmt) || mp.getPrevious_fix_type() > modificationPoints.get(stmt)){
+                    modificationPoints.put(stmt, mp.getPrevious_fix_type());
+                }
+            }
+        }
+        List<ProgramVariant> nextProduct_variant = nextProduct.getCoreEngine().getVariants();
+        for(ProgramVariant v:nextProduct_variant){
+            List<ModificationPoint> variant_mps = v.getModificationPoints();
+            for(ModificationPoint mp:variant_mps) {
+                String stmt = ((SuspiciousModificationPoint) mp).getSuspicious().getFeatureInfo() + "_" + mp.getCodeElement();
+                if(modificationPoints.containsKey(stmt)){
+                    Integer tmp = modificationPoints.get(stmt);
+                    mp.setPrevious_fix_type(tmp);
+                }
+            }
+        }
     }
 
     private SPLProduct prepare_engine_for_each_product(SPLSystem buggy_spl_system, String projectName, String product_dir, String dependencies, String packageToInstrument,
@@ -357,8 +378,12 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         String fl_result_file = cmd.getOptionValue("flresult");
         ConfigurationProperties.properties.setProperty("faultLocalizationResultFileName", fl_result_file);
         String[] system_name_tmp = location.split(System.getProperty("file.separator"));
+        String repair_mode = cmd.getOptionValue("mode");
+        if(cmd.hasOption("repairmode")){
+            repair_mode += "_" + cmd.getOptionValue("repairmode");
+        }
         String system_name = system_name_tmp[system_name_tmp.length - 1];
-        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file + "_splrepair.txt").toString();
+        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file +  "_" + repair_mode + ".txt").toString();
         BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
         String[] system_locations = new File(location).list();
 

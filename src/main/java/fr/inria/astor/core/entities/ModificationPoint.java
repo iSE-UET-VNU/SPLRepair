@@ -28,9 +28,7 @@ public class ModificationPoint implements Comparable {
 	public int identified = 0;
 
 	protected int generation = -1;
-
-
-	private List<AstorOperator> previous_tried_operators = new ArrayList<>();
+	private int previous_fix_type = 0;
 
 	public ModificationPoint() {
 	}
@@ -71,6 +69,13 @@ public class ModificationPoint implements Comparable {
 
 	public String toString() {
 		return "[" + codeElement.getClass().getSimpleName() + ", in " + ctClass.getQualifiedName() + "]";
+	}
+	public void setPrevious_fix_type(int previous_fix_type) {
+		this.previous_fix_type = previous_fix_type;
+	}
+
+	public int getPrevious_fix_type() {
+		return previous_fix_type;
 	}
 
 	public List<CtVariable> getContextOfModificationPoint() {

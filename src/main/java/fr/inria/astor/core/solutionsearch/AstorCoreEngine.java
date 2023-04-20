@@ -12,7 +12,6 @@ import fr.inria.astor.core.solutionsearch.navigation.*;
 import fr.inria.astor.core.solutionsearch.spaces.operators.*;
 import fr.inria.astor.core.validation.results.TestCasesProgramValidationResult;
 import fr.inria.main.spl.SPLProduct;
-import fr.inria.main.spl.SPLSystem;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -647,6 +646,13 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		if (validationResult != null) {
 			variant.setIsSolution(validationResult.isSuccessful());
 			variant.setValidationResult(validationResult);
+			List<OperatorInstance> applied_operations = variant.getAllOperations();
+			for(OperatorInstance op:applied_operations){
+				ModificationPoint mp = op.getModificationPoint();
+				int fixing_score = product.measure_fixing_score_for_modification_point(validationResult);
+				mp.setPrevious_fix_type(fixing_score);
+				System.out.println("Trang:: " + mp + "fixing scores: " + fixing_score);
+			}
 		}
 		return validationResult;
 	}

@@ -327,4 +327,42 @@ public class SPLProduct {
         return (product_similarity + coverage_similarity) / 2;
     }
 
+    public int measure_fixing_score_for_modification_point(VariantValidationResult validationResult){
+        if(validationResult instanceof TestCasesProgramValidationResult) {
+
+            Set<String> new_failing_tests = ((TestCasesProgramValidationResult) validationResult).get_failing_tests();
+            System.out.println("Trang::original failing tests:: " + original_failing_test_cases);
+            System.out.println("Trang:: new failing tests:" + new_failing_tests);
+            int negatively_impacted_passed_tests = num_of_negatively_impacted_passing_tests(new_failing_tests);
+            int positively_impacted_failed_tests = num_of_possitively_impacted_failing_tests(new_failing_tests);
+            //CleanFix
+            if(positively_impacted_failed_tests > 0 && negatively_impacted_passed_tests == 0) return 2;
+            //NoisyFix
+            else if(positively_impacted_failed_tests > 0 && negatively_impacted_passed_tests > 0) return 1;
+            //NoneFix
+            else if(positively_impacted_failed_tests == 0 && negatively_impacted_passed_tests == 0) return 0;
+            //NegativeFix
+            else if(positively_impacted_failed_tests == 0 && negatively_impacted_passed_tests > 0) return  -1;
+        }
+        return -1;
+    }
+    private int num_of_negatively_impacted_passing_tests(Set<String> new_failing_tests){
+        int count = 0;
+        for(String s:new_failing_tests){
+            if(original_passing_test_cases.contains(s)){
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    private int num_of_possitively_impacted_failing_tests(Set<String> new_failing_tests){
+        int count = 0;
+        for(String s:original_failing_test_cases){
+            if(!new_failing_tests.contains(s)){
+                count += 1;
+            }
+        }
+        return count;
+    }
 }

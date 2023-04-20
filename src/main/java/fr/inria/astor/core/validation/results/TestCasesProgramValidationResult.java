@@ -86,6 +86,19 @@ public class TestCasesProgramValidationResult  implements  TestCaseVariantValida
 		}
 	}
 
+	public Set<String> get_failing_tests(){
+		Set<String> failing_tests = new HashSet<>();
+		List<String> failures = testResult.getFailures();
+		for(String failed:failures){
+			String test_id = failed.split("\\(")[0];
+			String test_class = failed.split("\\(")[1].split("\\)")[0];
+			failing_tests.add(test_class + "." + test_id);
+
+		}
+
+		return failing_tests;
+	}
+
 
 	protected String printTestResult(TestResult result) {
 		if (this.executionError || (result == null)) {

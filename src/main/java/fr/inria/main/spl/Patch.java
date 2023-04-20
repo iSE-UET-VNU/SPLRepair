@@ -79,12 +79,12 @@ public class Patch {
             str.append(op).append(", ");
         }
         str.append("]\n " + "num_of_product_successful_fix: ").append(num_of_product_successful_fix).append("\n").append("num_of_product_rejected_fix: ").append(num_of_product_rejected_fix).append("\n");
-        str.append("List of succeed products:\n");
-        for(String s:succeed_products)
-            str.append(s).append("\n");
-        str.append("List of rejected products:\n");
-        for(String s:rejected_products)
-            str.append(s).append("\n");
+//        str.append("List of succeed products:\n");
+//        for(String s:succeed_products)
+//            str.append(s).append("\n");
+//        str.append("List of rejected products:\n");
+//        for(String s:rejected_products)
+//            str.append(s).append("\n");
         return str.toString();
     }
 }
