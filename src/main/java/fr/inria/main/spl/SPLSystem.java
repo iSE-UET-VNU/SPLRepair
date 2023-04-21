@@ -14,6 +14,7 @@ public class SPLSystem {
     private List<String> failing_product_locations = new ArrayList<>();
     private List<String> passing_product_locations = new ArrayList<>();
     public HashMap<String, SPLProduct> products = new HashMap<>();
+    private HashMap<String, List<FixingHistory>> historical_fixing_information = new HashMap<>();
     private List<String> system_stmts = new ArrayList<>();
 
     private int num_of_features = 0;
@@ -53,6 +54,24 @@ public class SPLSystem {
 
     public void setFailing_product_locations(List<String> failing_product_locations) {
         this.failing_product_locations = failing_product_locations;
+    }
+
+    public HashMap<String, List<FixingHistory>> getHistorical_fixing_information() {
+        return historical_fixing_information;
+    }
+
+    public void put_fixing_history(ModificationPoint mp, FixingHistory fh){
+        String stmt = ((SuspiciousModificationPoint) mp).getSuspicious().getFeatureInfo() + "_" + mp.getCodeElement();
+        if(historical_fixing_information.containsKey(stmt)){
+            List<FixingHistory> fixing_info_of_this_point = historical_fixing_information.get(stmt);
+            if(!fixing_info_of_this_point.contains(fh)){
+                fixing_info_of_this_point.add(fh);
+            }
+        }else {
+            List<FixingHistory> fixings = new ArrayList<>();
+            fixings.add(fh);
+            historical_fixing_information.put(stmt, fixings);
+        }
     }
 
     public List<String> getFailing_product_locations() {
@@ -155,7 +174,6 @@ public class SPLSystem {
     }
 
     public boolean validate_in_the_whole_system(SPLProduct seeded_product) throws Exception {
-        System.out.println("Trang::seeded product is:" + seeded_product.getProduct_dir());
         List<ProgramVariant> selected_solutions = seeded_product.getCoreEngine().getSolutions();
         if(selected_solutions.isEmpty()) return false;
         boolean result = true;

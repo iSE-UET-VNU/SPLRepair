@@ -77,6 +77,7 @@ public abstract class IngredientBasedEvolutionaryRepairApproachImpl extends Evol
 	@Override
 	public OperatorInstance createOperatorInstanceForPoint(ModificationPoint modificationPoint)
 			throws IllegalAccessException {
+
 		SuspiciousModificationPoint suspModificationPoint = (SuspiciousModificationPoint) modificationPoint;
 
 		AstorOperator operatorSelected = operatorSelectionStrategy.getNextOperator(suspModificationPoint);

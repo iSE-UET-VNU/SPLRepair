@@ -166,6 +166,10 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		this.product = product;
 	}
 
+	public SPLProduct getProduct() {
+		return product;
+	}
+
 	public abstract void startSearch() throws Exception;
 
 	public ExecutionResult atEnd() {
@@ -651,7 +655,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 				ModificationPoint mp = op.getModificationPoint();
 				int fixing_score = product.measure_fixing_score_for_modification_point(validationResult);
 				mp.setPrevious_fix_type(fixing_score);
-				System.out.println("Trang:: " + mp + "fixing scores: " + fixing_score);
 			}
 		}
 		return validationResult;

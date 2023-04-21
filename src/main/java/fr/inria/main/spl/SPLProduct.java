@@ -33,12 +33,22 @@ public class SPLProduct {
     private ProjectRepairFacade projectRepairFacade = new ProjectRepairFacade();
     private AstorCoreEngine coreEngine = null;
     private boolean isfailingproduct = true;
+    SPLSystem parentSystem = null;
 
 
 
     public SPLProduct(String _product_dir, SPLSystem system){
         this.product_dir = _product_dir;
+        parentSystem = system;
         init_source_code(system);
+    }
+
+    public void setParentSystem(SPLSystem parentSystem) {
+        this.parentSystem = parentSystem;
+    }
+
+    public SPLSystem getParentSystem() {
+        return parentSystem;
     }
 
     private void init_source_code(SPLSystem system){

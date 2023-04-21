@@ -12,6 +12,7 @@ import fr.inria.astor.core.entities.ProgramVariant;
 import fr.inria.astor.core.entities.SuspiciousModificationPoint;
 import fr.inria.astor.core.setup.FinderTestCases;
 import fr.inria.astor.core.solutionsearch.navigation.FailingProductNavigation;
+import fr.inria.main.spl.FixingHistory;
 import fr.inria.main.spl.Patch;
 import fr.inria.main.spl.SPLProduct;
 import fr.inria.main.spl.SPLSystem;
@@ -287,7 +288,8 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             }
             init_previous_fixing_score_for_modificationpoints(selected_failing_product, next_selected_failing_product);
             selected_failing_product = next_selected_failing_product;
-            //break;
+
+            break;
         }
         return buggy_spl_system;
     }

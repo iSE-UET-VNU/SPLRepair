@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import fr.inria.main.spl.FixingHistory;
+import fr.inria.main.spl.SPLSystem;
 import org.apache.commons.collections.map.HashedMap;
 
 import com.martiansoftware.jsap.JSAPException;
@@ -181,6 +183,18 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 
 			if (foundSolution && ConfigurationProperties.getPropertyBool("stopfirst")) {
 				break;
+			}
+
+			//log historical information of checking operation instance
+			// to use for check the suitability of the future operation instance
+			if(ConfigurationProperties.getPropertyBool("checkSuitabilityOfIngredientBeforeValidating")){
+				SPLSystem buggy_system = getProduct().getParentSystem();
+				List<OperatorInstance> applied_operations = newVariant.getAllOperations();
+				for(OperatorInstance op:applied_operations){
+					FixingHistory fh = new FixingHistory(op, solution);
+					ModificationPoint mp = op.getModificationPoint();
+					buggy_system.put_fixing_history(mp, fh);
+				}
 			}
 
 		}
