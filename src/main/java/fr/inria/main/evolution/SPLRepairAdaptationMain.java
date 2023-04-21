@@ -282,8 +282,9 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             buggy_spl_system.setSystem_patches(system_patches);
             boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
             SPLProduct next_selected_failing_product = failingProductNavigation.select_next_failing_product(selected_failing_product, sorted_failingProducts);
-            if(next_selected_failing_product == null)
+            if(next_selected_failing_product == null) {
                 break;
+            }
             init_previous_fixing_score_for_modificationpoints(selected_failing_product, next_selected_failing_product);
             selected_failing_product = next_selected_failing_product;
             //break;
@@ -431,7 +432,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             if(adequate_patches > 0){
                 num_systems_containing_test_adequate_patch += 1;
             }
-            if(partially_fix_patches > 0){
+            if(partially_fix_patches > 0 && adequate_patches == 0){
                 num_systems_partially_fixed += 1;
             }
             total_percentage_fixed += percentage_fixed_products;

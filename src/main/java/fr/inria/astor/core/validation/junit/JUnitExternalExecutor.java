@@ -40,10 +40,10 @@ public class JUnitExternalExecutor {
 				}
 				out += s + "-,";
 				count++;
-				if (count > 10) {
-					out += "...and " + (r.getFailureCount() - 10) + " failures more,";
-					// break;
-				}
+//				if (count > 10) {
+//					out += "...and " + (r.getFailureCount() - 10) + " failures more,";
+//					// break;
+//				}
 			}
 		} catch (Exception e) {
 			// We do not care about this exception,
