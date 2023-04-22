@@ -9,7 +9,6 @@ public class SPLRepairOperatorSpace extends UniformRandomRepairOperatorSpace{
 
     @Override
     public AstorOperator getNextOperator(SuspiciousModificationPoint modificationPoint) {
-        System.out.println("Trang::SPL get next operator");
         //If we decide to mutate the point according to its suspiciousness value
         if(mutateModificationPoint(modificationPoint)){
             //here, this strategy does not take in account the modifpoint to select the op.

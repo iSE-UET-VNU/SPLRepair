@@ -289,7 +289,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             init_previous_fixing_score_for_modificationpoints(selected_failing_product, next_selected_failing_product);
             selected_failing_product = next_selected_failing_product;
 
-            break;
+            //break;
         }
         return buggy_spl_system;
     }

@@ -292,7 +292,20 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 				continue;
 
 			modificationPoint.setProgramVariant(variant);
-			OperatorInstance modificationInstance = createOperatorInstanceForPoint(modificationPoint);
+
+			OperatorInstance modificationInstance = null;
+			if(ConfigurationProperties.getPropertyBool("checkSuitabilityOfIngredientBeforeValidating")){
+				while (true) {
+					modificationInstance = createOperatorInstanceForPoint(modificationPoint);
+					if(modificationInstance == null) break;
+					double suitability_score = measure_suitability(modificationPoint, modificationInstance);
+					if(suitability_score > ConfigurationProperties.getPropertyDouble("suitabilityThreshold")){
+						break;
+					}
+				}
+			}else {
+				modificationInstance = createOperatorInstanceForPoint(modificationPoint);
+			}
 
 			if (modificationInstance != null) {
 

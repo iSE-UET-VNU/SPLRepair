@@ -11,9 +11,11 @@ import java.util.concurrent.TimeUnit;
 import fr.inria.astor.core.solutionsearch.navigation.*;
 import fr.inria.astor.core.solutionsearch.spaces.operators.*;
 import fr.inria.astor.core.validation.results.TestCasesProgramValidationResult;
+import fr.inria.main.spl.FixingHistory;
 import fr.inria.main.spl.SPLProduct;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 
@@ -74,8 +76,10 @@ import fr.inria.main.ExecutionResult;
 import fr.inria.main.evolution.ExtensionPoints;
 import fr.inria.main.evolution.PlugInLoader;
 import spoon.reflect.declaration.CtClass;
+import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
+
 
 /**
  * 
@@ -1497,4 +1501,46 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	public void setSolutions(List<ProgramVariant> _sol){
 		solutions = _sol;
 	}
+	public double measure_suitability(ModificationPoint mp, OperatorInstance op){
+		String stmt_mp = ((SuspiciousModificationPoint) mp).getSuspicious().getFeatureInfo() + "_" + mp.getCodeElement();
+		HashMap<String, List<FixingHistory>> fixing_infos = product.getParentSystem().getHistorical_fixing_information();
+		CtElement buggy_code_element = mp.getCodeElement();
+		CtElement new_edit = op.getModified();
+		double need_similar = similarity_two_edits(buggy_code_element, new_edit);
+		double need_different = 0.0f;
+		if(!fixing_infos.containsKey(stmt_mp)){
+			return 1.0f;
+		}else {
+			List<FixingHistory> fixing_info_of_a_point = fixing_infos.get(stmt_mp);
+			for(FixingHistory fx:fixing_info_of_a_point){
+				OperatorInstance previous_op = fx.getOp();
+				double tmp = similarity_two_edits(previous_op.getModified(), new_edit);
+				if(fx.isSucceedfix()){
+					if(tmp > need_similar) need_similar = tmp;
+				}else {
+					if(tmp > need_different) need_different = tmp;
+				}
+			}
+
+		}
+		double score = ((need_similar + (1.0f-need_different))/2.0f);
+		return score;
+	}
+	private double similarity_two_edits(CtElement edit1, CtElement edit2){
+		if(edit1 == null || edit2 == null) return 0.0f;
+		String edit1_code_element = edit1.toString();
+		String edit2_code_element = edit2.toString();
+		if(edit1_code_element == null || edit2_code_element == null) return 0.0f;
+		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0f;
+		double maxLength = Double.max(edit1_code_element.length(), edit2_code_element.length());
+		if (maxLength > 0) {
+			// optionally ignore case if needed
+			double similarity_score =  (maxLength - StringUtils.getLevenshteinDistance(edit1_code_element, edit2_code_element)) / maxLength;
+			return similarity_score;
+		}
+		return 1.0f;
+	}
+
+
+
 }

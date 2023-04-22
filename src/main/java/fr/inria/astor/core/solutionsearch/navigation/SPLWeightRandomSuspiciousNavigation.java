@@ -25,9 +25,6 @@ public class SPLWeightRandomSuspiciousNavigation implements SuspiciousNavigation
                 }
             }
         }
-        for(ModificationPoint p:modificationPoint_sorted_by_weighted){
-            System.out.println("Trang::modification point after sorting::" + p);
-        }
 
         return modificationPoint_sorted_by_weighted;
     }
