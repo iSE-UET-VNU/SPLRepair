@@ -103,7 +103,8 @@ public class OperatorInstance {
 		repst += this.getOperationApplied() + ":(" + this.original.getClass().getCanonicalName() + ") `"
 				+ StringUtil.trunc(this.original) + " ` -topatch--> `" + StringUtil.trunc(modified);
 
-		repst += "` (" + ((this.modified != null) ? this.modified.getClass().getCanonicalName() : "null") + ") ";
+		repst += "` (" + ((this.modified != null) ? this.modified.getClass().getCanonicalName() : "null") + ") \n";
+		repst += "Modification point: " + getModificationPoint() + "\n";
 		// if (this.original.getPosition() != null &&
 		// this.original.getPosition().getFile() != null) {
 		// repst += "at l: " + this.original.getPosition().getLine() + " on "

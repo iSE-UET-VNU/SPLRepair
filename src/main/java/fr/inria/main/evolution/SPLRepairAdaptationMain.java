@@ -132,6 +132,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                         for(int i = 0; i < temp_class_name.length; i++){
                             temp_class_name[i] = aboutline[i];
                         }
+
                         String classname = String.join(".", temp_class_name);
                         int line_number = Integer.parseInt(aboutline[aboutline.length-1]);
                         float susp_score = Float.parseFloat(tmp.split(" ")[1]);
@@ -224,7 +225,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             }
             buggy_spl_system.setSystem_patches(system_patches);
             boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
-
+            //break;
         }
         return buggy_spl_system;
     }
@@ -408,14 +409,6 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             int adequate_patches = 0;
             float percentage_fixed_products = 0.0f;
             for(Patch p: system_patches){
-                if(p.getNum_of_product_successful_fix() > 0 && p.getNum_of_product_successful_fix() != S.getNum_of_products()){
-                    partially_fix_patches += 1;
-                    writer.write(p.toString());
-                    writer.write("\n---------\n");
-                    if((float) p.getNum_of_product_successful_fix()/S.getNum_of_products() > percentage_fixed_products){
-                        percentage_fixed_products = (float) p.getNum_of_product_successful_fix()/S.getNum_of_products();
-                    }
-                }
                 if(p.getNum_of_product_successful_fix() == S.getNum_of_products()){
                     adequate_patches += 1;
                     writer.write(p.toString());
@@ -423,12 +416,24 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                     percentage_fixed_products = 1.0f;
                 }
             }
+            if(adequate_patches == 0) {
+                for (Patch p : system_patches) {
+                    if (p.getNum_of_product_successful_fix() > 0 && p.getNum_of_product_successful_fix() != S.getNum_of_products()) {
+                        partially_fix_patches += 1;
+                        writer.write(p.toString());
+                        writer.write("\n---------\n");
+                        if ((float) p.getNum_of_product_successful_fix() / S.getNum_of_products() > percentage_fixed_products) {
+                            percentage_fixed_products = (float) p.getNum_of_product_successful_fix() / S.getNum_of_products();
+                        }
+                    }
+                }
+            }
 
 
             writer.write("Number of test adequate patches:: " + adequate_patches + "\n");
             writer.write("Number of patches partially fixed the product:: " + partially_fix_patches + "\n");
 
-            writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
+            writer.write("Repairing time (min): " + (endT - startT) / (60*1000d) + "\n");
             total_time += (endT - startT) / 1000d;
             writer.write("*******************************************\n");
             if(adequate_patches > 0){
@@ -437,15 +442,19 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             if(partially_fix_patches > 0 && adequate_patches == 0){
                 num_systems_partially_fixed += 1;
             }
+
+            if(system_patches == null || system_patches.isEmpty()){
+                percentage_fixed_products = (float) S.getNum_of_passing_products()/S.getNum_of_products();
+            }
             total_percentage_fixed += percentage_fixed_products;
         }
         writer.write("------------------------summary-------------------\n");
         writer.write("Total number of systems:" + num_of_system + "\n");
         writer.write("Total number of systems containing test adequate patches:" + num_systems_containing_test_adequate_patch + "\n");
         writer.write("Total number of systems partially fixed:" + num_systems_partially_fixed + "\n");
-        if(num_systems_partially_fixed + num_systems_containing_test_adequate_patch > 0)
-            writer.write("Percentage of fixed products:" + total_percentage_fixed/(num_systems_partially_fixed + num_systems_containing_test_adequate_patch) + "\n");
-        writer.write("Total repairing time:" + total_time + "\n");
+        if(num_of_system != 0)
+            writer.write("Average percentage of passing products/system:" + total_percentage_fixed/num_of_system + "\n");
+        writer.write("Total repairing time (min): " + total_time/60 + "\n");
         writer.close();
     }
 
