@@ -99,6 +99,8 @@ public class SuspiciousCode {
 			return className.substring(0, i);
 		}
 		String[] class_name_tmp = className.split("\\.");
+		if (className.contains("zipme"))
+			return "net.sf." + class_name_tmp[class_name_tmp.length -2] + "." + class_name_tmp[class_name_tmp.length -1];
 		return class_name_tmp[class_name_tmp.length -2] + "." + class_name_tmp[class_name_tmp.length -1];
 	}
 
