@@ -1523,6 +1523,9 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 			}
 
 		}
+		if(need_similar == 1){
+			need_similar = 0;
+		}
 		double score = ((need_similar + (1.0f-need_different))/2.0f);
 		return score;
 	}
