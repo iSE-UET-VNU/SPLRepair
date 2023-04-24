@@ -135,7 +135,14 @@ public class SPLSystem {
     public void initialize() throws FileNotFoundException {
         Path variant_dir = Paths.get(location, "variants");
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Paths.get(location, "config.report.csv").toString()));
+            BufferedReader br = null;
+            File config_file = new File(Paths.get(location, "config.report.csv").toString());
+            if(config_file.exists() && !config_file.isDirectory()) {
+                br = new BufferedReader(new FileReader(Paths.get(location, "config.report.csv").toString()));
+            }else{
+                br = new BufferedReader(new FileReader(Paths.get(location, "config.report.csv.done").toString()));
+            }
+
             String line = "";
             String split_by = ",";
             line = br.readLine();
