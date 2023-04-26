@@ -226,12 +226,15 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             }
             buggy_spl_system.setSystem_patches(system_patches);
             boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
-            if(ConfigurationProperties.getPropertyBool("baselineearlystop")){
-                if(validate_result) break;
-            }
             long endT = System.currentTimeMillis();
-            if(((endT - startT) / (60*1000d)) > 30)
+            if(((endT - startT) / 1000d) > 1800)
                 break;
+            if(ConfigurationProperties.getPropertyBool("splearlystop")){
+                if(validate_result) {
+                    break;
+                }
+            }
+
         }
         return buggy_spl_system;
     }
@@ -297,8 +300,11 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             init_previous_fixing_score_for_modificationpoints(selected_failing_product, next_selected_failing_product);
             selected_failing_product = next_selected_failing_product;
             long endT = System.currentTimeMillis();
-            if(((endT - startT) / (60*1000d)) > 30)
+            if(((endT - startT) / 1000d) > 1800d)
                 break;
+            if(ConfigurationProperties.getPropertyBool("splearlystop")){
+                if(validate_result) break;
+            }
         }
         return buggy_spl_system;
     }
@@ -397,12 +403,12 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         if(cmd.hasOption("editoperationvalidation")){
             repair_mode += "_" + "edit_validation";
         }
+        if(cmd.hasOption("splearlystop")){
+            repair_mode += "_" + "earlystop";
+        }
 
         String system_name = system_name_tmp[system_name_tmp.length - 1];
         String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file +  "_" + repair_mode + ".txt").toString();
-        if(cmd.hasOption("baselineearlystop")){
-            output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file +  "_" + "baseline_early_stop.txt").toString();
-        }
         BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
         String[] system_locations = new File(location).list();
 
@@ -448,7 +454,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             writer.write("Number of test adequate patches:: " + adequate_patches + "\n");
             writer.write("Number of patches partially fixed the product:: " + partially_fix_patches + "\n");
 
-            writer.write("Repairing time (min): " + (endT - startT) / (60*1000d) + "\n");
+            writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
             total_time += (endT - startT) / 1000d;
             writer.write("*******************************************\n");
             if(adequate_patches > 0){
@@ -469,7 +475,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         writer.write("Total number of systems partially fixed:" + num_systems_partially_fixed + "\n");
         if(num_of_system != 0)
             writer.write("Average percentage of passing products/system:" + total_percentage_fixed/num_of_system + "\n");
-        writer.write("Total repairing time (min): " + total_time/60 + "\n");
+        writer.write("Total repairing time (s): " + total_time + "\n");
         writer.close();
     }
 
