@@ -298,6 +298,8 @@ public abstract class AbstractMain {
 
 		options.addOption("autocompile", true, "wheteher auto compile");
 		options.addOption("flresult", true, "The file name of FL result");
+		options.addOption("baselineearlystop", true, "Stop right after a patch is found");
+		options.addOption("editoperationvalidation", true, "Validate before applying edit operation");
 		options.addOption("repairmode", true, "Repairing mode (baseline adatation or FiVar)");
 
 		options.addOption("runjava7code", false, "Validates on Java 7");
@@ -449,6 +451,10 @@ public abstract class AbstractMain {
 			ConfigurationProperties.properties.setProperty("mode", cmd.getOptionValue("mode"));
 		if (cmd.hasOption("repairmode"))
 			ConfigurationProperties.properties.setProperty("repairmode", cmd.getOptionValue("repairmode"));
+		if (cmd.hasOption("baselineearlystop"))
+			ConfigurationProperties.properties.setProperty("baselineearlystop", cmd.getOptionValue("baselineearlystop"));
+		if (cmd.hasOption("editoperationvalidation"))
+			ConfigurationProperties.properties.setProperty("editoperationvalidation", cmd.getOptionValue("editoperationvalidation"));
 
 		if (cmd.hasOption("splfitnessfunction"))
 			ConfigurationProperties.properties.setProperty("splfitnessfunction", cmd.getOptionValue("splfitnessfunction"));

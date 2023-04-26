@@ -187,7 +187,8 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 
 			//log historical information of checking operation instance
 			// to use for check the suitability of the future operation instance
-			if(ConfigurationProperties.getPropertyBool("checkSuitabilityOfIngredientBeforeValidating")){
+			if(ConfigurationProperties.getProperty("repairmode")!= null &&
+					ConfigurationProperties.getPropertyBool("editoperationvalidation")){
 				SPLSystem buggy_system = getProduct().getParentSystem();
 				List<OperatorInstance> applied_operations = newVariant.getAllOperations();
 				for(OperatorInstance op:applied_operations){
@@ -294,7 +295,8 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 			modificationPoint.setProgramVariant(variant);
 
 			OperatorInstance modificationInstance = null;
-			if(ConfigurationProperties.getPropertyBool("checkSuitabilityOfIngredientBeforeValidating")){
+			if(ConfigurationProperties.getProperty("repairmode")!= null &&
+					ConfigurationProperties.getPropertyBool("editoperationvalidation")){
 				while (true) {
 					modificationInstance = createOperatorInstanceForPoint(modificationPoint);
 					if(modificationInstance == null) break;

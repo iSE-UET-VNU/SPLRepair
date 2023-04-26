@@ -204,6 +204,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         ExecutionResult result = null;
         SPLSystem buggy_spl_system = prepare_engine_for_system(location, projectName, dependencies, packageToInstrument, thfl, failing);
         List<SPLProduct> failingProducts = buggy_spl_system.getFailing_products();
+        long startT = System.currentTimeMillis();
         for(SPLProduct selected_failing_product:failingProducts) {
             //SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
@@ -225,7 +226,12 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             }
             buggy_spl_system.setSystem_patches(system_patches);
             boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
-            //break;
+            if(ConfigurationProperties.getPropertyBool("baselineearlystop")){
+                if(validate_result) break;
+            }
+            long endT = System.currentTimeMillis();
+            if(((endT - startT) / (60*1000d)) > 30)
+                break;
         }
         return buggy_spl_system;
     }
@@ -261,6 +267,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         FailingProductNavigation failingProductNavigation = new FailingProductNavigation();
         List<SPLProduct> sorted_failingProducts =  failingProductNavigation.sorted_failing_products_by_complexity(buggy_spl_system);
         SPLProduct selected_failing_product = sorted_failingProducts.get(0);
+        long startT = System.currentTimeMillis();
         while (selected_failing_product != null){
             if(selected_failing_product.getSearched_patches()) continue;
             selected_failing_product.setSearched_patches(true);
@@ -289,8 +296,9 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             }
             init_previous_fixing_score_for_modificationpoints(selected_failing_product, next_selected_failing_product);
             selected_failing_product = next_selected_failing_product;
-
-            //break;
+            long endT = System.currentTimeMillis();
+            if(((endT - startT) / (60*1000d)) > 30)
+                break;
         }
         return buggy_spl_system;
     }
@@ -386,8 +394,15 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         if(cmd.hasOption("repairmode")){
             repair_mode += "_" + cmd.getOptionValue("repairmode");
         }
+        if(cmd.hasOption("editoperationvalidation")){
+            repair_mode += "_" + "edit_validation";
+        }
+
         String system_name = system_name_tmp[system_name_tmp.length - 1];
         String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file +  "_" + repair_mode + ".txt").toString();
+        if(cmd.hasOption("baselineearlystop")){
+            output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file +  "_" + "baseline_early_stop.txt").toString();
+        }
         BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
         String[] system_locations = new File(location).list();
 
