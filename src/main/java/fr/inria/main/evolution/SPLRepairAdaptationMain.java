@@ -470,6 +470,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                 percentage_fixed_products = (float) S.getNum_of_passing_products()/S.getNum_of_products();
             }
             total_percentage_fixed += percentage_fixed_products;
+            if(num_of_system >= 20) break;
         }
         writer.write("------------------------summary-------------------\n");
         writer.write("Total number of systems:" + num_of_system + "\n");
