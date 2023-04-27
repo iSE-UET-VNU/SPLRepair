@@ -198,6 +198,7 @@ public class SPLSystem {
     private boolean validate_a_product(SPLProduct product, List<ProgramVariant> variants) throws Exception {
         AstorCoreEngine coreEngine = product.getCoreEngine();
         List<ProgramVariant> product_solutions = coreEngine.get_solutions();
+        boolean results = true;
 
 
         for(ProgramVariant v:variants){
@@ -243,17 +244,19 @@ public class SPLSystem {
                     } else {
 
                         p2.increase_num_of_product_rejected_fix(product.getProduct_dir());
+                        results = false;
                     }
                     revert_variant(product, newVariant, generation);
                     coreEngine.setSolutions(product_solutions);
                     //return solution;
                 } else {
                     p2.increase_num_of_product_rejected_fix(product.getProduct_dir());
+                    results = false;
                 }
             }
         }
 
-        return true;
+        return results;
     }
 
     private void apply_variant(SPLProduct product, ProgramVariant variant, int gen) throws IllegalAccessException {

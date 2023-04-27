@@ -283,6 +283,10 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 		// sorted a criterion
 		List<ModificationPoint> modificationPointsToProcess = this.suspiciousNavigationStrategy
 				.getSortedModificationPointsList(variant.getModificationPoints());
+//		System.out.println("Trang: all modification::");
+//		for(ModificationPoint mp:modificationPointsToProcess){
+//			System.out.println("Trang:: mp::" + mp);
+//		}
 		for (ModificationPoint modificationPoint : modificationPointsToProcess) {
 
 			log.debug("---analyzing modificationPoint position: " + modificationPoint);

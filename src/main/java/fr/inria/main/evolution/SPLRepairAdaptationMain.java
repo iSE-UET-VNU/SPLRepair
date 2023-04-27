@@ -303,7 +303,9 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             if(((endT - startT) / 1000d) > 1800d)
                 break;
             if(ConfigurationProperties.getPropertyBool("splearlystop")){
-                if(validate_result) break;
+                if(validate_result) {
+                    break;
+                }
             }
         }
         return buggy_spl_system;
