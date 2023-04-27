@@ -100,6 +100,7 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 						log.debug("Max time reached");
 						return;
 					}
+					num_of_try += 1;
 					if(num_of_try > ConfigurationProperties.getPropertyInt("maxGeneration")){
 						return;
 					}
