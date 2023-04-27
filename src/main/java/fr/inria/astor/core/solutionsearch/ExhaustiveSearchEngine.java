@@ -38,14 +38,16 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 		generationsExecuted = 1;
 		// For each variant (one is enough)
 		int maxMinutes = ConfigurationProperties.getPropertyInt("maxtime");
-
+		int num_of_try = 0;
 		int v = 0;
 		for (ProgramVariant parentVariant : variants) {
 
 			log.debug("\n****\nanalyzing variant #" + (++v) + " out of " + variants.size());
 			// We analyze each modifpoint of the variant i.e. suspicious
 			// statement
-			for (ModificationPoint modifPoint : parentVariant.getModificationPoints()) {
+			List<ModificationPoint> modificationPointsToProcess = this.suspiciousNavigationStrategy
+					.getSortedModificationPointsList(parentVariant.getModificationPoints());
+			for (ModificationPoint modifPoint : modificationPointsToProcess) {
 				// We create all operators to apply in the modifpoint
 				List<OperatorInstance> operatorInstances = createInstancesOfOperators(
 						(SuspiciousModificationPoint) modifPoint);
@@ -96,6 +98,9 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 
 						this.setOutputStatus(AstorOutputStatus.TIME_OUT);
 						log.debug("Max time reached");
+						return;
+					}
+					if(num_of_try > ConfigurationProperties.getPropertyInt("maxGeneration")){
 						return;
 					}
 				}
