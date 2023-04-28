@@ -227,8 +227,9 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             buggy_spl_system.setSystem_patches(system_patches);
             boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
             long endT = System.currentTimeMillis();
-            if(((endT - startT) / 1000d) > 1800)
+            if(((endT - startT) / 1000d) >= 1200d) {
                 break;
+            }
             if(ConfigurationProperties.getPropertyBool("splearlystop")){
                 if(validate_result) {
                     break;
@@ -300,7 +301,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             init_previous_fixing_score_for_modificationpoints(selected_failing_product, next_selected_failing_product);
             selected_failing_product = next_selected_failing_product;
             long endT = System.currentTimeMillis();
-            if(((endT - startT) / 1000d) > 1800d)
+            if(((endT - startT) / 1000d) >= 1200d)
                 break;
             if(ConfigurationProperties.getPropertyBool("splearlystop")){
                 if(validate_result) {
@@ -470,7 +471,6 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                 percentage_fixed_products = (float) S.getNum_of_passing_products()/S.getNum_of_products();
             }
             total_percentage_fixed += percentage_fixed_products;
-            if(num_of_system >= 20) break;
         }
         writer.write("------------------------summary-------------------\n");
         writer.write("Total number of systems:" + num_of_system + "\n");
