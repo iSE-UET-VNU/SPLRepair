@@ -1553,13 +1553,14 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		return score;
 	}
 	private double similarity_two_edits(String edit1_code_element, String edit2_code_element){
+		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
 		edit1_code_element = edit1_code_element.replace("\n", "" );
 
 		edit2_code_element = edit2_code_element.replace("\n", "");
 //		System.out.println("Trang:: edit 1:" + edit1_code_element);
 //		System.out.println("Trang:: edit 2:" + edit2_code_element);
 
-		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
+
 		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
 		double maxLength = Double.max(edit1_code_element.length(), edit2_code_element.length());
 		if (maxLength > 0d) {
