@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import fr.inria.astor.core.entities.*;
 import fr.inria.astor.core.solutionsearch.navigation.*;
 import fr.inria.astor.core.solutionsearch.spaces.operators.*;
 import fr.inria.astor.core.validation.results.TestCasesProgramValidationResult;
@@ -30,11 +31,6 @@ import fr.inria.astor.approaches.extensions.minimpact.validator.ProcessEvoSuiteV
 import fr.inria.astor.approaches.jgenprog.jGenProgSpace;
 import fr.inria.astor.approaches.jkali.JKaliSpace;
 import fr.inria.astor.approaches.jmutrepair.jMutRepairSpace;
-import fr.inria.astor.core.entities.ModificationPoint;
-import fr.inria.astor.core.entities.OperatorInstance;
-import fr.inria.astor.core.entities.PatchDiff;
-import fr.inria.astor.core.entities.ProgramVariant;
-import fr.inria.astor.core.entities.SuspiciousModificationPoint;
 import fr.inria.astor.core.entities.validation.VariantValidationResult;
 import fr.inria.astor.core.faultlocalization.FaultLocalizationStrategy;
 import fr.inria.astor.core.faultlocalization.cocospoon.CocoFaultLocalization;
@@ -1502,10 +1498,23 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		solutions = _sol;
 	}
 	public double measure_suitability(ModificationPoint mp, OperatorInstance op){
+		//System.out.println("Trang: check similarity for operation: " + op);
 		String stmt_mp = ((SuspiciousModificationPoint) mp).getSuspicious().getFeatureInfo() + "_" + mp.getCodeElement();
 		HashMap<String, List<FixingHistory>> fixing_infos = product.getParentSystem().getHistorical_fixing_information();
-		CtElement buggy_code_element = mp.getCodeElement();
-		CtElement new_edit = op.getModified();
+		String buggy_code_element = mp.getCodeElement().toString();
+		String new_edit = null;
+		if(op.getModified() != null) {
+			if(op instanceof StatementOperatorInstance){
+				if (op.getOperationApplied().name().toLowerCase().contains("insertafter"))
+					new_edit = buggy_code_element + op.getModified().toString();
+				else if (op.getOperationApplied().name().toLowerCase().contains("insertbefore"))
+					new_edit = buggy_code_element + op.getModified().toString();
+				else
+					new_edit = op.getModified().toString();
+			}else{
+				new_edit = op.getOriginal().getParent().toString().replace(op.getOriginal().toString(), op.getModified().toString());
+			}
+		}
 		double need_similar = similarity_two_edits(buggy_code_element, new_edit);
 		double need_different = 0.0d;
 		if(!fixing_infos.containsKey(stmt_mp)){
@@ -1518,8 +1527,17 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 			List<FixingHistory> fixing_info_of_a_point = fixing_infos.get(stmt_mp);
 			for(FixingHistory fx:fixing_info_of_a_point){
 				OperatorInstance previous_op = fx.getOp();
+				String previous_edit = null;
+				if(previous_op.getModified() != null) {
+					if (previous_op.getOperationApplied().name().toLowerCase().contains("insertafter"))
+						previous_edit = buggy_code_element + previous_op.getModified().toString();
+					else if (previous_op.getOperationApplied().name().toLowerCase().contains("insertbefore"))
+						previous_edit = buggy_code_element + previous_op.getModified().toString();
+					else
+						previous_edit = previous_op.getModified().toString();
+				}
 
-				double tmp = similarity_two_edits(previous_op.getModified(), new_edit);
+				double tmp = similarity_two_edits(previous_edit, new_edit);
 				if(fx.isSucceedfix()){
 					if(tmp > need_similar) need_similar = tmp;
 				}else {
@@ -1534,10 +1552,13 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		double score = ((2*need_similar + (1.0d-need_different))/3.0d);
 		return score;
 	}
-	private double similarity_two_edits(CtElement edit1, CtElement edit2){
-		if(edit1 == null || edit2 == null) return 0.0d;
-		String edit1_code_element = edit1.toString();
-		String edit2_code_element = edit2.toString();
+	private double similarity_two_edits(String edit1_code_element, String edit2_code_element){
+		edit1_code_element = edit1_code_element.replace("\n", "" );
+
+		edit2_code_element = edit2_code_element.replace("\n", "");
+//		System.out.println("Trang:: edit 1:" + edit1_code_element);
+//		System.out.println("Trang:: edit 2:" + edit2_code_element);
+
 		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
 		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
 		double maxLength = Double.max(edit1_code_element.length(), edit2_code_element.length());
