@@ -1507,13 +1507,18 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		CtElement buggy_code_element = mp.getCodeElement();
 		CtElement new_edit = op.getModified();
 		double need_similar = similarity_two_edits(buggy_code_element, new_edit);
-		double need_different = 0.0f;
+		double need_different = 0.0d;
 		if(!fixing_infos.containsKey(stmt_mp)){
-			return 1.0f;
+			if(need_similar == 1.0d){
+				need_similar = 0.0d;
+			}else{
+				return need_similar;
+			}
 		}else {
 			List<FixingHistory> fixing_info_of_a_point = fixing_infos.get(stmt_mp);
 			for(FixingHistory fx:fixing_info_of_a_point){
 				OperatorInstance previous_op = fx.getOp();
+
 				double tmp = similarity_two_edits(previous_op.getModified(), new_edit);
 				if(fx.isSucceedfix()){
 					if(tmp > need_similar) need_similar = tmp;
@@ -1523,20 +1528,20 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 			}
 
 		}
-		if(need_similar == 1){
-			need_similar = 0;
+		if(need_similar == 1.0d){
+			need_similar = 0.0d;
 		}
-		double score = ((need_similar + (1.0f-need_different))/2.0f);
+		double score = ((2*need_similar + (1.0d-need_different))/3.0d);
 		return score;
 	}
 	private double similarity_two_edits(CtElement edit1, CtElement edit2){
-		if(edit1 == null || edit2 == null) return 0.0f;
+		if(edit1 == null || edit2 == null) return 0.0d;
 		String edit1_code_element = edit1.toString();
 		String edit2_code_element = edit2.toString();
-		if(edit1_code_element == null || edit2_code_element == null) return 0.0f;
-		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0f;
+		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
+		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
 		double maxLength = Double.max(edit1_code_element.length(), edit2_code_element.length());
-		if (maxLength > 0) {
+		if (maxLength > 0d) {
 			// optionally ignore case if needed
 			double similarity_score =  (maxLength - StringUtils.getLevenshteinDistance(edit1_code_element, edit2_code_element)) / maxLength;
 			return similarity_score;

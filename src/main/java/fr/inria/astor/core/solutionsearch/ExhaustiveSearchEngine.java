@@ -47,6 +47,7 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 			// statement
 			List<ModificationPoint> modificationPointsToProcess = this.suspiciousNavigationStrategy
 					.getSortedModificationPointsList(parentVariant.getModificationPoints());
+
 			for (ModificationPoint modifPoint : modificationPointsToProcess) {
 				// We create all operators to apply in the modifpoint
 				List<OperatorInstance> operatorInstances = createInstancesOfOperators(
@@ -69,6 +70,13 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 						log.info("-->op: " + pointOperation);
 					} catch (Exception e) {
 						log.error(e);
+					}
+					if(ConfigurationProperties.getProperty("repairmode")!= null &&
+							ConfigurationProperties.getPropertyBool("editoperationvalidation")) {
+						double suitability_score = measure_suitability(modifPoint, pointOperation);
+						if(suitability_score <= ConfigurationProperties.getPropertyDouble("suitabilityThreshold")){
+							continue;
+						}
 					}
 
 					// We validate the variant after applying the operator
