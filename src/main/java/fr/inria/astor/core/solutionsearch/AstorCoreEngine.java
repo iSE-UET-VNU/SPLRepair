@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import fr.inria.astor.approaches.jgenprog.operators.StatementLevelOperator;
 import fr.inria.astor.core.entities.*;
 import fr.inria.astor.core.solutionsearch.navigation.*;
 import fr.inria.astor.core.solutionsearch.spaces.operators.*;
@@ -1504,7 +1505,7 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		String buggy_code_element = mp.getCodeElement().toString();
 		String new_edit = null;
 		if(op.getModified() != null) {
-			if(op instanceof StatementOperatorInstance){
+			if(op.getOperationApplied() instanceof StatementLevelOperator){
 				if (op.getOperationApplied().name().toLowerCase().contains("insertafter"))
 					new_edit = buggy_code_element + op.getModified().toString();
 				else if (op.getOperationApplied().name().toLowerCase().contains("insertbefore"))
