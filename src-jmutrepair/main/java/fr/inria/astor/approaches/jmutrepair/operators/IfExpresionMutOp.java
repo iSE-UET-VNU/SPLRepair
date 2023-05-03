@@ -26,7 +26,7 @@ public class IfExpresionMutOp extends ExpresionMutOp {
 		return (point.getCodeElement() instanceof CtIf);
 	}
 
-	protected OperatorInstance createModificationInstance(ModificationPoint point, MutantCtElement fix)
+	public OperatorInstance createModificationInstance(ModificationPoint point, MutantCtElement fix)
 			throws IllegalAccessException {
 		CtIf targetIF = (CtIf) point.getCodeElement();
 		OperatorInstance operation = new OperatorInstance();

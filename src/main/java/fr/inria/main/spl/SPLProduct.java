@@ -1,6 +1,9 @@
 package fr.inria.main.spl;
 
 import fr.inria.astor.approaches.cardumen.ExpressionReplaceOperator;
+import fr.inria.astor.approaches.jmutrepair.MutantCtElement;
+import fr.inria.astor.approaches.jmutrepair.operators.IfExpresionMutOp;
+import fr.inria.astor.approaches.jmutrepair.operators.ReturnExpresionMutOp;
 import fr.inria.astor.core.entities.*;
 import fr.inria.astor.core.entities.validation.VariantValidationResult;
 import fr.inria.astor.core.faultlocalization.entity.SuspiciousCode;
@@ -314,6 +317,15 @@ public class SPLProduct {
             op_in_product2 = new OperatorInstance(sm_point, op.getOperationApplied(),
                     sm_point.getCodeElement(), op.getModified());
         }
+
+        if(astorOperator instanceof IfExpresionMutOp){
+            MutantCtElement mutantCtElement = new MutantCtElement(op_in_product2.getModified(), 1.0);
+            op_in_product2 = new IfExpresionMutOp().createModificationInstance(sm_point, mutantCtElement);
+        }else if(astorOperator instanceof ReturnExpresionMutOp){
+            MutantCtElement mutantCtElement = new MutantCtElement(op_in_product2.getModified(), 1.0);
+            op_in_product2 = new ReturnExpresionMutOp().createModificationInstance(sm_point, mutantCtElement);
+        }
+
         return op_in_product2;
     }
 

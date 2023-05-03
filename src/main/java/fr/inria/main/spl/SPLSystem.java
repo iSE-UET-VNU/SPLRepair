@@ -196,6 +196,7 @@ public class SPLSystem {
     }
 
     private boolean validate_a_product(SPLProduct product, List<ProgramVariant> variants) throws Exception {
+
         AstorCoreEngine coreEngine = product.getCoreEngine();
         List<ProgramVariant> product_solutions = coreEngine.get_solutions();
         boolean results = true;
@@ -265,8 +266,9 @@ public class SPLSystem {
 
         List<OperatorInstance> operations = variant.getOperations(gen);
         for(OperatorInstance op:operations){
-            if(op != null)
+            if(op != null) {
                 coreEngine.applyNewMutationOperationToSpoonElement(op);
+            }
         }
     }
 

@@ -29,7 +29,7 @@ public class ReturnExpresionMutOp extends ExpresionMutOp {
 
 	}
 
-	protected OperatorInstance createModificationInstance(ModificationPoint point, MutantCtElement fix)
+	public OperatorInstance createModificationInstance(ModificationPoint point, MutantCtElement fix)
 			throws IllegalAccessException {
 		CtReturn targetIF = (CtReturn) point.getCodeElement();
 		OperatorInstance operation = new OperatorInstance();
