@@ -65,7 +65,7 @@ public class SPLProduct {
 
             while (sc.hasNext()){
                 String tmp = sc.nextLine();
-                String stmts[] = tmp.split(" ");
+                String[] stmts = tmp.split(" ");
                 String feature_stmt = stmts[0].split(":")[1];
                 source_feature_to_product.put(feature_stmt, stmts[1].split(":")[1]);
                 source_product_to_feature.put(stmts[1].split(":")[1], feature_stmt);
@@ -128,9 +128,7 @@ public class SPLProduct {
     }
 
     public void setFailing_test_classes(List<String> _failing_test_classes){
-        for(String s:_failing_test_classes){
-            failing_test_classes.add(s);
-        }
+        failing_test_classes.addAll(_failing_test_classes);
         if(failing_test_classes.size() > 0){
             isfailingproduct = true;
         }
@@ -163,8 +161,7 @@ public class SPLProduct {
                 if (list_of_failed_test_file.isFile()) {
                     String file_name = list_of_failed_test_file.getName();
                     String test_id = file_name.split("\\.coverage")[0];
-                    if(!original_failing_test_cases.contains(test_id))
-                        original_failing_test_cases.add(test_id);
+                    original_failing_test_cases.add(test_id);
                 }
             }
         }
@@ -180,8 +177,7 @@ public class SPLProduct {
                 if (list_of_failed_test_file.isFile()) {
                     String file_name = list_of_failed_test_file.getName();
                     String test_id = file_name.split("\\.coverage")[0];
-                    if(!original_passing_test_cases.contains(test_id))
-                        original_passing_test_cases.add(test_id);
+                    original_passing_test_cases.add(test_id);
                 }
             }
         }

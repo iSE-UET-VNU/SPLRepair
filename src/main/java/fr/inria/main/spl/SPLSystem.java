@@ -20,6 +20,8 @@ public class SPLSystem {
     private int num_of_features = 0;
     private int num_of_failing_products = 0;
     private int num_of_passing_products = 0;
+
+    private int num_of_attempted_products = 0;
     List<Patch> system_patches = new ArrayList<>();
 
 
@@ -84,6 +86,17 @@ public class SPLSystem {
 
     public List<String> getPassing_product_locations() {
         return passing_product_locations;
+    }
+
+    public void setNum_of_attempted_products(int num_of_attempted_products) {
+        this.num_of_attempted_products = num_of_attempted_products;
+    }
+
+    public int getNum_of_attempted_products() {
+        return num_of_attempted_products;
+    }
+    public void increase_attempted_products(){
+        num_of_attempted_products += 1;
     }
 
     public List<SPLProduct> getFailing_products(){
