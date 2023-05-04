@@ -40,6 +40,7 @@ public abstract class ExpresionMutOp extends AutonomousOperator {
 
 			CtExpression ctst = (CtExpression) operation.getOriginal();
 			CtExpression fix = (CtExpression) operation.getModified();
+			fix.setPositions(ctst.getPosition());
 
 			ctst.replace((CtExpression) fix);
 			successful = true;
