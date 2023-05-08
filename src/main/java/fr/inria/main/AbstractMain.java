@@ -298,6 +298,7 @@ public abstract class AbstractMain {
 
 		options.addOption("autocompile", true, "wheteher auto compile");
 		options.addOption("flresult", true, "The file name of FL result");
+		options.addOption("similarityfunc", true, "Function to measure the similarity of edits");
 		options.addOption("splearlystop", true, "Stop right after a test-adequate patch is found");
 		options.addOption("editoperationvalidation", true, "Validate before applying edit operation");
 		options.addOption("repairmode", true, "Repairing mode (baseline adatation or FiVar)");
@@ -461,6 +462,8 @@ public abstract class AbstractMain {
 
 		if (cmd.hasOption("flresult"))
 			ConfigurationProperties.properties.setProperty("faultLocalizationResultFileName", cmd.getOptionValue("flresult"));
+		if (cmd.hasOption("similarityfunc"))
+			ConfigurationProperties.properties.setProperty("editoperationsimilarityfunction", cmd.getOptionValue("similarityfunc"));
 
 		String outputPath = "";
 		if (cmd.hasOption("out")) {

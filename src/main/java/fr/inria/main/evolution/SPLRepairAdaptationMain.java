@@ -207,146 +207,6 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         long startT = System.currentTimeMillis();
         String repairmode = ConfigurationProperties.getProperty("repairmode");
 
-        if(location.contains("BankAccount")){
-            if(ConfigurationProperties.getProperty("faultLocalizationResultFileName").contains("groundtruth")){
-                if(!(location.contains("_121") || location.contains("_133") || location.contains("_183")
-                        || location.contains("_175") || location.contains("_120") || location.contains("260")
-                        || location.contains("237") || location.contains("221") || location.contains("224")
-                        || location.contains("112") || location.contains("163") || location.contains("164")
-                        || location.contains("_92") || location.contains("178") || location.contains("139")
-                        || location.contains("130") || location.contains("_98") || location.contains("_80")
-                        || location.contains("194") || location.contains("176") || location.contains("198")
-                        || location.contains("_89") || location.contains("184") || location.contains("246")
-                        || location.contains("159") || location.contains("204") || location.contains("240")
-                        || location.contains("153") || location.contains("162") || location.contains("_79"))){
-
-                    buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                    return buggy_spl_system;
-                }
-
-            }else {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
-                    if(!(location.contains("_121") || location.contains("133") || location.contains("183")
-                            || location.contains("120") || location.contains("260") || location.contains("237")
-                            || location.contains("221") || location.contains("224") || location.contains("112")
-                            || location.contains("163") || location.contains("164") || location.contains("_92")
-                            || location.contains("_178") || location.contains("139") || location.contains("130")
-                            || location.contains("_98") || location.contains("_80") || location.contains("194")
-                            || location.contains("176") || location.contains("198") || location.contains("_89")
-                            || location.contains("246") || location.contains("159") || location.contains("204")
-                            || location.contains("240") || location.contains("153") || location.contains("162")
-                            || location.contains("_79")))
-                    {
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }else {
-                    if(!(location.contains("121") || location.contains("133") || location.contains("120")
-                            || location.contains("260") || location.contains("237") || location.contains("221")
-                            || location.contains("224") || location.contains("112") || location.contains("163")
-                            || location.contains("164") || location.contains("_92") || location.contains("139")
-                            || location.contains("130") || location.contains("_98") || location.contains("_80")
-                            || location.contains("194") || location.contains("176") || location.contains("198")
-                            || location.contains("_89") || location.contains("246") || location.contains("204")
-                            || location.contains("240") || location.contains("153") || location.contains("_79")))
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                    return buggy_spl_system;
-                }
-            }
-        }
-        else if(location.contains("Email")){
-            if(ConfigurationProperties.getProperty("faultLocalizationResultFileName").contains("groundtruth")) {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
-                    if(!(location.contains("_5"))) {
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }else {
-                    if(!(location.contains("_5") || location.contains("_135"))) {
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }
-            }else {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
-                    if(!(location.contains("_38") || location.contains("_78"))) {
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }else {
-                    if(!(location.contains("_32") || location.contains("_78"))) {
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }
-            }
-        }
-        else if(location.contains("ExamDB")){
-            if(ConfigurationProperties.getProperty("faultLocalizationResultFileName").contains("groundtruth")) {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
-                    if(!(location.contains("323") || location.contains("356") || location.contains("_99")
-                            || location.contains("_65") || location.contains("_8") || location.contains("377")
-                            || location.contains("_298"))) {
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }else {
-
-                    if(!(location.contains("323") || location.contains("225") || location.contains("491")
-                            || location.contains("223") || location.contains("181") || location.contains("_65")
-                            || location.contains("_8") || location.contains("377") || location.contains("_40"))) {
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }
-            }else {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
-                    if(!(location.contains("323") || location.contains("378") || location.contains("211")
-                            || location.contains("_11") || location.contains("_65") || location.contains("_8")
-                            || location.contains("377"))) {
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }else {
-                    if(!(location.contains("274") || location.contains("225") || location.contains("491")
-                            || location.contains("223") || location.contains("292") || location.contains("181"))) {
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }
-            }
-        }
-        else if(location.contains("GPL")){
-            if(ConfigurationProperties.getProperty("faultLocalizationResultFileName").contains("groundtruth")) {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){}
-                else{
-                    if(!(location.contains("_25") || location.contains("357") || location.contains("375")
-                            || location.contains("326") || location.contains("367") || location.contains("427")
-                            || location.contains("_80") || location.contains("134")  || location.contains("345")
-                            || location.contains("111"))) {
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }
-            }else {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
-                    if(!(location.contains("_97") || location.contains("_410") || location.contains("326")
-                            || location.contains("_47") || location.contains("367") || location.contains("346"))) {
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }else {
-                    if(!(location.contains("_13") || location.contains("_25") || location.contains("375")
-                            || location.contains("326") || location.contains("_47")
-                            || location.contains("367") || location.contains("427") || location.contains("_9")
-                            || location.contains("_80") || location.contains("_134") || location.contains("345")
-                            || location.contains("346"))) {
-                        buggy_spl_system.setNum_of_attempted_products(failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }
-            }
-        }
         for(SPLProduct selected_failing_product:failingProducts) {
             //SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
@@ -378,7 +238,6 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                     break;
                 }
             }
-
         }
         return buggy_spl_system;
     }
@@ -416,146 +275,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         SPLProduct selected_failing_product = sorted_failingProducts.get(0);
         long startT = System.currentTimeMillis();
         String repairmode = ConfigurationProperties.getProperty("repairmode");
-        if(location.contains("BankAccount")){
-            if(ConfigurationProperties.getProperty("faultLocalizationResultFileName").contains("groundtruth")){
-                if(!(location.contains("_121") || location.contains("_133") || location.contains("_183")
-                        || location.contains("_175") || location.contains("_120") || location.contains("260")
-                        || location.contains("237") || location.contains("221") || location.contains("224")
-                        || location.contains("112") || location.contains("163") || location.contains("164")
-                        || location.contains("_92") || location.contains("178") || location.contains("139")
-                        || location.contains("130") || location.contains("_98") || location.contains("_80")
-                        || location.contains("194") || location.contains("176") || location.contains("198")
-                        || location.contains("_89") || location.contains("184") || location.contains("246")
-                        || location.contains("159") || location.contains("204") || location.contains("240")
-                        || location.contains("153") || location.contains("162") || location.contains("_79"))){
 
-                    buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                    return buggy_spl_system;
-                }
-
-            }else {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
-                    if(!(location.contains("_121") || location.contains("133") || location.contains("183")
-                            || location.contains("120") || location.contains("260") || location.contains("237")
-                            || location.contains("221") || location.contains("224") || location.contains("112")
-                            || location.contains("163") || location.contains("164") || location.contains("_92")
-                            || location.contains("_178") || location.contains("139") || location.contains("130")
-                            || location.contains("_98") || location.contains("_80") || location.contains("194")
-                            || location.contains("176") || location.contains("198") || location.contains("_89")
-                            || location.contains("246") || location.contains("159") || location.contains("204")
-                            || location.contains("240") || location.contains("153") || location.contains("162")
-                            || location.contains("_79")))
-                    {
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }else {
-                    if(!(location.contains("121") || location.contains("133") || location.contains("120")
-                            || location.contains("260") || location.contains("237") || location.contains("221")
-                            || location.contains("224") || location.contains("112") || location.contains("163")
-                            || location.contains("164") || location.contains("_92") || location.contains("139")
-                            || location.contains("130") || location.contains("_98") || location.contains("_80")
-                            || location.contains("194") || location.contains("176") || location.contains("198")
-                            || location.contains("_89") || location.contains("246") || location.contains("204")
-                            || location.contains("240") || location.contains("153") || location.contains("_79")))
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                    return buggy_spl_system;
-                }
-            }
-        }
-        else if(location.contains("Email")){
-            if(ConfigurationProperties.getProperty("faultLocalizationResultFileName").contains("groundtruth")) {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
-                    if(!(location.contains("_5"))) {
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }else {
-                    if(!(location.contains("_5") || location.contains("_135"))) {
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }
-            }else {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
-                    if(!(location.contains("_38") || location.contains("_78"))) {
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }else {
-                    if(!(location.contains("_32") || location.contains("_78"))) {
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }
-            }
-        }
-        else if(location.contains("ExamDB")){
-            if(ConfigurationProperties.getProperty("faultLocalizationResultFileName").contains("groundtruth")) {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
-                    if(!(location.contains("323") || location.contains("356") || location.contains("_99")
-                            || location.contains("_65") || location.contains("_8") || location.contains("377")
-                            || location.contains("_298"))) {
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }else {
-
-                    if(!(location.contains("323") || location.contains("225") || location.contains("491")
-                            || location.contains("223") || location.contains("181") || location.contains("_65")
-                            || location.contains("_8") || location.contains("377") || location.contains("_40"))) {
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }
-            }else {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
-                    if(!(location.contains("323") || location.contains("378") || location.contains("211")
-                            || location.contains("_11") || location.contains("_65") || location.contains("_8")
-                            || location.contains("377"))) {
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }else {
-                    if(!(location.contains("274") || location.contains("225") || location.contains("491")
-                            || location.contains("223") || location.contains("292") || location.contains("181"))) {
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }
-            }
-        }
-        else if(location.contains("GPL")){
-            if(ConfigurationProperties.getProperty("faultLocalizationResultFileName").contains("groundtruth")) {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){}
-                else{
-                    if(!(location.contains("_25") || location.contains("357") || location.contains("375")
-                            || location.contains("326") || location.contains("367") || location.contains("427")
-                            || location.contains("_80") || location.contains("134")  || location.contains("345")
-                            || location.contains("111"))) {
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }
-            }else {
-                if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
-                    if(!(location.contains("_97") || location.contains("_410") || location.contains("326")
-                            || location.contains("_47") || location.contains("367") || location.contains("346"))) {
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }else {
-                    if(!(location.contains("_13") || location.contains("_25") || location.contains("375")
-                            || location.contains("326") || location.contains("_47")
-                            || location.contains("367") || location.contains("427") || location.contains("_9")
-                            || location.contains("_80") || location.contains("_134") || location.contains("345")
-                            || location.contains("346"))) {
-                        buggy_spl_system.setNum_of_attempted_products(sorted_failingProducts.size());
-                        return buggy_spl_system;
-                    }
-                }
-            }
-        }
         while (selected_failing_product != null){
             if(selected_failing_product.getSearched_patches()) continue;
             selected_failing_product.setSearched_patches(true);
@@ -586,8 +306,9 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             init_previous_fixing_score_for_modificationpoints(selected_failing_product, next_selected_failing_product);
             selected_failing_product = next_selected_failing_product;
             long endT = System.currentTimeMillis();
-            if(((endT - startT) / 1000d) >= 1200d)
+            if(((endT - startT) / 1000d) >= 1200d) {
                 break;
+            }
             if(ConfigurationProperties.getPropertyBool("splearlystop")){
                 if(validate_result) {
                     break;
@@ -697,9 +418,12 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         if(cmd.hasOption("splearlystop")){
             repair_mode += "_" + "earlystop";
         }
+        if(cmd.hasOption("similarityfunc")){
+            repair_mode += "_" + cmd.getOptionValue("similarityfunc");
+        }
 
         String system_name = system_name_tmp[system_name_tmp.length - 1];
-        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file +  "_" + repair_mode + "tmp.txt").toString();
+        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file +  "_" + repair_mode + ".txt").toString();
         BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
         String[] system_locations = new File(location).list();
 

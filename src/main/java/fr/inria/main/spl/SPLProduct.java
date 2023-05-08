@@ -128,7 +128,9 @@ public class SPLProduct {
     }
 
     public void setFailing_test_classes(List<String> _failing_test_classes){
-        failing_test_classes.addAll(_failing_test_classes);
+        for(String s:_failing_test_classes){
+            failing_test_classes.add(s);
+        }
         if(failing_test_classes.size() > 0){
             isfailingproduct = true;
         }
@@ -161,7 +163,8 @@ public class SPLProduct {
                 if (list_of_failed_test_file.isFile()) {
                     String file_name = list_of_failed_test_file.getName();
                     String test_id = file_name.split("\\.coverage")[0];
-                    original_failing_test_cases.add(test_id);
+                    if(!original_failing_test_cases.contains(test_id))
+                        original_failing_test_cases.add(test_id);
                 }
             }
         }
@@ -177,7 +180,8 @@ public class SPLProduct {
                 if (list_of_failed_test_file.isFile()) {
                     String file_name = list_of_failed_test_file.getName();
                     String test_id = file_name.split("\\.coverage")[0];
-                    original_passing_test_cases.add(test_id);
+                    if(!original_passing_test_cases.contains(test_id))
+                        original_passing_test_cases.add(test_id);
                 }
             }
         }

@@ -42,13 +42,15 @@ public class FailingProductNavigation {
         int index = sorted_product_list.indexOf(current_product);
         float max_similarity = 0.0f;
         int index_of_most_similar_product = -1;
+
         for(int i = 0; i < sorted_product_list.size(); i++){
             if(i != index && !sorted_product_list.get(i).getSearched_patches()){
-                float similar_value = current_product.calculate_similarity(sorted_product_list.get(i));
-                if(similar_value > max_similarity){
-                    max_similarity = similar_value;
+//                float similar_value = current_product.calculate_similarity(sorted_product_list.get(i));
+//                if(similar_value >= max_similarity){
+//                    max_similarity = similar_value;
                     index_of_most_similar_product = i;
-                }
+                    break;
+                //}
             }
         }
         if( index_of_most_similar_product != -1)

@@ -73,10 +73,9 @@ import fr.inria.main.ExecutionResult;
 import fr.inria.main.evolution.ExtensionPoints;
 import fr.inria.main.evolution.PlugInLoader;
 import spoon.reflect.declaration.CtClass;
-import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
-
+import info.debatty.java.stringsimilarity.*;
 
 /**
  * 
@@ -1516,7 +1515,13 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 				new_edit = op.getOriginal().getParent().toString().replace(op.getOriginal().toString(), op.getModified().toString());
 			}
 		}
-		double need_similar = similarity_two_edits(buggy_code_element, new_edit);
+		double need_similar;
+		if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("cosine")) {
+			need_similar = cosine(buggy_code_element, new_edit);
+		}
+		else{
+			need_similar = levenshtein_distance(buggy_code_element, new_edit);
+		}
 		double need_different = 0.0d;
 		if(!fixing_infos.containsKey(stmt_mp)){
 			if(need_similar == 1.0d){
@@ -1537,8 +1542,16 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 					else
 						previous_edit = previous_op.getModified().toString();
 				}
+				double tmp = 0.0d;
+				if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("cosine")) {
+					tmp = cosine(previous_edit, new_edit);
+				}
+				else{
+					tmp = levenshtein_distance(previous_edit, new_edit);
+				}
 
-				double tmp = similarity_two_edits(previous_edit, new_edit);
+
+
 				if(fx.isSucceedfix()){
 					if(tmp > need_similar) need_similar = tmp;
 				}else {
@@ -1553,16 +1566,16 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		double score = ((2*need_similar + (1.0d-need_different))/3.0d);
 		return score;
 	}
-	private double similarity_two_edits(String edit1_code_element, String edit2_code_element){
+	private double levenshtein_distance(String edit1_code_element, String edit2_code_element){
+		//System.out.println("Trang: levenshtein_distance");
 		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
 		edit1_code_element = edit1_code_element.replace("\n", "" );
 
 		edit2_code_element = edit2_code_element.replace("\n", "");
-//		System.out.println("Trang:: edit 1:" + edit1_code_element);
-//		System.out.println("Trang:: edit 2:" + edit2_code_element);
-
 
 		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
+//		System.out.println("Trang:edit 1:: " + edit1_code_element);
+//		System.out.println("Trang:edit 2:: " + edit2_code_element);
 		double maxLength = Double.max(edit1_code_element.length(), edit2_code_element.length());
 		if (maxLength > 0d) {
 			// optionally ignore case if needed
@@ -1572,6 +1585,17 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		return 1.0f;
 	}
 
+	private double cosine(String edit1_code_element, String edit2_code_element){
+//		System.out.println("Trang: cosine function");
+		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
+		edit1_code_element = edit1_code_element.replace("\n", "" );
 
+		edit2_code_element = edit2_code_element.replace("\n", "");
+//		System.out.println("Trang:edit 1:: " + edit1_code_element);
+//		System.out.println("Trang:edit 2:: " + edit2_code_element);
+		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
+		Cosine cosine = new Cosine(3);
+		return cosine.similarity(edit1_code_element, edit2_code_element);
+	}
 
 }
