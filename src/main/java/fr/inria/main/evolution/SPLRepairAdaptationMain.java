@@ -314,7 +314,6 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                     break;
                 }
             }
-
         }
         return buggy_spl_system;
     }

@@ -26,10 +26,12 @@ public class ExpressionReplaceOperator extends ReplaceOp {
 
 		CtElement elFixIngredient = opInstance.getModified();
 		elFixIngredient.setPositions(elementToModify.getPosition());
+		elFixIngredient.setParent(elementToModify.getParent());
 		// we transform the Spoon model
 
 		try {
-			opInstance.getModificationPoint().getCodeElement().replace(elFixIngredient);
+			elementToModify.replace(elFixIngredient);
+
 		} catch (Exception e) {
 			log.error("error to modify " + elementOriginalCloned + " to " + elFixIngredient);
 			log.equals(e);
@@ -38,10 +40,10 @@ public class ExpressionReplaceOperator extends ReplaceOp {
 		}
 
 		// I save the original instance
-		opInstance.setOriginal(elementOriginalCloned);
+		//opInstance.setOriginal(elementOriginalCloned);
 		// Finally, we update the modification point (i.e., Astor
 		// Representation)
-		opInstance.getModificationPoint().setCodeElement(elFixIngredient);
+//		opInstance.getModificationPoint().setCodeElement(elFixIngredient);
 		boolean change = !opInstance.getModificationPoint().getCodeElement().toString()
 				.equals(elementOriginalCloned.toString());
 
@@ -54,11 +56,17 @@ public class ExpressionReplaceOperator extends ReplaceOp {
 	@Override
 	public boolean undoChangesInModel(OperatorInstance opInstance, ProgramVariant p) {
 
+		CtElement ctst = (CtElement) opInstance.getOriginal();
+		CtElement fix = (CtElement) opInstance.getModified();
+		fix.replace(ctst);
+
+
+
 		// We update the spoon Model
-		opInstance.getModificationPoint().getCodeElement().replace(opInstance.getOriginal());
-		// Finally, we update the modification point (i.e., Astor
-		// Representation)
-		opInstance.getModificationPoint().setCodeElement(opInstance.getOriginal());
+//		opInstance.getModificationPoint().getCodeElement().replace(opInstance.getOriginal());
+//		// Finally, we update the modification point (i.e., Astor
+//		// Representation)
+//		opInstance.getModificationPoint().setCodeElement(opInstance.getOriginal());
 		return true;
 	}
 

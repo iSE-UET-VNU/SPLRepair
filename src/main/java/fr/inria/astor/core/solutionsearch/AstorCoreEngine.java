@@ -17,7 +17,6 @@ import fr.inria.main.spl.FixingHistory;
 import fr.inria.main.spl.SPLProduct;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 
@@ -1498,7 +1497,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		solutions = _sol;
 	}
 	public double measure_suitability(ModificationPoint mp, OperatorInstance op){
-		//System.out.println("Trang: check similarity for operation: " + op);
 		String stmt_mp = ((SuspiciousModificationPoint) mp).getSuspicious().getFeatureInfo() + "_" + mp.getCodeElement();
 		HashMap<String, List<FixingHistory>> fixing_infos = product.getParentSystem().getHistorical_fixing_information();
 		String buggy_code_element = mp.getCodeElement().toString();
@@ -1515,12 +1513,16 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 				new_edit = op.getOriginal().getParent().toString().replace(op.getOriginal().toString(), op.getModified().toString());
 			}
 		}
-		double need_similar;
+
+		double need_similar = 0.5;
 		if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("cosine")) {
 			need_similar = cosine(buggy_code_element, new_edit);
 		}
-		else{
-			need_similar = levenshtein_distance(buggy_code_element, new_edit);
+		else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("levenshtein")) {
+			need_similar = levenshtein(buggy_code_element, new_edit);
+		}
+		else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("jaccard")) {
+			need_similar = jaccard(buggy_code_element, new_edit);
 		}
 		double need_different = 0.0d;
 		if(!fixing_infos.containsKey(stmt_mp)){
@@ -1546,11 +1548,13 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 				if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("cosine")) {
 					tmp = cosine(previous_edit, new_edit);
 				}
-				else{
-					tmp = levenshtein_distance(previous_edit, new_edit);
+				else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("levenshtein")) {
+					tmp = levenshtein(previous_edit, new_edit);
 				}
 
-
+				else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("jaccard")) {
+					tmp = jaccard(previous_edit, new_edit);
+				}
 
 				if(fx.isSucceedfix()){
 					if(tmp > need_similar) need_similar = tmp;
@@ -1558,7 +1562,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 					if(tmp > need_different) need_different = tmp;
 				}
 			}
-
 		}
 		if(need_similar == 1.0d){
 			need_similar = 0.0d;
@@ -1566,36 +1569,35 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		double score = ((2*need_similar + (1.0d-need_different))/3.0d);
 		return score;
 	}
-	private double levenshtein_distance(String edit1_code_element, String edit2_code_element){
-		//System.out.println("Trang: levenshtein_distance");
-		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
-		edit1_code_element = edit1_code_element.replace("\n", "" );
-
-		edit2_code_element = edit2_code_element.replace("\n", "");
-
-		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
-//		System.out.println("Trang:edit 1:: " + edit1_code_element);
-//		System.out.println("Trang:edit 2:: " + edit2_code_element);
-		double maxLength = Double.max(edit1_code_element.length(), edit2_code_element.length());
-		if (maxLength > 0d) {
-			// optionally ignore case if needed
-			double similarity_score =  (maxLength - StringUtils.getLevenshteinDistance(edit1_code_element, edit2_code_element)) / maxLength;
-			return similarity_score;
-		}
-		return 1.0f;
-	}
 
 	private double cosine(String edit1_code_element, String edit2_code_element){
-//		System.out.println("Trang: cosine function");
 		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
 		edit1_code_element = edit1_code_element.replace("\n", "" );
 
 		edit2_code_element = edit2_code_element.replace("\n", "");
-//		System.out.println("Trang:edit 1:: " + edit1_code_element);
-//		System.out.println("Trang:edit 2:: " + edit2_code_element);
 		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
 		Cosine cosine = new Cosine(3);
 		return cosine.similarity(edit1_code_element, edit2_code_element);
 	}
 
+	private double jaccard(String edit1_code_element, String edit2_code_element){
+		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
+		edit1_code_element = edit1_code_element.replace("\n", "" );
+		edit2_code_element = edit2_code_element.replace("\n", "");
+		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
+		Jaccard jac = new Jaccard();
+		return jac.similarity(edit1_code_element, edit2_code_element);
+	}
+
+	private double levenshtein(String edit1_code_element, String edit2_code_element){
+		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
+		edit1_code_element = edit1_code_element.replace("\n", "" );
+		edit2_code_element = edit2_code_element.replace("\n", "");
+
+		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
+		NormalizedLevenshtein jw = new NormalizedLevenshtein();
+		double score =  jw.similarity(edit1_code_element, edit2_code_element);
+		return score;
+
+	}
 }

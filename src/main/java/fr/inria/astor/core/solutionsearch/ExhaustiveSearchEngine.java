@@ -74,7 +74,6 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 					if(ConfigurationProperties.getProperty("repairmode")!= null &&
 							ConfigurationProperties.getPropertyBool("editoperationvalidation")) {
 						double suitability_score = measure_suitability(modifPoint, pointOperation);
-						//System.out.println("Trang::suitability score" + suitability_score);
 						if(suitability_score <= ConfigurationProperties.getPropertyDouble("suitabilityThreshold")){
 							continue;
 						}
