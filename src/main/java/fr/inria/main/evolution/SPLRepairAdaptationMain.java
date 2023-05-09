@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
+import java.util.*;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import fr.inria.astor.approaches.jmutrepair.jMutRepairEvolutionary;
@@ -204,9 +205,10 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         ExecutionResult result = null;
         SPLSystem buggy_spl_system = prepare_engine_for_system(location, projectName, dependencies, packageToInstrument, thfl, failing);
         List<SPLProduct> failingProducts = buggy_spl_system.getFailing_products();
+
         long startT = System.currentTimeMillis();
         String repairmode = ConfigurationProperties.getProperty("repairmode");
-
+        Collections.shuffle(failingProducts);
         for(SPLProduct selected_failing_product:failingProducts) {
             //SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
