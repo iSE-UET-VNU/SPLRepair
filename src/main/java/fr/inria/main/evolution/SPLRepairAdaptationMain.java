@@ -411,12 +411,6 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         if(cmd.hasOption("repairmode")){
             repair_mode += "_" + cmd.getOptionValue("repairmode");
         }
-        if(cmd.hasOption("editoperationvalidation")){
-            repair_mode += "_" + "edit_validation";
-        }
-        if(cmd.hasOption("splearlystop")){
-            repair_mode += "_" + "earlystop";
-        }
         if(cmd.hasOption("similarityfunc")){
             repair_mode += "_" + cmd.getOptionValue("similarityfunc");
         }

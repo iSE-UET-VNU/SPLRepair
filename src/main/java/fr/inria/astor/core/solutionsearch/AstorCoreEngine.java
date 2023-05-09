@@ -1499,14 +1499,14 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	public double measure_suitability(ModificationPoint mp, OperatorInstance op){
 		String stmt_mp = ((SuspiciousModificationPoint) mp).getSuspicious().getFeatureInfo() + "_" + mp.getCodeElement();
 		HashMap<String, List<FixingHistory>> fixing_infos = product.getParentSystem().getHistorical_fixing_information();
-		String buggy_code_element = mp.getCodeElement().toString();
+		String original_code_element = mp.getCodeElement().toString();
 		String new_edit = null;
 		if(op.getModified() != null) {
 			if(op.getOperationApplied() instanceof StatementLevelOperator){
 				if (op.getOperationApplied().name().toLowerCase().contains("insertafter"))
-					new_edit = buggy_code_element + op.getModified().toString();
+					new_edit = original_code_element + op.getModified().toString();
 				else if (op.getOperationApplied().name().toLowerCase().contains("insertbefore"))
-					new_edit = buggy_code_element + op.getModified().toString();
+					new_edit = original_code_element + op.getModified().toString();
 				else
 					new_edit = op.getModified().toString();
 			}else{
@@ -1516,13 +1516,19 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 		double need_similar = 0.5;
 		if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("cosine")) {
-			need_similar = cosine(buggy_code_element, new_edit);
+			need_similar = cosine(original_code_element, new_edit);
 		}
-		else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("levenshtein")) {
-			need_similar = levenshtein(buggy_code_element, new_edit);
+		else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("lcs")) {
+			need_similar = lcs(original_code_element, new_edit);
 		}
+		else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("sorensendice")) {
+			need_similar = sorensen_dice(original_code_element, new_edit);
+		}
+
 		else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("jaccard")) {
-			need_similar = jaccard(buggy_code_element, new_edit);
+			need_similar = jaccard(original_code_element, new_edit);
+		}else {
+			need_similar = levenshtein(original_code_element, new_edit);
 		}
 		double need_different = 0.0d;
 		if(!fixing_infos.containsKey(stmt_mp)){
@@ -1538,9 +1544,9 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 				String previous_edit = null;
 				if(previous_op.getModified() != null) {
 					if (previous_op.getOperationApplied().name().toLowerCase().contains("insertafter"))
-						previous_edit = buggy_code_element + previous_op.getModified().toString();
+						previous_edit = original_code_element + previous_op.getModified().toString();
 					else if (previous_op.getOperationApplied().name().toLowerCase().contains("insertbefore"))
-						previous_edit = buggy_code_element + previous_op.getModified().toString();
+						previous_edit = original_code_element + previous_op.getModified().toString();
 					else
 						previous_edit = previous_op.getModified().toString();
 				}
@@ -1548,12 +1554,17 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 				if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("cosine")) {
 					tmp = cosine(previous_edit, new_edit);
 				}
-				else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("levenshtein")) {
-					tmp = levenshtein(previous_edit, new_edit);
-				}
-
 				else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("jaccard")) {
 					tmp = jaccard(previous_edit, new_edit);
+				}
+				else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("lcs")) {
+					tmp = lcs(previous_edit, new_edit);
+				}
+				else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("sorensendice")) {
+					tmp = sorensen_dice(previous_edit, new_edit);
+				}
+				else {
+					tmp = levenshtein(previous_edit, new_edit);
 				}
 
 				if(fx.isSucceedfix()){
@@ -1566,8 +1577,7 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		if(need_similar == 1.0d){
 			need_similar = 0.0d;
 		}
-		double score = ((2*need_similar + (1.0d-need_different))/3.0d);
-		return score;
+		return ((2*need_similar + (1.0d-need_different))/3.0d);
 	}
 
 	private double cosine(String edit1_code_element, String edit2_code_element){
@@ -1596,8 +1606,28 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
 		NormalizedLevenshtein jw = new NormalizedLevenshtein();
-		double score =  jw.similarity(edit1_code_element, edit2_code_element);
-		return score;
+		return jw.similarity(edit1_code_element, edit2_code_element);
+
+	}
+
+	private double lcs(String edit1_code_element, String edit2_code_element){
+		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
+		edit1_code_element = edit1_code_element.replace("\n", "" );
+		edit2_code_element = edit2_code_element.replace("\n", "");
+
+		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
+		MetricLCS jw = new MetricLCS();
+		return 1.0d - jw.distance(edit1_code_element, edit2_code_element);
+	}
+
+	private double sorensen_dice(String edit1_code_element, String edit2_code_element){
+		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
+		edit1_code_element = edit1_code_element.replace("\n", "" );
+		edit2_code_element = edit2_code_element.replace("\n", "");
+
+		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
+		SorensenDice jw = new SorensenDice();
+		return jw.similarity(edit1_code_element, edit2_code_element);
 
 	}
 }
