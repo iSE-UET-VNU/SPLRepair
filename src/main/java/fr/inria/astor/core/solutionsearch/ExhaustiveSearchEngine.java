@@ -1,9 +1,6 @@
 package fr.inria.astor.core.solutionsearch;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import com.martiansoftware.jsap.JSAPException;
 
@@ -14,6 +11,7 @@ import fr.inria.astor.core.entities.SuspiciousModificationPoint;
 import fr.inria.astor.core.manipulation.MutationSupporter;
 import fr.inria.astor.core.setup.ConfigurationProperties;
 import fr.inria.astor.core.setup.ProjectRepairFacade;
+import fr.inria.astor.core.setup.RandomManager;
 import fr.inria.astor.core.solutionsearch.spaces.operators.AstorOperator;
 import fr.inria.main.AstorOutputStatus;
 
@@ -24,10 +22,61 @@ import fr.inria.main.AstorOutputStatus;
  * 
  */
 public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
+	HashMap<ModificationPoint, List<OperatorInstance>> caches = new HashMap<>();
 
 	public ExhaustiveSearchEngine(MutationSupporter mutatorExecutor, ProjectRepairFacade projFacade)
 			throws JSAPException {
 		super(mutatorExecutor, projFacade);
+	}
+
+	private OperatorInstance createAnOperationInstance(ProgramVariant variant){
+		List<ModificationPoint> modificationPointsToProcess = this.suspiciousNavigationStrategy
+				.getSortedModificationPointsList(variant.getModificationPoints());
+
+		for (ModificationPoint modifPoint : modificationPointsToProcess) {
+			// We create all operators to apply in the modifpoint
+			List<OperatorInstance> operatorInstances = createInstancesOfOperators(
+					(SuspiciousModificationPoint) modifPoint);
+
+			OperatorInstance modificationInstance;
+			if(ConfigurationProperties.getProperty("repairmode")!= null &&
+					ConfigurationProperties.getPropertyBool("editoperationvalidation")){
+
+				while (true) {
+					modificationInstance = selectRandomly(modifPoint, operatorInstances);
+					if(modificationInstance == null) break;
+					double suitability_score = measure_suitability(modifPoint, modificationInstance);
+					if(suitability_score > ConfigurationProperties.getPropertyDouble("suitabilityThreshold")){
+						break;
+					}
+				}
+			}else {
+				modificationInstance = selectRandomly(modifPoint, operatorInstances);
+
+			}
+			if (modificationInstance != null)
+				return modificationInstance;
+		}
+		return null;
+	}
+
+	protected OperatorInstance selectRandomly(ModificationPoint mp, List<OperatorInstance> operatorInstances) {
+		if(operatorInstances == null || operatorInstances.size() == 0)
+			return null;
+		for(OperatorInstance op:operatorInstances){
+			if(!caches.containsKey(mp)){
+				List<OperatorInstance> opAtAPoint = new ArrayList<>();
+				opAtAPoint.add(op);
+				caches.put(mp, opAtAPoint);
+				return op;
+			}else {
+				if(!caches.get(mp).contains(op)){
+					caches.get(mp).add(op);
+					return op;
+				}
+			}
+		}
+		return null;
 	}
 
 	@Override
@@ -43,42 +92,15 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 		for (ProgramVariant parentVariant : variants) {
 
 			log.debug("\n****\nanalyzing variant #" + (++v) + " out of " + variants.size());
-			// We analyze each modifpoint of the variant i.e. suspicious
-			// statement
-			List<ModificationPoint> modificationPointsToProcess = this.suspiciousNavigationStrategy
-					.getSortedModificationPointsList(parentVariant.getModificationPoints());
+			while (num_of_try < ConfigurationProperties.getPropertyInt("maxGeneration")) {
+				if (!belowMaxTime(dateInitEvolution, maxMinutes)) {
 
-			for (ModificationPoint modifPoint : modificationPointsToProcess) {
-				// We create all operators to apply in the modifpoint
-				List<OperatorInstance> operatorInstances = createInstancesOfOperators(
-						(SuspiciousModificationPoint) modifPoint);
-
-				if (operatorInstances == null || operatorInstances.isEmpty())
-					continue;
-
-				for (OperatorInstance pointOperation : operatorInstances) {
-
-					if (!belowMaxTime(dateInitEvolution, maxMinutes)) {
-
-						this.setOutputStatus(AstorOutputStatus.TIME_OUT);
-						log.debug("Max time reached");
-						return;
-					}
-
-					try {
-						log.info("mod_point " + modifPoint);
-						log.info("-->op: " + pointOperation);
-					} catch (Exception e) {
-						log.error(e);
-					}
-					if(ConfigurationProperties.getProperty("repairmode")!= null &&
-							ConfigurationProperties.getPropertyBool("editoperationvalidation")) {
-						double suitability_score = measure_suitability(modifPoint, pointOperation);
-						if(suitability_score <= ConfigurationProperties.getPropertyDouble("suitabilityThreshold")){
-							continue;
-						}
-					}
-
+					this.setOutputStatus(AstorOutputStatus.TIME_OUT);
+					log.debug("Max time reached");
+					return;
+				}
+				OperatorInstance pointOperation = createAnOperationInstance(parentVariant);
+				if(pointOperation != null) {
 					// We validate the variant after applying the operator
 					ProgramVariant solutionVariant = variantFactory.createProgramVariantFromAnother(parentVariant,
 							generationsExecuted);
@@ -101,18 +123,14 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 							return;
 						}
 					}
-
 					if (!belowMaxTime(dateInitEvolution, maxMinutes)) {
 
 						this.setOutputStatus(AstorOutputStatus.TIME_OUT);
 						log.debug("Max time reached");
 						return;
 					}
-					num_of_try += 1;
-					if(num_of_try > ConfigurationProperties.getPropertyInt("maxGeneration")){
-						return;
-					}
 				}
+				num_of_try += 1;
 			}
 		}
 		log.debug("End exhaustive navigation");
