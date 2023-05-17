@@ -207,7 +207,8 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         List<SPLProduct> failingProducts = buggy_spl_system.getFailing_products();
 
         long startT = System.currentTimeMillis();
-        Collections.shuffle(failingProducts);
+        if(ConfigurationProperties.getPropertyBool("randomness"))
+            Collections.shuffle(failingProducts);
         for(SPLProduct selected_failing_product:failingProducts) {
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
             System.out.println("Trang::selected product:" + selected_failing_product);
@@ -275,7 +276,6 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         List<SPLProduct> sorted_failingProducts =  failingProductNavigation.sorted_failing_products_by_complexity(buggy_spl_system);
         SPLProduct selected_failing_product = sorted_failingProducts.get(0);
         long startT = System.currentTimeMillis();
-        String repairmode = ConfigurationProperties.getProperty("repairmode");
 
         while (selected_failing_product != null){
             if(selected_failing_product.getSearched_patches()) continue;
@@ -298,6 +298,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                     p2.increase_num_of_product_successful_fix(selected_failing_product.getProduct_dir());
                 }
             }
+            selected_failing_product.setNum_of_attempted_transformation_and_testing(coreEngine.getNum_of_attempts());
             buggy_spl_system.setSystem_patches(system_patches);
             boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
             SPLProduct next_selected_failing_product = failingProductNavigation.select_next_failing_product(selected_failing_product, sorted_failingProducts);
