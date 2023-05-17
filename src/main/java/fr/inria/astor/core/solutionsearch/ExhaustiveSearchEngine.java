@@ -105,7 +105,7 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 					ProgramVariant solutionVariant = variantFactory.createProgramVariantFromAnother(parentVariant,
 							generationsExecuted);
 					solutionVariant.getOperations().put(generationsExecuted, Arrays.asList(pointOperation));
-
+					increase_num_of_attempts();
 					applyNewMutationOperationToSpoonElement(pointOperation);
 
 					boolean solution = processCreatedVariant(solutionVariant, generationsExecuted);

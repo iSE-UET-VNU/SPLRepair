@@ -32,6 +32,7 @@ public class SPLProduct {
     private String product_dir = "";
     private boolean searched_patches = false;
     private float product_complexity = 0.0f;
+    private int num_of_attempted_transformation_and_testing = 0;
 
     private ProjectRepairFacade projectRepairFacade = new ProjectRepairFacade();
     private AstorCoreEngine coreEngine = null;
@@ -53,7 +54,12 @@ public class SPLProduct {
     public SPLSystem getParentSystem() {
         return parentSystem;
     }
-
+    public int getNum_of_attempted_transformation_and_testing(){
+        return num_of_attempted_transformation_and_testing;
+    }
+    public void setNum_of_attempted_transformation_and_testing(int _num_of_attempted_transformation_and_testing){
+        this.num_of_attempted_transformation_and_testing = _num_of_attempted_transformation_and_testing;
+    }
     private void init_source_code(SPLSystem system){
 
         String mapping_file_dir= Paths.get(product_dir, ConfigurationProperties.getProperty("featureVariantMappingFile")).toString();

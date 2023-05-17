@@ -161,10 +161,12 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 			if (ConfigurationProperties.getPropertyBool("antipattern")) {
 				if (!AntiPattern.isAntiPattern(newVariant, generation)) {
 					temporalInstances.add(newVariant);
+					increase_num_of_attempts();
 					solution = processCreatedVariant(newVariant, generation);
 				}
 			} else {
 				temporalInstances.add(newVariant);
+				increase_num_of_attempts();
 				solution = processCreatedVariant(newVariant, generation);
 			}
 

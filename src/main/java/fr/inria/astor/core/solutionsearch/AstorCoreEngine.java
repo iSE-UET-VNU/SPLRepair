@@ -147,7 +147,7 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 	protected List<PatchStat> patchInfo = new ArrayList<>();
 	private SPLProduct product = null;
-
+	private  int num_of_attempts = 0;
 	/**
 	 * 
 	 * @param mutatorExecutor
@@ -167,6 +167,17 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 	public SPLProduct getProduct() {
 		return product;
+	}
+
+	public int getNum_of_attempts() {
+		return num_of_attempts;
+	}
+
+	public void setNum_of_attempts(int num_of_attempts) {
+		this.num_of_attempts = num_of_attempts;
+	}
+	public void increase_num_of_attempts(){
+		this.num_of_attempts += 1;
 	}
 
 	public abstract void startSearch() throws Exception;

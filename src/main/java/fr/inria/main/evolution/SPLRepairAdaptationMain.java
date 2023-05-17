@@ -207,10 +207,8 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         List<SPLProduct> failingProducts = buggy_spl_system.getFailing_products();
 
         long startT = System.currentTimeMillis();
-        String repairmode = ConfigurationProperties.getProperty("repairmode");
         Collections.shuffle(failingProducts);
         for(SPLProduct selected_failing_product:failingProducts) {
-            //SPLProduct selected_failing_product = failingProductNavigation.getSortedFailingProductsList(failingProducts).get(0);
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
             System.out.println("Trang::selected product:" + selected_failing_product);
             coreEngine.startSearch();
@@ -229,6 +227,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                     p2.increase_num_of_product_successful_fix(selected_failing_product.getProduct_dir());
                 }
             }
+            selected_failing_product.setNum_of_attempted_transformation_and_testing(coreEngine.getNum_of_attempts());
             buggy_spl_system.setSystem_patches(system_patches);
             boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
             long endT = System.currentTimeMillis();
@@ -399,6 +398,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         int num_of_system = 0;
         int total_attempted_products = 0;
         float total_percentage_of_attempted_products = 0;
+        int total_attempted_patches = 0;
         double total_time = 0d;
         int num_systems_containing_test_adequate_patch = 0;
         int num_systems_partially_fixed = 0;
@@ -459,12 +459,17 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                     }
                 }
             }
-
+            int num_of_attempted_patches = 0;
+            for(SPLProduct failing_product:S.getFailing_products()){
+                num_of_attempted_patches += failing_product.getNum_of_attempted_transformation_and_testing();
+            }
+            total_attempted_patches += num_of_attempted_patches;
 
             writer.write("Number of test adequate patches:: " + adequate_patches + "\n");
             writer.write("Number of patches partially fixed the product:: " + partially_fix_patches + "\n");
             writer.write("Number of attempted products:: " + S.getNum_of_attempted_products() + "\n");
             writer.write("Percentage of attempted products::" + (float) S.getNum_of_attempted_products()/ S.getNum_of_failing_products() + "\n");
+            writer.write("Number of attempted patches::" + num_of_attempted_patches + "\n");
             writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
             total_time += (endT - startT) / 1000d;
             total_attempted_products += S.getNum_of_attempted_products();
@@ -490,7 +495,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             writer.write("Average percentage of passing products/system:" + total_percentage_fixed / num_of_system + "\n");
             writer.write("Average of attempted products: " + (float) total_attempted_products / num_of_system + "\n");
             writer.write("Average of percentage of attempted products: " + (float) total_percentage_of_attempted_products / num_of_system + "\n");
-
+            writer.write("Average number of attempted patches::" + (float) total_attempted_patches/num_of_system + "\n");
         }
         writer.write("Total repairing time (s): " + total_time + "\n");
         writer.close();
