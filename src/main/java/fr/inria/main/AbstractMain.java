@@ -300,7 +300,9 @@ public abstract class AbstractMain {
 		options.addOption("flresult", true, "The file name of FL result");
 		options.addOption("similarityfunc", true, "Function to measure the similarity of edits");
 		options.addOption("splearlystop", true, "Stop right after a test-adequate patch is found");
-		options.addOption("editoperationvalidation", true, "Validate before applying edit operation");
+		options.addOption("enableeditoperationvalidation", true, "Validate before applying edit operation");
+		options.addOption("enablefailingproductnagivation", true, "Navigating failing products by their complexity");
+		options.addOption("enablemodificationpointnavigation", true, "Navigating modification points based on previous attempts");
 		options.addOption("repairmode", true, "Repairing mode (baseline adatation or FiVar)");
 
 		options.addOption("runjava7code", false, "Validates on Java 7");
@@ -454,8 +456,12 @@ public abstract class AbstractMain {
 			ConfigurationProperties.properties.setProperty("repairmode", cmd.getOptionValue("repairmode"));
 		if (cmd.hasOption("splearlystop"))
 			ConfigurationProperties.properties.setProperty("splearlystop", cmd.getOptionValue("splearlystop"));
-		if (cmd.hasOption("editoperationvalidation"))
-			ConfigurationProperties.properties.setProperty("editoperationvalidation", cmd.getOptionValue("editoperationvalidation"));
+		if (cmd.hasOption("enableeditoperationvalidation"))
+			ConfigurationProperties.properties.setProperty("enableeditoperationvalidation", cmd.getOptionValue("enableeditoperationvalidation"));
+		if (cmd.hasOption("enablefailingproductnagivation"))
+			ConfigurationProperties.properties.setProperty("enablefailingproductnagivation", cmd.getOptionValue("enablefailingproductnagivation"));
+		if (cmd.hasOption("enablemodificationpointnavigation"))
+			ConfigurationProperties.properties.setProperty("enablemodificationpointnavigation", cmd.getOptionValue("enablemodificationpointnavigation"));
 
 		if (cmd.hasOption("splfitnessfunction"))
 			ConfigurationProperties.properties.setProperty("splfitnessfunction", cmd.getOptionValue("splfitnessfunction"));

@@ -207,8 +207,8 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         List<SPLProduct> failingProducts = buggy_spl_system.getFailing_products();
 
         long startT = System.currentTimeMillis();
-        if(ConfigurationProperties.getPropertyBool("randomness"))
-            Collections.shuffle(failingProducts);
+
+        Collections.shuffle(failingProducts);
         for(SPLProduct selected_failing_product:failingProducts) {
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
             System.out.println("Trang::selected product:" + selected_failing_product);
@@ -271,13 +271,19 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         System.out.println("Trang:run_splrepair_fivar");
         SPLSystem buggy_spl_system = prepare_engine_for_system(location, projectName, dependencies, packageToInstrument, thfl, failing);
         ExecutionResult result = null;
-
-        FailingProductNavigation failingProductNavigation = new FailingProductNavigation();
-        List<SPLProduct> sorted_failingProducts =  failingProductNavigation.sorted_failing_products_by_complexity(buggy_spl_system);
-        SPLProduct selected_failing_product = sorted_failingProducts.get(0);
+        List<SPLProduct> sorted_failingProducts = null;
+        if(ConfigurationProperties.getPropertyBool("enablefailingproductnagivation")) {
+            FailingProductNavigation failingProductNavigation = new FailingProductNavigation();
+            sorted_failingProducts = failingProductNavigation.sorted_failing_products_by_complexity(buggy_spl_system);
+        }else{
+            sorted_failingProducts = buggy_spl_system.getFailing_products();
+        }
+        int product_idx = 0;
+        SPLProduct selected_failing_product = sorted_failingProducts.get(product_idx);
         long startT = System.currentTimeMillis();
 
-        while (selected_failing_product != null){
+
+        while (product_idx < sorted_failingProducts.size()){
             if(selected_failing_product.getSearched_patches()) continue;
             selected_failing_product.setSearched_patches(true);
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
@@ -301,7 +307,12 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             selected_failing_product.setNum_of_attempted_transformation_and_testing(coreEngine.getNum_of_attempts());
             buggy_spl_system.setSystem_patches(system_patches);
             boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
-            SPLProduct next_selected_failing_product = failingProductNavigation.select_next_failing_product(selected_failing_product, sorted_failingProducts);
+            //SPLProduct next_selected_failing_product = failingProductNavigation.select_next_failing_product(selected_failing_product, sorted_failingProducts);
+            SPLProduct next_selected_failing_product = null;
+            if(product_idx < sorted_failingProducts.size() - 1){
+                product_idx += 1;
+                next_selected_failing_product = sorted_failingProducts.get(product_idx);
+            }
             if(next_selected_failing_product == null) {
                 break;
             }
@@ -417,6 +428,19 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         if(cmd.hasOption("similarityfunc")){
             repair_mode += "_" + cmd.getOptionValue("similarityfunc");
         }
+        if(cmd.hasOption("enablefailingproductnagivation")
+                && (cmd.getOptionValue("enablefailingproductnagivation").equals("false"))){
+            repair_mode += "_diableproductnavigate";
+        }
+        if(cmd.hasOption("enablemodificationpointnavigation")
+                && (cmd.getOptionValue("enablemodificationpointnavigation").equals("false"))){
+            repair_mode += "_diablemodifpointnavigate";
+        }
+        if(cmd.hasOption("enableeditoperationvalidation")
+                && (cmd.getOptionValue("enableeditoperationvalidation").equals("false"))){
+            repair_mode += "_diableeditvalidation";
+        }
+
 
         String system_name = system_name_tmp[system_name_tmp.length - 1];
         String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file +  "_" + repair_mode + ".txt").toString();

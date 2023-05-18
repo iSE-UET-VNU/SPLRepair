@@ -1132,7 +1132,8 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 		SuspiciousNavigationStrategy suspiciousNavigationStrategy = null;
 		String repairmode = ConfigurationProperties.getProperty("repairmode");
-		if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
+		if(repairmode != null && repairmode.toLowerCase().equals("fivar")
+				&& ConfigurationProperties.getPropertyBool("enablemodificationpointnavigation")){
 			suspiciousNavigationStrategy = new SPLWeightRandomSuspiciousNavigation();
 		}else {
 			if (SuspiciousNavigationValues.INORDER.toString().equals(mode)) {
