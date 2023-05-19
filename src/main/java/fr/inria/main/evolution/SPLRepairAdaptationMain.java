@@ -443,6 +443,12 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         if(cmd.hasOption("suitabilitythreshold")){
             repair_mode += "_threshold" + cmd.getOptionValue("suitabilitythreshold");
         }
+        if(cmd.hasOption("similarityalpha")){
+            repair_mode += "_alpha" + cmd.getOptionValue("similarityalpha");
+        }
+        if(cmd.hasOption("similaritybeta")){
+            repair_mode += "_beta" + cmd.getOptionValue("similaritybeta");
+        }
 
 
         String system_name = system_name_tmp[system_name_tmp.length - 1];

@@ -1589,7 +1589,11 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		if(need_similar == 1.0d){
 			need_similar = 0.0d;
 		}
-		return ((2*need_similar + (1.0d-need_different))/3.0d);
+		double similarityalpha = ConfigurationProperties.getPropertyDouble("similarityalpha");
+		double similaritybeta = ConfigurationProperties.getPropertyDouble("similaritybeta");
+		if (similaritybeta + similarityalpha != 0)
+			return ((similarityalpha*need_similar + similaritybeta*(1.0d-need_different))/(similarityalpha + similaritybeta));
+		else return 0.0d;
 	}
 
 	private double cosine(String edit1_code_element, String edit2_code_element){
