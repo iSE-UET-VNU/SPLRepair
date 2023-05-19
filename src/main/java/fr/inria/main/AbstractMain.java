@@ -304,6 +304,7 @@ public abstract class AbstractMain {
 		options.addOption("enablefailingproductnagivation", true, "Navigating failing products by their complexity");
 		options.addOption("enablemodificationpointnavigation", true, "Navigating modification points based on previous attempts");
 		options.addOption("repairmode", true, "Repairing mode (baseline adatation or FiVar)");
+		options.addOption("suitabilitythreshold", true, "Threshold to eliminate unsuitable edit operations)");
 
 		options.addOption("runjava7code", false, "Validates on Java 7");
 
@@ -462,6 +463,8 @@ public abstract class AbstractMain {
 			ConfigurationProperties.properties.setProperty("enablefailingproductnagivation", cmd.getOptionValue("enablefailingproductnagivation"));
 		if (cmd.hasOption("enablemodificationpointnavigation"))
 			ConfigurationProperties.properties.setProperty("enablemodificationpointnavigation", cmd.getOptionValue("enablemodificationpointnavigation"));
+		if (cmd.hasOption("suitabilitythreshold"))
+			ConfigurationProperties.properties.setProperty("suitabilitythreshold", cmd.getOptionValue("suitabilitythreshold"));
 
 		if (cmd.hasOption("splfitnessfunction"))
 			ConfigurationProperties.properties.setProperty("splfitnessfunction", cmd.getOptionValue("splfitnessfunction"));

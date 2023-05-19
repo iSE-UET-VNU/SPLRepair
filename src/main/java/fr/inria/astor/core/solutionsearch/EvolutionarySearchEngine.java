@@ -307,7 +307,7 @@ public class EvolutionarySearchEngine extends AstorCoreEngine {
 					modificationInstance = createOperatorInstanceForPoint(modificationPoint);
 					if(modificationInstance == null) break;
 					double suitability_score = measure_suitability(modificationPoint, modificationInstance);
-					if(suitability_score > ConfigurationProperties.getPropertyDouble("suitabilityThreshold")){
+					if(suitability_score >= ConfigurationProperties.getPropertyDouble("suitabilitythreshold")){
 						break;
 					}
 				}

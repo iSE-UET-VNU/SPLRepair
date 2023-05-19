@@ -440,6 +440,9 @@ public class SPLRepairAdaptationMain extends AbstractMain {
                 && (cmd.getOptionValue("enableeditoperationvalidation").equals("false"))){
             repair_mode += "_diableeditvalidation";
         }
+        if(cmd.hasOption("suitabilitythreshold")){
+            repair_mode += "_threshold" + cmd.getOptionValue("suitabilitythreshold");
+        }
 
 
         String system_name = system_name_tmp[system_name_tmp.length - 1];
