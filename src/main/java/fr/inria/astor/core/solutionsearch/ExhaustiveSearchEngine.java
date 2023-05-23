@@ -46,8 +46,14 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 					modificationInstance = selectRandomly(modifPoint, operatorInstances);
 					if(modificationInstance == null) break;
 					double suitability_score = measure_suitability(modifPoint, modificationInstance);
-					if(suitability_score >= ConfigurationProperties.getPropertyDouble("suitabilitythreshold")){
-						break;
+					if(ConfigurationProperties.getPropertyDouble("suitabilitythreshold") == 1.0d){
+						if (suitability_score >= ConfigurationProperties.getPropertyDouble("suitabilitythreshold")) {
+							break;
+						}
+					}else {
+						if (suitability_score > ConfigurationProperties.getPropertyDouble("suitabilitythreshold")) {
+							break;
+						}
 					}
 				}
 			}else {
