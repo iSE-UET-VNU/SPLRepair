@@ -3,6 +3,8 @@ package fr.inria.astor.core.solutionsearch.population;
 import fr.inria.astor.core.entities.validation.TestCaseVariantValidationResult;
 import fr.inria.astor.core.entities.validation.VariantValidationResult;
 
+import java.util.List;
+
 /**
  * Fitness function based on test suite execution.
  * 
@@ -22,6 +24,15 @@ public class TestCaseFitnessFunction implements FitnessFunction {
 
 		TestCaseVariantValidationResult result = (TestCaseVariantValidationResult) validationResult;
 		return result.getFailureCount();
+	}
+
+	@Override
+	public double calculateFitnessValue(List<VariantValidationResult> listofvalidationResults) {
+		double total_fitness = 0.0d;
+		for(VariantValidationResult validationResult: listofvalidationResults) {
+			total_fitness += calculateFitnessValue(validationResult);
+		}
+		return total_fitness;
 	}
 
 	public double getWorstMaxFitnessValue() {

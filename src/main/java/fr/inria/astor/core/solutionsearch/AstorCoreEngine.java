@@ -15,6 +15,7 @@ import fr.inria.astor.core.solutionsearch.spaces.operators.*;
 import fr.inria.astor.core.validation.results.TestCasesProgramValidationResult;
 import fr.inria.main.spl.FixingHistory;
 import fr.inria.main.spl.SPLProduct;
+import fr.inria.main.spl.SPLSystem;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -569,9 +570,31 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 			log.debug("-The child compiles: id " + programVariant.getId());
 			currentStat.increment(GeneralStatEnum.NR_RIGHT_COMPILATIONS);
+			VariantValidationResult validationResult = null;
+			double fitness = 0.0d;
 
-			VariantValidationResult validationResult = validateInstance(programVariant);
-			double fitness = this.fitnessFunction.calculateFitnessValue(validationResult);
+			if (ConfigurationProperties.getProperty("repairmode").equals("repairwholesystem")) {
+				SPLSystem splSystem = product.getParentSystem();
+				List<VariantValidationResult> system_validation_results = new ArrayList<>();
+				for (String productLoc : splSystem.products.keySet()) {
+					if (productLoc.equals(product.getProduct_dir())) {
+						validationResult = validateInstance(programVariant);
+//						fitness = this.fitnessFunction.calculateFitnessValue(validationResult);
+						system_validation_results.add(validationResult);
+					}else {
+						SPLProduct other_product = splSystem.getAProduct(productLoc);
+						VariantValidationResult other_validationResult = splSystem.validate_a_product(other_product, programVariant);
+//						fitness = this.fitnessFunction.calculateFitnessValue(validationResult);
+						system_validation_results.add(other_validationResult);
+					}
+					fitness = this.fitnessFunction.calculateFitnessValue(system_validation_results);
+					System.out.println("Trang:: product:: " + productLoc);
+					System.out.println("Trang:: fitness::" + fitness);
+				}
+			} else{
+				validationResult = validateInstance(programVariant);
+				fitness = this.fitnessFunction.calculateFitnessValue(validationResult);
+			}
 			programVariant.setFitness(fitness);
 
 			log.debug("-Valid?: " + validationResult + ", fitness " + programVariant.getFitness());
@@ -627,8 +650,10 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 		for (int i = operations.size() - 1; i >= 0; i--) {
 			OperatorInstance genOperation = operations.get(i);
-			log.debug("---Undoing: gnrtn(" + genI + "): " + genOperation);
-			undoOperationToSpoonElement(genOperation);
+			if(genOperation != null){
+				log.debug("---Undoing: gnrtn(" + genI + "): " + genOperation);
+				undoOperationToSpoonElement(genOperation);
+			}
 		}
 	}
 

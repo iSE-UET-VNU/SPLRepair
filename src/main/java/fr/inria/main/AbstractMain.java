@@ -73,7 +73,6 @@ public abstract class AbstractMain {
 		options.addOption("autoconfigure", true,
 				" Auto-configure project. Must install https://github.com/tdurieux/project-info-maven-plugin");
 		options.addOption("location", true, "URL of the project to manipulate");
-		options.addOption("splfitnessfunction", true, "Fitness function for repairing SPL system");
 		options.addOption("dependencies", true,
 				"dependencies of the application, separated by char " + File.pathSeparator);
 		options.addOption("package", true, "package to instrument e.g. org.commons.math");
@@ -472,9 +471,6 @@ public abstract class AbstractMain {
 			ConfigurationProperties.properties.setProperty("similarityalpha", cmd.getOptionValue("similarityalpha"));
 		if (cmd.hasOption("similaritybeta"))
 			ConfigurationProperties.properties.setProperty("similaritybeta", cmd.getOptionValue("similaritybeta"));
-
-		if (cmd.hasOption("splfitnessfunction"))
-			ConfigurationProperties.properties.setProperty("splfitnessfunction", cmd.getOptionValue("splfitnessfunction"));
 
 		if (cmd.hasOption("flresult"))
 			ConfigurationProperties.properties.setProperty("faultLocalizationResultFileName", cmd.getOptionValue("flresult"));

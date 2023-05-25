@@ -1,9 +1,13 @@
 package fr.inria.main.spl;
 
 import fr.inria.astor.core.entities.*;
+import fr.inria.astor.core.entities.validation.VariantValidationResult;
+import fr.inria.astor.core.manipulation.bytecode.entities.CompilationResult;
+import fr.inria.astor.core.setup.ConfigurationProperties;
 import fr.inria.astor.core.solutionsearch.AstorCoreEngine;
 import org.apache.log4j.Logger;
 import java.io.*;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -213,8 +217,6 @@ public class SPLSystem {
         AstorCoreEngine coreEngine = product.getCoreEngine();
         List<ProgramVariant> product_solutions = coreEngine.get_solutions();
         boolean results = true;
-
-
         for(ProgramVariant v:variants){
             List<OperatorInstance> alloperations = v.getAllOperations();
             Patch p = new Patch(alloperations);
@@ -271,6 +273,60 @@ public class SPLSystem {
         }
 
         return results;
+    }
+
+    public VariantValidationResult validate_a_product(SPLProduct product, ProgramVariant v) throws Exception {
+        System.out.println("Trang:: validate product::"  + product.getProduct_dir());
+        AstorCoreEngine coreEngine = product.getCoreEngine();
+
+        List<OperatorInstance> alloperations = v.getAllOperations();
+
+        int generation =  coreEngine.getGenerationsExecuted();
+        coreEngine.increase_generation_executed();
+        generation += 1;
+        ProgramVariant newVariant = coreEngine.getVariantFactory().createProgramVariantFromAnother(coreEngine.getVariants().get(0), generation);
+        coreEngine.increase_generation_executed();
+
+        int num_of_found_modification_point = 0;
+        boolean flag = true;
+        for(OperatorInstance op:alloperations){
+            SuspiciousModificationPoint sm_point = product.search_for_modification_point(op);
+            if(sm_point != null){
+
+                num_of_found_modification_point += 1;
+
+                OperatorInstance op2 = product.create_operator_instance_for_product(op, sm_point);
+                if (op2 != null) {
+                    newVariant.createModificationIntanceForAPoint(generation, op2);
+                } else {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+        VariantValidationResult validationResult = null;
+        if(num_of_found_modification_point == 0) {
+            validationResult = coreEngine.validateInstance(newVariant);
+        } else {
+            if (flag) {
+                apply_variant(product, newVariant, generation);
+                URL[] originalURL = coreEngine.getProjectFacade().getClassPathURLforProgramVariant(ProgramVariant.DEFAULT_ORIGINAL_VARIANT);
+
+                CompilationResult compilation = coreEngine.getCompiler().compile(newVariant, originalURL);
+
+                boolean childCompiles = compilation.compiles();
+                newVariant.setCompilation(compilation);
+
+                coreEngine.storeModifiedModel(newVariant);
+                if (childCompiles) {
+                    validationResult = coreEngine.validateInstance(newVariant);
+                }
+                revert_variant(product, newVariant, generation);
+
+            }
+        }
+        System.out.println("Trang:: validationResult" + validationResult);
+        return validationResult;
     }
 
     private void apply_variant(SPLProduct product, ProgramVariant variant, int gen) throws IllegalAccessException {
