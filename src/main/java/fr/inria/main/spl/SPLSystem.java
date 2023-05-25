@@ -276,7 +276,6 @@ public class SPLSystem {
     }
 
     public VariantValidationResult validate_a_product(SPLProduct product, ProgramVariant v) throws Exception {
-        System.out.println("Trang:: validate product::"  + product.getProduct_dir());
         AstorCoreEngine coreEngine = product.getCoreEngine();
 
         List<OperatorInstance> alloperations = v.getAllOperations();
@@ -325,7 +324,6 @@ public class SPLSystem {
 
             }
         }
-        System.out.println("Trang:: validationResult" + validationResult);
         return validationResult;
     }
 

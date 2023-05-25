@@ -207,7 +207,6 @@ public class SPLRepairTheWholeSystem extends AbstractMain {
         List<SPLProduct> failingProducts = buggy_spl_system.getFailing_products();
 
         long startT = System.currentTimeMillis();
-        System.out.println("Trang::Spl repair the whole system");
 
         for(SPLProduct selected_failing_product:failingProducts) {
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();

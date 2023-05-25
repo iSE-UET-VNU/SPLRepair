@@ -588,8 +588,6 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 						system_validation_results.add(other_validationResult);
 					}
 					fitness = this.fitnessFunction.calculateFitnessValue(system_validation_results);
-					System.out.println("Trang:: product:: " + productLoc);
-					System.out.println("Trang:: fitness::" + fitness);
 				}
 			} else{
 				validationResult = validateInstance(programVariant);
