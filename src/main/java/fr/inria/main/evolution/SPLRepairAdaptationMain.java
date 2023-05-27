@@ -212,8 +212,12 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         for(SPLProduct selected_failing_product:failingProducts) {
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
             System.out.println("Trang::selected product:" + selected_failing_product);
-            coreEngine.startSearch();
-            buggy_spl_system.increase_attempted_products();
+            try {
+                buggy_spl_system.increase_attempted_products();
+                coreEngine.startSearch();
+            }catch (Exception e){
+                continue;
+            }
             result = coreEngine.atEnd();
             List<ProgramVariant> succeed_variants = coreEngine.getSolutions();
             List<Patch> system_patches = buggy_spl_system.getSystem_patches();
@@ -230,7 +234,13 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             }
             selected_failing_product.setNum_of_attempted_transformation_and_testing(coreEngine.getNum_of_attempts());
             buggy_spl_system.setSystem_patches(system_patches);
-            boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
+            boolean validate_result = false;
+            try {
+                validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
+            }catch (Exception e){
+                continue;
+            }
+
             long endT = System.currentTimeMillis();
             if(((endT - startT) / 1000d) >= 3600d) {
                 break;
@@ -284,12 +294,20 @@ public class SPLRepairAdaptationMain extends AbstractMain {
 
 
         while (product_idx < sorted_failingProducts.size()){
+            if(selected_failing_product == null) {
+                break;
+            }
             if(selected_failing_product.getSearched_patches()) continue;
             selected_failing_product.setSearched_patches(true);
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
             System.out.println("Trang::selected product:" + selected_failing_product + "  product_complexity::" + selected_failing_product.getProduct_complexity());
-            coreEngine.startSearch();
-            buggy_spl_system.increase_attempted_products();
+            try {
+                buggy_spl_system.increase_attempted_products();
+                coreEngine.startSearch();
+            }catch (Exception e){
+                continue;
+            }
+
             result = coreEngine.atEnd();
             List<ProgramVariant> succeed_variants = coreEngine.getSolutions();
             List<Patch> system_patches = buggy_spl_system.getSystem_patches();
@@ -306,18 +324,22 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             }
             selected_failing_product.setNum_of_attempted_transformation_and_testing(coreEngine.getNum_of_attempts());
             buggy_spl_system.setSystem_patches(system_patches);
-            boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
-            //SPLProduct next_selected_failing_product = failingProductNavigation.select_next_failing_product(selected_failing_product, sorted_failingProducts);
-            SPLProduct next_selected_failing_product = null;
-            if(product_idx < sorted_failingProducts.size() - 1){
-                product_idx += 1;
-                next_selected_failing_product = sorted_failingProducts.get(product_idx);
+            boolean validate_result = false;
+            try {
+                validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
+            }catch (Exception e){
+                continue;
+            }finally {
+                //SPLProduct next_selected_failing_product = failingProductNavigation.select_next_failing_product(selected_failing_product, sorted_failingProducts);
+                SPLProduct next_selected_failing_product = null;
+                if(product_idx < sorted_failingProducts.size() - 1){
+                    product_idx += 1;
+                    next_selected_failing_product = sorted_failingProducts.get(product_idx);
+                }
+                init_previous_fixing_score_for_modificationpoints(selected_failing_product, next_selected_failing_product);
+                selected_failing_product = next_selected_failing_product;
             }
-            if(next_selected_failing_product == null) {
-                break;
-            }
-            init_previous_fixing_score_for_modificationpoints(selected_failing_product, next_selected_failing_product);
-            selected_failing_product = next_selected_failing_product;
+
             long endT = System.currentTimeMillis();
             if(((endT - startT) / 1000d) >= 1200d) {
                 break;

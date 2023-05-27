@@ -234,7 +234,13 @@ public class SPLRepairTheWholeSystem extends AbstractMain {
             }
             selected_failing_product.setNum_of_attempted_transformation_and_testing(coreEngine.getNum_of_attempts());
             buggy_spl_system.setSystem_patches(system_patches);
-            boolean validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
+            boolean validate_result = false;
+            try {
+                validate_result = buggy_spl_system.validate_in_the_whole_system(selected_failing_product);
+            }catch (Exception e){
+                continue;
+            }
+
             long endT = System.currentTimeMillis();
             if(((endT - startT) / 1000d) >= 3600d) {
                 break;
