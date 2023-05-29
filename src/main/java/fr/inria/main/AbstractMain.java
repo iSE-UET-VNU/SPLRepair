@@ -729,6 +729,14 @@ public abstract class AbstractMain {
 			executeAutoConfigure(ConfigurationProperties.properties.getProperty("location"));
 		}
 
+		if((ConfigurationProperties.getProperty("repairmode") != null
+				&& ConfigurationProperties.getProperty("repairmode").equals("fivar"))
+			&& (ConfigurationProperties.getProperty("adaptationmode") != null
+				&& ConfigurationProperties.getProperty("adaptationmode").equals("repairwholesystem")) ){
+			ConfigurationProperties.setProperty("fitnessfunction", "fr.inria.astor.core.solutionsearch.population.FiVarFitnessFunction");
+
+		}
+
 		log.info("command line arguments: " + Arrays.toString(args).replace(",", " "));
 
 		// CLG believes, but is not totally confident in her belief, that this
