@@ -573,8 +573,8 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 			VariantValidationResult validationResult = null;
 			double fitness = 0.0d;
 
-			if (ConfigurationProperties.getProperty("repairmode") != null
-					&& ConfigurationProperties.getProperty("repairmode").equals("repairwholesystem")) {
+			if (ConfigurationProperties.getProperty("adaptationmode") != null
+					&& ConfigurationProperties.getProperty("adaptationmode").equals("repairwholesystem")) {
 				SPLSystem splSystem = product.getParentSystem();
 				List<VariantValidationResult> system_validation_results = new ArrayList<>();
 				for (String productLoc : splSystem.products.keySet()) {

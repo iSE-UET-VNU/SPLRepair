@@ -303,6 +303,7 @@ public abstract class AbstractMain {
 		options.addOption("enablefailingproductnagivation", true, "Navigating failing products by their complexity");
 		options.addOption("enablemodificationpointnavigation", true, "Navigating modification points based on previous attempts");
 		options.addOption("repairmode", true, "Repairing mode (baseline adaptation or FiVar)");
+		options.addOption("adaptationmode", true, "Adaptation mode (repair individual single product or the whole system)");
 		options.addOption("suitabilitythreshold", true, "Threshold to eliminate unsuitable edit operations");
 		options.addOption("similarityalpha", true, "parameters in similarity measurement");
 		options.addOption("similaritybeta", true, "parameters in similarity measurement");
@@ -456,6 +457,8 @@ public abstract class AbstractMain {
 			ConfigurationProperties.properties.setProperty("mode", cmd.getOptionValue("mode"));
 		if (cmd.hasOption("repairmode"))
 			ConfigurationProperties.properties.setProperty("repairmode", cmd.getOptionValue("repairmode"));
+		if (cmd.hasOption("adaptationmode"))
+			ConfigurationProperties.properties.setProperty("adaptationmode", cmd.getOptionValue("adaptationmode"));
 		if (cmd.hasOption("splearlystop"))
 			ConfigurationProperties.properties.setProperty("splearlystop", cmd.getOptionValue("splearlystop"));
 		if (cmd.hasOption("enableeditoperationvalidation"))

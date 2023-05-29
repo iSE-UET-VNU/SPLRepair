@@ -242,7 +242,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             }
 
             long endT = System.currentTimeMillis();
-            if(((endT - startT) / 1000d) >= 3600d) {
+            if(((endT - startT) / 1000d) >= 2400d) {
                 break;
             }
             if(ConfigurationProperties.getPropertyBool("splearlystop")){
@@ -329,7 +329,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             init_previous_fixing_score_for_modificationpoints(selected_failing_product, next_selected_failing_product);
             selected_failing_product = next_selected_failing_product;
             long endT = System.currentTimeMillis();
-            if(((endT - startT) / 1000d) >= 1200d) {
+            if(((endT - startT) / 1000d) >= 2400d) {
                 break;
             }
             if(ConfigurationProperties.getPropertyBool("splearlystop")){
@@ -435,6 +435,9 @@ public class SPLRepairAdaptationMain extends AbstractMain {
         if(cmd.hasOption("repairmode")){
             repair_mode += "_" + cmd.getOptionValue("repairmode");
         }
+        if(cmd.hasOption("adaptationmode")){
+            repair_mode += "_" + cmd.getOptionValue("adaptationmode");
+        }
         if(cmd.hasOption("similarityfunc")){
             repair_mode += "_" + cmd.getOptionValue("similarityfunc");
         }
@@ -473,64 +476,65 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             long startT = System.currentTimeMillis();
             num_of_system += 1;
             SPLRepairAdaptationMain m = new SPLRepairAdaptationMain();
-
-            SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
-            List<Patch> system_patches = S.getSystem_patches();
-            System.out.println();
-
-            long endT = System.currentTimeMillis();
-            writer.write(S.getLocation() + "\n");
-            int partially_fix_patches = 0;
-            int adequate_patches = 0;
-            float percentage_fixed_products = 0.0f;
-            for(Patch p: system_patches){
-                if(p.getNum_of_product_successful_fix() == S.getNum_of_products()){
-                    adequate_patches += 1;
-                    writer.write(p.toString());
-                    writer.write("\n---------\n");
-                    percentage_fixed_products = 1.0f;
-                }
-            }
-            if(adequate_patches == 0) {
-                for (Patch p : system_patches) {
-                    if (p.getNum_of_product_successful_fix() > 0 && p.getNum_of_product_successful_fix() != S.getNum_of_products()) {
-                        partially_fix_patches += 1;
+            try {
+                SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
+                List<Patch> system_patches = S.getSystem_patches();
+                long endT = System.currentTimeMillis();
+                writer.write(S.getLocation() + "\n");
+                int partially_fix_patches = 0;
+                int adequate_patches = 0;
+                float percentage_fixed_products = 0.0f;
+                for(Patch p: system_patches){
+                    if(p.getNum_of_product_successful_fix() == S.getNum_of_products()){
+                        adequate_patches += 1;
                         writer.write(p.toString());
                         writer.write("\n---------\n");
-                        if ((float) p.getNum_of_product_successful_fix() / S.getNum_of_products() > percentage_fixed_products) {
-                            percentage_fixed_products = (float) p.getNum_of_product_successful_fix() / S.getNum_of_products();
+                        percentage_fixed_products = 1.0f;
+                    }
+                }
+                if(adequate_patches == 0) {
+                    for (Patch p : system_patches) {
+                        if (p.getNum_of_product_successful_fix() > 0 && p.getNum_of_product_successful_fix() != S.getNum_of_products()) {
+                            partially_fix_patches += 1;
+                            writer.write(p.toString());
+                            writer.write("\n---------\n");
+                            if ((float) p.getNum_of_product_successful_fix() / S.getNum_of_products() > percentage_fixed_products) {
+                                percentage_fixed_products = (float) p.getNum_of_product_successful_fix() / S.getNum_of_products();
+                            }
                         }
                     }
                 }
-            }
-            int num_of_attempted_patches = 0;
-            for(SPLProduct failing_product:S.getFailing_products()){
-                num_of_attempted_patches += failing_product.getNum_of_attempted_transformation_and_testing();
-            }
-            total_attempted_patches += num_of_attempted_patches;
+                int num_of_attempted_patches = 0;
+                for(SPLProduct failing_product:S.getFailing_products()){
+                    num_of_attempted_patches += failing_product.getNum_of_attempted_transformation_and_testing();
+                }
+                total_attempted_patches += num_of_attempted_patches;
+                writer.write("Number of test adequate patches:: " + adequate_patches + "\n");
+                writer.write("Number of patches partially fixed the product:: " + partially_fix_patches + "\n");
+                writer.write("Number of attempted products:: " + S.getNum_of_attempted_products() + "\n");
+                writer.write("Percentage of attempted products::" + (float) S.getNum_of_attempted_products()/ S.getNum_of_failing_products() + "\n");
+                writer.write("Number of attempted patches::" + num_of_attempted_patches + "\n");
+                writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
+                total_time += (endT - startT) / 1000d;
+                total_attempted_products += S.getNum_of_attempted_products();
+                total_percentage_of_attempted_products += (float)   S.getNum_of_attempted_products()/ S.getNum_of_failing_products();
+                writer.write("*******************************************\n");
+                if(adequate_patches > 0){
+                    num_systems_containing_test_adequate_patch += 1;
+                }
+                if(partially_fix_patches > 0 && adequate_patches == 0){
+                    num_systems_partially_fixed += 1;
+                }
 
-            writer.write("Number of test adequate patches:: " + adequate_patches + "\n");
-            writer.write("Number of patches partially fixed the product:: " + partially_fix_patches + "\n");
-            writer.write("Number of attempted products:: " + S.getNum_of_attempted_products() + "\n");
-            writer.write("Percentage of attempted products::" + (float) S.getNum_of_attempted_products()/ S.getNum_of_failing_products() + "\n");
-            writer.write("Number of attempted patches::" + num_of_attempted_patches + "\n");
-            writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
-            total_time += (endT - startT) / 1000d;
-            total_attempted_products += S.getNum_of_attempted_products();
-            total_percentage_of_attempted_products += (float)   S.getNum_of_attempted_products()/ S.getNum_of_failing_products();
-            writer.write("*******************************************\n");
-            if(adequate_patches > 0){
-                num_systems_containing_test_adequate_patch += 1;
+                if(system_patches == null || system_patches.isEmpty()){
+                    percentage_fixed_products = (float) S.getNum_of_passing_products()/S.getNum_of_products();
+                }
+                total_percentage_fixed += percentage_fixed_products;
+            }catch (Exception e){
+                writer.write(sloc + ":   \n");
+                writer.write("an exception has occured.\n");
+                writer.write("*******************************************\n");
             }
-            if(partially_fix_patches > 0 && adequate_patches == 0){
-                num_systems_partially_fixed += 1;
-            }
-
-            if(system_patches == null || system_patches.isEmpty()){
-                percentage_fixed_products = (float) S.getNum_of_passing_products()/S.getNum_of_products();
-            }
-            total_percentage_fixed += percentage_fixed_products;
-            if(num_of_system >= 30) break;
         }
         writer.write("------------------------summary-------------------\n");
         writer.write("Total number of systems:" + num_of_system + "\n");
