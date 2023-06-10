@@ -242,7 +242,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             }
 
             long endT = System.currentTimeMillis();
-            if(((endT - startT) / 1000d) >= 2400d) {
+            if(((endT - startT) / 1000d) >= 1200d) {
                 break;
             }
             if(ConfigurationProperties.getPropertyBool("splearlystop")){
@@ -329,7 +329,7 @@ public class SPLRepairAdaptationMain extends AbstractMain {
             init_previous_fixing_score_for_modificationpoints(selected_failing_product, next_selected_failing_product);
             selected_failing_product = next_selected_failing_product;
             long endT = System.currentTimeMillis();
-            if(((endT - startT) / 1000d) >= 2400d) {
+            if(((endT - startT) / 1000d) >= 1200d) {
                 break;
             }
             if(ConfigurationProperties.getPropertyBool("splearlystop")){
