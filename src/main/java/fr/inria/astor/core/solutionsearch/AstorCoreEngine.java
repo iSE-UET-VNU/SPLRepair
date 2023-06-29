@@ -1563,7 +1563,11 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 
 		else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("jaccard")) {
 			need_similar = jaccard(original_code_element, new_edit);
-		}else {
+		}
+		else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("ngram")) {
+			need_similar = ngram(original_code_element, new_edit);
+		}
+		else {
 			need_similar = levenshtein(original_code_element, new_edit);
 		}
 		double need_different = 0.0d;
@@ -1598,6 +1602,9 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 				}
 				else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("sorensendice")) {
 					tmp = sorensen_dice(previous_edit, new_edit);
+				}
+				else if(ConfigurationProperties.getProperty("editoperationsimilarityfunction").equals("ngram")) {
+					tmp = ngram(previous_edit, new_edit);
 				}
 				else {
 					tmp = levenshtein(previous_edit, new_edit);
@@ -1670,4 +1677,16 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 		return jw.similarity(edit1_code_element, edit2_code_element);
 
 	}
+
+	private double ngram(String edit1_code_element, String edit2_code_element){
+		if(edit1_code_element == null || edit2_code_element == null) return 0.0d;
+		edit1_code_element = edit1_code_element.replace("\n", "" );
+		edit2_code_element = edit2_code_element.replace("\n", "");
+
+		if(edit1_code_element.length() == 0 && edit2_code_element.length() == 0) return 0.0d;
+		NGram ng = new NGram(3);
+		return (1.0d - ng.distance(edit1_code_element, edit2_code_element));
+
+	}
+
 }
