@@ -39,7 +39,8 @@ public abstract class ExhaustiveSearchEngine extends AstorCoreEngine {
 					(SuspiciousModificationPoint) modifPoint);
 
 			OperatorInstance modificationInstance;
-			if(ConfigurationProperties.getProperty("repairmode")!= null &&
+			if(ConfigurationProperties.getProperty("approachvariant")!= null &&
+					ConfigurationProperties.getProperty("approachvariant").equals("enhanced") &&
 					ConfigurationProperties.getPropertyBool("enableeditoperationvalidation")){
 
 				while (true) {

@@ -573,8 +573,8 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 			VariantValidationResult validationResult = null;
 			double fitness = 0.0d;
 
-			if (ConfigurationProperties.getProperty("adaptationmode") != null
-					&& ConfigurationProperties.getProperty("adaptationmode").equals("repairwholesystem")) {
+			if (ConfigurationProperties.getProperty("approachdirection") != null
+					&& ConfigurationProperties.getProperty("approachdirection").equals("systembased")) {
 				SPLSystem splSystem = product.getParentSystem();
 				List<VariantValidationResult> system_validation_results = new ArrayList<>();
 				for (String productLoc : splSystem.products.keySet()) {
@@ -1155,8 +1155,8 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 				.toUpperCase();
 
 		SuspiciousNavigationStrategy suspiciousNavigationStrategy = null;
-		String repairmode = ConfigurationProperties.getProperty("repairmode");
-		if(repairmode != null && repairmode.toLowerCase().equals("fivar")
+		String repairmode = ConfigurationProperties.getProperty("approachvariant");
+		if(repairmode != null && repairmode.toLowerCase().equals("enhanced")
 				&& ConfigurationProperties.getPropertyBool("enablemodificationpointnavigation")){
 			suspiciousNavigationStrategy = new SPLWeightRandomSuspiciousNavigation();
 		}else {
@@ -1231,8 +1231,8 @@ public abstract class AstorCoreEngine implements AstorExtensionPoint {
 	protected void loadOperatorSelectorStrategy() throws Exception {
 		String opStrategyClassName = ConfigurationProperties.properties
 				.getProperty(ExtensionPoints.OPERATOR_SELECTION_STRATEGY.identifier);
-		String repairmode = ConfigurationProperties.getProperty("repairmode");
-		if(repairmode != null && repairmode.toLowerCase().equals("fivar")){
+		String repairmode = ConfigurationProperties.getProperty("apprachvariant");
+		if(repairmode != null && repairmode.toLowerCase().equals("enhanced")){
 			this.setOperatorSelectionStrategy(new SPLRepairOperatorSpace(this.getOperatorSpace()));
 		}
 		else if (opStrategyClassName != null) {

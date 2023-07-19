@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Fitness function based on test suite execution.
  *
- * @author Matias Martinez
+ * @author Trang Nguyen
  *
  */
 public class FiVarFitnessFunction implements FitnessFunction {

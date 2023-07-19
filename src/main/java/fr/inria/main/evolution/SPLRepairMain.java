@@ -4,16 +4,12 @@ import java.io.*;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
-import java.util.*;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import fr.inria.astor.approaches.jmutrepair.jMutRepairEvolutionary;
 import fr.inria.astor.core.entities.ModificationPoint;
 import fr.inria.astor.core.entities.ProgramVariant;
 import fr.inria.astor.core.entities.SuspiciousModificationPoint;
 import fr.inria.astor.core.setup.FinderTestCases;
 import fr.inria.astor.core.solutionsearch.navigation.FailingProductNavigation;
-import fr.inria.main.spl.FixingHistory;
 import fr.inria.main.spl.Patch;
 import fr.inria.main.spl.SPLProduct;
 import fr.inria.main.spl.SPLSystem;
@@ -51,8 +47,8 @@ import fr.inria.main.ExecutionResult;
  * @author Trang Nguyen, trang.nguyen@vnu.edu.vn
  *
  */
-public class SPLRepairTheWholeSystem extends AbstractMain {
-    protected Logger log = Logger.getLogger(SPLRepairAdaptationMain.class.getName());
+public class SPLRepairMain extends AbstractMain {
+    protected Logger log = Logger.getLogger(SPLRepairMain.class.getName());
 
 
     /**
@@ -199,8 +195,8 @@ public class SPLRepairTheWholeSystem extends AbstractMain {
 
 
 
-    public SPLSystem run_splrepair_baseline(String location, String projectName, String dependencies, String packageToInstrument,
-                                            double thfl, String failing) throws Exception {
+    public SPLSystem run_splrepair_basic(String location, String projectName, String dependencies, String packageToInstrument,
+                                         double thfl, String failing) throws Exception {
 
         ExecutionResult result = null;
         SPLSystem buggy_spl_system = prepare_engine_for_system(location, projectName, dependencies, packageToInstrument, thfl, failing);
@@ -208,16 +204,16 @@ public class SPLRepairTheWholeSystem extends AbstractMain {
 
         long startT = System.currentTimeMillis();
 
+        Collections.shuffle(failingProducts);
         for(SPLProduct selected_failing_product:failingProducts) {
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
-            System.out.println("Trang::selected product:" + selected_failing_product);
-            try{
+
+            try {
                 buggy_spl_system.increase_attempted_products();
                 coreEngine.startSearch();
             }catch (Exception e){
                 continue;
             }
-
             result = coreEngine.atEnd();
             List<ProgramVariant> succeed_variants = coreEngine.getSolutions();
             List<Patch> system_patches = buggy_spl_system.getSystem_patches();
@@ -242,7 +238,7 @@ public class SPLRepairTheWholeSystem extends AbstractMain {
             }
 
             long endT = System.currentTimeMillis();
-            if(((endT - startT) / 1000d) >= 3600d) {
+            if(((endT - startT) / 1000d) >= 1200d) {
                 break;
             }
             if(ConfigurationProperties.getPropertyBool("splearlystop")){
@@ -276,9 +272,8 @@ public class SPLRepairTheWholeSystem extends AbstractMain {
         return buggy_spl_system;
     }
 
-    public SPLSystem run_splrepair_fivar(String location, String projectName, String dependencies, String packageToInstrument,
-                                         double thfl, String failing) throws Exception {
-        System.out.println("Trang:run_splrepair_fivar");
+    public SPLSystem run_splrepair_enhanced(String location, String projectName, String dependencies, String packageToInstrument,
+                                            double thfl, String failing) throws Exception {
         SPLSystem buggy_spl_system = prepare_engine_for_system(location, projectName, dependencies, packageToInstrument, thfl, failing);
         ExecutionResult result = null;
         List<SPLProduct> sorted_failingProducts = null;
@@ -297,7 +292,7 @@ public class SPLRepairTheWholeSystem extends AbstractMain {
             if(selected_failing_product.getSearched_patches()) continue;
             selected_failing_product.setSearched_patches(true);
             AstorCoreEngine coreEngine = selected_failing_product.getCoreEngine();
-            System.out.println("Trang::selected product:" + selected_failing_product + "  product_complexity::" + selected_failing_product.getProduct_complexity());
+            System.out.println("SPLRepair::selected product:" + selected_failing_product + "  product_complexity::" + selected_failing_product.getProduct_complexity());
             coreEngine.startSearch();
             buggy_spl_system.increase_attempted_products();
             result = coreEngine.atEnd();
@@ -415,7 +410,7 @@ public class SPLRepairTheWholeSystem extends AbstractMain {
         try {
             cmd =  new BasicParser().parse(options, args);
         } catch (UnrecognizedOptionException e) {
-            throw e;
+              throw e;
         }
         int num_of_system = 0;
         int total_attempted_products = 0;
@@ -432,8 +427,11 @@ public class SPLRepairTheWholeSystem extends AbstractMain {
         ConfigurationProperties.properties.setProperty("faultLocalizationResultFileName", fl_result_file);
         String[] system_name_tmp = location.split(System.getProperty("file.separator"));
         String repair_mode = cmd.getOptionValue("mode");
-        if(cmd.hasOption("repairmode")){
-            repair_mode += "_" + cmd.getOptionValue("repairmode");
+        if(cmd.hasOption("approachvariant")){
+            repair_mode += "_" + cmd.getOptionValue("approachvariant");
+        }
+        if(cmd.hasOption("approachdirection")){
+            repair_mode += "_" + cmd.getOptionValue("approachdirection");
         }
         if(cmd.hasOption("similarityfunc")){
             repair_mode += "_" + cmd.getOptionValue("similarityfunc");
@@ -462,7 +460,7 @@ public class SPLRepairTheWholeSystem extends AbstractMain {
 
 
         String system_name = system_name_tmp[system_name_tmp.length - 1];
-        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file +  "_" + repair_mode + "repair_whole_system.txt").toString();
+        String output_file = Paths.get(ConfigurationProperties.getProperty("workingDirectory"), system_name + "_" + fl_result_file +  "_" + repair_mode + ".txt").toString();
         BufferedWriter writer = new BufferedWriter(new FileWriter(output_file));
         String[] system_locations = new File(location).list();
 
@@ -472,65 +470,66 @@ public class SPLRepairTheWholeSystem extends AbstractMain {
 
             long startT = System.currentTimeMillis();
             num_of_system += 1;
-            SPLRepairTheWholeSystem m = new SPLRepairTheWholeSystem();
-
-            SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
-            List<Patch> system_patches = S.getSystem_patches();
-            System.out.println();
-
-            long endT = System.currentTimeMillis();
-            writer.write(S.getLocation() + "\n");
-            int partially_fix_patches = 0;
-            int adequate_patches = 0;
-            float percentage_fixed_products = 0.0f;
-            for(Patch p: system_patches){
-                if(p.getNum_of_product_successful_fix() == S.getNum_of_products()){
-                    adequate_patches += 1;
-                    writer.write(p.toString());
-                    writer.write("\n---------\n");
-                    percentage_fixed_products = 1.0f;
-                }
-            }
-            if(adequate_patches == 0) {
-                for (Patch p : system_patches) {
-                    if (p.getNum_of_product_successful_fix() > 0 && p.getNum_of_product_successful_fix() != S.getNum_of_products()) {
-                        partially_fix_patches += 1;
+            SPLRepairMain m = new SPLRepairMain();
+            try {
+                SPLSystem S = m.execute_spl_repair(args, Paths.get(location, sloc).toString());
+                List<Patch> system_patches = S.getSystem_patches();
+                long endT = System.currentTimeMillis();
+                writer.write(S.getLocation() + "\n");
+                int partially_fix_patches = 0;
+                int adequate_patches = 0;
+                float percentage_fixed_products = 0.0f;
+                for(Patch p: system_patches){
+                    if(p.getNum_of_product_successful_fix() == S.getNum_of_products()){
+                        adequate_patches += 1;
                         writer.write(p.toString());
                         writer.write("\n---------\n");
-                        if ((float) p.getNum_of_product_successful_fix() / S.getNum_of_products() > percentage_fixed_products) {
-                            percentage_fixed_products = (float) p.getNum_of_product_successful_fix() / S.getNum_of_products();
+                        percentage_fixed_products = 1.0f;
+                    }
+                }
+                if(adequate_patches == 0) {
+                    for (Patch p : system_patches) {
+                        if (p.getNum_of_product_successful_fix() > 0 && p.getNum_of_product_successful_fix() != S.getNum_of_products()) {
+                            partially_fix_patches += 1;
+                            writer.write(p.toString());
+                            writer.write("\n---------\n");
+                            if ((float) p.getNum_of_product_successful_fix() / S.getNum_of_products() > percentage_fixed_products) {
+                                percentage_fixed_products = (float) p.getNum_of_product_successful_fix() / S.getNum_of_products();
+                            }
                         }
                     }
                 }
-            }
-            int num_of_attempted_patches = 0;
-            for(SPLProduct failing_product:S.getFailing_products()){
-                num_of_attempted_patches += failing_product.getNum_of_attempted_transformation_and_testing();
-            }
-            total_attempted_patches += num_of_attempted_patches;
+                int num_of_attempted_patches = 0;
+                for(SPLProduct failing_product:S.getFailing_products()){
+                    num_of_attempted_patches += failing_product.getNum_of_attempted_transformation_and_testing();
+                }
+                total_attempted_patches += num_of_attempted_patches;
+                writer.write("Number of test adequate patches:: " + adequate_patches + "\n");
+                writer.write("Number of patches partially fixed the product:: " + partially_fix_patches + "\n");
+                writer.write("Number of attempted products:: " + S.getNum_of_attempted_products() + "\n");
+                writer.write("Percentage of attempted products::" + (float) S.getNum_of_attempted_products()/ S.getNum_of_failing_products() + "\n");
+                writer.write("Number of attempted patches::" + num_of_attempted_patches + "\n");
+                writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
+                total_time += (endT - startT) / 1000d;
+                total_attempted_products += S.getNum_of_attempted_products();
+                total_percentage_of_attempted_products += (float)   S.getNum_of_attempted_products()/ S.getNum_of_failing_products();
+                writer.write("*******************************************\n");
+                if(adequate_patches > 0){
+                    num_systems_containing_test_adequate_patch += 1;
+                }
+                if(partially_fix_patches > 0 && adequate_patches == 0){
+                    num_systems_partially_fixed += 1;
+                }
 
-            writer.write("Number of test adequate patches:: " + adequate_patches + "\n");
-            writer.write("Number of patches partially fixed the product:: " + partially_fix_patches + "\n");
-            writer.write("Number of attempted products:: " + S.getNum_of_attempted_products() + "\n");
-            writer.write("Percentage of attempted products::" + (float) S.getNum_of_attempted_products()/ S.getNum_of_failing_products() + "\n");
-            writer.write("Number of attempted patches::" + num_of_attempted_patches + "\n");
-            writer.write("Repairing time (s): " + (endT - startT) / 1000d + "\n");
-            total_time += (endT - startT) / 1000d;
-            total_attempted_products += S.getNum_of_attempted_products();
-            total_percentage_of_attempted_products += (float)   S.getNum_of_attempted_products()/ S.getNum_of_failing_products();
-            writer.write("*******************************************\n");
-            if(adequate_patches > 0){
-                num_systems_containing_test_adequate_patch += 1;
+                if(system_patches == null || system_patches.isEmpty()){
+                    percentage_fixed_products = (float) S.getNum_of_passing_products()/S.getNum_of_products();
+                }
+                total_percentage_fixed += percentage_fixed_products;
+            }catch (Exception e){
+                writer.write(sloc + ":   \n");
+                writer.write("an exception has occured.\n");
+                writer.write("*******************************************\n");
             }
-            if(partially_fix_patches > 0){
-                num_systems_partially_fixed += 1;
-            }
-
-            if(system_patches.isEmpty()){
-                percentage_fixed_products = (float) S.getNum_of_passing_products()/S.getNum_of_products();
-            }
-            total_percentage_fixed += percentage_fixed_products;
-            if(num_of_system >= 30) break;
         }
         writer.write("------------------------summary-------------------\n");
         writer.write("Total number of systems:" + num_of_system + "\n");
@@ -573,11 +572,11 @@ public class SPLRepairTheWholeSystem extends AbstractMain {
         String projectName = ConfigurationProperties.getProperty("projectIdentifier");
 
         setupLogging();
-        String repairmode = ConfigurationProperties.getProperty("repairmode");
-        if(repairmode != null && repairmode.toLowerCase().equals("fivar"))
-            return run_splrepair_fivar(location, projectName, dependencies, packageToInstrument, thfl, failing);
+        String repairmode = ConfigurationProperties.getProperty("approachvariant");
+        if(repairmode != null && repairmode.toLowerCase().equals("enhanced"))
+            return run_splrepair_enhanced(location, projectName, dependencies, packageToInstrument, thfl, failing);
         else
-            return run_splrepair_baseline(location, projectName, dependencies, packageToInstrument, thfl, failing);
+            return run_splrepair_basic(location, projectName, dependencies, packageToInstrument, thfl, failing);
     }
 
 

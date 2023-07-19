@@ -302,8 +302,8 @@ public abstract class AbstractMain {
 		options.addOption("enableeditoperationvalidation", true, "Validate before applying edit operation");
 		options.addOption("enablefailingproductnagivation", true, "Navigating failing products by their complexity");
 		options.addOption("enablemodificationpointnavigation", true, "Navigating modification points based on previous attempts");
-		options.addOption("repairmode", true, "Repairing mode (baseline adaptation or FiVar)");
-		options.addOption("adaptationmode", true, "Adaptation mode (repair individual single product or the whole system)");
+		options.addOption("approachvariant", true, "SPL repair approach variant (basuc or enhanced)");
+		options.addOption("approachdirection", true, "SPL repair approach direction (product-based or system-based approach)");
 		options.addOption("suitabilitythreshold", true, "Threshold to eliminate unsuitable edit operations");
 		options.addOption("similarityalpha", true, "parameters in similarity measurement");
 		options.addOption("similaritybeta", true, "parameters in similarity measurement");
@@ -455,10 +455,10 @@ public abstract class AbstractMain {
 
 		if (cmd.hasOption("mode"))
 			ConfigurationProperties.properties.setProperty("mode", cmd.getOptionValue("mode"));
-		if (cmd.hasOption("repairmode"))
-			ConfigurationProperties.properties.setProperty("repairmode", cmd.getOptionValue("repairmode"));
-		if (cmd.hasOption("adaptationmode"))
-			ConfigurationProperties.properties.setProperty("adaptationmode", cmd.getOptionValue("adaptationmode"));
+		if (cmd.hasOption("approachvariant"))
+			ConfigurationProperties.properties.setProperty("approachvariant", cmd.getOptionValue("approachvariant"));
+		if (cmd.hasOption("approachdirection"))
+			ConfigurationProperties.properties.setProperty("approachdirection", cmd.getOptionValue("approachdirection"));
 		if (cmd.hasOption("splearlystop"))
 			ConfigurationProperties.properties.setProperty("splearlystop", cmd.getOptionValue("splearlystop"));
 		if (cmd.hasOption("enableeditoperationvalidation"))
@@ -729,13 +729,6 @@ public abstract class AbstractMain {
 			executeAutoConfigure(ConfigurationProperties.properties.getProperty("location"));
 		}
 
-//		if((ConfigurationProperties.getProperty("repairmode") != null
-//				&& ConfigurationProperties.getProperty("repairmode").equals("fivar"))
-//			&& (ConfigurationProperties.getProperty("adaptationmode") != null
-//				&& ConfigurationProperties.getProperty("adaptationmode").equals("repairwholesystem")) ){
-//			ConfigurationProperties.setProperty("fitnessfunction", "fr.inria.astor.core.solutionsearch.population.FiVarFitnessFunction");
-//
-//		}
 
 		log.info("command line arguments: " + Arrays.toString(args).replace(",", " "));
 
