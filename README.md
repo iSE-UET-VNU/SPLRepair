@@ -6,7 +6,7 @@ This is build upon Astor,  an automatic software repair framework in Java for Ja
 Installation
 ------
 
-* Following [this instruction]([https://github.com/SpoonLabs/astor/blob/master/docs/getting-starting.md](https://github.com/ttrangnguyen/SPLRepair/blob/SPLRepair/docs/getting-starting.md)https://github.com/ttrangnguyen/SPLRepair/blob/SPLRepair/docs/getting-starting.md) to install the repair tool
+* Following [this instruction](https://github.com/SpoonLabs/astor/blob/master/docs/getting-starting.md](https://github.com/ttrangnguyen/SPLRepair/blob/SPLRepair/docs/getting-starting.md)https://github.com/ttrangnguyen/SPLRepair/blob/SPLRepair/docs/getting-starting.md) to install the repair tool
 
 
 How to execute
@@ -25,11 +25,16 @@ Command line arguments:
 ------
 
 -location: is the absolute path to the folder of the buggy SPL systems
+
 -mode: the employed APR tool supported by Astor, i.e., jgenprog|cardumen|jmutrepair|jkali|tibra
+
 -flresult: fault localization result 
+
 -approachdirection: the direction for repairing SPL system. i.e., productbased|systembased. The default direction is productbased
+
 -approachvariant: the enhanced or basic variant of the approach, i.e., enhanced|basic. The default variant is basic
-For the other arguments, please check [here]([https://github.com/ttrangnguyen/SPLRepair/blob/SPLRepair/src/main/resources/astor.properties])
+
+For the other arguments, please check [here](https://github.com/ttrangnguyen/SPLRepair/blob/SPLRepair/src/main/resources/astor.properties)
 
 Dataset of variability bugs:
 ------
