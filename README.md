@@ -1,6 +1,5 @@
 Automatic Program Repair for Variability Bugs in Software Product Line Systems
 ========================================
-This is build upon Astor,  an automatic software repair framework in Java for Java, done by Inria, the University of Lille, the Université Polytechnique Hauts-de-France, and KTH Royal Institute of Technology. 
 
 
 Installation
