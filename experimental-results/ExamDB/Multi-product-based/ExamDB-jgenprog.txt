@@ -1,0 +1,439 @@
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_376
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 118.852
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_323
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 99.469
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_274
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::1.0
+Number of attempted patches::49
+Repairing time (s): 225.988
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_13
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 95.496
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_378
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::21
+Repairing time (s): 81.527
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_423
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 104.527
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::1.0
+Number of attempted patches::51
+Repairing time (s): 87.853
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_244
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::33
+Repairing time (s): 125.508
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_327
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 87.94
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_135
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 126.798
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_356
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 90.51
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_75
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 112.042
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 109.706
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 197.692
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_491
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 76.046
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::1.0
+Number of attempted patches::63
+Repairing time (s): 80.622
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_64
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 93.258
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_322
+Num_of_operations=2
+ [OP_INSTANCE:
+RemoveOp:(spoon.support.reflect.code.CtIfImpl) `if (!(((-1) <= points) && (points <= maxPoints))) { 	throw new main.ExamDataBaseException("Tried to [...] ` -topatch--> `-` (null) 
+Modification point: MP=main.ExamDataBaseImpl line: 167, featureInfo: ExamDB.ExamDataBaseImpl.139, pointed element: CtIfImpl, code element:if (!(((-1) <= points) && (points <= maxPoints))) {
+	throw new main.ExamDataBaseException("Tried to set invalid points");
+}, previous fixing score: 0
+, OP_INSTANCE:
+RemoveOp:(spoon.support.reflect.code.CtIfImpl) `if (students[i] != null) { 	int g = pointsToGrade(students[i].points, students[i].bonusPoints); 	if [...] ` -topatch--> `-` (null) 
+Modification point: MP=main.ExamDataBaseImpl line: 323, featureInfo: BonusPointsStatistics.ExamDataBaseImpl.18, pointed element: CtIfImpl, code element:if (students[i] != null) {
+	int g = pointsToGrade(students[i].points, students[i].bonusPoints);
+	if (grade == g) {
+		num++;
+	}
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 116.765
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_517
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 86.285
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_99
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 86.497
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_7
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 102.654
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_142
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 96.837
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_211
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 110.339
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_326
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 85.767
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_292
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::1.0
+Number of attempted patches::87
+Repairing time (s): 296.028
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_181
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 95.848
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_412
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 77.475
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_443
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 106.452
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_329
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 70.776
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_445
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 90.058
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_11
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 90.18
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::29
+Repairing time (s): 106.445
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_131
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 87.882
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_278
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::33
+Repairing time (s): 122.358
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_18
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 101.896
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_65
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 91.751
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_440
+Num_of_operations=2
+ [OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if (!(((-1) <= points) && (points <= maxPoints))) { 	throw new main.ExamDataBaseException("Tried to [...] ` -topatch--> `matrNr = matrNr` (spoon.support.reflect.code.CtAssignmentImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 167, featureInfo: ExamDB.ExamDataBaseImpl.139, pointed element: CtIfImpl, code element:if (!(((-1) <= points) && (points <= maxPoints))) {
+	throw new main.ExamDataBaseException("Tried to set invalid points");
+}, previous fixing score: 0
+, OP_INSTANCE:
+RemoveOp:(spoon.support.reflect.code.CtIfImpl) `if (students[i] != null) { 	int grade = pointsToGrade(students[i].points, students[i].bonusPoints); [...] ` -topatch--> `-` (null) 
+Modification point: MP=main.ExamDataBaseImpl line: 364, featureInfo: BonusPointsStatistics.ExamDataBaseImpl.53, pointed element: CtIfImpl, code element:if (students[i] != null) {
+	int grade = pointsToGrade(students[i].points, students[i].bonusPoints);
+	if (grade < 500) {
+		sum += grade;
+	}
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::23
+Repairing time (s): 89.411
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_441
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 98.898
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_8
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 93.432
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_111
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 101.42
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_146
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 104.246
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_444
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 93.818
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_66
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 104.951
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_377
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 80.694
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_132
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 85.25
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::32
+Repairing time (s): 113.009
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_298
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::1.0
+Number of attempted patches::83
+Repairing time (s): 266.327
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_40
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 82.656
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_381
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 98.893
+*******************************************
+------------------------summary-------------------
+Total number of systems:49
+Total number of systems containing test adequate patches:2
+Total number of systems partially fixed:0
+Average percentage of passing products/system:0.82908165
+Average of attempted products: 1.4081633
+Average of percentage of attempted products: 1.0
+Average number of attempted patches::30.183674
+Total repairing time (s): 5349.1320000000005

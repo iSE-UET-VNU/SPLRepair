@@ -1,0 +1,521 @@
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::8
+Repairing time (s): 1988.236
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.33333334
+Number of attempted patches::9
+Repairing time (s): 1823.095
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `free >= 258 ` -topatch--> `mode >= 8` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.Inflater line: 304, featureInfo: Base.net.sf.zipme.Inflater.182, pointed element: CtBinaryOperatorImpl, code element:free >= 258, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 25
+num_of_product_rejected_fix: 0
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `free >= 258 ` -topatch--> `mode < 280` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.Inflater line: 304, featureInfo: Base.net.sf.zipme.Inflater.182, pointed element: CtBinaryOperatorImpl, code element:free >= 258, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 25
+num_of_product_rejected_fix: 0
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `free >= 258 ` -topatch--> `(mode & 7) != 0` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.Inflater line: 304, featureInfo: Base.net.sf.zipme.Inflater.182, pointed element: CtBinaryOperatorImpl, code element:free >= 258, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 25
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 3
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.33333334
+Number of attempted patches::5
+Repairing time (s): 22474.039
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtArrayReadImpl) `window[rep_start++] ` -topatch--> `window[len++]` (spoon.support.reflect.code.CtArrayWriteImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 49, featureInfo: Base.net.sf.zipme.OutputWindow.32, pointed element: CtArrayReadImpl, code element:window[rep_start++], previous fixing score: 1
+, ]
+ num_of_product_successful_fix: 23
+num_of_product_rejected_fix: 2
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtArrayReadImpl) `window[rep_start++] ` -topatch--> `window[window_end]` (spoon.support.reflect.code.CtArrayReadImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 49, featureInfo: Base.net.sf.zipme.OutputWindow.32, pointed element: CtArrayReadImpl, code element:window[rep_start++], previous fixing score: 1
+, ]
+ num_of_product_successful_fix: 22
+num_of_product_rejected_fix: 3
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtArrayReadImpl) `window[rep_start++] ` -topatch--> `net.sf.zipme.DeflaterHuffman.staticLLength[len++]` (spoon.support.reflect.code.CtArrayWriteImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 49, featureInfo: Base.net.sf.zipme.OutputWindow.32, pointed element: CtArrayReadImpl, code element:window[rep_start++], previous fixing score: 1
+, ]
+ num_of_product_successful_fix: 22
+num_of_product_rejected_fix: 3
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtArrayReadImpl) `window[rep_start++] ` -topatch--> `window[0]` (spoon.support.reflect.code.CtArrayWriteImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 49, featureInfo: Base.net.sf.zipme.OutputWindow.32, pointed element: CtArrayReadImpl, code element:window[rep_start++], previous fixing score: 1
+, ]
+ num_of_product_successful_fix: 22
+num_of_product_rejected_fix: 3
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtArrayReadImpl) `window[rep_start++] ` -topatch--> `net.sf.zipme.DeflaterHuffman.staticLLength[len]` (spoon.support.reflect.code.CtArrayReadImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 49, featureInfo: Base.net.sf.zipme.OutputWindow.32, pointed element: CtArrayReadImpl, code element:window[rep_start++], previous fixing score: 1
+, ]
+ num_of_product_successful_fix: 22
+num_of_product_rejected_fix: 3
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 5
+Number of attempted products:: 1
+Percentage of attempted products::0.055555556
+Number of attempted patches::7
+Repairing time (s): 37090.463
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_59
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.25
+Number of attempted patches::4
+Repairing time (s): 3430.788
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_225
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.045454547
+Number of attempted patches::3
+Repairing time (s): 2853.645
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_244
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::3
+Repairing time (s): 2894.254
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.2
+Number of attempted patches::3
+Repairing time (s): 2908.622
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_60
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.09090909
+Number of attempted patches::3
+Repairing time (s): 3444.61
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.09090909
+Number of attempted patches::4
+Repairing time (s): 2921.058
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_242
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::1
+Repairing time (s): 6450.412
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_6
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.09090909
+Number of attempted patches::3
+Repairing time (s): 3242.749
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_403
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.083333336
+Number of attempted patches::4
+Repairing time (s): 2084.519
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_257
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::3
+Repairing time (s): 3508.48
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_340
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.33333334
+Number of attempted patches::3
+Repairing time (s): 3434.646
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_74
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.125
+Number of attempted patches::3
+Repairing time (s): 3427.218
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.5
+Number of attempted patches::3
+Repairing time (s): 3921.539
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_64
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.125
+Number of attempted patches::4
+Repairing time (s): 2423.7
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.045454547
+Number of attempted patches::4
+Repairing time (s): 3396.212
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_231
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::4
+Repairing time (s): 3464.162
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_414
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.041666668
+Number of attempted patches::3
+Repairing time (s): 3550.719
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_250
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::3
+Repairing time (s): 3525.336
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_407
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.041666668
+Number of attempted patches::3
+Repairing time (s): 3535.316
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_248
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::3
+Repairing time (s): 3525.588
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_195
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.2
+Number of attempted patches::4
+Repairing time (s): 3676.246
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::3
+Repairing time (s): 3888.346
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_372
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.33333334
+Number of attempted patches::4
+Repairing time (s): 3751.779
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_404
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.06666667
+Number of attempted patches::3
+Repairing time (s): 3776.239
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.125
+Number of attempted patches::2
+Repairing time (s): 3596.243
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_405
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.041666668
+Number of attempted patches::2
+Repairing time (s): 4483.485
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_295
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.2
+Number of attempted patches::3
+Repairing time (s): 3464.44
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_65
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.125
+Number of attempted patches::2
+Repairing time (s): 2122.52
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_194
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.2
+Number of attempted patches::2
+Repairing time (s): 3272.915
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_294
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.2
+Number of attempted patches::2
+Repairing time (s): 3208.163
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.125
+Number of attempted patches::3
+Repairing time (s): 2869.793
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.33333334
+Number of attempted patches::3
+Repairing time (s): 3668.511
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_251
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::2
+Repairing time (s): 3640.912
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_69
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.125
+Number of attempted patches::3
+Repairing time (s): 1870.657
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_228
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.045454547
+Number of attempted patches::2
+Repairing time (s): 3834.654
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_198
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.2
+Number of attempted patches::2
+Repairing time (s): 3947.788
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_383
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::2
+Repairing time (s): 3757.341
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_417
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.0625
+Number of attempted patches::3
+Repairing time (s): 3652.91
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_234
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::2
+Repairing time (s): 3703.671
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.0625
+Number of attempted patches::2
+Repairing time (s): 3516.805
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_227
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.045454547
+Number of attempted patches::3
+Repairing time (s): 3829.733
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.2
+Number of attempted patches::4
+Repairing time (s): 2125.661
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_190
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.2
+Number of attempted patches::2
+Repairing time (s): 1964.253
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::2
+Repairing time (s): 3683.35
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_238
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::2
+Repairing time (s): 3660.083
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.33333334
+Number of attempted patches::2
+Repairing time (s): 3662.871
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_232
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::2
+Repairing time (s): 3664.113
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_230
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.071428575
+Number of attempted patches::2
+Repairing time (s): 3615.493
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.2
+Number of attempted patches::2
+Repairing time (s): 2621.651
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_249
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::1
+Repairing time (s): 7330.538
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.25
+Number of attempted patches::2
+Repairing time (s): 4044.056
+*******************************************
+------------------------summary-------------------
+Total number of systems:55
+Total number of systems containing test adequate patches:1
+Total number of systems partially fixed:1
+Average percentage of passing products/system:0.51490915
+Average of attempted products: 1.0
+Average of percentage of attempted products: 0.14966416
+Average number of attempted patches::3.0545454
+Total repairing time (s): 241224.62600000005

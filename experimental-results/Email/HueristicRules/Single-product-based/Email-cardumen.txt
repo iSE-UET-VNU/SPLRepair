@@ -1,0 +1,913 @@
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_3
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 13
+Percentage of attempted products::1.0
+Repairing time (s): 215.401
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_38
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 11
+Percentage of attempted products::1.0
+Repairing time (s): 176.284
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_100
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 26
+Percentage of attempted products::1.0
+Repairing time (s): 412.491
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_185
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 11
+Percentage of attempted products::1.0
+Repairing time (s): 278.325
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_225
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 7
+Percentage of attempted products::1.0
+Repairing time (s): 157.102
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_183
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 11
+Percentage of attempted products::1.0
+Repairing time (s): 263.949
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `receiver == null ` -topatch--> `receiver != null` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=EmailSystem.Client line: 60, featureInfo: Forward.EmailSystem.Client.33, pointed element: CtBinaryOperatorImpl, code element:receiver == null, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0017
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.27272728
+Repairing time (s): 80.54
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `(EmailSystem.Client.clients[i] != null) && EmailSystem.Client.clients[i].getName().equals(address) ` -topatch--> `EmailSystem.Client.clientCounter < EmailSystem.Client.clientCounter` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=EmailSystem.Client line: 149, featureInfo: Base.EmailSystem.Client.89, pointed element: CtBinaryOperatorImpl, code element:(EmailSystem.Client.clients[i] != null) && EmailSystem.Client.clients[i].getName().equals(address), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32/variants/model_m_ca4_0027
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 5
+Percentage of attempted products::0.1923077
+Repairing time (s): 113.014
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-encryptionKey ` -topatch--> `encryptionKey++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=EmailSystem.Email line: 198, featureInfo: Encrypt.EmailSystem.Email.46, pointed element: CtUnaryOperatorImpl, code element:-encryptionKey, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192/variants/model_m_ca4_0011
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.09090909
+Repairing time (s): 61.613
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `client.getId() ` -topatch--> `client.getPrivateKey()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=EmailSystem.Client line: 152, featureInfo: Base.EmailSystem.Client.75, pointed element: CtInvocationImpl, code element:client.getId(), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 1
+num_of_product_rejected_fix: 26
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0014
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0023
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 25
+Percentage of attempted products::1.0
+Repairing time (s): 420.509
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_78
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 26
+Percentage of attempted products::1.0
+Repairing time (s): 423.243
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_45
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 26
+Percentage of attempted products::1.0
+Repairing time (s): 359.721
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_135
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 43.9
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtArrayReadImpl) `EmailSystem.Client.clients[-id] ` -topatch--> `EmailSystem.Client.clients[id]` (spoon.support.reflect.code.CtArrayReadImpl) 
+Modification point: MP=EmailSystem.Client line: 119, featureInfo: Base.EmailSystem.Client.83, pointed element: CtArrayReadImpl, code element:EmailSystem.Client.clients[-id], previous fixing score: 1
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28/variants/model_m_ca4_0012
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.03846154
+Repairing time (s): 67.654
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_261
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 9
+Percentage of attempted products::1.0
+Repairing time (s): 232.353
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_25
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 18
+Percentage of attempted products::1.0
+Repairing time (s): 309.887
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-value ` -topatch--> `value++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=EmailSystem.Email line: 190, featureInfo: Encrypt.EmailSystem.Email.41, pointed element: CtUnaryOperatorImpl, code element:-value, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186/variants/model_m_ca4_0009
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.1
+Repairing time (s): 57.886
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-value ` -topatch--> `value++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=EmailSystem.Email line: 175, featureInfo: Sign.EmailSystem.Email.28, pointed element: CtUnaryOperatorImpl, code element:-value, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0018
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.11111111
+Repairing time (s): 53.602
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-privkey ` -topatch--> `privkey++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=EmailSystem.Client line: 403, featureInfo: Sign.EmailSystem.Client.29, pointed element: CtUnaryOperatorImpl, code element:-privkey, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201/variants/model_m_ca4_0013
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 52.426
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `~(EmailSystem.Email.emailCounter++) ` -topatch--> `EmailSystem.Email.emailCounter++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=EmailSystem.Email line: 45, featureInfo: Base.EmailSystem.Email.29, pointed element: CtUnaryOperatorImpl, code element:~(EmailSystem.Email.emailCounter++), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0019
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `(EmailSystem.Email.emailCounter++) ` -topatch--> `(~(EmailSystem.Email.emailCounter++))` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=EmailSystem.Email line: 45, featureInfo: Base.EmailSystem.Email.29, pointed element: CtUnaryOperatorImpl, code element:(EmailSystem.Email.emailCounter++), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112/variants/model_m_ca4_0019
+List of rejected products:
+
+---------
+Number of test adequate patches:: 2
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.13636364
+Repairing time (s): 156.01
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_259
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 11
+Percentage of attempted products::1.0
+Repairing time (s): 252.414
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_210
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 46.077
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-signkey ` -topatch--> `signkey++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=EmailSystem.Email line: 191, featureInfo: Sign.EmailSystem.Email.38, pointed element: CtUnaryOperatorImpl, code element:-signkey, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0019
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.09090909
+Repairing time (s): 51.252
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `EmailSystem.Client.clients[i].getName() ` -topatch--> `java.lang.String.valueOf(EmailSystem.Client.clientCounter)` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=EmailSystem.Client line: 201, featureInfo: Base.EmailSystem.Client.89, pointed element: CtInvocationImpl, code element:EmailSystem.Client.clients[i].getName(), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0025
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `EmailSystem.Client.clients[i].getName() ` -topatch--> `(("keypair valid " + EmailSystem.Client.clientCounter) + " ") + EmailSystem.Client.clientCounter` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=EmailSystem.Client line: 201, featureInfo: Base.EmailSystem.Client.89, pointed element: CtInvocationImpl, code element:EmailSystem.Client.clients[i].getName(), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0025
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `EmailSystem.Client.clients[i].getName() ` -topatch--> `("keypair valid " + EmailSystem.Client.clientCounter) + " "` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=EmailSystem.Client line: 201, featureInfo: Base.EmailSystem.Client.89, pointed element: CtInvocationImpl, code element:EmailSystem.Client.clients[i].getName(), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0025
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `EmailSystem.Client.clients[i].getName() ` -topatch--> `"keypair valid " + EmailSystem.Client.clientCounter` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=EmailSystem.Client line: 201, featureInfo: Base.EmailSystem.Client.89, pointed element: CtInvocationImpl, code element:EmailSystem.Client.clients[i].getName(), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47/variants/model_m_ca4_0025
+List of rejected products:
+
+---------
+Number of test adequate patches:: 4
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 6
+Percentage of attempted products::1.0
+Repairing time (s): 251.596
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_202
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Repairing time (s): 68.639
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_2
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 11
+Percentage of attempted products::1.0
+Repairing time (s): 228.505
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_80
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 8
+Percentage of attempted products::1.0
+Repairing time (s): 168.853
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_35
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 26
+Percentage of attempted products::1.0
+Repairing time (s): 465.986
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_81
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Repairing time (s): 54.494
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_44
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 11
+Percentage of attempted products::1.0
+Repairing time (s): 199.851
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `receiver == null ` -topatch--> `receiver != null` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=EmailSystem.Client line: 91, featureInfo: Base.EmailSystem.Client.51, pointed element: CtBinaryOperatorImpl, code element:receiver == null, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8/variants/model_m_ca4_0009
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 9
+Percentage of attempted products::0.34615386
+Repairing time (s): 177.737
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_179
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 11
+Percentage of attempted products::1.0
+Repairing time (s): 297.115
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `EmailSystem.Client.clientCounter-- ` -topatch--> `EmailSystem.Client.clientCounter++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=EmailSystem.Client line: 105, featureInfo: Base.EmailSystem.Client.74, pointed element: CtUnaryOperatorImpl, code element:EmailSystem.Client.clientCounter--, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0026
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0027
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24/variants/model_m_ca4_0010
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Repairing time (s): 68.425
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_204
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 52.704
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_232
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 11
+Percentage of attempted products::1.0
+Repairing time (s): 269.753
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_36
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 9
+Percentage of attempted products::1.0
+Repairing time (s): 175.518
+*******************************************
+------------------------summary-------------------
+Total number of systems:36
+Total number of systems containing test adequate patches:12
+Total number of systems partially fixed:1
+Average percentage of passing products/system:0.7026748
+Average of attempted products: 8.916667
+Average of percentage of attempted products: 0.7619151
+Total repairing time (s): 6764.828999999999
+
+Bug Id obtains correct patch
+196
+28
+112
+8
+24

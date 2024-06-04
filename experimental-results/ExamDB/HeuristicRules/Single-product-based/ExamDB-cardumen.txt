@@ -1,0 +1,1006 @@
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_376
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtArrayReadImpl) `students[i] ` -topatch--> `students[num]` (spoon.support.reflect.code.CtArrayWriteImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 345, featureInfo: BonusPointsStatistics.ExamDataBaseImpl.37, pointed element: CtArrayReadImpl, code element:students[i], previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0004
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 37.724
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_323
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 26.757
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_274
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::1.0
+Repairing time (s): 128.447
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_13
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 38.64
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_378
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 28.477
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_423
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 32.251
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `!((0 < bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `!(((-1) <= maxPoints) && (maxPoints <= maxPoints))` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 276, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtUnaryOperatorImpl, code element:!((0 < bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0007
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `!((0 < bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `!((0 < maxPoints) && (maxPoints <= maxPoints))` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 276, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtUnaryOperatorImpl, code element:!((0 < bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0007
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `!((0 < bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `maxPoints == (-1)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 276, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtUnaryOperatorImpl, code element:!((0 < bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225/variants/model_m_ca4_0007
+List of rejected products:
+
+---------
+Number of test adequate patches:: 3
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.33333334
+Repairing time (s): 40.824
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_244
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `students[-i] != null ` -topatch--> `students[i] != null` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 251, featureInfo: BonusPoints.ExamDataBaseImpl.29, pointed element: CtBinaryOperatorImpl, code element:students[-i] != null, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_244/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_244/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_244/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_244/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_244/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_244/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_244/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_244/variants/model_m_ca4_0007
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.5
+Repairing time (s): 33.131
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_327
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `(-grade) ` -topatch--> `(grade++)` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 325, featureInfo: BonusPointsStatistics.ExamDataBaseImpl.20, pointed element: CtUnaryOperatorImpl, code element:(-grade), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_327/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_327/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_327/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_327/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_327/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_327/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_327/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_327/variants/model_m_ca4_0002
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 43.014
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_135
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-grade ` -topatch--> `grade++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 383, featureInfo: BonusPointsBackOutStatistics.ExamDataBaseImpl.56, pointed element: CtUnaryOperatorImpl, code element:-grade, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_135/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_135/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_135/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_135/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_135/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_135/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_135/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_135/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 50.06
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_356
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 48.287
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_75
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 42.675
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-matrNr ` -topatch--> `matrNr++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 250, featureInfo: BonusPointsBackOut.ExamDataBaseImpl.13, pointed element: CtUnaryOperatorImpl, code element:-matrNr, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0003
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `getIndex(-matrNr) ` -topatch--> `getIndex(matrNr)` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 250, featureInfo: BonusPointsBackOut.ExamDataBaseImpl.13, pointed element: CtInvocationImpl, code element:getIndex(-matrNr), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257/variants/model_m_ca4_0003
+List of rejected products:
+
+---------
+Number of test adequate patches:: 2
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.5
+Repairing time (s): 38.533
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtArrayReadImpl) `students[++i] ` -topatch--> `students[i]` (spoon.support.reflect.code.CtArrayWriteImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 251, featureInfo: BonusPointsBackOut.ExamDataBaseImpl.14, pointed element: CtArrayReadImpl, code element:students[++i], previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0001
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `(students[++i] != null) ` -topatch--> `((students[i] != null) && (i == i))` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 251, featureInfo: BonusPointsBackOut.ExamDataBaseImpl.14, pointed element: CtBinaryOperatorImpl, code element:(students[++i] != null), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0001
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `(students[++i] != null) ` -topatch--> `(students[i] != null)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 251, featureInfo: BonusPointsBackOut.ExamDataBaseImpl.14, pointed element: CtBinaryOperatorImpl, code element:(students[++i] != null), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260/variants/model_m_ca4_0001
+List of rejected products:
+
+---------
+Number of test adequate patches:: 3
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.5
+Repairing time (s): 40.444
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_491
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `consistent() ` -topatch--> `!consistent()` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 359, featureInfo: BonusPointsStatistics.ExamDataBaseImpl.48, pointed element: CtInvocationImpl, code element:consistent(), previous fixing score: 1
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_491/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_491/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_491/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_491/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_491/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_491/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_491/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_491/variants/model_m_ca4_0002
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 32.747
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `(0 > bonusPoints) ` -topatch--> `(0 < maxPoints)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 282, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:(0 > bonusPoints), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `(!((0 > maxPoints) && (maxPoints <= maxPoints)))` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 282, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `(!((0 > threshold) && (threshold <= step)))` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 282, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `(!((0 > step) && (step <= threshold)))` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 282, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `(!((0 > threshold) && (threshold <= bonusPoints)))` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 282, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `(0 > bonusPoints) ` -topatch--> `(maxPoints == maxPoints)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 282, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:(0 > bonusPoints), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `((-1) <= threshold)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 276, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `(threshold <= threshold)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 276, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `((-1) <= step)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 276, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `(threshold == threshold)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 276, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `((-1) <= maxPoints)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 276, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `(step <= step)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 276, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `(((-1) <= threshold) && (threshold <= threshold))` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 276, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `(((0 < threshold) && (threshold <= threshold)) && (0 < threshold))` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 276, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > bonusPoints) && (bonusPoints <= maxPoints)) ` -topatch--> `(step == step)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 276, featureInfo: BonusPoints.ExamDataBaseImpl.13, pointed element: CtBinaryOperatorImpl, code element:((0 > bonusPoints) && (bonusPoints <= maxPoints)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Number of test adequate patches:: 15
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.5
+Repairing time (s): 95.194
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_64
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 43.894
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_322
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 39.101
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_517
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 43.287
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_99
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 50.704
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_7
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 49.235
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_142
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 43.696
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_211
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 43.28
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_326
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 54.795
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_292
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::1.0
+Repairing time (s): 144.791
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_181
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 37.893
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_412
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 45.137
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_443
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 43.339
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_329
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 46.285
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_445
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-grade ` -topatch--> `grade++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 367, featureInfo: BonusPointsStatistics.ExamDataBaseImpl.56, pointed element: CtUnaryOperatorImpl, code element:-grade, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_445/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_445/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_445/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_445/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_445/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_445/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_445/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_445/variants/model_m_ca4_0006
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 36.168
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_11
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 49.278
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `getIndex(-matrNr) ` -topatch--> `getIndex(matrNr)` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 250, featureInfo: BonusPoints.ExamDataBaseImpl.28, pointed element: CtInvocationImpl, code element:getIndex(-matrNr), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-matrNr ` -topatch--> `matrNr++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 250, featureInfo: BonusPoints.ExamDataBaseImpl.28, pointed element: CtUnaryOperatorImpl, code element:-matrNr, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243/variants/model_m_ca4_0008
+List of rejected products:
+
+---------
+Number of test adequate patches:: 2
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.5
+Repairing time (s): 38.432
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_131
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 46.475
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_278
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `(students[++i] != null) ` -topatch--> `(students[i] != null)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 251, featureInfo: BackOut.ExamDataBaseImpl.26, pointed element: CtBinaryOperatorImpl, code element:(students[++i] != null), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_278/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_278/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_278/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_278/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_278/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_278/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_278/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_278/variants/model_m_ca4_0001
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.5
+Repairing time (s): 49.171
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_18
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 30.894
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_65
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 42.053
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_440
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 44.421
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_441
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 49.355
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_8
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 42.411
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_111
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 49.393
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_146
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 46.72
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_444
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 50.667
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_66
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 42.864
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_377
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 28.509
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_132
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 42.785
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-matrNr ` -topatch--> `matrNr++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 250, featureInfo: BackOut.ExamDataBaseImpl.25, pointed element: CtUnaryOperatorImpl, code element:-matrNr, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0007
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `getIndex(-matrNr) ` -topatch--> `getIndex(matrNr)` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 250, featureInfo: BackOut.ExamDataBaseImpl.25, pointed element: CtInvocationImpl, code element:getIndex(-matrNr), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275/variants/model_m_ca4_0007
+List of rejected products:
+
+---------
+Number of test adequate patches:: 2
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.5
+Repairing time (s): 36.77
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_298
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::1.0
+Repairing time (s): 133.049
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_40
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 46.2
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_381
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 39.932
+*******************************************
+------------------------summary-------------------
+Total number of systems:49
+Total number of systems containing test adequate patches:13
+Total number of systems partially fixed:0
+Average percentage of passing products/system:0.8852041
+Average of attempted products: 1.2040817
+Average of percentage of attempted products: 0.91496605
+Total repairing time (s): 2388.1889999999994
+
+Bug Id obtains correct patch
+244
+257
+260
+491
+243
+278
+275

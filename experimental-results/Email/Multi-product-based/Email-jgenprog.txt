@@ -1,0 +1,297 @@
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_3
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.30769232
+Number of attempted patches::75
+Repairing time (s): 3119.172
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_38
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::16
+Repairing time (s): 2899.472
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_100
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.07692308
+Number of attempted patches::17
+Repairing time (s): 2820.046
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_185
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::15
+Repairing time (s): 2892.789
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_225
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.2857143
+Number of attempted patches::15
+Repairing time (s): 2670.039
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_183
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::26
+Repairing time (s): 2711.459
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_196
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::17
+Repairing time (s): 2679.965
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_32
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.07692308
+Number of attempted patches::15
+Repairing time (s): 2891.712
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_192
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::13
+Repairing time (s): 2887.426
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_5
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.08
+Number of attempted patches::13
+Repairing time (s): 2723.061
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_78
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.115384616
+Number of attempted patches::54
+Repairing time (s): 3410.578
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_45
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.115384616
+Number of attempted patches::42
+Repairing time (s): 3108.437
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_135
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::17
+Repairing time (s): 1453.836
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_28
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.07692308
+Number of attempted patches::19
+Repairing time (s): 2892.696
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_261
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.22222222
+Number of attempted patches::20
+Repairing time (s): 2841.37
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_25
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.11111111
+Number of attempted patches::12
+Repairing time (s): 2878.561
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_186
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.2
+Number of attempted patches::15
+Repairing time (s): 2785.24
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_226
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.22222222
+Number of attempted patches::13
+Repairing time (s): 2895.961
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_201
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::6
+Repairing time (s): 1460.22
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_112
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.09090909
+Number of attempted patches::12
+Repairing time (s): 2846.733
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_259
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::15
+Repairing time (s): 2461.646
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_210
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::8
+Repairing time (s): 1376.202
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_233
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::16
+Repairing time (s): 2893.55
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_47
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.33333334
+Number of attempted patches::12
+Repairing time (s): 2906.644
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_202
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::14
+Repairing time (s): 2896.396
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_2
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::16
+Repairing time (s): 2800.552
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_80
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.25
+Number of attempted patches::24
+Repairing time (s): 2903.292
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_35
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.07692308
+Number of attempted patches::17
+Repairing time (s): 2848.826
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_81
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::17
+Repairing time (s): 2730.21
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_44
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::21
+Repairing time (s): 2523.382
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_8
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.07692308
+Number of attempted patches::18
+Repairing time (s): 2906.875
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_179
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::25
+Repairing time (s): 2804.369
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_24
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.1
+Number of attempted patches::33
+Repairing time (s): 2616.472
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_204
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::6
+Repairing time (s): 1467.308
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_232
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::24
+Repairing time (s): 2786.197
+*******************************************
+/home/trang_nguyen/SPL/Dataset/Email-1Bug/_MultipleBugs_.NOB_1.ID_36
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.22222222
+Number of attempted patches::17
+Repairing time (s): 2874.649
+*******************************************
+------------------------summary-------------------
+Total number of systems:36
+Total number of systems containing test adequate patches:0
+Total number of systems partially fixed:0
+Average percentage of passing products/system:0.5195473
+Average of attempted products: 2.0
+Average of percentage of attempted products: 0.30668923
+Average number of attempted patches::19.86111
+Total repairing time (s): 96665.34300000002

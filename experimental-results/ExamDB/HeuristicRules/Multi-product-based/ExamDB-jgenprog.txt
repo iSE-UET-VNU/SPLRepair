@@ -1,0 +1,625 @@
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_376
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 34.902
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_323
+Num_of_operations=1
+ [OP_INSTANCE:
+InsertAfterOp:(spoon.support.reflect.code.CtIfImpl) `if ((students[i] != null) && (students[i].points < 0)) { 	return false; } ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 267, featureInfo: ExamDB.ExamDataBaseImpl.212, pointed element: CtIfImpl, code element:if ((students[i] != null) && (students[i].points < 0)) {
+	return false;
+}, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 44.424
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_274
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::1.0
+Number of attempted patches::200
+Repairing time (s): 118.528
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_13
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 37.959
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_378
+Num_of_operations=2
+ [OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if (students[i] != null) { 	sum += pointsToGrade(students[i].points, students[i].bonusPoints); 	num+[...] ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 345, featureInfo: BonusPointsStatistics.ExamDataBaseImpl.37, pointed element: CtIfImpl, code element:if (students[i] != null) {
+	sum += pointsToGrade(students[i].points, students[i].bonusPoints);
+	num++;
+}, previous fixing score: 2
+, OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if ((students[i] != null) && (students[i].points < 0)) { 	return false; } ` -topatch--> `int result = 0` (spoon.support.reflect.code.CtLocalVariableImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 267, featureInfo: ExamDB.ExamDataBaseImpl.212, pointed element: CtIfImpl, code element:if ((students[i] != null) && (students[i].points < 0)) {
+	return false;
+}, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 6
+num_of_product_rejected_fix: 2
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 30.775
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_423
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 33.907
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_225
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::1.0
+Number of attempted patches::150
+Repairing time (s): 98.221
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_244
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::100
+Repairing time (s): 56.998
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_327
+Num_of_operations=2
+ [OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if (!consistent()) { 	throw new main.ExamDataBaseException("Tried to get average in inconsistent sta[...] ` -topatch--> `main.Student[] oldStudents = students` (spoon.support.reflect.code.CtLocalVariableImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 339, featureInfo: BonusPointsStatistics.ExamDataBaseImpl.31, pointed element: CtIfImpl, code element:if (!consistent()) {
+	throw new main.ExamDataBaseException("Tried to get average in inconsistent state");
+}, previous fixing score: 2
+, OP_INSTANCE:
+InsertAfterOp:(spoon.support.reflect.code.CtIfImpl) `if (students[i] != null) { 	int g = pointsToGrade(students[i].points, students[i].bonusPoints); 	if [...] ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 323, featureInfo: BonusPointsStatistics.ExamDataBaseImpl.18, pointed element: CtIfImpl, code element:if (students[i] != null) {
+	int g = pointsToGrade(students[i].points, students[i].bonusPoints);
+	if ((-grade) == g) {
+		num++;
+	}
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 36.976
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_135
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 38.942
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_356
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 37.353
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_75
+Num_of_operations=2
+ [OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if ((students[++i] != null) && (!students[i].backedOut)) { 	sum += pointsToGrade(students[i].points,[...] ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 361, featureInfo: BonusPointsBackOutStatistics.ExamDataBaseImpl.37, pointed element: CtIfImpl, code element:if ((students[++i] != null) && (!students[i].backedOut)) {
+	sum += pointsToGrade(students[i].points, students[i].bonusPoints);
+	num++;
+}, previous fixing score: 0
+, OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if ((students[i] != null) && (!students[i].backedOut)) { 	int grade = pointsToGrade(students[i].poin[...] ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 380, featureInfo: BonusPointsBackOutStatistics.ExamDataBaseImpl.53, pointed element: CtIfImpl, code element:if ((students[i] != null) && (!students[i].backedOut)) {
+	int grade = pointsToGrade(students[i].points, students[i].bonusPoints);
+	if (grade < 500) {
+		sum += grade;
+	}
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 43.576
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_257
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::100
+Repairing time (s): 61.278
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_260
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::100
+Repairing time (s): 58.847
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_491
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 32.774
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_223
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::1.0
+Number of attempted patches::200
+Repairing time (s): 115.015
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_64
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 43.941
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_322
+Num_of_operations=1
+ [OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if ((students[i] != null) && (students[i].points < 0)) { 	return false; } ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 267, featureInfo: ExamDB.ExamDataBaseImpl.212, pointed element: CtIfImpl, code element:if ((students[i] != null) && (students[i].points < 0)) {
+	return false;
+}, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 37.728
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_517
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 43.452
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_99
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 38.104
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_7
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 34.9
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_142
+Num_of_operations=1
+ [OP_INSTANCE:
+InsertAfterOp:(spoon.support.reflect.code.CtIfImpl) `if (((students[i] != null) && (!students[i].backedOut)) &&  (students[i].points < 0)) { 	return fals[...] ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 267, featureInfo: BackOut.ExamDataBaseImpl.30, pointed element: CtIfImpl, code element:if (((students[i] != null) && (!students[i].backedOut)) && 
+(students[i].points < 0)) {
+	return false;
+}, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Num_of_operations=2
+ [OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if (!consistent()) { 	throw new main.ExamDataBaseException("Tried to get average in inconsistent sta[...] ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 334, featureInfo: BonusPointsBackOutStatistics.ExamDataBaseImpl.13, pointed element: CtIfImpl, code element:if (!consistent()) {
+	throw new main.ExamDataBaseException("Tried to get average in inconsistent state");
+}, previous fixing score: 2
+, OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if ((students[++i] != null) && (!students[i].backedOut)) { 	int grade = pointsToGrade(students[i].po[...] ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 380, featureInfo: BonusPointsBackOutStatistics.ExamDataBaseImpl.53, pointed element: CtIfImpl, code element:if ((students[++i] != null) && (!students[i].backedOut)) {
+	int grade = pointsToGrade(students[i].points, students[i].bonusPoints);
+	if (grade < 500) {
+		sum += grade;
+	}
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 2
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 42.813
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_211
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 32.126
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_326
+Num_of_operations=1
+ [OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if ((students[i] != null) && (students[i].points < 0)) { 	return false; } ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 267, featureInfo: ExamDB.ExamDataBaseImpl.212, pointed element: CtIfImpl, code element:if ((students[i] != null) && (students[i].points < 0)) {
+	return false;
+}, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 38.226
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_292
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::1.0
+Number of attempted patches::200
+Repairing time (s): 111.036
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_181
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 39.114
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_412
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 40.744
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_443
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 28.845
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_329
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 32.283
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_445
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 37.229
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_11
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 34.431
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_243
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::100
+Repairing time (s): 55.948
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_131
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 38.299
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_278
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::100
+Repairing time (s): 56.999
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_18
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 46.585
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_65
+Num_of_operations=2
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtUnaryOperatorImpl) `num-- ` -topatch--> `num++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 363, featureInfo: BonusPointsBackOutStatistics.ExamDataBaseImpl.39, pointed element: CtUnaryOperatorImpl, code element:num--, previous fixing score: 0
+, OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if (!consistent()) { 	throw new main.ExamDataBaseException("Tried to get average in inconsistent sta[...] ` -topatch--> `int result = 0` (spoon.support.reflect.code.CtLocalVariableImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 375, featureInfo: BonusPointsBackOutStatistics.ExamDataBaseImpl.48, pointed element: CtIfImpl, code element:if (!consistent()) {
+	throw new main.ExamDataBaseException("Tried to get average in inconsistent state");
+}, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if ((students[i] != null) && (!students[i].backedOut)) { 	sum += pointsToGrade(students[i].points, s[...] ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 361, featureInfo: BonusPointsBackOutStatistics.ExamDataBaseImpl.37, pointed element: CtIfImpl, code element:if ((students[i] != null) && (!students[i].backedOut)) {
+	sum += pointsToGrade(students[i].points, students[i].bonusPoints);
+	num--;
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 2
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 27.268
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_440
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 33.619
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_441
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 21.188
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_8
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtUnaryOperatorImpl) `num-- ` -topatch--> `num++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 342, featureInfo: BonusPointsBackOutStatistics.ExamDataBaseImpl.21, pointed element: CtUnaryOperatorImpl, code element:num--, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 33.51
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_111
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 43.259
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_146
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 39.973
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_444
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 35.594
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_66
+Num_of_operations=1
+ [OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if ((students[i] != null) && (!students[i].backedOut)) { 	sum += pointsToGrade(students[i].points, s[...] ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 361, featureInfo: BonusPointsBackOutStatistics.ExamDataBaseImpl.37, pointed element: CtIfImpl, code element:if ((students[i] != null) && (!students[i].backedOut)) {
+	sum += pointsToGrade(students[i].points, students[i].bonusPoints);
+	num++;
+}, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 35.265
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_377
+Num_of_operations=2
+ [OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtLocalVariableImpl) `int g = pointsToGrade(students[i].points, students[i].bonusPoints) ` -topatch--> `int j = 0` (spoon.support.reflect.code.CtLocalVariableImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 324, featureInfo: BonusPointsStatistics.ExamDataBaseImpl.19, pointed element: CtLocalVariableImpl, code element:int g = pointsToGrade(students[i].points, students[i].bonusPoints), previous fixing score: 0
+, OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtUnaryOperatorImpl) `num-- ` -topatch--> `num++` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 347, featureInfo: BonusPointsStatistics.ExamDataBaseImpl.39, pointed element: CtUnaryOperatorImpl, code element:num--, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 40.413
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_132
+Num_of_operations=2
+ [OP_INSTANCE:
+InsertAfterOp:(spoon.support.reflect.code.CtIfImpl) `if ((students[i] != null) && (!students[i].backedOut)) { 	num++; } ` -topatch--> `int[] result = new int[countStudents()]` (spoon.support.reflect.code.CtLocalVariableImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 321, featureInfo: BackOutStatistics.ExamDataBaseImpl.14, pointed element: CtIfImpl, code element:if ((students[i] != null) && (!students[i].backedOut)) {
+	num++;
+}, previous fixing score: 1
+, OP_INSTANCE:
+InsertAfterOp:(spoon.support.reflect.code.CtIfImpl) `if (!consistent()) { 	throw new main.ExamDataBaseException("Tried to get average in inconsistent sta[...] ` -topatch--> `this.students = new main.Student[100]` (spoon.support.reflect.code.CtAssignmentImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 375, featureInfo: BonusPointsBackOutStatistics.ExamDataBaseImpl.48, pointed element: CtIfImpl, code element:if (!consistent()) {
+	throw new main.ExamDataBaseException("Tried to get average in inconsistent state");
+}, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 8
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 47.794
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_275
+Num_of_operations=1
+ [OP_INSTANCE:
+InsertAfterOp:(spoon.support.reflect.code.CtIfImpl) `if (students[i] != null) { 	if (students[i].matrNr == matrNr) { 		throw new main.ExamDataBaseExcepti[...] ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 139, featureInfo: ExamDB.ExamDataBaseImpl.117, pointed element: CtIfImpl, code element:if (students[i] != null) {
+	if (students[i].matrNr == matrNr) {
+		throw new main.ExamDataBaseException("Tried to add already existing student");
+	}
+} else {
+	freeIndex = i;
+}, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 7
+num_of_product_rejected_fix: 1
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::100
+Repairing time (s): 69.409
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_298
+Num_of_operations=1
+ [OP_INSTANCE:
+InsertAfterOp:(spoon.support.reflect.code.CtIfImpl) `if (((students[++i] != null) && (!students[i].backedOut)) && (students[i].points < 0)) { 	return fal[...] ` -topatch--> `increaseStudents()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.ExamDataBaseImpl line: 256, featureInfo: BackOut.ExamDataBaseImpl.35, pointed element: CtIfImpl, code element:if (((students[++i] != null) && (!students[i].backedOut)) && (students[i].points < 0)) {
+	return false;
+}, previous fixing score: 1
+, ]
+ num_of_product_successful_fix: 6
+num_of_product_rejected_fix: 2
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 4
+Percentage of attempted products::1.0
+Number of attempted patches::200
+Repairing time (s): 111.941
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_40
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 42.108
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ExamDB-1Bug/_MultipleBugs_.NOB_1.ID_381
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 42.369
+*******************************************
+------------------------summary-------------------
+Total number of systems:49
+Total number of systems containing test adequate patches:11
+Total number of systems partially fixed:3
+Average percentage of passing products/system:0.85714287
+Average of attempted products: 1.4081633
+Average of percentage of attempted products: 1.0
+Average number of attempted patches::70.408165
+Total repairing time (s): 2336.9880000000003
+
+Bug Id obtains correct patch
+8

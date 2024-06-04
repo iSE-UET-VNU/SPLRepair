@@ -1,0 +1,1547 @@
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `inf != null ` -topatch--> `(0 > len) || (len > len)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.InflaterInputStream line: 73, featureInfo: Base.net.sf.zipme.InflaterInputStream.53, pointed element: CtBinaryOperatorImpl, code element:inf != null, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 25
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0017
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `inf != null ` -topatch--> `len >= 10` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.InflaterInputStream line: 73, featureInfo: Base.net.sf.zipme.InflaterInputStream.53, pointed element: CtBinaryOperatorImpl, code element:inf != null, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 25
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_229/variants/model_m_ca4_0017
+List of rejected products:
+
+---------
+Number of test adequate patches:: 2
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Repairing time (s): 1141.747
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `window_end++ ` -topatch--> `(0x30 + window_end) << 8` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 39, featureInfo: Base.net.sf.zipme.OutputWindow.25, pointed element: CtUnaryOperatorImpl, code element:window_end++, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 7
+num_of_product_rejected_fix: 18
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0004
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0007
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((++window_end) - window_filled) ` -topatch--> `(1 << 7)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 141, featureInfo: Base.net.sf.zipme.OutputWindow.106, pointed element: CtBinaryOperatorImpl, code element:((++window_end) - window_filled), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 24
+num_of_product_rejected_fix: 1
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0007
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0016
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `(++window_end) ` -topatch--> `(len & 15)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 141, featureInfo: Base.net.sf.zipme.OutputWindow.106, pointed element: CtUnaryOperatorImpl, code element:(++window_end), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 24
+num_of_product_rejected_fix: 1
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0007
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_418/variants/model_m_ca4_0016
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 3
+Number of attempted products:: 3
+Percentage of attempted products::1.0
+Repairing time (s): 1251.184
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `symbol & 15 ` -topatch--> `0x0 - 256` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.InflaterHuffmanTree line: 110, featureInfo: Base.net.sf.zipme.InflaterHuffmanTree.91, pointed element: CtBinaryOperatorImpl, code element:symbol & 15, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 3
+num_of_product_rejected_fix: 22
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0010
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_376/variants/model_m_ca4_0011
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::0.6666667
+Repairing time (s): 2289.757
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((++rep_start) <= border) ` -topatch--> `((len + 4) < (len >> 3))` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 65, featureInfo: Base.net.sf.zipme.OutputWindow.45, pointed element: CtBinaryOperatorImpl, code element:((++rep_start) <= border), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 25
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0015
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `(window_end - dist) ` -topatch--> `(window_end + (window[window_end++] & 0xff))` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 63, featureInfo: Base.net.sf.zipme.OutputWindow.43, pointed element: CtBinaryOperatorImpl, code element:(window_end - dist), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 25
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0015
+List of rejected products:
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `slowRepeat(rep_start, len, dist) ` -topatch--> `java.lang.System.err.print(("(" + len) + "): ")` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 75, featureInfo: Base.net.sf.zipme.OutputWindow.55, pointed element: CtInvocationImpl, code element:slowRepeat(rep_start, len, dist), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 25
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_386/variants/model_m_ca4_0015
+List of rejected products:
+
+---------
+Number of test adequate patches:: 3
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.055555556
+Repairing time (s): 2237.246
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_59
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.75
+Repairing time (s): 2711.59
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_225
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.13636364
+Repairing time (s): 2176.506
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_244
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.1
+Repairing time (s): 2110.069
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `b[0] & 0xff ` -topatch--> `-1` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.ZipInputStream line: 267, featureInfo: Extract.net.sf.zipme.ZipInputStream.219, pointed element: CtBinaryOperatorImpl, code element:b[0] & 0xff, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 25
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_196/variants/model_m_ca4_0017
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.8
+Repairing time (s): 2350.583
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_60
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.27272728
+Repairing time (s): 2626.231
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `((int) (adler.getValue())) ` -topatch--> `((int) (java.lang.Math.min(totalOut, 2048)))` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=net.sf.zipme.Inflater line: 531, featureInfo: Adler32Checksum.net.sf.zipme.Inflater.45, pointed element: CtInvocationImpl, code element:((int) (adler.getValue())), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 23
+num_of_product_rejected_fix: 2
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0020
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_5/variants/model_m_ca4_0014
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Repairing time (s): 2941.806
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_242
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Repairing time (s): 1646.991
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_6
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Repairing time (s): 3422.556
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_403
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.25
+Repairing time (s): 1749.894
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_257
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Repairing time (s): 2755.366
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_340
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::1.0
+Repairing time (s): 3462.117
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_74
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.375
+Repairing time (s): 3479.728
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `decodeHuffman() ` -topatch--> `(mode & 15) <= mode` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.Inflater line: 461, featureInfo: Base.net.sf.zipme.Inflater.333, pointed element: CtInvocationImpl, code element:decodeHuffman(), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 19
+num_of_product_rejected_fix: 6
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0010
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0012
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `symbol & 15 ` -topatch--> `symbol & 7` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.InflaterHuffmanTree line: 110, featureInfo: Base.net.sf.zipme.InflaterHuffmanTree.91, pointed element: CtBinaryOperatorImpl, code element:symbol & 15, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 19
+num_of_product_rejected_fix: 6
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0010
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_410/variants/model_m_ca4_0012
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 2
+Number of attempted products:: 1
+Percentage of attempted products::0.5
+Repairing time (s): 3764.0
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_64
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.25
+Repairing time (s): 2222.954
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-size ` -topatch--> `len--` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.InflaterInputStream line: 64, featureInfo: Base.net.sf.zipme.InflaterInputStream.47, pointed element: CtUnaryOperatorImpl, code element:-size, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 9
+num_of_product_rejected_fix: 16
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0018
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0019
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-size ` -topatch--> `1 << 7` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.InflaterInputStream line: 64, featureInfo: Base.net.sf.zipme.InflaterInputStream.47, pointed element: CtUnaryOperatorImpl, code element:-size, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 15
+num_of_product_rejected_fix: 10
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0018
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_226/variants/model_m_ca4_0016
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 2
+Number of attempted products:: 2
+Percentage of attempted products::0.09090909
+Repairing time (s): 4316.167
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_231
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.15
+Repairing time (s): 3078.05
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_414
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.16666667
+Repairing time (s): 3562.854
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_250
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.15
+Repairing time (s): 3214.388
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_407
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.125
+Repairing time (s): 4162.371
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_248
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.15
+Repairing time (s): 3670.691
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_195
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.8
+Repairing time (s): 3156.503
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `-len ` -topatch--> `0x190 - 144` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.InflaterInputStream line: 104, featureInfo: Base.net.sf.zipme.InflaterInputStream.78, pointed element: CtUnaryOperatorImpl, code element:-len, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 14
+num_of_product_rejected_fix: 11
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0015
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_233/variants/model_m_ca4_0014
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::0.1
+Repairing time (s): 3378.291
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_372
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.6666667
+Repairing time (s): 3209.784
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_404
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.13333334
+Repairing time (s): 3968.706
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `super.read(buf, offset, len) ` -topatch--> `-1` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.GZIPInputStream line: 102, featureInfo: GZIP.net.sf.zipme.GZIPInputStream.66, pointed element: CtInvocationImpl, code element:super.read(buf, offset, len), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 25
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_70/variants/model_m_ca4_0017
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.375
+Repairing time (s): 3846.601
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_405
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.125
+Repairing time (s): 4764.142
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_295
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.4
+Repairing time (s): 4567.786
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_65
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.5
+Repairing time (s): 2309.473
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_194
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.8
+Repairing time (s): 3338.426
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_294
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.4
+Repairing time (s): 3687.313
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `(-numRead) ` -topatch--> `((2 * net.sf.zipme.DeflaterConstants.WSIZE) - net.sf.zipme.DeflaterConstants.MIN_LOOKAHEAD)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.GZIPInputStream line: 262, featureInfo: DerivativeGZIPCRC.net.sf.zipme.GZIPInputStream.51, pointed element: CtUnaryOperatorImpl, code element:(-numRead), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 25
+num_of_product_rejected_fix: 0
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_22/variants/model_m_ca4_0017
+List of rejected products:
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.125
+Repairing time (s): 3083.971
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `litlenTree.getSymbol(input) ` -topatch--> `input.getAvailableBytes()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=net.sf.zipme.Inflater line: 308, featureInfo: Base.net.sf.zipme.Inflater.186, pointed element: CtInvocationImpl, code element:litlenTree.getSymbol(input), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 19
+num_of_product_rejected_fix: 6
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0020
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_415/variants/model_m_ca4_0021
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::0.6666667
+Repairing time (s): 4227.332
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_251
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.2
+Repairing time (s): 5002.48
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_69
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.375
+Repairing time (s): 2597.722
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_228
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.09090909
+Repairing time (s): 4713.84
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_198
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.8
+Repairing time (s): 4918.779
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_383
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.1
+Repairing time (s): 4237.583
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_417
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.0625
+Repairing time (s): 4184.205
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_234
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.15
+Repairing time (s): 4629.553
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `net.sf.zipme.OutputWindow.WINDOW_SIZE - window_filled ` -topatch--> `(window[window_end++] & 0xff) << window_end` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 121, featureInfo: Base.net.sf.zipme.OutputWindow.92, pointed element: CtBinaryOperatorImpl, code element:net.sf.zipme.OutputWindow.WINDOW_SIZE - window_filled, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 11
+num_of_product_rejected_fix: 14
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0007
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0005
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `litlenTree.getSymbol(input) ` -topatch--> `mode * 2` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.Inflater line: 323, featureInfo: Base.net.sf.zipme.Inflater.186, pointed element: CtInvocationImpl, code element:litlenTree.getSymbol(input), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 19
+num_of_product_rejected_fix: 6
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0007
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0003
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `net.sf.zipme.OutputWindow.WINDOW_SIZE - window_filled ` -topatch--> `java.lang.Math.max(window_end + 1, window_end)` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=net.sf.zipme.OutputWindow line: 121, featureInfo: Base.net.sf.zipme.OutputWindow.92, pointed element: CtBinaryOperatorImpl, code element:net.sf.zipme.OutputWindow.WINDOW_SIZE - window_filled, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 11
+num_of_product_rejected_fix: 14
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0007
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_408/variants/model_m_ca4_0005
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 3
+Number of attempted products:: 2
+Percentage of attempted products::0.125
+Repairing time (s): 5753.01
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_227
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.09090909
+Repairing time (s): 4607.204
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `fillBuf() ` -topatch--> `super.close()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=net.sf.zipme.ZipInputStream line: 66, featureInfo: Extract.net.sf.zipme.ZipInputStream.45, pointed element: CtInvocationImpl, code element:fillBuf(), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 22
+num_of_product_rejected_fix: 3
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0009
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_216/variants/model_m_ca4_0008
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 3
+Percentage of attempted products::0.6
+Repairing time (s): 2498.283
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_190
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.8
+Repairing time (s): 2179.539
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtUnaryOperatorImpl) `(-n) ` -topatch--> `((int) (java.lang.Math.min(n, 2048)))` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=net.sf.zipme.InflaterInputStream line: 172, featureInfo: Base.net.sf.zipme.InflaterInputStream.134, pointed element: CtUnaryOperatorImpl, code element:(-n), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 19
+num_of_product_rejected_fix: 6
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0020
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_246/variants/model_m_ca4_0021
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::0.1
+Repairing time (s): 5145.573
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_238
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.1
+Repairing time (s): 4329.413
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtInvocationImpl) `net.sf.zipme.DeflaterHuffman.bitReverse(code) ` -topatch--> `tree[bits & 511]` (spoon.support.reflect.code.CtArrayReadImpl) 
+Modification point: MP=net.sf.zipme.InflaterHuffmanTree line: 81, featureInfo: Base.net.sf.zipme.InflaterHuffmanTree.65, pointed element: CtInvocationImpl, code element:net.sf.zipme.DeflaterHuffman.bitReverse(code), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 4
+num_of_product_rejected_fix: 21
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0010
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_371/variants/model_m_ca4_0019
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::0.6666667
+Repairing time (s): 5237.243
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_232
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.15
+Repairing time (s): 5006.122
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_230
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.071428575
+Repairing time (s): 4570.047
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `buf[len - (avail++)] & 0xff ` -topatch--> `~7` (spoon.support.reflect.code.CtUnaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.ZipInputStream line: 109, featureInfo: Extract.net.sf.zipme.ZipInputStream.82, pointed element: CtBinaryOperatorImpl, code element:buf[len - (avail++)] & 0xff, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 24
+num_of_product_rejected_fix: 1
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0008
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0021
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `len - (avail++) ` -topatch--> `1 << 7` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.ZipInputStream line: 109, featureInfo: Extract.net.sf.zipme.ZipInputStream.82, pointed element: CtBinaryOperatorImpl, code element:len - (avail++), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 24
+num_of_product_rejected_fix: 1
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0008
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0021
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `buf[len - (avail++)] & 0xff ` -topatch--> `net.sf.zipme.DeflaterConstants.WSIZE + net.sf.zipme.DeflaterConstants.MAX_DIST` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.ZipInputStream line: 109, featureInfo: Extract.net.sf.zipme.ZipInputStream.82, pointed element: CtBinaryOperatorImpl, code element:buf[len - (avail++)] & 0xff, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 24
+num_of_product_rejected_fix: 1
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0010
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0008
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_153/variants/model_m_ca4_0021
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 3
+Number of attempted products:: 1
+Percentage of attempted products::0.2
+Repairing time (s): 3332.975
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_249
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.1
+Repairing time (s): 4464.58
+*******************************************
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > off) || (off > (off + len))) ` -topatch--> `(net.sf.zipme.Inflater.CPLEXT[neededBits + 1] == (-1))` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.Inflater line: 187, featureInfo: Base.net.sf.zipme.Inflater.95, pointed element: CtBinaryOperatorImpl, code element:((0 > off) || (off > (off + len))), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 6
+num_of_product_rejected_fix: 19
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0010
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0012
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > off) || (off > (off + len))) || ((off + len) > buf.length) ` -topatch--> `decodeHeader()` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=net.sf.zipme.Inflater line: 187, featureInfo: Base.net.sf.zipme.Inflater.95, pointed element: CtBinaryOperatorImpl, code element:((0 > off) || (off > (off + len))) || ((off + len) > buf.length), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 2
+num_of_product_rejected_fix: 23
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0015
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0010
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > off) || (off > (off + len))) ` -topatch--> `(((mode - mode) & 1) != 0)` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.Inflater line: 187, featureInfo: Base.net.sf.zipme.Inflater.95, pointed element: CtBinaryOperatorImpl, code element:((0 > off) || (off > (off + len))), previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 6
+num_of_product_rejected_fix: 19
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0015
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0010
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0012
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ExpressionReplaceOperator:(spoon.support.reflect.code.CtBinaryOperatorImpl) `((0 > off) || (off > (off + len))) || ((off + len) > buf.length) ` -topatch--> `((mode - mode) & 1) != 0` (spoon.support.reflect.code.CtBinaryOperatorImpl) 
+Modification point: MP=net.sf.zipme.Inflater line: 187, featureInfo: Base.net.sf.zipme.Inflater.95, pointed element: CtBinaryOperatorImpl, code element:((0 > off) || (off > (off + len))) || ((off + len) > buf.length), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 3
+num_of_product_rejected_fix: 22
+List of succeed products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0004
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0018
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0015
+List of rejected products:
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0008
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0009
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0006
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0007
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0005
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0002
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0024
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0003
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0025
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0022
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0001
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0023
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0020
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0021
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0019
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0017
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0016
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0013
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0014
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0011
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0012
+/home/trang_nguyen/SPL/Dataset/ZipMe-1Bug/_MultipleBugs_.NOB_1.ID_241/variants/model_m_ca4_0010
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 4
+Number of attempted products:: 3
+Percentage of attempted products::0.75
+Repairing time (s): 7546.273
+*******************************************
+------------------------summary-------------------
+Total number of systems:55
+Total number of systems containing test adequate patches:5
+Total number of systems partially fixed:13
+Average percentage of passing products/system:0.5461819
+Average of attempted products: 2.4545455
+Average of percentage of attempted products: 0.34684736
+Total repairing time (s): 194837.5979999999
+
+Bug Id obtains correct patch

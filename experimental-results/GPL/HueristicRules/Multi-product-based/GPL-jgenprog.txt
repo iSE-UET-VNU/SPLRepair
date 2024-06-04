@@ -1,0 +1,946 @@
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_229
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.055555556
+Number of attempted patches::50
+Repairing time (s): 2434.01
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_103
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.16666667
+Number of attempted patches::50
+Repairing time (s): 1861.109
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_316
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::50
+Repairing time (s): 1703.876
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_213
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.14285715
+Number of attempted patches::50
+Repairing time (s): 1840.868
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_402
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtReturnImpl) `return ((GPL.Vertex) (iter.next())) ` -topatch--> `return ((GPL.Vertex) (this))` (spoon.support.reflect.code.CtReturnImpl) 
+Modification point: MP=GPL.Vertex line: 85, featureInfo: DirectedOnlyVertices.GPL.Vertex.50, pointed element: CtReturnImpl, code element:return ((GPL.Vertex) (iter.next())), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 94
+num_of_product_rejected_fix: 5
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::0.11764706
+Number of attempted patches::50
+Repairing time (s): 2983.77
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_280
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.04761905
+Number of attempted patches::50
+Repairing time (s): 1574.364
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_13
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 5
+Percentage of attempted products::0.71428573
+Number of attempted patches::47
+Repairing time (s): 1723.007
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_137
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.09090909
+Number of attempted patches::46
+Repairing time (s): 2050.577
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_319
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.11764706
+Number of attempted patches::50
+Repairing time (s): 2134.399
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_59
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.11111111
+Number of attempted patches::28
+Repairing time (s): 1687.816
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_108
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.1764706
+Number of attempted patches::42
+Repairing time (s): 1380.479
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_310
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.5
+Number of attempted patches::27
+Repairing time (s): 1372.256
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_100
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::22
+Repairing time (s): 1411.971
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_225
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.36363637
+Number of attempted patches::63
+Repairing time (s): 2232.708
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_341
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.11764706
+Number of attempted patches::50
+Repairing time (s): 1537.366
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_413
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 703.445
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_196
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.078947365
+Number of attempted patches::75
+Repairing time (s): 2386.063
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_149
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.045454547
+Number of attempted patches::50
+Repairing time (s): 1819.955
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_220
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::50
+Repairing time (s): 2199.387
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_242
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 5
+Percentage of attempted products::0.17857143
+Number of attempted patches::66
+Repairing time (s): 2127.042
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_135
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.044444446
+Number of attempted patches::49
+Repairing time (s): 1960.219
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_320
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.1764706
+Number of attempted patches::55
+Repairing time (s): 1935.64
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_364
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::25
+Repairing time (s): 706.39
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_352
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.16666667
+Number of attempted patches::55
+Repairing time (s): 1848.519
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_363
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.125
+Number of attempted patches::43
+Repairing time (s): 1949.099
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_97
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.16666667
+Number of attempted patches::50
+Repairing time (s): 2158.02
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_261
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.12903225
+Number of attempted patches::57
+Repairing time (s): 1874.528
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_123
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.045454547
+Number of attempted patches::44
+Repairing time (s): 1578.365
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_25
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.5
+Number of attempted patches::50
+Repairing time (s): 1750.625
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_342
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.25
+Number of attempted patches::40
+Repairing time (s): 1609.98
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_410
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtLocalVariableImpl) `GPL.Vertex v = vxiter.next() ` -topatch--> `GPL.Vertex v = new GPL.Vertex()` (spoon.support.reflect.code.CtLocalVariableImpl) 
+Modification point: MP=GPL.Graph line: 297, featureInfo: DFS.GPL.Graph.19, pointed element: CtLocalVariableImpl, code element:GPL.Vertex v = vxiter.next(), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 96
+num_of_product_rejected_fix: 3
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 1
+Percentage of attempted products::0.33333334
+Number of attempted patches::25
+Repairing time (s): 7857.179
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_357
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.0952381
+Number of attempted patches::39
+Repairing time (s): 1780.196
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_447
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::30
+Repairing time (s): 801.383
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_237
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.05882353
+Number of attempted patches::50
+Repairing time (s): 2111.252
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_224
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.04761905
+Number of attempted patches::39
+Repairing time (s): 1945.164
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_201
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.035714287
+Number of attempted patches::21
+Repairing time (s): 1467.212
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_231
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.1
+Number of attempted patches::50
+Repairing time (s): 1501.323
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_336
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.1764706
+Number of attempted patches::47
+Repairing time (s): 1393.729
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_287
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 1915.146
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_218
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::1.0
+Number of attempted patches::48
+Repairing time (s): 1497.255
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_311
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.15384616
+Number of attempted patches::50
+Repairing time (s): 1724.911
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_283
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::50
+Repairing time (s): 1392.198
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_375
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.10526316
+Number of attempted patches::50
+Repairing time (s): 1616.57
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_199
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.071428575
+Number of attempted patches::15
+Repairing time (s): 2031.545
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_276
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.5
+Number of attempted patches::15
+Repairing time (s): 2154.289
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_436
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.16666667
+Number of attempted patches::7
+Repairing time (s): 2113.033
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_358
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.041666668
+Number of attempted patches::4
+Repairing time (s): 2141.712
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_144
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.022222223
+Number of attempted patches::2
+Repairing time (s): 2283.721
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_211
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.083333336
+Number of attempted patches::8
+Repairing time (s): 2276.416
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_177
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.022222223
+Number of attempted patches::12
+Repairing time (s): 2280.71
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_210
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.03125
+Number of attempted patches::2
+Repairing time (s): 2283.457
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_326
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05882353
+Number of attempted patches::6
+Repairing time (s): 2095.438
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_193
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.02631579
+Number of attempted patches::15
+Repairing time (s): 2020.714
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_195
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05263158
+Number of attempted patches::8
+Repairing time (s): 1975.886
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_284
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.02173913
+Number of attempted patches::5
+Repairing time (s): 2278.976
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_47
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.055555556
+Number of attempted patches::9
+Repairing time (s): 2263.757
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_411
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.05
+Number of attempted patches::4
+Repairing time (s): 2235.962
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_236
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.0625
+Number of attempted patches::2
+Repairing time (s): 2279.486
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_404
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.0625
+Number of attempted patches::12
+Repairing time (s): 2233.071
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_139
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.022222223
+Number of attempted patches::5
+Repairing time (s): 1652.738
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_2
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.09090909
+Number of attempted patches::3
+Repairing time (s): 2276.682
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_302
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.125
+Number of attempted patches::13
+Repairing time (s): 2262.274
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_98
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.032258064
+Number of attempted patches::4
+Repairing time (s): 2274.071
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_365
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.33333334
+Number of attempted patches::6
+Repairing time (s): 2261.193
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_351
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.045454547
+Number of attempted patches::3
+Repairing time (s): 2270.424
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_335
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.14285715
+Number of attempted patches::10
+Repairing time (s): 2260.734
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_197
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.028571429
+Number of attempted patches::5
+Repairing time (s): 2277.137
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_367
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtInvocationImpl) `java.lang.System.out.print(" Weight=" + (++weight)) ` -topatch--> `java.lang.System.out.println("Vertices ")` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=GPL.Edge line: 95, featureInfo: WeightedWithEdges.GPL.Edge.36, pointed element: CtInvocationImpl, code element:java.lang.System.out.print(" Weight=" + (++weight)), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 99
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.041666668
+Number of attempted patches::4
+Repairing time (s): 45601.2
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_427
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.3
+Number of attempted patches::75
+Repairing time (s): 2289.616
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_203
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.06666667
+Number of attempted patches::50
+Repairing time (s): 2260.424
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_9
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.6666667
+Number of attempted patches::41
+Repairing time (s): 1682.901
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_80
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.04347826
+Number of attempted patches::75
+Repairing time (s): 1733.587
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_435
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtReturnImpl) `return end ` -topatch--> `return start` (spoon.support.reflect.code.CtReturnImpl) 
+Modification point: MP=GPL.Edge line: 65, featureInfo: DirectedWithEdges.GPL.Edge.37, pointed element: CtReturnImpl, code element:return end, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 93
+num_of_product_rejected_fix: 6
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 4
+Percentage of attempted products::0.33333334
+Number of attempted patches::52
+Repairing time (s): 3028.176
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_171
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.055555556
+Number of attempted patches::43
+Repairing time (s): 1708.776
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_194
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.051282052
+Number of attempted patches::50
+Repairing time (s): 2250.609
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_95
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.06451613
+Number of attempted patches::32
+Repairing time (s): 1530.404
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_81
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.04918033
+Number of attempted patches::75
+Repairing time (s): 1778.646
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_134
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.75
+Number of attempted patches::64
+Repairing time (s): 1712.457
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_206
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.22222222
+Number of attempted patches::40
+Repairing time (s): 1465.836
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_44
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.11111111
+Number of attempted patches::41
+Repairing time (s): 1535.742
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_151
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.048780486
+Number of attempted patches::40
+Repairing time (s): 1841.456
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_306
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.2857143
+Number of attempted patches::50
+Repairing time (s): 1990.275
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_234
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.071428575
+Number of attempted patches::41
+Repairing time (s): 1629.899
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_215
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.05
+Number of attempted patches::50
+Repairing time (s): 2090.546
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_408
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.1
+Number of attempted patches::50
+Repairing time (s): 1754.825
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_1
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtIfImpl) `if (vertex != start) { 	return end; } else  if (vertex == end) { 	return start; } else {            [...] ` -topatch--> `if (vertex == end) { 	return start;        } else { 	return null;}` (spoon.support.reflect.code.CtIfImpl) 
+Modification point: MP=GPL.Edge line: 51, featureInfo: UndirectedWithEdges.GPL.Edge.36, pointed element: CtIfImpl, code element:if (vertex != start) {
+	return end;
+} else 
+if (vertex == end) {
+	return start;
+} else {
+
+
+
+
+
+
+
+
+
+
+
+
+
+	return start;}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 99
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.09090909
+Number of attempted patches::50
+Repairing time (s): 1602.323
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_345
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.1
+Number of attempted patches::72
+Repairing time (s): 1631.296
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_282
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.15384616
+Number of attempted patches::50
+Repairing time (s): 1771.034
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_346
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtInvocationImpl) `v.init_vertex(w) ` -topatch--> `v.nodeSearch(w)` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=GPL.Graph line: 210, featureInfo: BFS.GPL.Graph.21, pointed element: CtInvocationImpl, code element:v.init_vertex(w), previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 93
+num_of_product_rejected_fix: 6
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+InsertAfterOp:(spoon.support.reflect.code.CtIfImpl) `if (v.visited) { 	w.nextRegionAction(v); 	v.nodeSearch(w); } ` -topatch--> `java.lang.System.out.print("  visited ")` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=GPL.Graph line: 214, featureInfo: BFS.GPL.Graph.25, pointed element: CtIfImpl, code element:if (v.visited) {
+	w.nextRegionAction(v);
+	v.nodeSearch(w);
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 93
+num_of_product_rejected_fix: 6
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+InsertBeforeOp:(spoon.support.reflect.code.CtIfImpl) `if (v.visited) { 	w.nextRegionAction(v); 	v.nodeSearch(w); } ` -topatch--> `int s = vertices.size()` (spoon.support.reflect.code.CtLocalVariableImpl) 
+Modification point: MP=GPL.Graph line: 214, featureInfo: BFS.GPL.Graph.25, pointed element: CtIfImpl, code element:if (v.visited) {
+	w.nextRegionAction(v);
+	v.nodeSearch(w);
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 93
+num_of_product_rejected_fix: 6
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 3
+Number of attempted products:: 3
+Percentage of attempted products::0.14285715
+Number of attempted patches::61
+Repairing time (s): 9390.33
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_111
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::11
+Repairing time (s): 292.803
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_207
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.0625
+Number of attempted patches::50
+Repairing time (s): 1478.077
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_146
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.08108108
+Number of attempted patches::51
+Repairing time (s): 1974.156
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_49
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.25
+Number of attempted patches::48
+Repairing time (s): 1371.043
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_204
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.6666667
+Number of attempted patches::43
+Repairing time (s): 1607.275
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_187
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.0952381
+Number of attempted patches::71
+Repairing time (s): 1657.283
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_238
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.05263158
+Number of attempted patches::50
+Repairing time (s): 2222.657
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_109
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.06896552
+Number of attempted patches::50
+Repairing time (s): 2188.679
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_232
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.060606062
+Number of attempted patches::50
+Repairing time (s): 1512.076
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_230
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.045454547
+Number of attempted patches::50
+Repairing time (s): 1970.92
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_291
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.06666667
+Number of attempted patches::44
+Repairing time (s): 1591.603
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_161
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.06666667
+Number of attempted patches::58
+Repairing time (s): 2268.444
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_153
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.045454547
+Number of attempted patches::50
+Repairing time (s): 2028.113
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_162
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.022727273
+Number of attempted patches::24
+Repairing time (s): 1419.91
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_79
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.16666667
+Number of attempted patches::37
+Repairing time (s): 1712.329
+*******************************************
+/home/trang_nguyen/SPL/Dataset/GPL-1Bug/_MultipleBugs_.NOB_1.ID_122
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.044444446
+Number of attempted patches::50
+Repairing time (s): 1717.301
+*******************************************
+------------------------summary-------------------
+Total number of systems:105
+Total number of systems containing test adequate patches:2
+Total number of systems partially fixed:4
+Average percentage of passing products/system:0.7791245
+Average of attempted products: 1.9904761
+Average of percentage of attempted products: 0.20803003
+Average number of attempted patches::37.866665
+Total repairing time (s): 253315.82400000008

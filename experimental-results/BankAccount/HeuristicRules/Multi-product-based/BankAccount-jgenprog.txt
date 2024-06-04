@@ -1,0 +1,791 @@
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_167
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtIfImpl) `if ((++x) < 0) { 	newWithdraw += x; 	if (newWithdraw < main.Account.DAILY_LIMIT) { 		return false; 	[...] ` -topatch--> `if (x < 0) { 	newWithdraw -= x; 	if (newWithdraw < main.Account.DAILY_LIMIT) { 		return false;     	[...]` (spoon.support.reflect.code.CtIfImpl) 
+Modification point: MP=main.Account line: 34, featureInfo: DailyLimit.Account.17, pointed element: CtIfImpl, code element:if ((++x) < 0) {
+	newWithdraw += x;
+	if (newWithdraw < main.Account.DAILY_LIMIT) {
+		return false;
+	}
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 7
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 3
+Percentage of attempted products::0.6
+Number of attempted patches::19
+Repairing time (s): 7578.302
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_172
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 6
+Percentage of attempted products::0.46153846
+Number of attempted patches::29
+Repairing time (s): 3266.676
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_59
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.15384616
+Number of attempted patches::14
+Repairing time (s): 2753.075
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_121
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.25
+Number of attempted patches::14
+Repairing time (s): 2859.036
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_19
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.2
+Number of attempted patches::10
+Repairing time (s): 2470.405
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_133
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::12
+Repairing time (s): 1796.687
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_253
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.75
+Number of attempted patches::26
+Repairing time (s): 3775.657
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_183
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtAssignmentImpl) `withdraw = ++newWithdraw ` -topatch--> `withdraw = newWithdraw` (spoon.support.reflect.code.CtAssignmentImpl) 
+Modification point: MP=main.Account line: 44, featureInfo: DailyLimit.Account.26, pointed element: CtAssignmentImpl, code element:withdraw = ++newWithdraw, previous fixing score: 1
+, ]
+ num_of_product_successful_fix: 34
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::5
+Repairing time (s): 6415.741
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_175
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::6
+Repairing time (s): 1242.726
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_58
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.13636364
+Number of attempted patches::19
+Repairing time (s): 3128.905
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_120
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtIfImpl) `if (newBalance < (-OVERDRAFT_LIMIT)) { 	return false; } ` -topatch--> `if (newBalance < OVERDRAFT_LIMIT) { 	return false; }` (spoon.support.reflect.code.CtIfImpl) 
+Modification point: MP=main.Account line: 38, featureInfo: BankAccount.Account.31, pointed element: CtIfImpl, code element:if (newBalance < (-OVERDRAFT_LIMIT)) {
+	return false;
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 34
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.1875
+Number of attempted patches::12
+Repairing time (s): 13537.917
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_5
+Num_of_operations=1
+ [OP_INSTANCE:
+InsertAfterOp:(spoon.support.reflect.code.CtIfImpl) `if (!main.Transaction.lock(source, destination)) { 	return false; } ` -topatch--> `source.undoUpdate(amount * (-1))` (spoon.support.reflect.code.CtInvocationImpl) 
+Modification point: MP=main.Transaction line: 13, featureInfo: Transaction.Transaction.12, pointed element: CtIfImpl, code element:if (!main.Transaction.lock(source, destination)) {
+	return false;
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 31
+num_of_product_rejected_fix: 3
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 1
+Percentage of attempted products::0.125
+Number of attempted patches::6
+Repairing time (s): 6297.333
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_77
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.10714286
+Number of attempted patches::31
+Repairing time (s): 3534.211
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_6
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::6
+Repairing time (s): 2101.958
+*******************************************
+_MultipleBugs_.NOB_1.ID_20:   
+an exception has occured.
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_168
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.125
+Number of attempted patches::13
+Repairing time (s): 2854.135
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_150
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.06666667
+Number of attempted patches::23
+Repairing time (s): 2858.956
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_260
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.14285715
+Number of attempted patches::14
+Repairing time (s): 2855.567
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_51
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.15
+Number of attempted patches::28
+Repairing time (s): 3893.111
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_222
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.25
+Number of attempted patches::18
+Repairing time (s): 2511.008
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_223
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.25
+Number of attempted patches::14
+Repairing time (s): 3670.125
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_237
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::11
+Repairing time (s): 2503.784
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_221
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.1875
+Number of attempted patches::21
+Repairing time (s): 2705.582
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_224
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.25
+Number of attempted patches::26
+Repairing time (s): 3575.129
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_201
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.1875
+Number of attempted patches::16
+Repairing time (s): 2663.049
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_160
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.42857143
+Number of attempted patches::16
+Repairing time (s): 2420.349
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_115
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.074074075
+Number of attempted patches::13
+Repairing time (s): 2504.118
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_112
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtIfImpl) `if (newBalance < (~OVERDRAFT_LIMIT)) { 	return false; } ` -topatch--> `if (newBalance < OVERDRAFT_LIMIT) { 	return false; }` (spoon.support.reflect.code.CtIfImpl) 
+Modification point: MP=main.Account line: 25, featureInfo: BankAccount.Account.21, pointed element: CtIfImpl, code element:if (newBalance < (~OVERDRAFT_LIMIT)) {
+	return false;
+}, previous fixing score: 0
+, ]
+ num_of_product_successful_fix: 32
+num_of_product_rejected_fix: 2
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 3
+Percentage of attempted products::0.15789473
+Number of attempted patches::18
+Repairing time (s): 13823.846
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_163
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.23076923
+Number of attempted patches::18
+Repairing time (s): 2893.193
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_173
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtOperatorAssignmentImpl) `newWithdraw += x++ ` -topatch--> `newWithdraw -= x` (spoon.support.reflect.code.CtOperatorAssignmentImpl) 
+Modification point: MP=main.Account line: 35, featureInfo: DailyLimit.Account.18, pointed element: CtOperatorAssignmentImpl, code element:newWithdraw += x++, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 26
+num_of_product_rejected_fix: 8
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 3
+Percentage of attempted products::0.75
+Number of attempted patches::27
+Repairing time (s): 8160.38
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_164
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::8
+Repairing time (s): 1574.341
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_276
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.25
+Number of attempted patches::14
+Repairing time (s): 2906.091
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_235
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::11
+Repairing time (s): 2852.613
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_92
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.18181819
+Number of attempted patches::28
+Repairing time (s): 2867.775
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_178
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::7
+Repairing time (s): 1429.48
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_31
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::1.0
+Number of attempted patches::12
+Repairing time (s): 3409.737
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_139
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::22
+Repairing time (s): 2340.81
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_130
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::19
+Repairing time (s): 2046.676
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_98
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.13636364
+Number of attempted patches::27
+Repairing time (s): 3550.873
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_68
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.1875
+Number of attempted patches::34
+Repairing time (s): 3581.138
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_70
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.6666667
+Number of attempted patches::17
+Repairing time (s): 2728.333
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_23
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.25
+Number of attempted patches::12
+Repairing time (s): 3087.065
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_217
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::8
+Repairing time (s): 1553.834
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_18
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.13333334
+Number of attempted patches::26
+Repairing time (s): 2852.275
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_80
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtAssignmentImpl) `balance = -newBalance ` -topatch--> `balance = newBalance` (spoon.support.reflect.code.CtAssignmentImpl) 
+Modification point: MP=main.Account line: 28, featureInfo: BankAccount.Account.24, pointed element: CtAssignmentImpl, code element:balance = -newBalance, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 33
+num_of_product_rejected_fix: 1
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::0.08695652
+Number of attempted patches::27
+Repairing time (s): 13199.082
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_171
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtIfImpl) `if (x < 0) { 	newWithdraw += ++x; 	if (newWithdraw < main.Account.DAILY_LIMIT) { 		return false; 	} [...] ` -topatch--> `if (x < 0) { 	newWithdraw -= x; 	if (newWithdraw < main.Account.DAILY_LIMIT) { 		return false;     	[...]` (spoon.support.reflect.code.CtIfImpl) 
+Modification point: MP=main.Account line: 34, featureInfo: DailyLimit.Account.17, pointed element: CtIfImpl, code element:if (x < 0) {
+	newWithdraw += ++x;
+	if (newWithdraw < main.Account.DAILY_LIMIT) {
+		return false;
+	}
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 7
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::0.4
+Number of attempted patches::15
+Repairing time (s): 7419.21
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_194
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtIfImpl) `if (newWithdraw > main.Account.DAILY_LIMIT) { 	return false; } ` -topatch--> `if (newWithdraw < main.Account.DAILY_LIMIT) { 	return false;  }` (spoon.support.reflect.code.CtIfImpl) 
+Modification point: MP=main.Account line: 37, featureInfo: DailyLimit.Account.19, pointed element: CtIfImpl, code element:if (newWithdraw > main.Account.DAILY_LIMIT) {
+	return false;
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 32
+num_of_product_rejected_fix: 2
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 3
+Percentage of attempted products::0.25
+Number of attempted patches::11
+Repairing time (s): 8048.277
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_176
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 4
+Percentage of attempted products::0.4
+Number of attempted patches::17
+Repairing time (s): 3636.253
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_69
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.1764706
+Number of attempted patches::31
+Repairing time (s): 3471.038
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_81
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.4
+Number of attempted patches::15
+Repairing time (s): 2852.998
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_198
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtIfImpl) `if (newWithdraw != main.Account.DAILY_LIMIT) { 	return false; } ` -topatch--> `if (newWithdraw < main.Account.DAILY_LIMIT) { 	return false; }` (spoon.support.reflect.code.CtIfImpl) 
+Modification point: MP=main.Account line: 37, featureInfo: DailyLimit.Account.19, pointed element: CtIfImpl, code element:if (newWithdraw != main.Account.DAILY_LIMIT) {
+	return false;
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 33
+num_of_product_rejected_fix: 1
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::0.22222222
+Number of attempted patches::10
+Repairing time (s): 7326.385
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_89
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.4
+Number of attempted patches::13
+Repairing time (s): 2841.57
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_4
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.6666667
+Number of attempted patches::9
+Repairing time (s): 2861.022
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_184
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::9
+Repairing time (s): 1074.374
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_151
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.0625
+Number of attempted patches::26
+Repairing time (s): 2464.89
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_234
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::11
+Repairing time (s): 2854.419
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_1
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.13333334
+Number of attempted patches::11
+Repairing time (s): 2434.425
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_174
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtOperatorAssignmentImpl) `newWithdraw += x-- ` -topatch--> `newWithdraw -= x` (spoon.support.reflect.code.CtOperatorAssignmentImpl) 
+Modification point: MP=main.Account line: 35, featureInfo: DailyLimit.Account.18, pointed element: CtOperatorAssignmentImpl, code element:newWithdraw += x--, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 26
+num_of_product_rejected_fix: 8
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::0.5
+Number of attempted patches::12
+Repairing time (s): 8009.384
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_246
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtOperatorAssignmentImpl) `newWithdraw += x ` -topatch--> `newWithdraw -= x` (spoon.support.reflect.code.CtOperatorAssignmentImpl) 
+Modification point: MP=main.Account line: 35, featureInfo: DailyLimit.Account.18, pointed element: CtOperatorAssignmentImpl, code element:newWithdraw += x, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 7
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtAssignmentImpl) `withdraw = --newWithdraw ` -topatch--> `withdraw = newWithdraw` (spoon.support.reflect.code.CtAssignmentImpl) 
+Modification point: MP=main.Account line: 73, featureInfo: DailyLimit.Account.42, pointed element: CtAssignmentImpl, code element:withdraw = --newWithdraw, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 28
+num_of_product_rejected_fix: 6
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 2
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::6
+Repairing time (s): 11920.133
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_24
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.18181819
+Number of attempted patches::15
+Repairing time (s): 2858.22
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_14
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.25
+Number of attempted patches::10
+Repairing time (s): 2855.636
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_159
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtLocalVariableImpl) `int newWithdraw = -withdraw ` -topatch--> `int newWithdraw = withdraw` (spoon.support.reflect.code.CtLocalVariableImpl) 
+Modification point: MP=main.Account line: 34, featureInfo: DailyLimit.Account.16, pointed element: CtLocalVariableImpl, code element:int newWithdraw = -withdraw, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 34
+num_of_product_rejected_fix: 0
+
+---------
+Number of test adequate patches:: 1
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 1
+Percentage of attempted products::0.5
+Number of attempted patches::4
+Repairing time (s): 5897.181
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_204
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtLocalVariableImpl) `int newWithdraw = ~withdraw ` -topatch--> `int newWithdraw = withdraw` (spoon.support.reflect.code.CtLocalVariableImpl) 
+Modification point: MP=main.Account line: 34, featureInfo: DailyLimit.Account.16, pointed element: CtLocalVariableImpl, code element:int newWithdraw = ~withdraw, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 32
+num_of_product_rejected_fix: 2
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 3
+Percentage of attempted products::0.3
+Number of attempted patches::10
+Repairing time (s): 7782.675
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_240
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtIfImpl) `if (x < 0) { 	newWithdraw += x; 	if (newWithdraw < main.Account.DAILY_LIMIT) { 		return false; 	} } ` -topatch--> `if ((newWithdraw--) < main.Account.DAILY_LIMIT) { 	return false;     }` (spoon.support.reflect.code.CtIfImpl) 
+Modification point: MP=main.Account line: 34, featureInfo: DailyLimit.Account.17, pointed element: CtIfImpl, code element:if (x < 0) {
+	newWithdraw += x;
+	if (newWithdraw < main.Account.DAILY_LIMIT) {
+		return false;
+	}
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 7
+
+---------
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtIfImpl) `if (x < 0) { 	newWithdraw += x; 	if (newWithdraw < main.Account.DAILY_LIMIT) { 		return false; 	} } ` -topatch--> `if (newWithdraw < main.Account.DAILY_LIMIT) { 	return false;     }` (spoon.support.reflect.code.CtIfImpl) 
+Modification point: MP=main.Account line: 34, featureInfo: DailyLimit.Account.17, pointed element: CtIfImpl, code element:if (x < 0) {
+	newWithdraw += x;
+	if (newWithdraw < main.Account.DAILY_LIMIT) {
+		return false;
+	}
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 27
+num_of_product_rejected_fix: 7
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 2
+Number of attempted products:: 1
+Percentage of attempted products::1.0
+Number of attempted patches::4
+Repairing time (s): 12099.586
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_263
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.125
+Number of attempted patches::12
+Repairing time (s): 2850.059
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_271
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.14285715
+Number of attempted patches::10
+Repairing time (s): 2508.235
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_230
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.6666667
+Number of attempted patches::16
+Repairing time (s): 2798.817
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_118
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.08
+Number of attempted patches::31
+Repairing time (s): 2455.353
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_161
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::0.2857143
+Number of attempted patches::13
+Repairing time (s): 2749.711
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_153
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtIfImpl) `if (newBalance < (~OVERDRAFT_LIMIT)) { 	return false; } ` -topatch--> `if (newBalance < OVERDRAFT_LIMIT) { 	return false;  }` (spoon.support.reflect.code.CtIfImpl) 
+Modification point: MP=main.Account line: 38, featureInfo: BankAccount.Account.31, pointed element: CtIfImpl, code element:if (newBalance < (~OVERDRAFT_LIMIT)) {
+	return false;
+}, previous fixing score: 2
+, ]
+ num_of_product_successful_fix: 33
+num_of_product_rejected_fix: 1
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 3
+Percentage of attempted products::0.16666667
+Number of attempted patches::23
+Repairing time (s): 13339.926
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_162
+Num_of_operations=1
+ [OP_INSTANCE:
+ReplaceOp:(spoon.support.reflect.code.CtOperatorAssignmentImpl) `newWithdraw += x ` -topatch--> `newWithdraw -= x` (spoon.support.reflect.code.CtOperatorAssignmentImpl) 
+Modification point: MP=main.Account line: 36, featureInfo: DailyLimit.Account.18, pointed element: CtOperatorAssignmentImpl, code element:newWithdraw += x, previous fixing score: 1
+, ]
+ num_of_product_successful_fix: 32
+num_of_product_rejected_fix: 2
+
+---------
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 1
+Number of attempted products:: 2
+Percentage of attempted products::0.2857143
+Number of attempted patches::12
+Repairing time (s): 8196.764
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_79
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 3
+Percentage of attempted products::0.1875
+Number of attempted patches::21
+Repairing time (s): 2937.89
+*******************************************
+/home/trang_nguyen/SPL/Dataset/BankAccount-1Bug/_MultipleBugs_.NOB_1.ID_122
+Number of test adequate patches:: 0
+Number of patches partially fixed the product:: 0
+Number of attempted products:: 2
+Percentage of attempted products::1.0
+Number of attempted patches::12
+Repairing time (s): 1133.595
+*******************************************
+------------------------summary-------------------
+Total number of systems:73
+Total number of systems containing test adequate patches:3
+Total number of systems partially fixed:14
+Average percentage of passing products/system:0.711523
+Average of attempted products: 2.369863
+Average of percentage of attempted products: 0.43695873
+Average number of attempted patches::15.69863
+Total repairing time (s): 308309.11
