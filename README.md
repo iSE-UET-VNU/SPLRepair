@@ -1,4 +1,4 @@
-Automatic Program Repair for Variability Bugs in Software Product Line Systems
+Automated Program Repair for Variability Bugs in Software Product Line Systems
 ========================================
 
 
@@ -11,11 +11,11 @@ Installation
 How to execute
 ------
 
-For executing the enhanced version of system-based approach with the employed APR tool cardumen:
+For executing the enhanced version of multi-product-based approach with the employed APR tool cardumen:
 
     java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.SPLRepairMain -mode cardumen -location <PATH_TO_SPLSYSTEM_FOLDER>/SPL/ExamDB/ -flresult varcop_fl_results.txt -approachdirection systembased -approachvariant enhanced
 
-For executing the enhanced version of system-based approach with the employed APR tool jgenprog:
+For executing the enhanced version of multi-product-based approach with the employed APR tool jgenprog:
 
     java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.SPLRepairMain -mode jgenprog -location <PATH_TO_SPLSYSTEM_FOLDER>/SPL/ExamDB/ -flresult varcop_fl_results.txt -approachdirection systembased -approachvariant enhanced
 
@@ -39,11 +39,39 @@ Dataset of variability bugs:
 ------
 https://tuanngokien.github.io/splc2021/
 
+How to reproduce the experiments:
+------
 
+RQ1:
+-
 
+For executing the single-product-based approach with cardumen:
 
+    java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.SPLRepairMain -mode cardumen -location <PATH_TO_SPLSYSTEM_FOLDER>/SYSTEM_NAME/ -flresult varcop_fl_results.txt 
 
+For executing the multi-product-based approach with cardumen:
 
+    java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.SPLRepairMain -mode cardumen -location <PATH_TO_SPLSYSTEM_FOLDER>/SYSTEM_NAME/ -flresult varcop_fl_results.txt -approachdirection systembased
 
+To execute the experiments with jgenprog, please replace the -mode parameter with jgenprog, for example to execute the multi-product-based approach with jgenprog:
 
+    java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.SPLRepairMain -mode jgenprog -location <PATH_TO_SPLSYSTEM_FOLDER>/SYSTEM_NAME/ -flresult varcop_fl_results.txt -approachdirection systembased
 
+To execute the repair approaches with the heuristic rules, please add the parameter  -approachvariant enhanced, for example: 
+
+    java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.SPLRepairMain -mode jgenprog -location <PATH_TO_SPLSYSTEM_FOLDER>/SPL/ExamDB/ -flresult varcop_fl_results.txt -approachdirection systembased -approachvariant enhanced
+
+RQ2: 
+-
+
+To change the similarity function (e.g., cosine, ngram, lcs, levenshtein, jaccard), add the parameters -similarityfunc. The default similarity function is levenshtein.
+
+    java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.SPLRepairMain -mode cardumen -location <PATH_TO_SPLSYSTEM_FOLDER>/SYSTEM_NAME/ -flresult varcop_fl_results.txt -approachvariant enhanced -similarityfunc cosine
+
+To change the suitability threshold, add the parameters -suitabilitythreshold. The default value is 0.5.
+
+    java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.SPLRepairMain -mode cardumen -location <PATH_TO_SPLSYSTEM_FOLDER>/SYSTEM_NAME/ -flresult varcop_fl_results.txt -approachvariant enhanced -similarityfunc cosine -suitabilitythreshold 0.9
+
+To change the hyperparameters alpha and beta, add the parameters -similarityalpha and -similaritybeta. The default value of alpha is 2 and the default value of beta is 1.
+
+    java -cp target/astor-*-jar-with-dependencies.jar fr.inria.main.evolution.SPLRepairMain -mode cardumen -location <PATH_TO_SPLSYSTEM_FOLDER>/SYSTEM_NAME/ -flresult varcop_fl_results.txt -approachvariant enhanced -similarityalpha 1 -similaritybeta 0
